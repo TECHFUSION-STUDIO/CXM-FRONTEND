@@ -42,7 +42,16 @@ const routes = [
         name: 'filteredfeedbackscreen',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FilteredFeedbackScreen.vue'),
       },
-    
+      {
+        path: '/surveys/:sid/createquestion',
+        name: 'createquestion',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),
+      },
+      {
+        path: '/surveys/:sid/editquestion',
+        name: 'editquestion',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyQuestion.vue'),
+      },
       {
         path: '/feedbackdetail/raw/:fid',
         name: 'feedbackdetailraw',

@@ -29,6 +29,13 @@
         </div>
       </div>
     </div>
+
+    <div class="text-center mt-3 mb-3">
+      <button class="btn btn-danger m-2 w-25">Delete</button>
+      <button class="btn btn-primary m-2 w-25" @click="this.$router.push('/editsurveys')">
+        Edit Survey
+      </button>
+    </div>
   </div>
 </template>
 
