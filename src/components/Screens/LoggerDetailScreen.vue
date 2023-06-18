@@ -12,42 +12,36 @@
 
     <div class="bg-white shadow shadow-sm mt-3 p-2">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
+          <p class="text-muted">Logger Id : 6476589</p>
+          <h5>grgrg</h5>
+
           <div class="row">
-            <div class="col-md-12">
-              <p class="text-muted">Logger Id : 6476589</p>
-            </div>
+            <div class="col-auto"><p>Email : 6476589</p></div>
+            <div class="col-auto"><p>Contact : 6476589</p></div>
+            <div class="col-auto"><p>Total Response : 6476589</p></div>
+            <div class="col-auto"><p>Last Response Recorded : 6476589</p></div>
             <div class="col-auto">
-              <p>Name : 6476589</p>
-              <p>Contact : 6476589</p>
-            </div>
-            <div class="col-auto">
-              <p>Email : 6476589</p>
-              <p>Total Response : 6476589</p>
-              <p>Last Response Recorded : 6476589</p>
               <p>Added on : 6476589</p>
             </div>
-            <div class="col-md-12">
-              <p>
-                <strong>Additional Details</strong><br />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et quisquam,
-                quam quis distinctio impedit nihil architecto nesciunt facilis, illum
-                totam enim nobis. Vero labore tempora a, ullam ratione quaerat voluptate
-                nam, cumque voluptatibus fugit saepe reprehenderit. Labore quasi eligendi
-                tenetur eos qui voluptates, consectetur numquam eum praesentium temporibus
-                voluptatum quia deserunt et doloremque reiciendis accusantium quas sed
-                ipsum odit? Error incidunt maiores, praesentium labore minima, commodi
-                dolor natus optio officia adipisci aut accusantium officiis? Quam a nulla,
-                ex animi accusantium et quas maxime consequatur facilis vel ratione, neque
-                esse! Ratione magnam assumenda eum quibusdam reprehenderit voluptatibus
-                recusandae deserunt ut. Dolore, delectus rerum quibusdam est repellendus,
-                aspernatur reprehenderit, vitae velit exercitationem minus ipsum eligendi.
-                Porro, possimus ipsa iusto ab dolorem fuga!
-              </p>
-            </div>
           </div>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, esse
+            recusandae molestias sint aliquam quae repellat perferendis! Sequi,
+            repellendus pariatur adipisci debitis maxime laborum consectetur? Nam id porro
+            reiciendis at maxime est. Doloremque laudantium atque repudiandae fugiat omnis
+            minima id quibusdam nesciunt beatae error eius perferendis ipsum blanditiis
+            ipsam repellat iste, nisi, vero fugit! Iste harum, praesentium minus molestias
+            velit deleniti et voluptatum maiores quaerat repellat voluptatibus provident
+            quibusdam, cumque magnam cupiditate. Cumque dolorum consequatur, veritatis
+            quae quasi iusto deleniti corporis eveniet tenetur molestiae nihil
+            perspiciatis dicta voluptate vel placeat. Sequi autem incidunt odit ducimus
+            eius non accusantium cumque eos labore nesciunt delectus laborum ex, maiores
+            quaerat. Reiciendis, veniam dolorum deserunt quod illum dignissimos aperiam
+            ratione facilis earum cum minima!
+          </p>
         </div>
-        <div class="col-md-4"></div>
       </div>
     </div>
 

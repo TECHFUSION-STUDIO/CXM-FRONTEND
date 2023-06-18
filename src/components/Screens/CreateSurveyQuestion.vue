@@ -27,8 +27,10 @@
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Category</label>
             <select id="categoryStatus" class="form-select">
-              <option>Active</option>
-              <option>Inactive</option>
+              <option>NPS</option>
+              <option>5 Star</option>
+              <option>Questionaire</option>
+              <option>Voting</option>
             </select>
           </div>
         </div>

@@ -141,7 +141,7 @@
           </div>
         </li>
 
-        <li
+        <!-- <li
           :class="
             selectedTab == 7
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
@@ -177,10 +177,10 @@
               <i class="fa-solid fa-gear me-2"></i>Project Settings
             </div>
           </div>
-        </li>
+        </li> -->
 
         <hr />
-        <li
+        <!-- <li
           :class="
             selectedTab == 9
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
@@ -215,7 +215,7 @@
               <i class="fa-solid fa-gear me-2"></i>General Settings
             </div>
           </div>
-        </li>
+        </li> -->
 
         <li
           :class="
