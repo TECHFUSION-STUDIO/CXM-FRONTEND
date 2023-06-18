@@ -267,7 +267,7 @@
           <h5 class="navbar-nav me-auto ms-3">{{ headerTitle }}</h5>
         </div>
       </nav>
-      <div class="mt-3">
+      <div>
         <router-view></router-view>
       </div>
     </div>
