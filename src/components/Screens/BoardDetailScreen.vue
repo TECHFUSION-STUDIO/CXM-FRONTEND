@@ -42,7 +42,7 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <div class="mt-3 d-flex flex-row-reverse">
+      <div class="d-flex flex-row-reverse">
         <div class="input-group mt-1">
           <input
             class="form-control"
