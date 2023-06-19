@@ -25,7 +25,12 @@
           </button>
         </div>
         <div class="col-md-4">
-          <button class="btn btn-outline-primary w-100">Filtered Feedback Screen</button>
+          <button
+            class="btn btn-outline-primary w-100"
+            @click="this.$router.push('/surveys/3/filtered')"
+          >
+            Filtered Feedback Screen
+          </button>
         </div>
       </div>
     </div>
