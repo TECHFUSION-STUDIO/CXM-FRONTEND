@@ -12,7 +12,7 @@
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col">
           <button
             class="btn btn-outline-primary w-100"
             @click="this.$router.push('/surveys/3')"
@@ -20,15 +20,32 @@
             Survey Detail
           </button>
         </div>
-        <div class="col-md-4">
+        <div class="col">
           <button class="btn btn-primary w-100">Raw Feedback Screen</button>
         </div>
-        <div class="col-md-4">
+        <div class="col">
           <button
             class="btn btn-outline-primary w-100"
             @click="this.$router.push('/surveys/3/filtered')"
           >
             Filtered Feedback Screen
+          </button>
+        </div>
+
+        <div class="col">
+          <button
+            class="btn btn-outline-primary w-100"
+            @click="this.$router.push('/surveys/3/bin')"
+          >
+            Bin Feedback Screen
+          </button>
+        </div>
+        <div class="col">
+          <button
+            class="btn btn-outline-primary w-100"
+            @click="this.$router.push('/surveys/3/done')"
+          >
+            Done Feedback Screen
           </button>
         </div>
       </div>
@@ -48,10 +65,55 @@
           </select>
         </div>
       </div>
+      <!-- </div>
+
+    <div class="bg-white shadow shadow-sm mt-3 p-3"> -->
+      <div class="mt-4">
+        <div class="input-group">
+          <select class="form-select" id="inputGroupSelect01">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <select class="form-select" id="inputGroupSelect01">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <input class="form-control" type="text" />
+          <button class="btn btn-primary">Add Filter</button>
+        </div>
+        <div class="mt-2">
+          <span class="badge rounded-pill text-bg-info m-1"
+            >STATUS = OPEN
+            <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+          ></span>
+
+          <span class="badge rounded-pill text-bg-info m-1"
+            >CREATED TIME &gt; 16/02/2023
+            <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+          ></span>
+          <span class="badge rounded-pill text-bg-info m-1"
+            >CREATED TIME &lt; 16/02/2023
+            <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+          ></span>
+        </div>
+      </div>
+      <div class="input-group mt-4">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search Services"
+          aria-label="Search"
+        />
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-outline-primary w-25">Search</button>
+      </div>
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <div class="d-flex flex-row-reverse">
+      <!-- <div class="d-flex flex-row-reverse">
         <div class="input-group mt-1">
           <input
             class="form-control"
@@ -63,7 +125,7 @@
             <i class="fa-brands fa-searchengin"></i>
           </button>
         </div>
-      </div>
+      </div> -->
 
       <div class="table-responsive-md mt-2">
         <table class="table table-hover mt-4 w-100">

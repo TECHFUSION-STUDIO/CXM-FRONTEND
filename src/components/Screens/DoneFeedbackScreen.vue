@@ -5,10 +5,11 @@
         <ol class="breadcrumb p-0 m-0">
           <li class="breadcrumb-item"><a href="#">Survey </a></li>
           <li class="breadcrumb-item">Survey Name</li>
-          <li class="breadcrumb-item active" aria-current="page">Filtered Feedback</li>
+          <li class="breadcrumb-item active" aria-current="page">Done Feedback</li>
         </ol>
       </nav>
     </div>
+
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row">
@@ -29,20 +30,20 @@
           </button>
         </div>
         <div class="col">
-          <button class="btn btn-primary w-100">Filtered Feedback Screen</button>
-        </div>
-          <div class="col">
           <button
             class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/bin')"
+            @click="this.$router.push('/surveys/3/filtered')"
           >
-            Bin Feedback Screen
+            Filtered Feedback Screen
           </button>
         </div>
         <div class="col">
+          <button class="btn btn-outline-primary w-100" @click="this.$router.push('/surveys/3/bin')">Bin Feedback Screen</button>
+        </div>
+        <div class="col">
           <button
-            class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/done')"
+            class="btn btn-primary w-100"
+            
           >
             Done Feedback Screen
           </button>
@@ -99,7 +100,7 @@
               <td
                 id="feedbackTitle"
                 style="width: 40%"
-                @click="this.$router.push('/feedbackdetail/filtered/1')"
+                @click="this.$router.push('/feedbackdetail/raw/1')"
               >
                 vsxvb x v
               </td>
@@ -134,8 +135,8 @@
 
 <script>
 export default {
-  name: "FilteredFeedbackScreen",
+  name: "DoneFeedbackScreen",
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

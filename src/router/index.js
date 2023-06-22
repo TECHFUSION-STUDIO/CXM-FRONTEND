@@ -43,6 +43,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FilteredFeedbackScreen.vue'),
       },
       {
+        path: '/surveys/:sid/bin',
+        name: 'binfeedbackscreen',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BinFeedbackScreen.vue'),
+      },
+      {
+        path: '/surveys/:sid/done',
+        name: 'donefeedbackscreen',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DoneFeedbackScreen.vue'),
+      },
+      {
         path: '/surveys/:sid/createquestion',
         name: 'createquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),

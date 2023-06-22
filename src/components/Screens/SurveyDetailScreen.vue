@@ -9,28 +9,49 @@
       </nav>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <div class="row">
-        <div class="col-md-4">
-          <button class="btn btn-primary w-100" @click="this.$router.push('/surveys/3')">
-            Survey Detail
-          </button>
-        </div>
-        <div class="col-md-4">
+    <div>
+      <div class="bg-white shadow shadow-sm mt-3 p-3">
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-primary w-100"
+              @click="this.$router.push('/surveys/3')"
+            >
+              Survey Detail
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-primary w-100"
+              @click="this.$router.push('/surveys/3/raw')"
+            >
+              Raw Feedback Screen
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-primary w-100"
+              @click="this.$router.push('/surveys/3/filtered')"
+            >
+              Filtered Feedback Screen
+            </button>
+          </div>
+            <div class="col">
           <button
             class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/raw')"
+            @click="this.$router.push('/surveys/3/bin')"
           >
-            Raw Feedback Screen
+            Bin Feedback Screen
           </button>
         </div>
-        <div class="col-md-4">
+        <div class="col">
           <button
             class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/filtered')"
+            @click="this.$router.push('/surveys/3/done')"
           >
-            Filtered Feedback Screen
+            Done Feedback Screen
           </button>
+        </div>
         </div>
       </div>
     </div>
