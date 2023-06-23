@@ -86,16 +86,19 @@
         <div class="mt-2">
           <span class="badge rounded-pill text-bg-info m-1"
             >STATUS = OPEN
-            <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+            <span class="ms-1" style="cursor: pointer"
+              ><i class="fa-regular fa-circle-xmark"></i></span
           ></span>
 
           <span class="badge rounded-pill text-bg-info m-1"
             >CREATED TIME &gt; 16/02/2023
-            <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+            <span class="ms-1" style="cursor: pointer"
+              ><i class="fa-regular fa-circle-xmark"></i></span
           ></span>
           <span class="badge rounded-pill text-bg-info m-1"
             >CREATED TIME &lt; 16/02/2023
-            <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+            <span class="ms-1" style="cursor: pointer"
+              ><i class="fa-regular fa-circle-xmark"></i></span
           ></span>
         </div>
       </div>
@@ -113,24 +116,41 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <!-- <div class="d-flex flex-row-reverse">
-        <div class="input-group mt-1">
-          <input
-            class="form-control"
-            type="search"
-            placeholder="Search Services"
-            aria-label="Search"
-          />
-          <button class="btn btn-success">
-            <i class="fa-brands fa-searchengin"></i>
-          </button>
-        </div>
-      </div> -->
-
       <div class="table-responsive-md mt-2">
-        <table class="table table-hover mt-4 w-100">
+        <table class="table table-hover w-100">
           <thead>
             <tr class="bg-light">
+              <td colspan="8">
+                <div class="d-flex mb-2">
+                  <div class="me-auto">
+                    Sort
+                    <select class="border border-0">
+                      <option value="1">Created Date</option>
+                      <option value="2">Priority</option>
+                      <option value="3">Impact</option>
+                    </select>
+                    by
+                    <select class="border border-0">
+                      <option value="1">Low to High</option>
+                      <option value="2">High to Low</option>
+                      <option value="3">Score</option>
+                    </select>
+                  </div>
+                  <!-- <div class="p-2">Flex item</div> -->
+                  <div>
+                    Showing
+                    <select class="border border-0">
+                      <option value="1">10</option>
+                      <option value="2">20</option>
+                      <option value="3">30</option>
+                    </select>
+                    of 21
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr class="bg-light">
+              <td><input type="checkbox" class="form-check-input" /></td>
               <td style="width: 40%">Feedback</td>
               <td>Impact</td>
               <td>Effort</td>
@@ -142,6 +162,7 @@
           </thead>
           <tbody>
             <tr>
+              <td><input type="checkbox" class="form-check-input" /></td>
               <td
                 id="feedbackTitle"
                 style="width: 40%"
@@ -156,10 +177,28 @@
               <td>vds</td>
               <td>vds</td>
             </tr>
+            <tr class="bg-light" v-if="true">
+              <td colspan="8">
+                <div>
+                  <button class="btn btn-sm btn-outline-secondary me-1">
+                    Move to Trash
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary me-1">
+                    Mark as Spam
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary me-1">
+                    Mark as Filtered
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary me-1">
+                    Move to Trash
+                  </button>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
 
-        <!-- <div class="text-center">
+        <div class="text-center">
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
               <li class="page-item disabled">
@@ -172,7 +211,7 @@
               </li>
             </ul>
           </nav>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

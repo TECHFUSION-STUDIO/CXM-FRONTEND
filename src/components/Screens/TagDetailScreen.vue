@@ -97,6 +97,20 @@
               </tr>
             </tbody>
           </table>
+          <div class="text-center">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link">Prev</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
 

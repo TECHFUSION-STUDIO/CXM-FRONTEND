@@ -41,18 +41,49 @@
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <div class="d-flex flex-row-reverse">
-        <div class="input-group mt-1">
+    <div class="bg-white shadow shadow-sm p-3">
+      <div class="shadow-sm p-2 bg-light">
+        <div class="">
+          <div class="input-group">
+            <select class="form-select" id="inputGroupSelect01">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select class="form-select" id="inputGroupSelect01">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <input class="form-control" type="text" />
+            <button class="btn btn-primary">Add Filter</button>
+          </div>
+          <div class="mt-2">
+            <span class="badge rounded-pill text-bg-info m-1"
+              >STATUS = OPEN
+              <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+            ></span>
+
+            <span class="badge rounded-pill text-bg-info m-1"
+              >CREATED TIME &gt; 16/02/2023
+              <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+            ></span>
+            <span class="badge rounded-pill text-bg-info m-1"
+              >CREATED TIME &lt; 16/02/2023
+              <span class="ms-1"><i class="fa-regular fa-circle-xmark"></i></span
+            ></span>
+          </div>
+        </div>
+        <div class="input-group mt-4">
           <input
             class="form-control"
             type="search"
             placeholder="Search Services"
             aria-label="Search"
           />
-          <button class="btn btn-success">
-            <i class="fa-brands fa-searchengin"></i>
-          </button>
+        </div>
+        <div class="text-center mt-4">
+          <button class="btn btn-outline-primary w-25">Search</button>
         </div>
       </div>
 
@@ -87,6 +118,20 @@
             </tr>
           </tbody>
         </table>
+        <div class="text-center">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link">Prev</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
 
