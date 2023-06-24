@@ -36,6 +36,19 @@
       </select>
     </div>
 
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Project Status</label>
+      <br />
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        v-model="projectStatus"
+      >
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+    </div>
+
     <div class="text-center">
       <button class="btn btn-outline-danger m-2 w-25">Reset</button>
       <button class="btn btn-outline-success m-2 w-25" @click="createProject()">
@@ -55,6 +68,7 @@ export default {
       projectName: "",
       projectDescription: "",
       projectVisibility: "",
+      projectStatus: "",
     };
   },
   methods: {
@@ -66,6 +80,7 @@ export default {
           projectDescription: this.projectDescription,
           projectName: this.projectName,
           visibility: this.projectVisibility,
+          status: this.projectStatus,
         })
         .then((res) => {
           console.log(res.data);

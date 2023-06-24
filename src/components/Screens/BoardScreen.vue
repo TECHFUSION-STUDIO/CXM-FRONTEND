@@ -35,9 +35,11 @@
           <tbody>
             <tr v-for="item in boardList" :key="item.id">
               <td style="width: 40%">
-                <span id="feedbackTitle" @click="this.$router.push('/boarddetail/1')">{{
-                  item.boardName
-                }}</span>
+                <span
+                  id="feedbackTitle"
+                  @click="this.$router.push('/boarddetail/' + item.id)"
+                  >{{ item.boardName }}</span
+                >
               </td>
               <td>{{ item.boardDescription }}</td>
               <td>{{ item.status }}</td>

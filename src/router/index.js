@@ -11,6 +11,12 @@ const routes = [
         name: 'dashboard',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DashboardScreen.vue'),
       },
+
+      {
+        path: '/createproject',
+        name: 'createproject',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateProjectScreen.vue'),
+      },
       {
         path: '/surveys',
         name: 'surveys',
