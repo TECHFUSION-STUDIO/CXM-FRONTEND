@@ -29,21 +29,19 @@
               <td style="width: 40%">Board Name</td>
               <td>Description</td>
               <td>Status</td>
-              <td>Tot Usage</td>
+              <td>Visibility</td>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td
-                id="feedbackTitle"
-                @click="this.$router.push('/boarddetail/1')"
-                style="width: 40%"
-              >
-                vsxvb x v
+            <tr v-for="item in boardList" :key="item.id">
+              <td style="width: 40%">
+                <span id="feedbackTitle" @click="this.$router.push('/boarddetail/1')">{{
+                  item.boardName
+                }}</span>
               </td>
-              <td>vs</td>
-              <td>vs</td>
-              <td>vds</td>
+              <td>{{ item.boardDescription }}</td>
+              <td>{{ item.status }}</td>
+              <td>{{ item.visibility }}</td>
             </tr>
           </tbody>
         </table>
@@ -68,8 +66,32 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
+
 export default {
   name: "BoardScreen",
+  data() {
+    return {
+      boardList: [],
+      axiosConn,
+    };
+  },
+  mounted() {
+    this.fetchAllBoard();
+  },
+  methods: {
+    fetchAllBoard() {
+      axiosConn
+        .get("/getallboard?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.boardList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

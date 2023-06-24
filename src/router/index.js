@@ -95,12 +95,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateBoardScreen.vue'),
       },
       {
-        path: '/editboard',
+        path: '/editboard/:boardId',
         name: 'editboard',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditBoardScreen.vue'),
       },
       {
-        path: '/boarddetail/:bid',
+        path: '/boarddetail/:boardId',
         name: 'boarddetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BoardDetailScreen.vue'),
       },
