@@ -47,13 +47,21 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <h6>Survey Questions</h6>
-      <button
-        class="btn btn-primary"
-        @click="this.$router.push('/surveys/3/createquestion')"
-      >
-        Add Question
-      </button>
+      <div class="d-flex mb-2">
+        <div class="me-auto">
+          <h6>Survey Questions</h6>
+        </div>
+        <!-- <div class="p-2">Flex item</div> -->
+        <div>
+          <button
+            class="btn btn-sm btn-primary"
+            @click="this.$router.push('/surveys/3/createquestion')"
+          >
+            Add Question
+          </button>
+        </div>
+      </div>
+
       <div class="table-responsive-md mt-2">
         <table class="table table-hover mt-4 w-100">
           <thead>

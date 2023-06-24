@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm p-3">
+    <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="shadow-sm p-2 bg-light">
         <div class="">
           <div class="input-group">

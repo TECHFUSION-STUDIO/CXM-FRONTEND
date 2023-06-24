@@ -25,24 +25,7 @@ export default {
       axioscon,
     };
   },
-  // mounted() {
-  //   this.id = this.$route.params.fid;
-  //   console.log(this.id);
 
-  //   this.fetchAllFeedbackCollab();
-  //   // this.fetchAllFeedback();
-  // },
-  // beforeRouteUpdate(to, from, next) {
-  //   console.log("Before Route Update" + to.params.fid);
-
-  //   this.id = to.params.fid;
-
-  //   console.log(this.id);
-
-  //   this.fetchAllFeedbackCollab();
-  //   // this.fetchAllFeedback();
-  //   next();
-  // },
   methods: {},
 };
 </script>
