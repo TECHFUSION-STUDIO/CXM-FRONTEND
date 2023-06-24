@@ -58,7 +58,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),
       },
       {
-        path: '/surveys/:surveyId/editquestion',
+        path: '/surveys/:surveyId/editquestion/:surveyQuestionId',
         name: 'editquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyQuestion.vue'),
       },

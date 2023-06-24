@@ -3,7 +3,9 @@
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
-          <li class="breadcrumb-item"><a href="#">Survey </a></li>
+          <li class="breadcrumb-item">
+            <a href="#" @click="this.$router.push('/surveys/')">Survey </a>
+          </li>
           <li class="breadcrumb-item active" aria-current="page">Survey Name</li>
         </ol>
       </nav>
@@ -98,7 +100,9 @@
               <td>
                 <button
                   class="btn btn-primary btn-sm me-1"
-                  @click="this.$router.push('/surveys/' + id + '/editquestion')"
+                  @click="
+                    this.$router.push('/surveys/' + id + '/editquestion/' + item.id)
+                  "
                 >
                   Edit
                 </button>

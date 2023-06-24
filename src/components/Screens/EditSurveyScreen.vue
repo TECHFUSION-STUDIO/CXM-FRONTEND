@@ -63,7 +63,7 @@
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <button class="btn btn-outline-primary m-2 w-25">Edit</button>
+            <!-- <button class="btn btn-outline-primary m-2 w-25">Edit</button> -->
             <button
               class="btn btn-outline-success m-2 w-25"
               @click="updateSurveyFormDetail()"
@@ -117,7 +117,9 @@
               <td>
                 <button
                   class="btn btn-primary btn-sm me-1"
-                  @click="this.$router.push('/surveys/' + id + '/editquestion')"
+                  @click="
+                    this.$router.push('/surveys/' + id + '/editquestion/' + item.id)
+                  "
                 >
                   Edit
                 </button>
