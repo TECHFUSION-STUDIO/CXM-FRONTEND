@@ -22,43 +22,43 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyScreen.vue'),
       },
       {
-        path: '/editsurveys',
+        path: '/editsurveys/:surveyId',
         name: 'editsurveys',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
       },
       {
-        path: '/surveys/:sid',
+        path: '/surveys/:surveyId',
         name: 'surveysdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyDetailScreen.vue'),
       },
 
       {
-        path: '/surveys/:sid/raw',
+        path: '/surveys/:surveyId/raw',
         name: 'rawfeedbackscreen',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
       },
       {
-        path: '/surveys/:sid/filtered',
+        path: '/surveys/:surveyId/filtered',
         name: 'filteredfeedbackscreen',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FilteredFeedbackScreen.vue'),
       },
       {
-        path: '/surveys/:sid/bin',
+        path: '/surveys/:surveyId/bin',
         name: 'binfeedbackscreen',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BinFeedbackScreen.vue'),
       },
       {
-        path: '/surveys/:sid/done',
+        path: '/surveys/:surveyId/done',
         name: 'donefeedbackscreen',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DoneFeedbackScreen.vue'),
       },
       {
-        path: '/surveys/:sid/createquestion',
+        path: '/surveys/:surveyId/createquestion',
         name: 'createquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),
       },
       {
-        path: '/surveys/:sid/editquestion',
+        path: '/surveys/:surveyId/editquestion',
         name: 'editquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyQuestion.vue'),
       },

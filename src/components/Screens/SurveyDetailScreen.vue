@@ -36,29 +36,32 @@
               Filtered Feedback Screen
             </button>
           </div>
-            <div class="col">
-          <button
-            class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/bin')"
-          >
-            Bin Feedback Screen
-          </button>
-        </div>
-        <div class="col">
-          <button
-            class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/done')"
-          >
-            Done Feedback Screen
-          </button>
-        </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-primary w-100"
+              @click="this.$router.push('/surveys/3/bin')"
+            >
+              Bin Feedback Screen
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-primary w-100"
+              @click="this.$router.push('/surveys/3/done')"
+            >
+              Done Feedback Screen
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="text-center mt-3 mb-3">
       <button class="btn btn-danger m-2 w-25">Delete</button>
-      <button class="btn btn-primary m-2 w-25" @click="this.$router.push('/editsurveys')">
+      <button
+        class="btn btn-primary m-2 w-25"
+        @click="this.$router.push('/editsurveys/' + id)"
+      >
         Edit Survey
       </button>
     </div>
@@ -68,6 +71,14 @@
 <script>
 export default {
   name: "SurveyDetailScreen",
+  data() {
+    return {
+      id: "",
+    };
+  },
+  mounted() {
+    this.id = this.$route.params.surveyId;
+  },
 };
 </script>
 

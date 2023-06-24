@@ -30,23 +30,27 @@
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Survey Name</td>
-              <td>Last Response</td>
+
               <td>Status</td>
+              <td>Last Response</td>
               <td>Tot Response</td>
+              <td>Added DateTime</td>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td
-                id="feedbackTitle"
-                style="width: 40%"
-                @click="this.$router.push('/surveys/3')"
-              >
-                vsxvb x v
+            <tr v-for="item in surveyFormList" :key="item.id">
+              <td style="width: 40%">
+                <span
+                  id="feedbackTitle"
+                  @click="this.$router.push('/surveys/' + item.id)"
+                  >{{ item.surveyFormName }}</span
+                >
               </td>
+              <td>{{ item.surveyFormStatus }}</td>
               <td>vs</td>
-              <td>vs</td>
-              <td>vds</td>
+
+              <td></td>
+              <td>{{ item.addedDateTime }}</td>
             </tr>
           </tbody>
         </table>
@@ -71,8 +75,32 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
+
 export default {
   name: "SurveyScreen",
+  data() {
+    return {
+      surveyFormList: [],
+      axiosConn,
+    };
+  },
+  mounted() {
+    this.fetchAllSurveyForm();
+  },
+  methods: {
+    fetchAllSurveyForm() {
+      axiosConn
+        .get("/getallsurveyform?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.surveyFormList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

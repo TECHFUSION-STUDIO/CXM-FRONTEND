@@ -6,19 +6,33 @@
         <div class="col-md-12">
           <div class="mb-3">
             <label for="categoryName" class="form-label">Enter Question</label>
-            <input type="text" class="form-control" id="categoryName" />
+            <input
+              type="text"
+              class="form-control"
+              id="categoryName"
+              v-model="surveyQuestionDetail.surveyQuestion"
+            />
           </div>
         </div>
         <div class="col-md-12">
           <div class="mb-3">
             <label for="categoryDesc" class="form-label">Enter Description</label>
-            <textarea class="form-control" id="categoryDesc" rows="3"></textarea>
+            <textarea
+              class="form-control"
+              id="categoryDesc"
+              rows="3"
+              v-model="surveyQuestionDetail.surveyQuestionDesc"
+            ></textarea>
           </div>
         </div>
         <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Type</label>
-            <select id="categoryStatus" class="form-select">
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyQuestionDetail.surveyQuestionType"
+            >
               <option>Active</option>
               <option>Inactive</option>
             </select>
@@ -27,34 +41,53 @@
         <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Category</label>
-            <select id="categoryStatus" class="form-select">
-              <option>Active</option>
-              <option>Inactive</option>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyQuestionDetail.surveyQuestionCategory"
+            >
+              <option value="NPS">NPS</option>
+              <option value="5 Star">5 Star</option>
+              <option value="Questionaire">Questionaire</option>
+              <option value="Voting">Voting</option>
             </select>
           </div>
         </div>
         <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Required</label>
-            <select id="categoryStatus" class="form-select">
-              <option>Yes</option>
-              <option>No</option>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyQuestionDetail.surveyQuestionRequired"
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
             </select>
           </div>
         </div>
         <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Status</label>
-            <select id="categoryStatus" class="form-select">
-              <option>Active</option>
-              <option>Inactive</option>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyQuestionDetail.surveyQuestionStatus"
+            >
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
             </select>
           </div>
         </div>
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <button class="btn btn-outline-success m-2 w-25">Update</button>
+            <button
+              class="btn btn-outline-success m-2 w-25"
+              @click="updateSurveyQuestionDetail()"
+            >
+              Update
+            </button>
           </div>
         </div>
       </div>
@@ -63,8 +96,47 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
+
 export default {
   name: "EditSurveyQuestion",
+
+  data() {
+    return {
+      id: "",
+      surveyQuestionDetail: {},
+      axiosConn,
+    };
+  },
+  mounted() {
+    this.id = this.$route.params.surveyId;
+    this.fetchSurveyQuestionDetail();
+  },
+  methods: {
+    fetchSurveyQuestionDetail() {
+      axiosConn
+        .get(
+          "/getsurveyquestionbyid?businessId=1&projectId=1&surveyQuestionId=" + this.id
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.surveyQuestionDetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    updateSurveyQuestionDetail() {
+      axiosConn
+        .post("/updatesurveyquestion", this.surveyQuestionDetail)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

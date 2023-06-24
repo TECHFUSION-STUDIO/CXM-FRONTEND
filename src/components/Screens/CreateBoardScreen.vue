@@ -24,7 +24,7 @@
             ></textarea>
           </div>
         </div>
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
           <div class="mb-3">
             <label for="boardCapacity" class="form-label">Board Capacity</label>
             <input
@@ -34,7 +34,7 @@
               v-model="inpboardCapacity"
             />
           </div>
-        </div>
+        </div> -->
         <div class="col-md-12">
           <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Visibility</label>

@@ -25,12 +25,12 @@
             ></textarea>
           </div>
         </div>
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
           <div class="mb-3">
             <label for="boardCapacity" class="form-label">Board Capacity</label>
             <input type="number" class="form-control" id="boardCapacity" />
           </div>
-        </div>
+        </div> -->
         <div class="col-md-12">
           <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Status</label>
@@ -53,7 +53,9 @@
         <div class="col-md-12">
           <div class="text-center">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <button class="btn btn-outline-success m-2 w-25">Submit</button>
+            <button class="btn btn-outline-success m-2 w-25" @click="updateBoardDetail()">
+              Submit
+            </button>
           </div>
         </div>
       </div>
