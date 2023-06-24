@@ -33,18 +33,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td
-                id="feedbackTitle"
-                style="width: 40%"
-                @click="this.$router.push('/tagsdetail')"
-              >
-                vsxvb x v
+            <tr v-for="item in tagList" :key="item.id">
+              <td style="width: 40%">
+                <span
+                  id="feedbackTitle"
+                  @click="this.$router.push('/tagsdetail/' + item.id)"
+                  >{{ item.tagName }}</span
+                >
               </td>
 
-              <td>vs</td>
+              <td>{{ item.tagStatus }}</td>
               <td>vds</td>
-              <td>v</td>
+              <td>{{ item.addedDateTime }}</td>
             </tr>
           </tbody>
         </table>
@@ -54,8 +54,32 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
+
 export default {
   name: "TagScreen",
+  data() {
+    return {
+      tagList: [],
+      axiosConn,
+    };
+  },
+  mounted() {
+    this.fetchAllTags();
+  },
+  methods: {
+    fetchAllTags() {
+      axiosConn
+        .get("/getalltag?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.tagList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

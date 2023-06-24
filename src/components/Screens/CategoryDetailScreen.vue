@@ -14,30 +14,22 @@
       <div class="bg-white shadow shadow-sm mt-3 p-2">
         <div class="row">
           <div class="col-md-12">
-            <p class="text-muted">Category Id : 6476589</p>
-            <h5>grgrg</h5>
+            <p class="text-muted">Category Id : {{ categoryDetail.id }}</p>
+            <h5>{{ categoryDetail.categoryName }}</h5>
 
             <div class="row">
-              <div class="col-auto"><p>Status : Active</p></div>
+              <div class="col-auto">
+                <p>Status : {{ categoryDetail.categoryStatus }}</p>
+              </div>
 
               <div class="col-auto"><p>Total Feedback : 6476589</p></div>
               <div class="col-auto"><p>Last used at : 6476589</p></div>
-              <div class="col-auto"><p>Added on : 6476589</p></div>
+              <div class="col-auto">
+                <p>Added on : {{ categoryDetail.addedDateTime }}</p>
+              </div>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, esse
-              recusandae molestias sint aliquam quae repellat perferendis! Sequi,
-              repellendus pariatur adipisci debitis maxime laborum consectetur? Nam id
-              porro reiciendis at maxime est. Doloremque laudantium atque repudiandae
-              fugiat omnis minima id quibusdam nesciunt beatae error eius perferendis
-              ipsum blanditiis ipsam repellat iste, nisi, vero fugit! Iste harum,
-              praesentium minus molestias velit deleniti et voluptatum maiores quaerat
-              repellat voluptatibus provident quibusdam, cumque magnam cupiditate. Cumque
-              dolorum consequatur, veritatis quae quasi iusto deleniti corporis eveniet
-              tenetur molestiae nihil perspiciatis dicta voluptate vel placeat. Sequi
-              autem incidunt odit ducimus eius non accusantium cumque eos labore nesciunt
-              delectus laborum ex, maiores quaerat. Reiciendis, veniam dolorum deserunt
-              quod illum dignissimos aperiam ratione facilis earum cum minima!
+              {{ categoryDetail.categoryDesc }}
             </p>
           </div>
         </div>
@@ -113,7 +105,7 @@
         <button class="btn btn-danger m-2 w-25">Delete</button>
         <button
           class="btn btn-primary m-2 w-25"
-          @click="this.$router.push('/editcategory')"
+          @click="this.$router.push('/editcategory/' + id)"
         >
           Edit Category
         </button>
@@ -123,8 +115,34 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
+
 export default {
   name: "CategoryDetailScreen",
+  data() {
+    return {
+      id: "",
+      categoryDetail: {},
+      axiosConn,
+    };
+  },
+  mounted() {
+    this.id = this.$route.params.categoryId;
+    this.fetchCategoryDetail();
+  },
+  methods: {
+    fetchCategoryDetail() {
+      axiosConn
+        .get("/getcategorybyid?businessId=1&projectId=1&categoryId=" + this.id)
+        .then((res) => {
+          console.log(res.data);
+          this.categoryDetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

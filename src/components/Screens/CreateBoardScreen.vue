@@ -22,6 +22,16 @@
         </div>
         <div class="col-md-12">
           <div class="mb-3">
+            <label for="boardStatus" class="form-label">Board Visibility</label>
+            <select id="boardStatus" class="form-select">
+              <option>Active</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Status</label>
             <select id="boardStatus" class="form-select">
               <option>Active</option>

@@ -115,12 +115,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateCategoryScreen.vue'),
       },
       {
-        path: '/editcategory',
+        path: '/editcategory/:categoryId',
         name: 'editcategory',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditCategoryScreen.vue'),
       },
       {
-        path: '/categorydetail',
+        path: '/categorydetail/:categoryId',
         name: 'categorydetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CategoryDetailScreen.vue'),
       },
@@ -135,12 +135,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateTagScreen.vue'),
       },
       {
-        path: '/edittags',
+        path: '/edittags/:tagId',
         name: 'edittags',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditTagScreen.vue'),
       },
       {
-        path: '/tagsdetail',
+        path: '/tagsdetail/:tagId',
         name: 'tagsdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/TagDetailScreen.vue'),
       }
