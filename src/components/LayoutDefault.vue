@@ -141,7 +141,7 @@
           </div>
         </li>
 
-        <!-- <li
+        <li
           :class="
             selectedTab == 7
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
@@ -155,11 +155,12 @@
         >
           <div class="ms-2 me-auto">
             <div class="fw-bold">
-              <i class="fa-solid fa-people-group me-2"></i>Project Members
+              <i class="fa-sharp fa-solid fa-tags me-2"></i>Project Members
             </div>
           </div>
         </li>
 
+        <hr />
         <li
           :class="
             selectedTab == 8
@@ -168,54 +169,16 @@
           "
           @click="
             selectedTab = 8;
-            this.$router.push('/projectsettings');
+            this.$router.push('/generalmembers');
           "
           style="cursor: default"
         >
           <div class="ms-2 me-auto">
             <div class="fw-bold">
-              <i class="fa-solid fa-gear me-2"></i>Project Settings
-            </div>
-          </div>
-        </li> -->
-
-        <hr />
-        <!-- <li
-          :class="
-            selectedTab == 9
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-          "
-          @click="
-            selectedTab = 9;
-            this.$router.push('/members');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-people-group me-2"></i>Members
+              <i class="fa-sharp fa-solid fa-tags me-2"></i>General Members
             </div>
           </div>
         </li>
-        <li
-          :class="
-            selectedTab == 9
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-          "
-          @click="
-            selectedTab = 9;
-            this.$router.push('/generalsettings');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-gear me-2"></i>General Settings
-            </div>
-          </div>
-        </li> -->
 
         <li
           :class="

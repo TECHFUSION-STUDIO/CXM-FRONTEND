@@ -149,9 +149,35 @@ const routes = [
         path: '/tagsdetail/:tagId',
         name: 'tagsdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/TagDetailScreen.vue'),
-      }
+      },
+      {
+        path: '/projectmembers',
+        name: 'projectmembers',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberScreen.vue'),
+      },
+      {
+        path: '/generalmembers',
+        name: 'generalmembers',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/GeneralMemberScreen.vue'),
+      },
+      {
+        path: '/createmembers',
+        name: 'createmembers',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateMemberScreen.vue'),
+      },
 
-    ]
+      {
+        path: '/editmembers/:memberId',
+        name: 'editmembers',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditMemberScreen.vue'),
+      },
+      {
+        path: '/memberdetail/:memberId',
+        name: 'memberdetail',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberDetailScreen.vue'),
+      },
+
+    ] 
   },
   {
     path: '/login',

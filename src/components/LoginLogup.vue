@@ -1,15 +1,12 @@
 <template>
   <div>
-    <section>
-      <div
-        class="p-5 m-0 text-center text-lg-start row"
-        style="background-color: hsl(0, 0%, 96%); height: 100vh"
-      >
-        <div class="col-lg-7 align-items-center bg-info">
+    <section class="bkgnd">
+      <div class="p-5 m-0 text-center text-lg-start row" style="height: 100vh">
+        <div class="col-lg-7 align-items-center">
           <div class="w-75 text-center">
             <h1 class="my-5 display-3 fw-bold ls-tight">
               The best genie <br />
-              <span class="text-primary">for your business</span>
+              <span class="text-primary">Every Feedback Matters</span>
             </h1>
             <p style="color: hsl(217, 10%, 50.8%)">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, itaque
@@ -18,8 +15,7 @@
             </p>
           </div>
         </div>
-        <!-- <div class="col-lg-4 bg-warning align-items-center d-flex flex-column"> -->
-        <div class="col-lg-5 bg-warning align-items-center">
+        <div class="col-lg-5 align-items-center">
           <div class="card h-100">
             <div>
               <button
@@ -318,4 +314,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.bkgnd {
+  background-image: url("../assets/loginimage.jpg");
+}
+</style>
