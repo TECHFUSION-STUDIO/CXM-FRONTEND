@@ -151,24 +151,24 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/TagDetailScreen.vue'),
       },
       {
-        path: '/projectmembers',
-        name: 'projectmembers',
+        path: '/projectmember',
+        name: 'projectmember',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberScreen.vue'),
       },
       {
-        path: '/generalmembers',
-        name: 'generalmembers',
+        path: '/generalmember',
+        name: 'generalmember',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/GeneralMemberScreen.vue'),
       },
       {
-        path: '/createmembers',
-        name: 'createmembers',
+        path: '/createmember',
+        name: 'createmember',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateMemberScreen.vue'),
       },
 
       {
-        path: '/editmembers/:memberId',
-        name: 'editmembers',
+        path: '/editmember/:memberId',
+        name: 'editmember',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditMemberScreen.vue'),
       },
       {

@@ -49,11 +49,10 @@
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Assign Projects</label>
-      <select class="form-select" v-model="memberProjects">
-        <option v-for="item in projectList" :key="item.id" :value="item.id">
-          {{ item.projectName }}
-        </option>
+      <label for="exampleFormControlTextarea1" class="form-label">Member Status</label>
+      <select class="form-select" v-model="memberStatus">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
       </select>
       <br />
     </div>
@@ -81,41 +80,26 @@ export default {
       memberProjects: "",
       memberContact: "",
       memberEmail: "",
-      projectList: [],
+      memberStatus: "",
     };
   },
-  mounted() {
-    this.fetchAllProjects();
-  },
+
   methods: {
-    fetchAllProjects() {
-      axioscon
-        .get("/getallprojects?businessId=" + 1)
-        .then((res) => {
-          console.log(res.data);
-          this.projectList = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     createMember() {
       axioscon
-        .post("/addmember", {
-          memberProjects: {
-            addedDateTime: "",
+        .post("/createteammember", {
+          memberDetails: {
             businessId: 1,
-            memberId: 0,
-            projectId: this.memberProjects,
+            teamMemberName: this.memberName,
+            teamMemberEmail: this.memberEmail,
+            teamMemberContact: this.memberContact,
+            teamMemberRole: this.memberRole,
+            teamMemberStatus: this.memberStatus,
+            teamMemberLoginAllowed: true,
+            lastModifiedDateTime: "2023-06-27T04:09:32.227Z",
+            addedDateTime: "2023-06-27T04:09:32.227Z",
           },
-          members: {
-            addedDateTime: "",
-            businessId: 1,
-            memberEmail: this.memberEmail,
-            memberName: this.memberName,
-            memberRole: this.memberRole,
-            memberProjects: this.memberProjects,
-          },
+          projectIdList: {},
         })
         .then((res) => {
           console.log(res.data);

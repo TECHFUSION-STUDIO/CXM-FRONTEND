@@ -2,7 +2,7 @@
   <div>
     <!-- <h4>Welcome to Memeber Screen</h4> -->
     <div class="p-2 bg-white shadow shadow-sm mt-2" v-if="false">
-      <button class="btn btn-success mt-2" @click="this.$router.push('/createfeedback')">
+      <button class="btn btn-success mt-2" @click="this.$router.push('/createmembers')">
         <i class="fa-regular fa-square-plus me-2"></i>Add Member
       </button>
     </div>
@@ -74,12 +74,17 @@
             <td>Role</td>
             <td>Status</td>
             <td>Added at</td>
-            <td></td>
           </tr>
         </thead>
         <tbody class="table-group-divider">
           <tr v-for="item in memberList" :key="item.id">
-            <td>{{ item.teamMemberEmail }}</td>
+            <td>
+              <span
+                id="feedbackTitle"
+                @click="this.$router.push('/memberdetail/' + item.id)"
+                >{{ item.teamMemberEmail }}</span
+              >
+            </td>
             <td>{{ item.teamMemberName }}</td>
 
             <td>{{ item.teamMemberContact }}</td>
@@ -90,11 +95,6 @@
               {{ item.teamMemberStatus }}
             </td>
             <td>{{ item.addedDateTime }}</td>
-            <td>
-              <button class="btn btn-sm btn-danger">
-                <i class="fa-regular fa-trash-can"></i>
-              </button>
-            </td>
           </tr>
         </tbody>
       </table>

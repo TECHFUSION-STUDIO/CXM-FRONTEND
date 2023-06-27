@@ -46,7 +46,7 @@
 
                 <div class="input-group mb-2">
                   <span class="input-group-text"
-                    ><i class="fa-solid fa-building-columns me-1"></i
+                    ><i class="fa-solid fa-building-columns"></i
                   ></span>
                   <input
                     type="number"

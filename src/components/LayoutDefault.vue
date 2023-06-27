@@ -149,7 +149,7 @@
           "
           @click="
             selectedTab = 7;
-            this.$router.push('/projectmembers');
+            this.$router.push('/projectmember');
           "
           style="cursor: default"
         >
@@ -169,7 +169,7 @@
           "
           @click="
             selectedTab = 8;
-            this.$router.push('/generalmembers');
+            this.$router.push('/generalmember');
           "
           style="cursor: default"
         >
