@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <router-view />
 </template>
 
 <script>
-export default {};
-</script>
+export default {
+  name: "LayoutDefault",
 
-<style>
-#feedbackTitle:hover {
-  color: dodgerblue;
-  text-decoration: underline;
-  cursor: pointer;
-}
-</style>
+  data() {
+    return {
+      leftDrawerOpen: false,
+    };
+  },
+  methods: {
+    toggleLeftDrawer() {
+      this.leftDrawerOpen = !this.leftDrawerOpen;
+    },
+  },
+};
+</script>

@@ -60,6 +60,24 @@
         </div> -->
       </div>
     </div>
+
+    <div class="q-pa-md">
+      <q-table
+        flat
+        bordered
+        ref="tableRef"
+        title="Treats"
+        :rows="rows"
+        :columns="columns"
+        row-key="name"
+        :selected-rows-label="getSelectedString"
+        selection="multiple"
+        :selected="selected"
+        @selection="onSelection"
+      />
+
+      <div class="q-mt-md">Selected: {{ JSON.stringify(selected) }}</div>
+    </div>
   </div>
 </template>
 

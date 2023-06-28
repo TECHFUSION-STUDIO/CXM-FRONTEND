@@ -1,6 +1,5 @@
 <template>
-  <div class="wrapper bg-light">
-    <!-- Sidebar  -->
+  <!-- <div class="wrapper bg-light">
     <nav
       v-if="this.store.isLoggedIn"
       id="sidebar"
@@ -201,7 +200,6 @@
       </ul>
     </nav>
 
-    <!-- Page Content  -->
     <div id="content" style="overflow-y: scroll; height: 100vh">
       <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid">
@@ -236,7 +234,144 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <q-layout view="lhh lpR lff">
+    <q-header reveal bordered class="bg-primary text-white">
+      <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer()" />
+
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
+          </q-avatar>
+          Title
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-header>
+
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+      <q-scroll-area class="fit">
+        <q-list padding class="menu-list">
+          <q-item
+            clickable
+            :active="selectedTab == 1"
+            @click="
+              selectedTab = 1;
+              this.$router.push('/dashboard');
+            "
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="inbox" />
+            </q-item-section>
+
+            <q-item-section> Dashboard </q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            :active="selectedTab == 2"
+            @click="
+              selectedTab = 2;
+              this.$router.push('/surveys');
+            "
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="dashboard" />
+            </q-item-section>
+
+            <q-item-section> Surveys </q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            :active="selectedTab == 3"
+            @click="
+              selectedTab = 3;
+              this.$router.push('/logger');
+            "
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="dashboard" />
+            </q-item-section>
+
+            <q-item-section> Loggers </q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            :active="selectedTab == 4"
+            @click="
+              selectedTab = 4;
+              this.$router.push('/boards');
+            "
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="dashboard" />
+            </q-item-section>
+
+            <q-item-section> Boards </q-item-section>
+          </q-item>
+
+          <q-item
+            clickable
+            :active="selectedTab == 5"
+            @click="
+              selectedTab = 5;
+              this.$router.push('/category');
+            "
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="dashboard" />
+            </q-item-section>
+
+            <q-item-section> Category </q-item-section>
+          </q-item>
+
+          <q-item
+            :active="selectedTab == 6"
+            @click="
+              selectedTab = 6;
+              this.$router.push('/tags');
+            "
+            clickable
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="star" />
+            </q-item-section>
+
+            <q-item-section> Tags </q-item-section>
+          </q-item>
+
+          <q-item
+            :active="selectedTab == 7"
+            @click="
+              selectedTab = 7;
+              this.$router.push('/projectmember');
+            "
+            clickable
+            v-ripple
+          >
+            <q-item-section avatar>
+              <q-icon name="star" />
+            </q-item-section>
+
+            <q-item-section> Project Members </q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
+    </q-drawer>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script>
@@ -250,13 +385,16 @@ export default {
       screenShort: false,
       selectedTab: null,
       headerTitle: "",
-
+      leftDrawerOpen: false,
       store,
       axioscon,
     };
   },
 
   methods: {
+    toggleLeftDrawer() {
+      this.leftDrawerOpen = !this.leftDrawerOpen;
+    },
     titleDetector() {
       if (window.location.href.includes("dashboard")) {
         this.headerTitle = "Dashboard";
