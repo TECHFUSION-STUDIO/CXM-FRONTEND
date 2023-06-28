@@ -203,7 +203,7 @@
 
     <!-- Page Content  -->
     <div id="content" style="overflow-y: scroll; height: 100vh">
-      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid">
           <button
             v-if="this.store.isLoggedIn && !screenShort"
@@ -231,7 +231,9 @@
         </div>
       </nav>
       <div>
-        <router-view></router-view>
+        <div class="p-2">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
@@ -369,7 +371,7 @@ export default {
 
 #content {
   width: 100%;
-  padding: 10px;
+  /* padding: 10px; */
   min-height: 100vh;
   transition: all 0.3s;
   background-color: #ece8e8;

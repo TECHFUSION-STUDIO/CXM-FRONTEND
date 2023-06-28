@@ -86,8 +86,33 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
+
 export default {
   name: "MemberDetailScreen",
+  data() {
+    return {
+      id: "",
+      memberDetail: {},
+      axiosConn,
+    };
+  },
+  mounted() {
+    this.id = this.$route.params.memberId;
+  },
+  methods: {
+    fetchMemberDetail() {
+      axiosConn
+        .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
+        .then((res) => {
+          console.log(res.data);
+          this.memberDetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 
