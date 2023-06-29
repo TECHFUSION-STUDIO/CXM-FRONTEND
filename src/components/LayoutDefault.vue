@@ -141,7 +141,7 @@
         >
           <div class="ms-2 me-auto">
             <div class="fw-bold">
-              <i class="fa-sharp fa-solid fa-tags me-2"></i>Project Members
+              <i class="fa-solid fa-people-group me-2"></i>Project Members
             </div>
           </div>
         </li>
@@ -161,7 +161,7 @@
         >
           <div class="ms-2 me-auto">
             <div class="fw-bold">
-              <i class="fa-sharp fa-solid fa-tags me-2"></i>General Members
+              <i class="fa-solid fa-people-group me-2"></i>General Members
             </div>
           </div>
         </li>

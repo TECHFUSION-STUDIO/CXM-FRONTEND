@@ -49,11 +49,6 @@
         <tbody>
           <tr class="table-primary">
             <td style="width: 40%">
-              <!-- <select class="form-select form-select-sm" v-model="inpProjectSelected">
-                <option v-for="item in projectList" :key="item.id" :value="item.id">
-                  {{ item.projectName }}
-                </option>
-              </select> -->
               <model-select
                 :options="inpProjectSelected.options"
                 v-model="inpProjectSelected.item"

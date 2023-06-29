@@ -4,9 +4,13 @@
       <h6>Tags</h6>
 
       <div class="mt-3" id="collapseAddTag">
-        <div class="input-group mt-2 mb-2">
-          <div class="w-100"></div>
-        </div>
+        <multi-select
+          :options="options"
+          :selected-options="items"
+          placeholder="select item"
+          @select="onSelect"
+        >
+        </multi-select>
       </div>
     </div>
   </div>
@@ -14,11 +18,14 @@
 
 <script>
 import axioscon from "../../../axioscon.js";
-
+import { MultiSelect } from "vue-search-select";
+import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "FeedbackDetailTag",
   props: ["feedback"],
-
+  components: {
+    MultiSelect,
+  },
   data() {
     return {
       feedbackDetails: this.feedback,
@@ -29,6 +36,26 @@ export default {
       tagList: [],
       axioscon,
       id: "",
+      options: [
+        { value: "1", text: "aa" + " - " + "1" },
+        { value: "2", text: "ab" + " - " + "2" },
+        { value: "3", text: "bc" + " - " + "3" },
+        { value: "4", text: "cd" + " - " + "4" },
+        { value: "5", text: "de" + " - " + "5" },
+        { value: "6", text: "ef" + " - " + "6" },
+        { value: "7", text: "ef" + " - " + "7" },
+        { value: "8", text: "ef" + " - " + "8" },
+        { value: "9", text: "ef" + " - " + "9" },
+        { value: "10", text: "ef" + " - " + "10" },
+        { value: "11", text: "ef" + " - " + "11" },
+        { value: "12", text: "ef" + " - " + "12" },
+        { value: "13", text: "down case" + " - " + "testcase" },
+        { value: "14", text: "camel case" + " - " + "testCase" },
+        { value: "15", text: "Capitalize case" + " - " + "Testcase" },
+      ],
+      searchText: "", // If value is falsy, reset searchText & searchItem
+      items: [],
+      lastSelectItem: {},
     };
   },
   // mounted() {
@@ -51,8 +78,13 @@ export default {
   //   next();
   // },
 
-  methods: {},
+  methods: {
+    onSelect(items, lastSelectItem) {
+      this.items = items;
+      this.lastSelectItem = lastSelectItem;
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

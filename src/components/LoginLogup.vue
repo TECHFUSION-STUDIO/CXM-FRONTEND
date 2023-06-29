@@ -84,18 +84,6 @@
                     class="form-control"
                     v-model="password"
                   />
-                  <span class="input-group-text bg-white"
-                    ><i
-                      v-if="isEyeEnable"
-                      class="fa-solid fa-eye-slash"
-                      @click="isEyeEnable = false"
-                    ></i>
-                    <i
-                      v-else
-                      @click="isEyeEnable = true"
-                      class="fa-sharp fa-solid fa-eye"
-                    ></i
-                  ></span>
                 </div>
               </div>
 
@@ -220,18 +208,6 @@
                     class="form-control"
                     v-model="businessPassword"
                   />
-                  <span class="input-group-text bg-white"
-                    ><i
-                      v-if="isEyeEnable"
-                      class="fa-solid fa-eye-slash"
-                      @click="isEyeEnable = false"
-                    ></i>
-                    <i
-                      v-else
-                      @click="isEyeEnable = true"
-                      class="fa-sharp fa-solid fa-eye"
-                    ></i
-                  ></span>
                 </div>
 
                 <label class="form-label" for="form3Example4">Password</label>
@@ -247,18 +223,6 @@
                     class="form-control"
                     v-model="businessConfirmPassword"
                   />
-                  <span class="input-group-text bg-white"
-                    ><i
-                      v-if="isConfirmEyeEnable"
-                      class="fa-solid fa-eye-slash"
-                      @click="isConfirmEyeEnable = false"
-                    ></i>
-                    <i
-                      v-else
-                      @click="isConfirmEyeEnable = true"
-                      class="fa-sharp fa-solid fa-eye"
-                    ></i
-                  ></span>
                 </div>
 
                 <label class="form-label" for="form3Example4">Confirm Password</label>

@@ -45,54 +45,17 @@
         </table>
       </div>
     </div>
-
-    <div>
-      <model-select
-        :options="options"
-        v-model="item"
-        placeholder="placeholder text"
-        @searchchange="printSearchText"
-        class="form-control border border-2 border-info"
-      >
-      </model-select>
-    </div>
   </div>
 </template>
 
 <script>
-import { ModelSelect } from "vue-search-select";
-import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "LoggerScreen",
-  components: {
-    ModelSelect,
-  },
-  data() {
-    return {
-      options: [
-        { value: "91", text: "aa" + " - " + "1" },
 
-        { value: "24", text: "more a" + " - " + "9" },
-      ],
-      item: {
-        value: "",
-        text: "",
-      },
-      searchText: "",
-    };
+  data() {
+    return {};
   },
-  methods: {
-    reset() {
-      this.item = {};
-    },
-    selectOption() {
-      // select option from parent component
-      this.item = this.options[1];
-    },
-    printSearchText(searchText) {
-      this.searchText = searchText;
-    },
-  },
+  methods: {},
 };
 </script>
 

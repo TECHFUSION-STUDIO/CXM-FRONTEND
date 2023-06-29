@@ -7,9 +7,23 @@
       <hr />
       <p>
         <label for="customRange1" class="form-label">Assigned Board :</label>
+        <model-select
+          :options="assignedBoardSelect.options"
+          v-model="assignedBoardSelect.item"
+          placeholder="placeholder text"
+          @searchchange="printSearchText"
+          class="form-control border border-2 border-info"
+        />
       </p>
       <p>
         <label for="customRange1" class="form-label">Assigned to :</label>
+        <model-select
+          :options="assignedToSelect.options"
+          v-model="assignedToSelect.item"
+          placeholder="placeholder text"
+          @searchchange="printSearchText1"
+          class="form-control border border-2 border-info"
+        />
       </p>
 
       <p>
@@ -45,12 +59,48 @@
       <hr />
       <p>
         <label for="customRange1" class="form-label">Priority</label>
+        <select class="form-select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
       </p>
       <p>
         <label for="customRange1" class="form-label">Impact</label>
+        <select class="form-select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
       </p>
       <p>
         <label for="customRange1" class="form-label">Effort </label>
+        <select class="form-select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
       </p>
       <hr />
       <p>Nice To Have Voters : 10</p>
@@ -63,55 +113,44 @@
 
 <script>
 import axioscon from "@/axioscon";
-
+import { ModelSelect } from "vue-search-select";
+import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "FeedbackDetailAssignment",
-
+  components: {
+    ModelSelect,
+  },
   props: ["feedback"],
   data() {
     return {
       axioscon,
       id: "",
-      feedbackDetails: this.feedback,
-      selectedPriority: { name: this.feedback.detail.feedbackPriority },
-      selectedImpact: { name: this.feedback.detail.feedbackImpact },
-      selectedEffort: { name: this.feedback.detail.feedbackEffort },
-
-      pieData: [
-        { name: "Very High" },
-        { name: "High" },
-        { name: "Medium" },
-        { name: "Low" },
-        { name: "Very Low" },
-      ],
-      status: {
-        searchValue: { name: this.feedback.detail.feedbackStatus },
-        dataListItems: [
-          {
-            name: "RAW",
-          },
-          {
-            name: "FILTERED",
-          },
-          {
-            name: "SCREENED",
-          },
-          {
-            name: "PLANNED",
-          },
-          { name: "PROGRESS" },
-          {
-            name: "DONE",
-          },
-          {
-            name: "CLOSED",
-          },
-          {
-            name: "OPEN",
-          },
+      assignedBoardSelect: {
+        options: [
+          { value: "1", text: "aa" + " - " + "1" },
+          { value: "2", text: "ab" + " - " + "2" },
+          { value: "3", text: "bc" + " - " + "3" },
+          { value: "4", text: "cd" + " - " + "4" },
+          { value: "5", text: "de" + " - " + "5" },
         ],
+        item: {},
+        searchText: "",
+      },
+      assignedToSelect: {
+        options: [
+          { value: "1", text: "aa" + " - " + "1" },
+          { value: "2", text: "ab" + " - " + "2" },
+          { value: "3", text: "bc" + " - " + "3" },
+          { value: "4", text: "cd" + " - " + "4" },
+          { value: "5", text: "de" + " - " + "5" },
+        ],
+        item: {},
+        searchText: "",
       },
     };
+  },
+  updated() {
+    console.log(this.assignedToSelect);
   },
   // mounted() {
   //   this.id = this.$route.params.fid;
@@ -130,7 +169,15 @@ export default {
   //   this.fetchAllBoards();
   //   next();
   // },
-  methods: {},
+  methods: {
+    printSearchText(searchText) {
+      this.assignedBoardSelect.searchText = searchText;
+    },
+
+    printSearchText1(searchText) {
+      this.assignedToSelect.searchText = searchText;
+    },
+  },
 };
 </script>
 
