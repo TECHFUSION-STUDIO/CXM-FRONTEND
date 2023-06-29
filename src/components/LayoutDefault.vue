@@ -250,7 +250,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered class="">
       <q-scroll-area class="fit">
         <q-list padding class="menu-list">
           <q-item
@@ -368,6 +368,9 @@
       </q-scroll-area>
     </q-drawer>
 
+    <!-- <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+      fdvdv
+    </q-drawer> -->
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -448,13 +451,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
-.wrapper {
+/* .wrapper {
   display: flex;
   padding: 0px;
   margin: 0px;
@@ -472,7 +473,7 @@ export default {
 
 #sidebar.active {
   margin-left: -250px;
-}
+} */
 
 /* #sidebar .sidebar-header {
   padding: 5px;
@@ -486,7 +487,7 @@ export default {
   color: #fff;
   padding: 10px;
 } */
-
+/* 
 .hovered {
   background-color: rgb(79, 70, 229);
   color: #fff;
@@ -501,15 +502,14 @@ export default {
   background-color: #2d3b5e;
   color: #fff;
   z-index: 3;
-}
+} */
 
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-
+/* 
 #content {
   width: 100%;
-  /* padding: 10px; */
   min-height: 100vh;
   transition: all 0.3s;
   background-color: #ece8e8;
@@ -518,13 +518,13 @@ export default {
 .dropdown-menu-wide {
   min-width: 100%;
   text-align: center;
-}
+} */
 
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   #sidebar {
     margin-left: -250px;
   }
@@ -536,5 +536,5 @@ export default {
   #sidebarCollapse span {
     display: none;
   }
-}
+} */
 </style>
