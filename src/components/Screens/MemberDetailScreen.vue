@@ -13,15 +13,21 @@
     <div class="bg-white shadow shadow-sm mt-3 p-2">
       <div class="row">
         <div class="col-md-12">
-          <p class="text-muted">Member Id : 6476589</p>
-          <h5>grgrg</h5>
+          <p class="text-muted">Member Id : {{ memberDetail.id }}</p>
+          <h5>{{ memberDetail.teamMemberName }}</h5>
 
           <div class="row">
-            <div class="col-auto"><p>Email : 6476589</p></div>
-            <div class="col-auto"><p>Contact : 6476589</p></div>
-            <div class="col-auto"><p>Status : 6476589</p></div>
             <div class="col-auto">
-              <p>Added on : 6476589</p>
+              <p>Email : {{ memberDetail.teamMemberEmail }}</p>
+            </div>
+            <div class="col-auto">
+              <p>Contact : {{ memberDetail.teamMemberContact }}</p>
+            </div>
+            <div class="col-auto">
+              <p>Status : {{ memberDetail.teamMemberStatus }}</p>
+            </div>
+            <div class="col-auto">
+              <p>Added on : {{ memberDetail.addedDateTime }}</p>
             </div>
           </div>
         </div>
@@ -43,39 +49,48 @@
         <tbody>
           <tr class="table-primary">
             <td style="width: 40%">
-              <select class="form-select form-select-sm" v-model="inpProjectSelected">
+              <!-- <select class="form-select form-select-sm" v-model="inpProjectSelected">
                 <option v-for="item in projectList" :key="item.id" :value="item.id">
                   {{ item.projectName }}
                 </option>
-              </select>
+              </select> -->
+              <model-select
+                :options="inpProjectSelected.options"
+                v-model="inpProjectSelected.item"
+                placeholder="placeholder text"
+                @searchchange="printSearchText"
+                class="form-control border border-2 border-info"
+              >
+              </model-select>
             </td>
             <td>
-              <select class="form-select form-select-sm" v-model="inpProjectRoleSelected">
+              <select class="form-select" v-model="inpProjectRoleSelected">
                 <option value="Admin">Admin</option>
                 <option value="Member">Member</option>
               </select>
             </td>
             <td></td>
             <td>
-              <button class="btn btn-primary btn-sm" @click="updateTeamMemberProject()">
+              <button class="btn btn-primary" @click="createTeamMemberProject()">
                 Submit
               </button>
             </td>
           </tr>
           <tr v-for="item in teamMemberProjectList" :key="item.id">
-            <td style="width: 40%">{{ item.teamMemberProjectName }}</td>
+            <td style="width: 40%">{{ item.projectName }}</td>
 
             <td>
               <select
                 class="form-select form-select-sm"
                 v-model="item.teamMemberProjectRole"
+                @change="updateTeamMemberProject(item)"
               >
                 <option value="Admin">Admin</option>
                 <option value="Member">Member</option>
               </select>
             </td>
-            <td>vs</td>
-            <td><button class="btn btn-danger btn-sm">delete</button></td>
+            <td>{{ item.addedDateTime }}</td>
+            <td><button class="btn btn-danger">delete</button></td>
           </tr>
         </tbody>
       </table>
@@ -95,17 +110,25 @@
 
 <script>
 import axiosConn from "@/axioscon";
-
+import { ModelSelect } from "vue-search-select";
+import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "MemberDetailScreen",
+  components: {
+    ModelSelect,
+  },
   data() {
     return {
       id: "",
       memberDetail: {},
       projectList: [],
       teamMemberProjectList: [],
-      inpProjectSelected: "",
       inpProjectRoleSelected: "",
+      inpProjectSelected: {
+        options: [],
+        item: {},
+        searchText: "",
+      },
       axiosConn,
     };
   },
@@ -113,6 +136,7 @@ export default {
     this.id = this.$route.params.memberId;
     this.fetchAllProjects();
     this.fetchMemberDetail();
+    this.fetchAllTeamMemberProject();
   },
   methods: {
     fetchMemberDetail() {
@@ -144,16 +168,25 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.projectList = res.data;
+          this.inpProjectSelected.options = this.projectList.map((a, index) => {
+            return {
+              value: index,
+              text: a.projectName,
+              id: a.id,
+              //id: a.id,
+            };
+          });
+          console.log(this.inpProjectSelected.options);
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    updateTeamMemberProject() {
+    createTeamMemberProject() {
       axiosConn
         .post("/createteammemberproject", {
           businessId: 1,
-          projectId: this.inpProjectSelected,
+          projectId: this.inpProjectSelected.item.id,
           teamMemberId: this.id,
           teamMemberProjectRole: this.inpProjectRoleSelected,
           lastModifiedDateTime: "2023-06-29T07:18:28.533Z",
@@ -161,10 +194,33 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          this.fetchAllTeamMemberProject();
         })
         .catch((err) => {
           console.log(err);
         });
+    },
+    updateTeamMemberProject(item) {
+      console.log(item);
+      axiosConn
+        .post("/updateteammemberproject", item)
+        .then((res) => {
+          console.log(res.data);
+          this.fetchAllTeamMemberProject();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    reset() {
+      this.inpProjectSelected.item = {};
+    },
+    selectOption() {
+      // select option from parent component
+      this.inpProjectSelected.item = this.inpProjectSelected.options[1];
+    },
+    printSearchText(searchText) {
+      this.inpProjectSelected.searchText = searchText;
     },
   },
 };

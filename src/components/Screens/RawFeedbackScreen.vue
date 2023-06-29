@@ -53,21 +53,16 @@
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div>
-        <div class="input-group">
-          <label class="input-group-text" for="inputGroupSelect01"
-            >Select a Question</label
+        <span class="input-group-text p-0">
+          <model-select
+            :options="options"
+            v-model="item"
+            placeholder="Select a Question"
+            @searchchange="printSearchText"
+            class="form-control border border-2 border-info w-100"
           >
-
-          <input class="form-control" list="browsers" name="browser" id="browser" />
-
-          <datalist id="browsers">
-            <option value="Edge"></option>
-            <option value="Firefox"></option>
-            <option value="Chrome"></option>
-            <option value="Opera"></option>
-            <option value="Safari"></option>
-          </datalist>
-        </div>
+          </model-select>
+        </span>
       </div>
       <!-- </div>
 
@@ -222,8 +217,58 @@
 </template>
 
 <script>
+import { ModelSelect } from "vue-search-select";
+import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "RawFeedbackScreen",
+  components: {
+    ModelSelect,
+  },
+  data() {
+    return {
+      // item1
+      options: [
+        { value: "91", text: "aa" + " - " + "1" },
+        { value: "92", text: "ab" + " - " + "2" },
+        { value: "93", text: "bc" + " - " + "3" },
+        { value: "94", text: "cd" + " - " + "4" },
+        { value: "95", text: "de" + " - " + "5" },
+        { value: "96", text: "ef" + " - " + "6" },
+        { value: "10", text: "ef" + " - " + "10" },
+        { value: "11", text: "ef" + " - " + "11" },
+        { value: "12", text: "ef" + " - " + "12" },
+        { value: "13", text: "down case" + " - " + "testcase" },
+        { value: "14", text: "camel case" + " - " + "testCase" },
+        { value: "15", text: "Capitalize case" + " - " + "Testcase" },
+        { value: "16", text: "more a" + " - " + "1" },
+        { value: "17", text: "more a" + " - " + "2" },
+        { value: "18", text: "more a" + " - " + "3" },
+        { value: "19", text: "more a" + " - " + "4" },
+        { value: "20", text: "more a" + " - " + "5" },
+        { value: "21", text: "more a" + " - " + "6" },
+        { value: "22", text: "more a" + " - " + "7" },
+        { value: "23", text: "more a" + " - " + "8" },
+        { value: "24", text: "more a" + " - " + "9" },
+      ],
+      item: {
+        value: "",
+        text: "",
+      },
+      searchText: "",
+    };
+  },
+  methods: {
+    reset() {
+      this.item = {};
+    },
+    selectOption() {
+      // select option from parent component
+      this.item = this.options[1];
+    },
+    printSearchText(searchText) {
+      this.searchText = searchText;
+    },
+  },
 };
 </script>
 

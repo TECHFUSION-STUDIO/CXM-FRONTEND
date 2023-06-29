@@ -176,7 +176,11 @@ const routes = [
         name: 'memberdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberDetailScreen.vue'),
       },
-
+      {
+        path: '/projectmemberdetail/:memberId',
+        name: 'projectmemberdetail',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberDetailScreen.vue'),
+      },
     ] 
   },
   {

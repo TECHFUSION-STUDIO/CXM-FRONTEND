@@ -7,7 +7,7 @@
         type="email"
         class="form-control"
         id="exampleFormControlInput1"
-        v-model="memberEmail"
+        v-model="memberDetail.teamMemberEmail"
         disabled
       />
     </div>
@@ -17,7 +17,7 @@
         type="text"
         class="form-control"
         id="exampleFormControlInput1"
-        v-model="memberName"
+        v-model="memberDetail.teamMemberName"
       />
     </div>
 
@@ -27,10 +27,10 @@
         type="tel"
         class="form-control"
         id="exampleFormControlInput1"
-        v-model="memberContact"
+        v-model="memberDetail.teamMemberContact"
       />
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label"
         >Member Description</label
       >
@@ -38,22 +38,31 @@
         class="form-control"
         id="exampleFormControlTextarea1"
         rows="3"
-        v-model="memberDesc"
+        v-model="memberDetail.teamMemberDesc"
       ></textarea>
-    </div>
+    </div> -->
 
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Member Role</label>
-      <select class="form-select" v-model="memberRole">
+      <select class="form-select" v-model="memberDetail.teamMemberRole">
         <option value="Admin">Admin</option>
         <option value="Member">Member</option>
       </select>
       <br />
     </div>
 
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Member Status</label>
+      <select class="form-select" v-model="memberDetail.teamMemberStatus">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+      <br />
+    </div>
+
     <div class="text-center">
       <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-      <button class="btn btn-outline-success m-2 w-25" @click="createMember()">
+      <button class="btn btn-outline-success m-2 w-25" @click="updateMember()">
         Submit
       </button>
     </div>
@@ -68,37 +77,30 @@ export default {
   data() {
     return {
       axioscon,
-      memberName: "",
-      memberDesc: "",
-      memberRole: "",
-      memberProjects: "",
-      memberContact: "",
-      memberEmail: "",
+      memberDetail: {},
+
       id: "",
     };
   },
   mounted() {
     this.id = this.$route.params.memberId;
+    this.fetchMemberDetail();
   },
   methods: {
-    createMember() {
+    fetchMemberDetail() {
       axioscon
-        .post("/addmember", {
-          memberProjects: {
-            addedDateTime: "",
-            businessId: 1,
-            memberId: 0,
-            projectId: this.memberProjects,
-          },
-          members: {
-            addedDateTime: "",
-            businessId: 1,
-            memberEmail: this.memberEmail,
-            memberName: this.memberName,
-            memberRole: this.memberRole,
-            memberProjects: this.memberProjects,
-          },
+        .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
+        .then((res) => {
+          console.log(res.data);
+          this.memberDetail = res.data;
         })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    updateMember() {
+      axioscon
+        .post("/updateteammember", this.memberDetail)
         .then((res) => {
           console.log(res.data);
         })
