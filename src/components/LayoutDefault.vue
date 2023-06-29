@@ -10,8 +10,7 @@
       <div class="w-100 mb-3 mt-3">
         <div class="dropdown dropdown-center">
           <button
-            class="btn dropdown-toggle w-100 text-justify"
-            style="background-color: #2d3b5e; color: #fff"
+            class="btn btn-light dropdown-toggle w-100 text-justify"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
