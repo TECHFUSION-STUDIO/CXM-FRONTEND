@@ -75,12 +75,12 @@
       </div>
 
       <div class="table-responsive-md mt-2">
-        <table class="table table-hover mt-4 w-100">
+        <table class="table table-bordered table-hover mt-4 w-100">
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Question</td>
-              <td>Question Type</td>
-              <td>Question Category</td>
+              <td>Type</td>
+              <td>Category</td>
               <td>Mandatory</td>
               <td>Status</td>
               <td>Created Time</td>
@@ -141,6 +141,7 @@ export default {
     this.id = this.$route.params.surveyId;
     this.fetchSurveyQuestionDetail();
   },
+
   methods: {
     fetchSurveyQuestionDetail() {
       axiosConn

@@ -7,28 +7,15 @@
       :class="openDrawer ? 'active' : ''"
       style="overflow-y: auto; height: 100vh; background-color: rgb(79, 70, 229)"
     >
-      <div class="w-100 mb-3 mt-3">
-        <div class="dropdown dropdown-center">
-          <button
-            class="btn btn-light dropdown-toggle w-100 text-justify"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            ca
-          </button>
-          <ul
-            class="dropdown-menu dropdown-menu-wide text-start shadow shadow-lg"
-            style="max-height: 300px; overflow-y: auto; overflow-x: hidden; z-index: 8"
-          >
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" @click="this.$router.push('/createproject')"
-                ><i class="fa-regular fa-square-plus me-2"></i> Create a Project</a
-              >
-            </li>
-          </ul>
-        </div>
+      <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
+        <model-select
+          :options="options"
+          v-model="item"
+          placeholder="Select a Project"
+          @searchchange="printSearchText"
+          class="form-control border border-2 border-info"
+        >
+        </model-select>
       </div>
 
       <ul class="list-group mt-1 border rounded-0 border-0">
@@ -227,6 +214,11 @@
             <i v-else class="fa-solid fa-xmark"></i>
           </button>
           <h5 class="navbar-nav me-auto ms-3">{{ headerTitle }}</h5>
+          <div class="d-flex" role="search">
+            <button class="btn btn-light">
+              <i class="fa-solid fa-user"></i>
+            </button>
+          </div>
         </div>
       </nav>
       <div>
@@ -241,21 +233,42 @@
 <script>
 import { store } from "@/store";
 import axioscon from "../axioscon.js";
+import { ModelSelect } from "vue-search-select";
+import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "DashboardApp",
+  components: {
+    ModelSelect,
+  },
   data() {
     return {
       openDrawer: false,
       screenShort: false,
       selectedTab: null,
       headerTitle: "",
+      options: [
+        { value: "91", text: "aa" + " - " + "1" },
 
+        { value: "24", text: "more a" + " - " + "9" },
+      ],
+      item: {},
+      searchText: "",
       store,
       axioscon,
     };
   },
 
   methods: {
+    reset() {
+      this.item = {};
+    },
+    selectOption() {
+      // select option from parent component
+      this.item = this.options[1];
+    },
+    printSearchText(searchText) {
+      this.searchText = searchText;
+    },
     titleDetector() {
       if (window.location.href.includes("dashboard")) {
         this.headerTitle = "Dashboard";
@@ -328,7 +341,10 @@ export default {
   max-width: 250px;
   color: #fff;
   transition: all 0.3s;
-  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-top: 0px;
 }
 
 #sidebar.active {
