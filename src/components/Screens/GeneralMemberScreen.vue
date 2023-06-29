@@ -70,7 +70,7 @@
           <tr class="bg-light">
             <td>Email</td>
             <td>Name</td>
-            <td>Contact</td>
+            <!-- <td>Contact</td> -->
             <td>Role</td>
             <td>Status</td>
             <td>Added at</td>
@@ -87,7 +87,7 @@
             </td>
             <td>{{ item.teamMemberName }}</td>
 
-            <td>{{ item.teamMemberContact }}</td>
+            <!-- <td>{{ item.teamMemberContact }}</td> -->
             <td>
               {{ item.teamMemberRole }}
             </td>

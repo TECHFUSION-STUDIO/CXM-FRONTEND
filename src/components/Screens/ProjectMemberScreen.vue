@@ -107,7 +107,7 @@ export default {
   methods: {
     fetchAllMember() {
       axioscon
-        .get("/getallteammemberproject?businessId=1&projectId=1")
+        .get("/getallteammemberbyproject?businessId=1&projectId=1")
         .then((res) => {
           console.log(res);
           this.memberList = res.data;

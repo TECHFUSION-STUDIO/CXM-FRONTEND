@@ -43,25 +43,33 @@
         <tbody>
           <tr class="table-primary">
             <td style="width: 40%">
-              <select class="form-select form-select-sm">
-                <option value="Admin">Admin</option>
-                <option value="Member">Member</option>
+              <select class="form-select form-select-sm" v-model="inpProjectSelected">
+                <option v-for="item in projectList" :key="item.id" :value="item.id">
+                  {{ item.projectName }}
+                </option>
               </select>
             </td>
             <td>
-              <select class="form-select form-select-sm">
+              <select class="form-select form-select-sm" v-model="inpProjectRoleSelected">
                 <option value="Admin">Admin</option>
                 <option value="Member">Member</option>
               </select>
             </td>
             <td></td>
-            <td><button class="btn btn-primary btn-sm">Submit</button></td>
+            <td>
+              <button class="btn btn-primary btn-sm" @click="updateTeamMemberProject()">
+                Submit
+              </button>
+            </td>
           </tr>
-          <tr>
-            <td style="width: 40%">vsxvb x v</td>
+          <tr v-for="item in teamMemberProjectList" :key="item.id">
+            <td style="width: 40%">{{ item.teamMemberProjectName }}</td>
 
             <td>
-              <select class="form-select form-select-sm">
+              <select
+                class="form-select form-select-sm"
+                v-model="item.teamMemberProjectRole"
+              >
                 <option value="Admin">Admin</option>
                 <option value="Member">Member</option>
               </select>
@@ -94,11 +102,17 @@ export default {
     return {
       id: "",
       memberDetail: {},
+      projectList: [],
+      teamMemberProjectList: [],
+      inpProjectSelected: "",
+      inpProjectRoleSelected: "",
       axiosConn,
     };
   },
   mounted() {
     this.id = this.$route.params.memberId;
+    this.fetchAllProjects();
+    this.fetchMemberDetail();
   },
   methods: {
     fetchMemberDetail() {
@@ -107,6 +121,46 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    fetchAllTeamMemberProject() {
+      axiosConn
+        .get("/getallteammemberprojectbymemberId?businessId=1&memberId=" + this.id)
+        .then((res) => {
+          console.log(res.data);
+          this.teamMemberProjectList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    fetchAllProjects() {
+      axiosConn
+        .get("/getallprojects?businessId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.projectList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    updateTeamMemberProject() {
+      axiosConn
+        .post("/createteammemberproject", {
+          businessId: 1,
+          projectId: this.inpProjectSelected,
+          teamMemberId: this.id,
+          teamMemberProjectRole: this.inpProjectRoleSelected,
+          lastModifiedDateTime: "2023-06-29T07:18:28.533Z",
+          addedDateTime: "2023-06-29T07:18:28.533Z",
+        })
+        .then((res) => {
+          console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
