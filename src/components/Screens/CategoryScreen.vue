@@ -30,9 +30,9 @@
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Category Name</td>
-              <td>Description</td>
-              <td>Status</td>
-              <td>Tot Usage</td>
+              <td class="text-center">Status</td>
+              <td class="text-center">Tot Usage</td>
+              <td class="text-end">Added on</td>
             </tr>
           </thead>
           <tbody>
@@ -44,9 +44,9 @@
                   >{{ item.categoryName }}</span
                 >
               </td>
-              <td>{{ item.categoryDesc }}</td>
-              <td>{{ item.categoryStatus }}</td>
-              <td>vds</td>
+              <td class="text-center">{{ item.categoryStatus }}</td>
+              <td class="text-center">vds</td>
+              <td class="text-end">{{ item.addedDateTime }}</td>
             </tr>
           </tbody>
         </table>
