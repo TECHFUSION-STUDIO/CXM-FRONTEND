@@ -72,7 +72,7 @@
 
             <!-- <td>{{ item.teamMemberContact }}</td> -->
             <td>
-              {{ item.teamMemberRole }}
+              {{ item.teamMemberProjectRole }}
             </td>
             <td>
               {{ item.teamMemberStatus }}
