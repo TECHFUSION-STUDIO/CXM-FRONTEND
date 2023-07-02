@@ -1,6 +1,11 @@
 <template>
   <div>
     <div class="bg-white shadow shadow-sm mt-3 p-3">
+      <div class="d-flex mb-2">
+        <div class="me-auto">
+          <h6>Survey General Info</h6>
+        </div>
+      </div>
       <p class="text-muted">Survey Id : {{ id }}</p>
       <div class="row">
         <div class="col-md-12">
