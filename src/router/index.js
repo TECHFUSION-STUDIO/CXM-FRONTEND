@@ -27,11 +27,11 @@ const routes = [
         name: 'createsurveys',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyScreen.vue'),
       },
-      {
-        path: '/editsurveys/:surveyId',
-        name: 'editsurveys',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
-      },
+      // {
+      //   path: '/editsurveys/:surveyId',
+      //   name: 'editsurveys',
+      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
+      // },
       {
         path: '/surveys/:surveyId',
         name: 'surveysdetail',
@@ -62,6 +62,17 @@ const routes = [
         path: '/surveys/:surveyId/createquestion',
         name: 'createquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),
+      },
+     
+      {
+        path: '/surveys/:surveyId/surveysettings/general',
+        name: 'surveysettingsgeneral',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
+      },
+      {
+        path: '/surveys/:surveyId/surveysettings/question',
+        name: 'surveysettingsquestion',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyQuestionScreen.vue'),
       },
       {
         path: '/surveys/:surveyId/editquestion/:surveyQuestionId',
