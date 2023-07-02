@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
+    <div class="bg-white shadow shadow-sm p-3">
       <div class="d-flex mb-2">
         <div class="me-auto">
           <h6>Survey Questions</h6>
