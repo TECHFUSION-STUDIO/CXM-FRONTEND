@@ -17,7 +17,7 @@
           <div class="col">
             <button
               class="btn btn-primary w-100"
-              @click="this.$router.push('/surveys/3')"
+              @click="this.$router.push('/surveys/' + id)"
             >
               Survey Detail
             </button>
@@ -25,7 +25,7 @@
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/3/raw')"
+              @click="this.$router.push('/surveys/' + id + '/raw')"
             >
               Raw Feedback Screen
             </button>
@@ -33,7 +33,7 @@
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/3/filtered')"
+              @click="this.$router.push('/surveys/' + id + '/filtered')"
             >
               Filtered Feedback Screen
             </button>
@@ -41,7 +41,7 @@
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/3/bin')"
+              @click="this.$router.push('/surveys/' + id + '/bin')"
             >
               Bin Feedback Screen
             </button>
@@ -49,7 +49,7 @@
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/3/done')"
+              @click="this.$router.push('/surveys/' + id + '/done')"
             >
               Done Feedback Screen
             </button>

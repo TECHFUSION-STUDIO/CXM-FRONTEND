@@ -116,9 +116,9 @@
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="table-responsive-md mt-2">
-        <table class="table table-hover w-100">
+        <table class="table table-hover table-bordered w-100">
           <thead>
-            <tr class="bg-light">
+            <tr class="bg-white">
               <td colspan="8">
                 <div class="d-flex mb-2">
                   <div class="me-auto">
@@ -160,21 +160,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="item in rawFeedbackList" :key="item.id">
               <td><input type="checkbox" class="form-check-input" /></td>
               <td
                 id="feedbackTitle"
                 style="width: 40%"
-                @click="this.$router.push('/feedbackdetail/raw/1')"
+                @click="this.$router.push('/feedbackdetail/raw/' + item.id)"
               >
-                vsxvb x v
+                {{ item.feedbackDescription }}
               </td>
-              <td>vs</td>
-              <td>vs</td>
-              <td>vds</td>
-              <td>vds</td>
-              <td>vds</td>
-              <td>vds</td>
+              <td>{{ item.feedbackImpact }}</td>
+              <td>{{ item.feedbackEffort }}</td>
+              <td>{{ item.feedbackPriority }}</td>
+              <td>{{ item.feedbackStatus }}</td>
+              <td>{{ item.addedDateTime }}</td>
+              <td>{{ item.lastModified }}</td>
             </tr>
             <tr class="bg-light" v-if="true">
               <td colspan="8">
@@ -217,6 +217,7 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
 import { ModelSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css";
 export default {
@@ -255,9 +256,37 @@ export default {
         text: "",
       },
       searchText: "",
+      id: "",
+      rawFeedbackList: [],
     };
   },
+  mounted() {
+    this.id = this.$route.params.surveyId;
+    this.fetchAllFeedback();
+  },
   methods: {
+    fetchAllFeedback() {
+      axiosConn
+        .post("/getAllRawFeedback", {
+          businessId: 1,
+          projectId: 1,
+          surveyFormId: this.id,
+          criteria: [
+            // {
+            //   key: "feedbackDescription",
+            //   value: "ave",
+            //   operation: "MATCH",
+            // },
+          ],
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.rawFeedbackList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     reset() {
       this.item = {};
     },
