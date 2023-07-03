@@ -30,20 +30,26 @@
           <div class="card border border-dark m-2" style="max-width: 18rem">
             <!-- <div class="card-header">Header</div> -->
             <div class="card-body text-dark">
-              <h5 class="card-title">Connect to Google Maps</h5>
+              <h5 class="card-title">Connect to Custom Form</h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up the bulk of
                 the card's content.
               </p>
             </div>
             <div class="card-footer bg-transparent border-success text-warning">
-              Coming soon
+              <button
+                class="btn btn-sm btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#customForm"
+              >
+                Open
+              </button>
             </div>
           </div>
           <div class="card border border-dark m-2" style="max-width: 18rem">
             <!-- <div class="card-header">Header</div> -->
             <div class="card-body text-dark">
-              <h5 class="card-title">Connect to Custom Form</h5>
+              <h5 class="card-title">Connect to Google Maps</h5>
               <p class="card-text">
                 Some quick example text to build on the card title and make up the bulk of
                 the card's content.
@@ -57,7 +63,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Import Modal -->
     <div
       class="modal fade"
       id="staticBackdrop"
@@ -271,6 +277,38 @@
               </table>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Import</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Custom form Modal -->
+    <div
+      class="modal fade"
+      id="customForm"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="customFormLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="customFormLabel">Connect Custom Form</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Close

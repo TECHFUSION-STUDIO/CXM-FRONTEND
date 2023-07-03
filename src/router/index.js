@@ -27,11 +27,7 @@ const routes = [
         name: 'createsurveys',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyScreen.vue'),
       },
-      // {
-      //   path: '/editsurveys/:surveyId',
-      //   name: 'editsurveys',
-      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
-      // },
+    
       {
         path: '/surveys/:surveyId',
         name: 'surveysdetail',
@@ -109,7 +105,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/LoggerScreen.vue'),
       },
       {
-        path: '/loggerdetail',
+        path: '/loggerdetail/:loggerId',
         name: 'loggerdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/LoggerDetailScreen.vue'),
       },

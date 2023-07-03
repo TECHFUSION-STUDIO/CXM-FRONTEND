@@ -13,33 +13,28 @@
     <div class="bg-white shadow shadow-sm mt-3 p-2">
       <div class="row">
         <div class="col-md-12">
-          <p class="text-muted">Logger Id : 6476589</p>
-          <h5>grgrg</h5>
+          <p class="text-muted">Logger Id : {{ loggerDetail.id }}</p>
+          <h5>{{ loggerDetail.loggerName }}</h5>
 
           <div class="row">
-            <div class="col-auto"><p>Email : 6476589</p></div>
-            <div class="col-auto"><p>Contact : 6476589</p></div>
+            <div class="col-auto">
+              <p>Email : {{ loggerDetail.loggerEmail }}</p>
+            </div>
+            <div class="col-auto">
+              <p>Contact : {{ loggerDetail.loggerContact }}</p>
+            </div>
+            <div class="col-auto">
+              <p>Logger Type : {{ loggerDetail.loggerType }}</p>
+            </div>
             <div class="col-auto"><p>Total Response : 6476589</p></div>
             <div class="col-auto"><p>Last Response Recorded : 6476589</p></div>
             <div class="col-auto">
-              <p>Added on : 6476589</p>
+              <p>Added on : {{ loggerDetail.addedDateTime }}</p>
             </div>
           </div>
 
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, esse
-            recusandae molestias sint aliquam quae repellat perferendis! Sequi,
-            repellendus pariatur adipisci debitis maxime laborum consectetur? Nam id porro
-            reiciendis at maxime est. Doloremque laudantium atque repudiandae fugiat omnis
-            minima id quibusdam nesciunt beatae error eius perferendis ipsum blanditiis
-            ipsam repellat iste, nisi, vero fugit! Iste harum, praesentium minus molestias
-            velit deleniti et voluptatum maiores quaerat repellat voluptatibus provident
-            quibusdam, cumque magnam cupiditate. Cumque dolorum consequatur, veritatis
-            quae quasi iusto deleniti corporis eveniet tenetur molestiae nihil
-            perspiciatis dicta voluptate vel placeat. Sequi autem incidunt odit ducimus
-            eius non accusantium cumque eos labore nesciunt delectus laborum ex, maiores
-            quaerat. Reiciendis, veniam dolorum deserunt quod illum dignissimos aperiam
-            ratione facilis earum cum minima!
+            {{ loggerDetail.loggerAdditionalDetail }}
           </p>
         </div>
       </div>
@@ -114,8 +109,34 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
+
 export default {
   name: "LoggerDetailScreen",
+  data() {
+    return {
+      axiosConn,
+      loggerDetail: {},
+      id: "",
+    };
+  },
+  mounted() {
+    this.id = this.$route.params.loggerId;
+    this.fetchLoggerDetail();
+  },
+  methods: {
+    fetchLoggerDetail() {
+      axiosConn
+        .get("/getloggersbyid?businessId=1&projectId=1&loggerId=" + this.id)
+        .then((res) => {
+          console.log(res.data);
+          this.loggerDetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

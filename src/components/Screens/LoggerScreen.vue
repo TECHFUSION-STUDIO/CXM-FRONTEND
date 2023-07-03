@@ -29,17 +29,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="item in loggerList" :key="item.id">
               <td
                 id="feedbackTitle"
                 style="width: 40%"
-                @click="this.$router.push('/loggerdetail')"
+                @click="this.$router.push('/loggerdetail/' + item.id)"
               >
-                vsxvb x v
+                {{ item.loggerName }}
               </td>
-              <td>vs</td>
-              <td>vs</td>
-              <td>vds</td>
+              <td>{{ item.loggerEmail }}</td>
+              <td>{{ item.loggerContact }}</td>
+              <td>{{ item.addedDateTime }}</td>
             </tr>
           </tbody>
         </table>
@@ -49,13 +49,31 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
 export default {
   name: "LoggerScreen",
-
   data() {
-    return {};
+    return {
+      axiosConn,
+      loggerList: [],
+    };
   },
-  methods: {},
+  mounted() {
+    this.fetchAllLoggerList();
+  },
+  methods: {
+    fetchAllLoggerList() {
+      axiosConn
+        .get("/getallloggers?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.loggerList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 
