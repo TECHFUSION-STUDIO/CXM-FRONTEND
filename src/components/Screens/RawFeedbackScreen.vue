@@ -270,13 +270,12 @@ export default {
         .post("/getAllRawFeedback", {
           businessId: 1,
           projectId: 1,
-          surveyFormId: this.id,
           criteria: [
-            // {
-            //   key: "feedbackDescription",
-            //   value: "ave",
-            //   operation: "MATCH",
-            // },
+            {
+              key: "surveyFormId",
+              value: this.id,
+              operation: "EQUAL",
+            },
           ],
         })
         .then((res) => {

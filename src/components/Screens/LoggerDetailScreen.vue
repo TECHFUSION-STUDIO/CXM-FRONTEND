@@ -65,27 +65,25 @@
               <td>Effort</td>
               <td>Priority</td>
               <td>Status</td>
-              <td>Submission Id</td>
               <td>Created Time</td>
               <td>Last Updated Time</td>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="item in rawFeedbackList" :key="item.id">
               <td
                 id="feedbackTitle"
                 style="width: 40%"
-                @click="this.$router.push('/feedbackdetail/raw/1')"
+                @click="this.$router.push('/feedbackdetail/raw/' + item.id)"
               >
-                vsxvb x v
+                {{ item.feedbackDescription }}
               </td>
-              <td>vs</td>
-              <td>vs</td>
-              <td>vds</td>
-              <td>vds</td>
-              <td id="feedbackTitle">vds</td>
-              <td>vds</td>
-              <td>vds</td>
+              <td>{{ item.feedbackImpact }}</td>
+              <td>{{ item.feedbackEffort }}</td>
+              <td>{{ item.feedbackPriority }}</td>
+              <td>{{ item.feedbackStatus }}</td>
+              <td>{{ item.addedDateTime }}</td>
+              <td>{{ item.lastModified }}</td>
             </tr>
           </tbody>
         </table>
@@ -118,13 +116,36 @@ export default {
       axiosConn,
       loggerDetail: {},
       id: "",
+      rawFeedbackList: [],
     };
   },
   mounted() {
     this.id = this.$route.params.loggerId;
     this.fetchLoggerDetail();
+    this.fetchAllFeedback();
   },
   methods: {
+    fetchAllFeedback() {
+      axiosConn
+        .post("/getAllRawFeedback", {
+          businessId: 1,
+          projectId: 1,
+          criteria: [
+            {
+              key: "loggerId",
+              value: this.id,
+              operation: "EQUAL",
+            },
+          ],
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.rawFeedbackList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     fetchLoggerDetail() {
       axiosConn
         .get("/getloggersbyid?businessId=1&projectId=1&loggerId=" + this.id)

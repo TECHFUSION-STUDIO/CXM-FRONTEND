@@ -93,20 +93,20 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="item in rawFeedbackList" :key="item.id">
               <td
                 id="feedbackTitle"
                 style="width: 40%"
-                @click="this.$router.push('/feedbackdetail/1')"
+                @click="this.$router.push('/feedbackdetail/raw/' + item.id)"
               >
-                vsxvb x v
+                {{ item.feedbackDescription }}
               </td>
-              <td>vs</td>
-              <td>vs</td>
-              <td>vds</td>
-              <td>vds</td>
-              <td>vds</td>
-              <td>vds</td>
+              <td>{{ item.feedbackImpact }}</td>
+              <td>{{ item.feedbackEffort }}</td>
+              <td>{{ item.feedbackPriority }}</td>
+              <td>{{ item.feedbackStatus }}</td>
+              <td>{{ item.addedDateTime }}</td>
+              <td>{{ item.lastModified }}</td>
             </tr>
           </tbody>
         </table>
@@ -149,13 +149,36 @@ export default {
       id: "",
       boardDetail: {},
       axiosConn,
+      rawFeedbackList: [],
     };
   },
   mounted() {
     this.id = this.$route.params.boardId;
     this.fetchBoardDetail();
+    this.fetchAllFeedback();
   },
   methods: {
+    fetchAllFeedback() {
+      axiosConn
+        .post("/getAllFilteredFeedback", {
+          businessId: 1,
+          projectId: 1,
+          criteria: [
+            {
+              key: "boardId",
+              value: this.id,
+              operation: "EQUAL",
+            },
+          ],
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.rawFeedbackList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     fetchBoardDetail() {
       axiosConn
         .get("/getboardbyid?businessId=1&projectId=1&boardId=" + this.id)
