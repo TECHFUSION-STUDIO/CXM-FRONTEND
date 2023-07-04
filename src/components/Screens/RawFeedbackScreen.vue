@@ -270,6 +270,8 @@ export default {
         .post("/getAllRawFeedback", {
           businessId: 1,
           projectId: 1,
+          orderBy: "addedDateTime",
+          orderByAsc: true,
           criteria: [
             {
               key: "surveyFormId",

@@ -163,6 +163,8 @@ export default {
         .post("/getAllFilteredFeedback", {
           businessId: 1,
           projectId: 1,
+          orderBy: "addedDateTime",
+          orderByAsc: true,
           criteria: [
             {
               key: "boardId",
