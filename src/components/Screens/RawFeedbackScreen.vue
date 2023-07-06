@@ -15,7 +15,7 @@
         <div class="col">
           <button
             class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3')"
+            @click="this.$router.push('/surveys/' + id)"
           >
             Survey Detail
           </button>
@@ -26,7 +26,7 @@
         <div class="col">
           <button
             class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/filtered')"
+            @click="this.$router.push('/surveys/' + id + '/filtered')"
           >
             Filtered Feedback Screen
           </button>
@@ -35,7 +35,7 @@
         <div class="col">
           <button
             class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/bin')"
+            @click="this.$router.push('/surveys/' + id + '/bin')"
           >
             Bin Feedback Screen
           </button>
@@ -43,7 +43,7 @@
         <div class="col">
           <button
             class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/3/done')"
+            @click="this.$router.push('/surveys/' + id + '/done')"
           >
             Done Feedback Screen
           </button>
@@ -155,6 +155,7 @@
               <td>Effort</td>
               <td>Priority</td>
               <td>Status</td>
+              <td>Sub. Id</td>
               <td>Created Time</td>
               <td>Last Updated Time</td>
             </tr>
@@ -173,6 +174,7 @@
               <td>{{ item.feedbackEffort }}</td>
               <td>{{ item.feedbackPriority }}</td>
               <td>{{ item.feedbackStatus }}</td>
+              <td>{{ item.formSubmissionId }}</td>
               <td>{{ item.addedDateTime }}</td>
               <td>{{ item.lastModified }}</td>
             </tr>
