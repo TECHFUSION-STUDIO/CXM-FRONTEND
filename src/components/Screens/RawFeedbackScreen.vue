@@ -119,7 +119,7 @@
         <table class="table table-hover table-bordered w-100">
           <thead>
             <tr class="bg-white">
-              <td colspan="8">
+              <td colspan="9">
                 <div class="d-flex mb-2">
                   <div class="me-auto">
                     Sort
@@ -179,7 +179,7 @@
               <td>{{ item.lastModified }}</td>
             </tr>
             <tr class="bg-light" v-if="true">
-              <td colspan="8">
+              <td colspan="9">
                 <div>
                   <button class="btn btn-sm btn-outline-secondary me-1">
                     Move to Trash
