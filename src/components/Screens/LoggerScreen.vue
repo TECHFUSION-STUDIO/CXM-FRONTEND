@@ -19,7 +19,7 @@
         <div class="col-md-3"></div>
       </div>
       <div class="table-responsive-md mt-3">
-        <table class="table table-hover mt-4 w-100">
+        <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Logger Name</td>
@@ -32,8 +32,8 @@
             <tr v-for="item in loggerList" :key="item.id">
               <td
                 id="feedbackTitle"
-                style="width: 40%"
                 @click="this.$router.push('/loggerdetail/' + item.id)"
+                style="width: 40%"
               >
                 {{ item.loggerName }}
               </td>

@@ -65,7 +65,7 @@
         <div class="col-md-3"></div>
       </div>
 
-      <table class="table table-hover mt-3">
+      <table class="table table-hover table-bordered mt-3">
         <thead>
           <tr class="bg-light">
             <td>Email</td>

@@ -64,58 +64,28 @@
           </model-select>
         </span>
       </div>
-      <!-- </div>
-
-    <div class="bg-white shadow shadow-sm mt-3 p-3"> -->
-      <div class="mt-4">
-        <div class="input-group">
-          <select class="form-select" id="inputGroupSelect01">
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <select class="form-select" id="inputGroupSelect01">
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <input class="form-control" type="text" />
-          <button class="btn btn-primary">Add Filter</button>
-        </div>
-        <div class="mt-2">
-          <span class="badge rounded-pill text-bg-info m-1"
+      <!-- <span class="badge rounded-pill text-bg-info m-1"
             >STATUS = OPEN
             <span class="ms-1" style="cursor: pointer"
               ><i class="fa-regular fa-circle-xmark"></i></span
-          ></span>
-
-          <span class="badge rounded-pill text-bg-info m-1"
-            >CREATED TIME &gt; 16/02/2023
-            <span class="ms-1" style="cursor: pointer"
-              ><i class="fa-regular fa-circle-xmark"></i></span
-          ></span>
-          <span class="badge rounded-pill text-bg-info m-1"
-            >CREATED TIME &lt; 16/02/2023
-            <span class="ms-1" style="cursor: pointer"
-              ><i class="fa-regular fa-circle-xmark"></i></span
-          ></span>
-        </div>
-      </div>
-      <div class="input-group mt-4">
-        <input
-          class="form-control"
-          type="search"
-          placeholder="Search Services"
-          aria-label="Search"
-        />
-      </div>
-      <div class="text-center mt-4">
-        <button class="btn btn-outline-primary w-25">Search</button>
-      </div>
+          ></span> -->
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <div class="table-responsive-md mt-2">
+      <div class="ms-0 me-0 d-flex justify-content-center">
+        <div class="input-group mt-2 w-50">
+          <input
+            class="form-control"
+            type="search"
+            placeholder="Search Feedbacks"
+            aria-label="Search"
+          />
+          <button class="btn btn-success">
+            <i class="fa-brands fa-searchengin"></i>
+          </button>
+        </div>
+      </div>
+      <div class="table-responsive-md mt-4">
         <table class="table table-hover table-bordered w-100">
           <thead>
             <tr class="bg-white">

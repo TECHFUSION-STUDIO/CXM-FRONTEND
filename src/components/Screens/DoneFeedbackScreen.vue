@@ -10,7 +10,6 @@
       </nav>
     </div>
 
-
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row">
         <div class="col">
@@ -38,15 +37,15 @@
           </button>
         </div>
         <div class="col">
-          <button class="btn btn-outline-primary w-100" @click="this.$router.push('/surveys/3/bin')">Bin Feedback Screen</button>
+          <button
+            class="btn btn-outline-primary w-100"
+            @click="this.$router.push('/surveys/3/bin')"
+          >
+            Bin Feedback Screen
+          </button>
         </div>
         <div class="col">
-          <button
-            class="btn btn-primary w-100"
-            
-          >
-            Done Feedback Screen
-          </button>
+          <button class="btn btn-primary w-100">Done Feedback Screen</button>
         </div>
       </div>
     </div>
@@ -83,7 +82,7 @@
       </div>
 
       <div class="table-responsive-md mt-2">
-        <table class="table table-hover mt-4 w-100">
+        <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Feedback</td>
