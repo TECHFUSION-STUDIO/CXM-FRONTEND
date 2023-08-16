@@ -92,20 +92,8 @@
               <td colspan="9">
                 <div class="d-flex mb-2">
                   <div class="me-auto">
-                    Sort
-                    <select class="border border-0">
-                      <option value="1">Created Date</option>
-                      <option value="2">Priority</option>
-                      <option value="3">Impact</option>
-                    </select>
-                    by
-                    <select class="border border-0">
-                      <option value="1">Low to High</option>
-                      <option value="2">High to Low</option>
-                      <option value="3">Score</option>
-                    </select>
+                   <button class="btn btn-info btn-sm ">Sort & Filter</button>
                   </div>
-                  <!-- <div class="p-2">Flex item</div> -->
                   <div>
                     Showing
                     <select class="border border-0">

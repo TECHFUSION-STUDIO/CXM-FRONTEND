@@ -1,15 +1,19 @@
 <template>
-    <div>
-DashboardScreen
-    </div>
+  <div>
+    DashboardScreen
+
+    <DialogBox />
+  </div>
 </template>
 
 <script>
-    export default {
-        name:'DashboardScreen'
-    }
+import DialogBox from "./designlib/DialogBox.vue";
+export default {
+  name: "DashboardScreen",
+  components: {
+    DialogBox,
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

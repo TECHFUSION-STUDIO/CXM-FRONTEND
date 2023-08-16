@@ -14,7 +14,17 @@
       <div class="bg-white shadow shadow-sm mt-3 p-2">
         <div class="row">
           <div class="col-md-12">
-            <p class="text-muted">Tag Id : {{ tagDetail.id }}</p>
+            <div class="d-flex mb-3">
+              <div class="text-muted">Tag Id : {{ tagDetail.id }}</div>
+              <div class="ms-auto">
+                <button
+                  class="btn btn-primary btn-sm"
+                  @click="this.$router.push('/edittags/' + tagDetail.id)"
+                >
+                  Edit Tag
+                </button>
+              </div>
+            </div>
             <h5>{{ tagDetail.tagName }}</h5>
             <div class="row">
               <div class="col-auto">
@@ -35,12 +45,12 @@
 
       <div class="bg-white shadow shadow-sm mt-3 p-3">
         <h6>Tags Usage</h6>
-        <div class="mt-3 d-flex flex-row-reverse">
-          <div class="input-group mt-1">
+        <div class="ms-0 me-0 d-flex justify-content-center">
+          <div class="input-group mt-2 w-50">
             <input
               class="form-control"
               type="search"
-              placeholder="Search Services"
+              placeholder="Search Feedbacks"
               aria-label="Search"
             />
             <button class="btn btn-success">
@@ -48,7 +58,6 @@
             </button>
           </div>
         </div>
-
         <div class="table-responsive-md mt-2">
           <table class="table table-hover table-bordered mt-4 w-100">
             <thead>
@@ -100,13 +109,7 @@
       </div>
 
       <div class="text-center mt-3 mb-3">
-        <button class="btn btn-danger m-2 w-25">Delete</button>
-        <button
-          class="btn btn-primary m-2 w-25"
-          @click="this.$router.push('/edittags/' + tagDetail.id)"
-        >
-          Edit Tag
-        </button>
+        <button class="btn btn-danger m-2" style="width: 20%">Delete</button>
       </div>
     </div>
   </div>

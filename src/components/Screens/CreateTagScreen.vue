@@ -41,6 +41,9 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import Swal from "sweetalert2";
+import '@sweetalert2/theme-bootstrap-4/bootstrap-4.css';
+
 
 export default {
   name: "CreateTagScreen",
@@ -63,6 +66,25 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          // Swal({
+          //   title: "Success!",
+          //   text: "Tag added successfully!",
+          //   icon: "success",
+          //   buttons: false,
+          //   timer: 3000,
+          // });
+          Swal.fire({
+            toast: true,
+            animation: false,
+            text: "Tag saved Successfully!!!",
+             icon: "success",
+            position: "top",
+            width: 300,
+            padding: '1em',
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -72,4 +94,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

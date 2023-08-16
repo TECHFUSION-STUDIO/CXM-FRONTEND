@@ -37,12 +37,15 @@
 
       <div class="bg-white shadow shadow-sm mt-3 p-3">
         <h6>Category Used</h6>
-        <div class="mt-3 d-flex flex-row-reverse">
-          <div class="input-group mt-1">
+       
+
+        <div class="table-responsive-md mt-2">
+           <div class="ms-0 me-0 d-flex justify-content-center">
+          <div class="input-group mt-2 w-50">
             <input
               class="form-control"
               type="search"
-              placeholder="Search Services"
+              placeholder="Search Feedbacks"
               aria-label="Search"
             />
             <button class="btn btn-success">
@@ -50,8 +53,6 @@
             </button>
           </div>
         </div>
-
-        <div class="table-responsive-md mt-2">
           <table class="table table-hover table-bordered mt-4 w-100">
             <thead>
               <tr class="bg-light">
