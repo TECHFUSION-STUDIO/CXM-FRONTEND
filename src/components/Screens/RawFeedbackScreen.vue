@@ -92,7 +92,7 @@
               <td colspan="9">
                 <div class="d-flex mb-2">
                   <div class="me-auto">
-                   <button class="btn btn-info btn-sm ">Sort & Filter</button>
+                   <button class="btn btn-info btn-sm " @click="showSortFilterDialog = !showSortFilterDialog">Sort & Filter</button>
                   </div>
                   <div>
                     Showing
@@ -171,6 +171,10 @@
             </ul>
           </nav>
         </div>
+
+
+
+        <SortFilterDialog   :display="showSortFilterDialog"/>
       </div>
     </div>
   </div>
@@ -180,10 +184,11 @@
 import axiosConn from "@/axioscon";
 import { ModelSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css";
+import SortFilterDialog from './designlib/SortFilterDialog.vue';
 export default {
   name: "RawFeedbackScreen",
   components: {
-    ModelSelect,
+    ModelSelect,SortFilterDialog
   },
   data() {
     return {
@@ -218,6 +223,7 @@ export default {
       searchText: "",
       id: "",
       rawFeedbackList: [],
+      showSortFilterDialog: false
     };
   },
   mounted() {
