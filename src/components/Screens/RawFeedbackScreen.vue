@@ -64,11 +64,6 @@
           </model-select>
         </span>
       </div>
-      <!-- <span class="badge rounded-pill text-bg-info m-1"
-            >STATUS = OPEN
-            <span class="ms-1" style="cursor: pointer"
-              ><i class="fa-regular fa-circle-xmark"></i></span
-          ></span> -->
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
@@ -92,7 +87,18 @@
               <td colspan="9">
                 <div class="d-flex mb-2">
                   <div class="me-auto">
-                   <button class="btn btn-info btn-sm " @click="showSortFilterDialog = !showSortFilterDialog">Sort & Filter</button>
+                    <button
+                      class="btn btn-info btn-sm me-1"
+                      @click="showSortDialog = !showSortDialog"
+                    >
+                      Sort
+                    </button>
+                    <button
+                      class="btn btn-info btn-sm"
+                      @click="showFilterDialog = !showFilterDialog"
+                    >
+                      Filter
+                    </button>
                   </div>
                   <div>
                     Showing
@@ -103,6 +109,11 @@
                     </select>
                     of 21
                   </div>
+                </div>
+                <div>
+                  <span class="badge rounded-pill text-bg-secondary"
+                    >Created Date = 12/03/2022</span
+                  >
                 </div>
               </td>
             </tr>
@@ -172,9 +183,8 @@
           </nav>
         </div>
 
-
-
-        <SortFilterDialog   :display="showSortFilterDialog"/>
+        <SortDialog :display="showSortDialog" />
+        <FilterDialog :display="showFilterDialog" />
       </div>
     </div>
   </div>
@@ -184,11 +194,14 @@
 import axiosConn from "@/axioscon";
 import { ModelSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css";
-import SortFilterDialog from './designlib/SortFilterDialog.vue';
+import SortDialog from "./designlib/SortDialog.vue";
+import FilterDialog from "./designlib/FilterDialog.vue";
 export default {
   name: "RawFeedbackScreen",
   components: {
-    ModelSelect,SortFilterDialog
+    ModelSelect,
+    SortDialog,
+    FilterDialog,
   },
   data() {
     return {
@@ -223,7 +236,8 @@ export default {
       searchText: "",
       id: "",
       rawFeedbackList: [],
-      showSortFilterDialog: false
+      showSortDialog: false,
+      showFilterDialog: false,
     };
   },
   mounted() {
