@@ -158,7 +158,12 @@ export default {
   data() {
     return {
       // item1
-      options: [],
+      options: [
+        {
+          value: "ALL",
+          text: "ALL",
+        },
+      ],
       item: {
         value: "",
         text: "",
@@ -177,6 +182,13 @@ export default {
     if (this.calledFrom != "" && this.calledFrom != null) {
       this.fetchSurveyQuestionDetail();
     }
+  },
+  watch: {
+    item(newQuestion, oldQuestion) {
+      if (newQuestion != oldQuestion) {
+        this.addQuestionFilter();
+      }
+    },
   },
   methods: {
     sortUpdate(sortVal) {
@@ -198,6 +210,19 @@ export default {
       });
 
       this.fetchFeedback();
+    },
+    addQuestionFilter() {
+      this.criteriaLocal = this.criteriaLocal.filter((a) => a.key != "questionId");
+      if (this.item.value != "ALL") {
+        this.criteriaLocal.push({
+          key: "questionId",
+          value: this.item.value,
+          operation: "EQUAL",
+        });
+        this.fetchFeedback();
+      } else {
+        this.fetchFeedback();
+      }
     },
     fetchFeedback() {
       if (this.feedbackCategory == "ALL") {
@@ -261,12 +286,7 @@ export default {
           console.log(err);
         });
     },
-    reset() {
-      this.item = {};
-    },
-    selectOption() {
-      this.item = this.options[1];
-    },
+
     printSearchText(searchText) {
       this.searchText = searchText;
     },
@@ -279,11 +299,11 @@ export default {
         )
         .then((res) => {
           console.log(res.data);
-          this.options = res.data.map((a) => {
-            return {
+          res.data.forEach((a) => {
+            this.options.push({
               value: a.id,
               text: a.surveyQuestion,
-            };
+            });
           });
         })
         .catch((err) => {
