@@ -14,15 +14,7 @@
     <div class="mt-3">
       <div class="row w-100">
         <div class="col-md-8">
-          <div class="bg-white shadow shadow-sm p-3">
-            <p class="text-muted mb-0">Id : 12</p>
-
-            <h5 class="mt-1">abc</h5>
-            <p class="text-muted">Created By Anonymous via Page Name at 23/04/2023</p>
-
-            <p>adf</p>
-          </div>
-
+          <FeedbackDetail />
           <FeedbackDetailTag
             :feedback="feedbackDetails"
             :key="feedbackDetails.detail.id"
@@ -56,6 +48,8 @@
 </template>
 
 <script>
+import FeedbackDetail from "./FeedbackDetails/FeedbackDetail.vue";
+
 import FeedbackComments from "./FeedbackDetails/FeedbackComments.vue";
 import FeedbackDetailCollab from "./FeedbackDetails/FeedbackDetailCollab.vue";
 import FeedbackDetailTag from "./FeedbackDetails/FeedbackDetailTag.vue";
@@ -67,10 +61,11 @@ export default {
     FeedbackDetailTag,
     FeedbackComments,
     FeedbackDetailAssignmentVue,
+    FeedbackDetail,
   },
   data() {
     return {
-      id: "",
+      id: this.$route.params.fid,
       feedbackDetails: {
         comments: [],
         votes: [],
@@ -101,11 +96,11 @@ export default {
       },
     };
   },
-  // mounted() {
-  //   this.id = this.$route.params.fid;
-  //   console.log(this.id);
-  //   this.fetchFeedbackDetail();
-  // },
+  mounted() {
+    this.id = this.$route.params.fid;
+    console.log(this.id);
+    // this.fetchFeedbackDetail();
+  },
   // beforeRouteUpdate(to, from, next) {
   //   console.log("Before Route Update" + to.params.fid);
   //   this.id = to.params.fid;
@@ -116,22 +111,6 @@ export default {
   methods: {
     // reloading() {
     //   this.fetchFeedbackDetail();
-    // },
-    // fetchFeedbackDetail() {
-    //   axioscon
-    //     .get(
-    //       "getfeedbackbyid?businessId=1&projectId=" +
-    //         localStorage.getItem("selectedProject") +
-    //         "&feedbackId=" +
-    //         this.id
-    //     )
-    //     .then((res) => {
-    //       console.log(res);
-    //       this.feedbackDetails = res.data;
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
     // },
   },
 };

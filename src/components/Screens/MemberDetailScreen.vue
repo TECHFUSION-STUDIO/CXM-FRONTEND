@@ -13,7 +13,17 @@
     <div class="bg-white shadow shadow-sm mt-3 p-2">
       <div class="row">
         <div class="col-md-12">
-          <p class="text-muted">Member Id : {{ memberDetail.id }}</p>
+          <div class="d-flex mb-3">
+            <div class="text-muted">Member Id : {{ memberDetail.id }}</div>
+            <div class="ms-auto">
+              <button
+                class="btn btn-primary btn-sm"
+                @click="this.$router.push('/editmember/' + id)"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
           <h5>{{ memberDetail.teamMemberName }}</h5>
 
           <div class="row">
@@ -93,12 +103,6 @@
 
     <div class="text-center mt-3 mb-3">
       <button class="btn btn-danger m-2 w-25">Delete</button>
-      <button
-        class="btn btn-primary m-2 w-25"
-        @click="this.$router.push('/editmember/1')"
-      >
-        Edit Member
-      </button>
     </div>
   </div>
 </template>

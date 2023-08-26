@@ -112,19 +112,18 @@
 </template>
 
 <script>
-import axioscon from "@/axioscon";
 import { ModelSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css";
+import axiosConn from "@/axioscon";
+
 export default {
   name: "FeedbackDetailAssignment",
   components: {
     ModelSelect,
   },
-  props: ["feedback"],
   data() {
     return {
-      axioscon,
-      id: "",
+      id: this.$route.params.fid,
       assignedBoardSelect: {
         options: [
           { value: "1", text: "aa" + " - " + "1" },
@@ -147,19 +146,18 @@ export default {
         item: {},
         searchText: "",
       },
+      feedbackDetails: {},
     };
   },
   updated() {
     console.log(this.assignedToSelect);
   },
-  // mounted() {
-  //   this.id = this.$route.params.fid;
-  //   console.log(this.id);
-  //   console.log(this.feedbackDetails);
-  //   this.fetchAllCategory();
-  //   console.log(this.status.searchValue);
-  //   this.fetchAllBoards();
-  // },
+  mounted() {
+    this.id = this.$route.params.fid;
+    this.fetchFeedbackDetail();
+    // this.fetchAllCategory();
+    // this.fetchAllBoards();
+  },
   // beforeRouteUpdate(to, from, next) {
   //   console.log("Before Route Update" + to.params.fid);
   //   this.id = to.params.fid;
@@ -170,12 +168,21 @@ export default {
   //   next();
   // },
   methods: {
-    printSearchText(searchText) {
-      this.assignedBoardSelect.searchText = searchText;
-    },
-
-    printSearchText1(searchText) {
-      this.assignedToSelect.searchText = searchText;
+    fetchFeedbackDetail() {
+      axiosConn
+        .get(
+          "/getfeedbackdetailsbyid?businessId=1&feedbackType=RAW&projectId=" +
+            1 +
+            "&feedbackId=" +
+            this.id
+        )
+        .then((res) => {
+          console.log(res);
+          this.feedbackDetails = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

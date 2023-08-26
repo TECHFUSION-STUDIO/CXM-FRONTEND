@@ -20,51 +20,31 @@
 import axioscon from "../../../axioscon.js";
 import { MultiSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 export default {
   name: "FeedbackDetailTag",
-  props: ["feedback"],
   components: {
     MultiSelect,
   },
   data() {
     return {
-      feedbackDetails: this.feedback,
-      tagSearch: {
-        searchValue: this.feedback.tags,
-        dataListItems: [],
-      },
-      tagList: [],
       axioscon,
-      id: "",
-      options: [
-        { value: "1", text: "aa" + " - " + "1" },
-        { value: "2", text: "ab" + " - " + "2" },
-        { value: "3", text: "bc" + " - " + "3" },
-        { value: "4", text: "cd" + " - " + "4" },
-        { value: "5", text: "de" + " - " + "5" },
-        { value: "6", text: "ef" + " - " + "6" },
-        { value: "7", text: "ef" + " - " + "7" },
-        { value: "8", text: "ef" + " - " + "8" },
-        { value: "9", text: "ef" + " - " + "9" },
-        { value: "10", text: "ef" + " - " + "10" },
-        { value: "11", text: "ef" + " - " + "11" },
-        { value: "12", text: "ef" + " - " + "12" },
-        { value: "13", text: "down case" + " - " + "testcase" },
-        { value: "14", text: "camel case" + " - " + "testCase" },
-        { value: "15", text: "Capitalize case" + " - " + "Testcase" },
-      ],
-      searchText: "", // If value is falsy, reset searchText & searchItem
+      id: this.$route.params.fid,
+      options: [],
       items: [],
+      searchText: "", // If value is falsy, reset searchText & searchItem
       lastSelectItem: {},
     };
   },
-  // mounted() {
-  //   this.id = this.$route.params.fid;
-  //   console.log(this.feedbackDetails);
-  //   console.log(this.id);
-  //   this.fetchAllTags();
-  //   // this.fetchFeedbackTags();
-  // },
+  mounted() {
+    this.id = this.$route.params.fid;
+    console.log(this.id);
+    // this.fetchAllTags();
+    // this.fetchFeedbackTags();
+    this.fetchAllTags();
+    this.fetchFeedbackTags();
+  },
 
   // beforeRouteUpdate(to, from, next) {
   //   console.log("Before Route Update" + to.params.fid);
@@ -82,6 +62,91 @@ export default {
     onSelect(items, lastSelectItem) {
       this.items = items;
       this.lastSelectItem = lastSelectItem;
+      this.submitAddTag();
+    },
+    fetchAllTags() {
+      axioscon
+        .get("/getalltag?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res);
+          this.options = res.data.map((a) => {
+            return {
+              value: a.id,
+              text: a.tagName,
+            };
+          });
+          console.log(this.options);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    fetchFeedbackTags() {
+      console.log(this.id);
+      axioscon
+        .get(
+          "/gettagsbyfeedbackid?businessId=" +
+            1 +
+            "&projectId=" +
+            1 +
+            "&feedbackId=" +
+            this.id
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.items = res.data.map((a) => {
+            return {
+              value: a.id,
+              text: a.tagName,
+            };
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    submitAddTag() {
+      let selectedTagList = this.items.map((a) => a.value);
+      console.log(selectedTagList);
+      axioscon
+        .post("/addfeedbacktags", {
+          tagIdList: selectedTagList,
+          feedbackId: this.id,
+          businessId: "1",
+          projectId: "1",
+        })
+        .then((res) => {
+          console.log(res);
+          this.fetchFeedbackTags();
+          Swal.fire({
+            toast: true,
+            animation: false,
+            text: "Tags updated successfully",
+            icon: "success",
+            position: "top",
+            width: 300,
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          this.fetchFeedbackTags();
+          Swal.fire({
+            toast: true,
+            animation: false,
+            text: "Error Occured while updating tags",
+            icon: "error",
+            position: "top",
+            width: 300,
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
+        });
     },
   },
 };

@@ -28,22 +28,27 @@
             <div class="accordion-body row">
               <div class="col-md-6">
                 <label class="form-label">Select Field</label>
-                <select class="form-select" aria-label=".form-select-sm example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select
+                  class="form-select"
+                  aria-label=".form-select-sm example"
+                  v-model="sortField"
+                >
+                  <option v-for="item in store.feedbackProp" :key="item" :value="item">
+                    {{ item }}
+                  </option>
                 </select>
               </div>
 
               <div class="col-md-6">
                 <label class="form-label">Select Order</label>
 
-                <select class="form-select" aria-label=".form-select-sm example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select
+                  class="form-select"
+                  aria-label=".form-select-sm example"
+                  v-model="sortOrder"
+                >
+                  <option value="ASC">Low to High</option>
+                  <option value="DESC">High to Low</option>
                 </select>
               </div>
             </div>
@@ -57,7 +62,7 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Add</button>
+            <button type="button" class="btn btn-primary" @click="addSort()">Add</button>
           </div>
         </div>
       </div>
@@ -66,12 +71,17 @@
 </template>
 
 <script>
+import { store } from "./store";
+
 export default {
   name: "SortDialog",
   props: ["display"],
   data() {
     return {
       displayModal: this.display,
+      sortField: "",
+      sortOrder: "",
+      store,
     };
   },
   updated() {
@@ -84,6 +94,13 @@ export default {
   watch: {
     display: function () {
       this.displayModal = true;
+    },
+  },
+  methods: {
+    addSort() {
+      console.log("AddSort emitting");
+      this.displayModal = false;
+      this.$emit("sort-selected", this.sortField + "@" + this.sortOrder);
     },
   },
 };

@@ -28,29 +28,35 @@
             <div class="accordion-body row">
               <div class="col-md-4">
                 <label class="form-label">Select Field</label>
-                <select class="form-select" aria-label=".form-select-sm example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select
+                  class="form-select"
+                  aria-label=".form-select-sm example"
+                  v-model="filterField"
+                >
+                  <option v-for="item in store.feedbackProp" :key="item" :value="item">
+                    {{ item }}
+                  </option>
                 </select>
               </div>
 
               <div class="col-md-4">
                 <label class="form-label">Filter Operation</label>
 
-                <select class="form-select" aria-label=".form-select-sm example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select
+                  class="form-select"
+                  aria-label=".form-select-sm example"
+                  v-model="filterOperation"
+                >
+                  <option v-for="item in store.filterOperation" :key="item" :value="item">
+                    {{ item }}
+                  </option>
                 </select>
               </div>
 
               <div class="col-md-4">
                 <label class="form-label">Filter value</label>
 
-                <input type="text" class="form-control" />
+                <input type="text" class="form-control" v-model="filterValue" />
               </div>
             </div>
           </div>
@@ -63,7 +69,9 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Add</button>
+            <button type="button" class="btn btn-primary" @click="addFilter()">
+              Add
+            </button>
           </div>
         </div>
       </div>
@@ -72,12 +80,17 @@
 </template>
 
 <script>
+import { store } from "./store";
 export default {
   name: "FilterDialog",
   props: ["display"],
   data() {
     return {
       displayModal: this.display,
+      filterField: "",
+      filterValue: "",
+      filterOperation: "",
+      store,
     };
   },
   updated() {
@@ -90,6 +103,16 @@ export default {
   watch: {
     display: function () {
       this.displayModal = true;
+    },
+  },
+  methods: {
+    addFilter() {
+      console.log("AddFilter emitting");
+      this.displayModal = false;
+      this.$emit(
+        "filter-selected",
+        this.filterField + "@" + this.filterOperation + "@" + this.filterValue
+      );
     },
   },
 };
