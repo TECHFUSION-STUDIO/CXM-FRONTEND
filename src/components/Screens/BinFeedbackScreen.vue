@@ -99,7 +99,7 @@
               <td
                 id="feedbackTitle"
                 style="width: 40%"
-                @click="this.$router.push('/feedbackdetail/raw/1')"
+                @click="this.$router.push('/feedbackdetail/1')"
               >
                 vsxvb x v
               </td>

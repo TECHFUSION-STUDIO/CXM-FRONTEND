@@ -43,7 +43,7 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <FeedbackTabular
         :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }"
-        feedbackCategory="ALL"
+        feedbackType="ALL"
       />
     </div>
   </div>

@@ -46,7 +46,7 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <FeedbackTabular
         :criteria="{ key: 'boardId', value: id, operation: 'EQUAL' }"
-        feedbackCategory="FILTERED"
+        feedbackType="FILTERED"
       />
     </div>
 

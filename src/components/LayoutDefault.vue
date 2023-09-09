@@ -260,14 +260,31 @@ export default {
       axioscon,
     };
   },
-
-  methods: {
-    reset() {
-      this.item = {};
+  mounted() {
+    this.fetchProjects();
+  },
+  watch: {
+    item: function (oldItem, newItem) {
+      if (oldItem != newItem) {
+        store.selectedProject = this.item;
+      }
     },
-    selectOption() {
-      // select option from parent component
-      this.item = this.options[1];
+  },
+  methods: {
+    fetchProjects() {
+      axioscon
+        .get("/getallprojects?businessId=" + 1)
+        .then((res) => {
+          console.log(res);
+          this.options = res.data.map((a) => {
+            return { text: a.projectName, value: a.id };
+          });
+          if (this.options != null && this.options.length > 0)
+            this.item = this.options[0];
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     printSearchText(searchText) {
       this.searchText = searchText;

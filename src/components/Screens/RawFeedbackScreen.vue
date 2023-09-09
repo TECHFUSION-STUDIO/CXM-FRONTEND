@@ -54,7 +54,7 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <FeedbackTabular
         :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
-        feedbackCategory="RAW"
+        feedbackType="RAW"
         :calledFrom="'RAW_SURVEY@' + id"
       />
     </div>

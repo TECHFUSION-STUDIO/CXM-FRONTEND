@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       commentDesc: "",
-      id: "",
+      id: this.$route.params.fid,
       commentList: [],
     };
   },

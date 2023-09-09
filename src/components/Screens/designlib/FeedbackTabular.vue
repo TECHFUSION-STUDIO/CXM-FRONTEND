@@ -85,7 +85,7 @@
               <td
                 id="feedbackTitle"
                 style="width: 40%"
-                @click="this.$router.push('/feedbackdetail/raw/' + item.id)"
+                @click="this.$router.push('/feedbackdetail/' + item.id)"
               >
                 {{ item.feedbackDescription }}
               </td>
@@ -149,7 +149,7 @@ import SortDialog from "./SortDialog.vue";
 import FilterDialog from "./FilterDialog.vue";
 export default {
   name: "FeedbackTabular",
-  props: ["id", "criteria", "feedbackCategory", "calledFrom"],
+  props: ["id", "criteria", "feedbackType", "calledFrom"],
   components: {
     ModelSelect,
     SortDialog,
@@ -165,8 +165,8 @@ export default {
         },
       ],
       item: {
-        value: "",
-        text: "",
+        value: "ALL",
+        text: "ALL",
       },
       criteriaLocal: [this.criteria],
       searchText: "",
@@ -225,11 +225,11 @@ export default {
       }
     },
     fetchFeedback() {
-      if (this.feedbackCategory == "ALL") {
+      if (this.feedbackType == "ALL") {
         this.fetchAllFeedback();
-      } else if (this.feedbackCategory == "RAW") {
+      } else if (this.feedbackType == "RAW") {
         this.fetchRawFeedback();
-      } else if (this.feedbackCategory == "FILTERED") {
+      } else if (this.feedbackType == "FILTERED") {
         this.fetchFilteredFeedback();
       }
     },

@@ -9,19 +9,9 @@ import axioscon from "@/axioscon.js";
 
 export default {
   name: "FeedbackDetailCollab",
-  props: ["feedback"],
 
   data() {
     return {
-      feedbackDetails: this.feedback,
-      feedbackSearch: {
-        searchValue: [],
-        dataListItems: [],
-        dataSelect: "",
-        isLoading: false,
-      },
-      feedbackCollabList: [],
-      feedbackCollabTitle: "",
       axioscon,
     };
   },

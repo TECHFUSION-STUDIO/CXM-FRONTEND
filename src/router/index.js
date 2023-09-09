@@ -2,6 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
+        path: '/setup',
+        name: 'setup',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SetupScreen.vue'),
+      },
+  {
     path: '/',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../components/LayoutDefault.vue'),
@@ -89,16 +94,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyQuestion.vue'),
       },
       {
-        path: '/feedbackdetail/raw/:fid',
+        path: '/feedbackdetail/:fid/',
         name: 'feedbackdetailraw',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackDetailScreen.vue'),
       },
 
-      {
-        path: '/feedbackdetail/filtered/:fid',
-        name: 'feedbackdetailfiltered',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FilteredFeedbackDetailScreen.vue'),
-      },
+  
       {
         path: '/logger',
         name: 'logger',

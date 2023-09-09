@@ -6,6 +6,15 @@
       <p>0 Backing Customers</p>
       <hr />
       <p>
+        <label for="customRange1" class="form-label">Status :</label>
+        <model-select
+          :options="statusSelect.options"
+          v-model="statusSelect.item"
+          @searchchange="printSearchText"
+          class="form-control border border-2 border-info"
+        />
+      </p>
+      <p>
         <label for="customRange1" class="form-label">Assigned Board :</label>
         <model-select
           :options="assignedBoardSelect.options"
@@ -27,6 +36,17 @@
       </p>
 
       <p>
+        <label for="customRange1" class="form-label">Category :</label>
+        <model-select
+          :options="categorySelect.options"
+          v-model="categorySelect.item"
+          placeholder="placeholder text"
+          @searchchange="printSearchText1"
+          class="form-control border border-2 border-info"
+        />
+      </p>
+      <hr />
+      <p>
         <label for="customRange1" class="form-label">Logger Id :</label>
 
         <input class="form-control" disabled />
@@ -40,15 +60,9 @@
 
       <p>
         <label for="customRange1" class="form-label">Owned By :</label>
+        <input class="form-control" disabled />
       </p>
 
-      <hr />
-      <p>
-        <label for="customRange1" class="form-label">Status :</label>
-      </p>
-      <p>
-        <label for="customRange1" class="form-label">Category :</label>
-      </p>
       <hr />
       <p>
         <label for="customRange1" class="form-label">Source Type :</label>
@@ -57,51 +71,54 @@
         <label for="customRange1" class="form-label">Source Item :</label>
       </p>
       <hr />
-      <p>
-        <label for="customRange1" class="form-label">Priority</label>
-        <select class="form-select">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </p>
-      <p>
-        <label for="customRange1" class="form-label">Impact</label>
-        <select class="form-select">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </p>
-      <p>
-        <label for="customRange1" class="form-label">Effort </label>
-        <select class="form-select">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </p>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="customRange1" class="form-label">Priority</label>
+          <select class="form-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="customRange1" class="form-label">Impact</label>
+          <select class="form-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="customRange1" class="form-label">Effort </label>
+          <select class="form-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+
       <hr />
       <p>Nice To Have Voters : 10</p>
       <p>Important Voters : 10</p>
@@ -125,13 +142,7 @@ export default {
     return {
       id: this.$route.params.fid,
       assignedBoardSelect: {
-        options: [
-          { value: "1", text: "aa" + " - " + "1" },
-          { value: "2", text: "ab" + " - " + "2" },
-          { value: "3", text: "bc" + " - " + "3" },
-          { value: "4", text: "cd" + " - " + "4" },
-          { value: "5", text: "de" + " - " + "5" },
-        ],
+        options: [],
         item: {},
         searchText: "",
       },
@@ -142,6 +153,30 @@ export default {
           { value: "3", text: "bc" + " - " + "3" },
           { value: "4", text: "cd" + " - " + "4" },
           { value: "5", text: "de" + " - " + "5" },
+        ],
+        item: {},
+        searchText: "",
+      },
+
+      categorySelect: {
+        options: [
+          { value: "1", text: "aa" + " - " + "1" },
+          { value: "2", text: "ab" + " - " + "2" },
+          { value: "3", text: "bc" + " - " + "3" },
+          { value: "4", text: "cd" + " - " + "4" },
+          { value: "5", text: "de" + " - " + "5" },
+        ],
+        item: {},
+        searchText: "",
+      },
+
+      statusSelect: {
+        options: [
+          { value: "OPEN", text: "OPEN" },
+          { value: "DONE", text: "DONE" },
+          { value: "PLANNED", text: "PLANNED" },
+          { value: "FILTERED", text: "FILTERED" },
+          { value: "CLOSED", text: "CLOSED" },
         ],
         item: {},
         searchText: "",
@@ -171,14 +206,26 @@ export default {
     fetchFeedbackDetail() {
       axiosConn
         .get(
-          "/getfeedbackdetailsbyid?businessId=1&feedbackType=RAW&projectId=" +
+          "/getfeedbackdetailsbyid?businessId=1&feedbackType=FILTERED&projectId=" +
             1 +
             "&feedbackId=" +
             this.id
         )
         .then((res) => {
           console.log(res);
-          this.feedbackDetails = res.data;
+          this.feedbackDetails = res.data.feedbackDetail;
+          this.categorySelect.options = res.data.allCategory.map((a) => {
+            return {
+              text: a.categoryName,
+              value: a.id,
+            };
+          });
+          this.assignedBoardSelect.options = res.data.allBoards.map((a) => {
+            return {
+              text: a.boardName,
+              value: a.id,
+            };
+          });
         })
         .catch((err) => {
           console.log(err);
