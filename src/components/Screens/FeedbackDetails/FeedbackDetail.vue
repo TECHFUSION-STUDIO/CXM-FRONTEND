@@ -32,10 +32,7 @@ export default {
     fetchFeedbackDetail() {
       axiosConn
         .get(
-          "/getfeedbackdetailsbyid?businessId=1&feedbackType=FILTERED&projectId=" +
-            1 +
-            "&feedbackId=" +
-            this.id
+          "/getfeedbackdetailsbyid?businessId=1&projectId=" + 1 + "&feedbackId=" + this.id
         )
         .then((res) => {
           console.log(res);

@@ -30,35 +30,11 @@
               Raw Feedback Screen
             </button>
           </div>
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/filtered')"
-            >
-              Filtered Feedback Screen
-            </button>
-          </div>
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/bin')"
-            >
-              Bin Feedback Screen
-            </button>
-          </div>
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/done')"
-            >
-              Done Feedback Screen
-            </button>
-          </div>
         </div>
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
+    <div class="bg-white shadow shadow-sm p-3">
       <div class="d-flex mb-2">
         <div class="me-auto">
           <h6>Survey Questions</h6>

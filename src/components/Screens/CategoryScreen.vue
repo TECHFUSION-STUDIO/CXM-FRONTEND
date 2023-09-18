@@ -44,7 +44,12 @@
                   >{{ item.categoryName }}</span
                 >
               </td>
-              <td class="text-center">{{ item.categoryStatus }}</td>
+              <td class="text-center">
+                <!-- {{ item.categoryStatus }} -->
+
+                <span class="badge text-bg-success">{{ item.categoryStatus }}</span>
+              </td>
+
               <td class="text-center">vds</td>
               <td class="text-end">{{ item.addedDateTime }}</td>
             </tr>

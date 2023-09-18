@@ -63,7 +63,17 @@
                   </div>
                 </div>
                 <div>
-                  <span class="badge rounded-pill text-bg-secondary">Sort </span>
+                  <span class="badge rounded-pill text-bg-info m-1"
+                    >Sort - {{ orderBy }} by {{ orderByAsc ? "ASC" : "DESC" }}</span
+                  >
+                  <span
+                    class="badge rounded-pill text-bg-warning m-1"
+                    v-for="item in criteriaLocal"
+                    :key="item.key"
+                    >{{ item.key }} {{ item.operation }} {{ item.value }}
+                  </span>
+                  <!-- <span class="badge rounded-pill text-bg-warning m-1">Filter </span>
+                  <span class="badge rounded-pill text-bg-warning m-1">Filter </span> -->
                 </div>
               </td>
             </tr>
@@ -92,7 +102,10 @@
               <td>{{ item.feedbackImpact }}</td>
               <td>{{ item.feedbackEffort }}</td>
               <td>{{ item.feedbackPriority }}</td>
-              <td>{{ item.feedbackStatus }}</td>
+              <td>
+                <!-- {{ item.feedbackStatus }} -->
+                <span class="badge text-bg-success">{{ item.feedbackStatus }}</span>
+              </td>
               <td>{{ item.formSubmissionId }}</td>
               <td>{{ item.addedDateTime }}</td>
               <td>{{ item.lastModified }}</td>
@@ -225,13 +238,7 @@ export default {
       }
     },
     fetchFeedback() {
-      if (this.feedbackType == "ALL") {
-        this.fetchAllFeedback();
-      } else if (this.feedbackType == "RAW") {
-        this.fetchRawFeedback();
-      } else if (this.feedbackType == "FILTERED") {
-        this.fetchFilteredFeedback();
-      }
+      this.fetchAllFeedback();
     },
     fetchAllFeedback() {
       axiosConn
@@ -250,43 +257,6 @@ export default {
           console.log(err);
         });
     },
-
-    fetchRawFeedback() {
-      axiosConn
-        .post("/getAllRawFeedback", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: this.orderBy,
-          orderByAsc: this.orderByAsc,
-          criteria: this.criteriaLocal,
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.rawFeedbackList = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
-    fetchFilteredFeedback() {
-      axiosConn
-        .post("/getAllFilteredFeedback", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: this.orderBy,
-          orderByAsc: this.orderByAsc,
-          criteria: this.criteriaLocal,
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.rawFeedbackList = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
     printSearchText(searchText) {
       this.searchText = searchText;
     },

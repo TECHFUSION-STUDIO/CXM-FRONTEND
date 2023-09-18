@@ -36,7 +36,10 @@
               <td>{{ item.surveyQuestionType }}</td>
               <td>{{ item.surveyQuestionCategory }}</td>
               <td>{{ item.surveyQuestionRequired }}</td>
-              <td>{{ item.surveyQuestionStatus }}</td>
+              <td>
+                <!-- {{ item.surveyQuestionStatus }} -->
+                <span class="badge text-bg-success">{{ item.surveyQuestionStatus }}</span>
+              </td>
               <td>{{ item.addedDateTime }}</td>
               <td>{{ item.lastModifiedDateTime }}</td>
               <td>

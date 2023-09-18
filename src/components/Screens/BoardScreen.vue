@@ -42,8 +42,14 @@
                 >
               </td>
               <td>{{ item.boardDescription }}</td>
-              <td>{{ item.status }}</td>
-              <td>{{ item.visibility }}</td>
+              <td>
+                <!-- {{ item.status }} -->
+                <span class="badge text-bg-success">{{ item.status }}</span>
+              </td>
+              <td>
+                <!-- {{ item.visibility }} -->
+                <span class="badge text-bg-success">{{ item.visibility }}</span>
+              </td>
             </tr>
           </tbody>
         </table>

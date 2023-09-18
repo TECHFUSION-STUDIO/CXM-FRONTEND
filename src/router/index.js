@@ -45,21 +45,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
       },
       {
-        path: '/surveys/:surveyId/filtered',
-        name: 'filteredfeedbackscreen',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FilteredFeedbackScreen.vue'),
-      },
-      {
-        path: '/surveys/:surveyId/bin',
-        name: 'binfeedbackscreen',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BinFeedbackScreen.vue'),
-      },
-      {
-        path: '/surveys/:surveyId/done',
-        name: 'donefeedbackscreen',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DoneFeedbackScreen.vue'),
-      },
-      {
         path: '/surveys/:surveyId/createquestion',
         name: 'createquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),

@@ -23,35 +23,10 @@
         <div class="col">
           <button class="btn btn-primary w-100">Raw Feedback Screen</button>
         </div>
-        <div class="col">
-          <button
-            class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/' + id + '/filtered')"
-          >
-            Filtered Feedback Screen
-          </button>
-        </div>
-
-        <div class="col">
-          <button
-            class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/' + id + '/bin')"
-          >
-            Bin Feedback Screen
-          </button>
-        </div>
-        <div class="col">
-          <button
-            class="btn btn-outline-primary w-100"
-            @click="this.$router.push('/surveys/' + id + '/done')"
-          >
-            Done Feedback Screen
-          </button>
-        </div>
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
+    <div class="bg-white shadow shadow-sm p-3">
       <FeedbackTabular
         :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
         feedbackType="RAW"

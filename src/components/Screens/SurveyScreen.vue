@@ -46,7 +46,10 @@
                   >{{ item.surveyFormName }}</span
                 >
               </td>
-              <td>{{ item.surveyFormStatus }}</td>
+              <td>
+                <!-- {{ item.surveyFormStatus }} -->
+                <span class="badge text-bg-success">{{ item.surveyFormStatus }}</span>
+              </td>
               <td>vs</td>
 
               <td></td>

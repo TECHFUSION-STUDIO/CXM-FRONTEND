@@ -42,7 +42,10 @@
                 >
               </td>
 
-              <td>{{ item.tagStatus }}</td>
+              <td>
+                <!-- {{ item.tagStatus }} -->
+                <span class="badge text-bg-success">{{ item.tagStatus }}</span>
+              </td>
               <td>vds</td>
               <td>{{ item.addedDateTime }}</td>
             </tr>
