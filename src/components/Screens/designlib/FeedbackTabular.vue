@@ -45,35 +45,48 @@
                     >
                       Sort
                     </button>
-                    <button
+                    <!-- <button
                       class="btn btn-info btn-sm"
                       @click="showFilterDialog = !showFilterDialog"
                     >
                       Filter
+                    </button> -->
+
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-info position-relative"
+                      @click="showFilterDialog = !showFilterDialog"
+                    >
+                      Filter
+                      <span
+                        v-if="criteriaLocal.length > 0"
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      >
+                        {{ criteriaLocal.length }}
+                        <span class="visually-hidden">unread messages</span>
+                      </span>
                     </button>
                   </div>
                   <div>
-                    Showing
-                    <select class="border border-0">
-                      <option value="1">10</option>
-                      <option value="2">20</option>
-                      <option value="3">30</option>
+                    <select class="form-select form-select-sm">
+                      <option value="1">View Mode</option>
+                      <option value="2">Work Mode</option>
                     </select>
-                    of 21
                   </div>
                 </div>
-                <div>
-                  <span class="badge rounded-pill text-bg-info m-1"
-                    >Sort - {{ orderBy }} by {{ orderByAsc ? "ASC" : "DESC" }}</span
-                  >
-                  <span
-                    class="badge rounded-pill text-bg-warning m-1"
-                    v-for="item in criteriaLocal"
-                    :key="item.key"
-                    >{{ item.key }} {{ item.operation }} {{ item.value }}
+
+                <div class="alert alert-primary p-2" role="alert">
+                  <span class="badge text-bg-light m-1"
+                    >Sorted {{ orderBy }} by {{ orderByAsc ? "Ascending" : "Descending" }}
                   </span>
-                  <!-- <span class="badge rounded-pill text-bg-warning m-1">Filter </span>
-                  <span class="badge rounded-pill text-bg-warning m-1">Filter </span> -->
+
+                  <span
+                    class="badge text-bg-light m-1"
+                    v-for="item in criteriaLocal"
+                    :key="item"
+                    >{{ item.key }} {{ item.operation }} {{ item.value }}
+                    <i class="fa-regular fa-circle-xmark ms-1 zoombadge"></i>
+                  </span>
                 </div>
               </td>
             </tr>
@@ -92,12 +105,10 @@
           <tbody>
             <tr v-for="item in rawFeedbackList" :key="item.id">
               <td><input type="checkbox" class="form-check-input" /></td>
-              <td
-                id="feedbackTitle"
-                style="width: 40%"
-                @click="this.$router.push('/feedbackdetail/' + item.id)"
-              >
-                {{ item.feedbackDescription }}
+              <td style="width: 40%">
+                <router-link :to="'/feedbackdetail/' + item.id" class="feedbackTitle">
+                  {{ item.feedbackDescription }}</router-link
+                >
               </td>
               <td>{{ item.feedbackImpact }}</td>
               <td>{{ item.feedbackEffort }}</td>
@@ -112,19 +123,33 @@
             </tr>
             <tr class="bg-light" v-if="true">
               <td colspan="9">
-                <div>
-                  <button class="btn btn-sm btn-outline-secondary me-1">
-                    Move to Trash
-                  </button>
-                  <button class="btn btn-sm btn-outline-secondary me-1">
-                    Mark as Spam
-                  </button>
-                  <button class="btn btn-sm btn-outline-secondary me-1">
-                    Mark as Filtered
-                  </button>
-                  <button class="btn btn-sm btn-outline-secondary me-1">
-                    Move to Trash
-                  </button>
+                <div class="d-flex">
+                  <div class="me-auto">
+                    <div>
+                      <button class="btn btn-sm btn-outline-secondary me-1">
+                        Move to Trash
+                      </button>
+                      <button class="btn btn-sm btn-outline-secondary me-1">
+                        Mark as Spam
+                      </button>
+                      <button class="btn btn-sm btn-outline-secondary me-1">
+                        Mark as Filtered
+                      </button>
+                      <button class="btn btn-sm btn-outline-secondary me-1">
+                        Move to Trash
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    Showing
+                    <select class="border border-0">
+                      <option value="1">10</option>
+                      <option value="2">20</option>
+                      <option value="3">30</option>
+                    </select>
+                    of 21
+                  </div>
                 </div>
               </td>
             </tr>
@@ -284,4 +309,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped></style>

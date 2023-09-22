@@ -10,6 +10,7 @@
       <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
         CXM by TFS (Beta)
       </div>
+
       <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
         <model-select
           :options="options"

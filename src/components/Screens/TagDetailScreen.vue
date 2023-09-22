@@ -43,17 +43,6 @@
         </div>
       </div>
 
-      <div class="bg-white shadow shadow-sm mt-3 p-3">
-        <FeedbackTabular
-          :criteria="{
-            key: 'tagId',
-            value: id,
-            operation: 'EQUAL',
-          }"
-          feedbackCategory="ALL"
-        />
-      </div>
-
       <div class="text-center mt-3 mb-3">
         <button class="btn btn-danger m-2 w-25">Delete</button>
       </div>
@@ -63,13 +52,10 @@
 
 <script>
 import axiosConn from "@/axioscon";
-import FeedbackTabular from "./designlib/FeedbackTabular.vue";
 
 export default {
   name: "TagDetailScreen",
-  components: {
-    FeedbackTabular,
-  },
+  components: {},
   data() {
     return {
       id: this.$route.params.tagId,

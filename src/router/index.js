@@ -180,7 +180,7 @@ const routes = [
       {
         path: '/memberdetail/:memberId',
         name: 'memberdetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberDetailScreen.vue'),
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/GeneralMemberDetailScreen.vue'),
       },
       {
         path: '/projectmemberdetail/:memberId',

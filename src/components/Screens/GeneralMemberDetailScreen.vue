@@ -112,7 +112,7 @@ import axiosConn from "@/axioscon";
 import { ModelSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css";
 export default {
-  name: "MemberDetailScreen",
+  name: "GeneralMemberDetailScreen",
   components: {
     ModelSelect,
   },
