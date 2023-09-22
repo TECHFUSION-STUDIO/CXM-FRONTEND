@@ -3,7 +3,11 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <button class="btn btn-primary mt-2" @click="this.$router.push('/createtags')">
+          <button
+            class="btn btn-primary mt-2"
+            @click="this.$router.push('/createtags')"
+            style="background-color: #0262b9"
+          >
             Create a Tag
           </button>
         </div>
@@ -15,7 +19,7 @@
               placeholder="Search Tag"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary" style="background-color: #0262b9">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
@@ -35,10 +39,10 @@
           <tbody>
             <tr v-for="item in tagList" :key="item.id">
               <td style="width: 40%">
-                <span
+                <a
                   id="feedbackTitle"
                   @click="this.$router.push('/tagsdetail/' + item.id)"
-                  >{{ item.tagName }}</span
+                  >{{ item.tagName }}</a
                 >
               </td>
 

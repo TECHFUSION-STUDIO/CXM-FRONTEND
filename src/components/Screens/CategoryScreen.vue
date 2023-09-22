@@ -1,11 +1,19 @@
 <template>
   <div>
+
+     <div class="bg-white shadow shadow-sm mt-1 p-2">
+      <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
+        Showing Category <i>for project id BMRC-9877</i>
+      </nav>
+    </div>
+
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
           <button
             class="btn btn-primary mt-2"
-            @click="this.$router.push('/createcategory')"
+            @click="this.$router.push('/createcategory')"             style="background-color: #0262b9"
+
           >
             Create a Category
           </button>
@@ -18,7 +26,8 @@
               placeholder="Search Category"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary"             style="background-color: #0262b9"
+>
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
@@ -38,10 +47,10 @@
           <tbody>
             <tr v-for="item in categoryList" :key="item.id">
               <td style="width: 40%">
-                <span
+                <a
                   id="feedbackTitle"
                   @click="this.$router.push('/categorydetail/' + item.id)"
-                  >{{ item.categoryName }}</span
+                  >{{ item.categoryName }}</a
                 >
               </td>
               <td class="text-center">

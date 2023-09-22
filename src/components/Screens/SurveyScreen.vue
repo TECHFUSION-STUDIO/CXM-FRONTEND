@@ -1,10 +1,18 @@
 <template>
   <div>
+    <div class="bg-white shadow shadow-sm mt-1 p-2">
+      <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
+        Showing Surveys <i>for project id BMRC-9877</i>
+      </nav>
+    </div>
+
+
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
           <button
             class="btn btn-primary mt-2"
+            style="background-color: #0262b9"
             @click="this.$router.push('/createsurveys')"
           >
             Create a Survey
@@ -18,7 +26,7 @@
               placeholder="Search Services"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary" style="background-color: #0262b9">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
@@ -40,10 +48,10 @@
           <tbody>
             <tr v-for="item in surveyFormList" :key="item.id">
               <td style="width: 40%">
-                <span
+                <a
                   id="feedbackTitle"
                   @click="this.$router.push('/surveys/' + item.id)"
-                  >{{ item.surveyFormName }}</span
+                  >{{ item.surveyFormName }}</a
                 >
               </td>
               <td>

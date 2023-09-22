@@ -3,7 +3,13 @@
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
-          <li class="breadcrumb-item"><a href="#">Loggers </a></li>
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
+
+          <li class="breadcrumb-item">
+            <a @click="this.$router.push('/logger')">Loggers </a>
+          </li>
 
           <li class="breadcrumb-item active" aria-current="page">Logger Detail</li>
         </ol>

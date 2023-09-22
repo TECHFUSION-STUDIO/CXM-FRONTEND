@@ -44,7 +44,8 @@
         <div class="col-md-3">
           <button
             class="btn btn-primary mt-2"
-            @click="this.$router.push('/createmember')"
+            @click="this.$router.push('/createmember')"             style="background-color: #0262b9"
+
           >
             Create Member
           </button>
@@ -57,7 +58,7 @@
               placeholder="Search Tag"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary" style="background-color: #0262b9">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
@@ -79,10 +80,10 @@
         <tbody class="table-group-divider">
           <tr v-for="item in memberList" :key="item.id">
             <td>
-              <span
+              <a
                 id="feedbackTitle"
                 @click="this.$router.push('/memberdetail/' + item.id)"
-                >{{ item.teamMemberEmail }}</span
+                >{{ item.teamMemberEmail }}</a
               >
             </td>
             <td>{{ item.teamMemberName }}</td>

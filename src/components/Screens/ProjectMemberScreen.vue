@@ -47,7 +47,8 @@
           placeholder="Search Services"
           aria-label="Search"
         />
-        <button class="btn btn-success">
+        <button class="btn btn-primary"             style="background-color: #0262b9"
+>
           <i class="fa-brands fa-searchengin"></i>
         </button>
       </div>
@@ -66,7 +67,7 @@
         <tbody class="table-group-divider">
           <tr v-for="item in memberList" :key="item.id">
             <td>
-              <span id="feedbackTitle">{{ item.teamMemberEmail }}</span>
+              <a id="feedbackTitle">{{ item.teamMemberEmail }}</a>
             </td>
             <td>{{ item.teamMemberName }}</td>
 

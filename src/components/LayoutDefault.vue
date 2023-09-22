@@ -1,17 +1,54 @@
 <template>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+      <button
+        v-if="this.store.isLoggedIn && !screenShort"
+        type="button"
+        id="sidebarCollapse"
+        class="btn btn-primary"
+        @click="openDrawer ? (openDrawer = false) : (openDrawer = true)"
+      >
+        <i v-if="openDrawer" class="fa-solid fa-xmark"></i>
+
+        <i v-else class="fas fa-align-left"></i>
+      </button>
+
+      <h5 class="navbar-nav me-auto ms-3">
+        <i class="fa-solid fa-florin-sign me-2"></i> FeedArc
+      </h5>
+      <div class="d-flex" role="search">
+        <div class="w-100">
+          <model-select
+            :options="options"
+            v-model="item"
+            placeholder="Select a Project"
+            @searchchange="printSearchText"
+            class="form-control border border-2 border-info"
+          >
+          </model-select>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
+    <div class="ms-auto text-white p-1">
+      <span class="me-2">MY PROFILE</span> |
+      <span class="me-2 ms-2">SUPPORT</span>
+    </div>
+  </div>
   <div class="wrapper bg-light">
     <!-- Sidebar  -->
     <nav
       v-if="this.store.isLoggedIn"
       id="sidebar"
       :class="openDrawer ? 'active' : ''"
-      style="overflow-y: auto; height: 100vh; background-color: rgb(79, 70, 229)"
+      style="overflow-y: auto; height: 100vh; background-color: #dee2e6"
     >
-      <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
+      <!-- <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
         CXM by TFS (Beta)
-      </div>
+      </div> -->
 
-      <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
+      <!-- <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
         <model-select
           :options="options"
           v-model="item"
@@ -20,14 +57,14 @@
           class="form-control border border-2 border-info"
         >
         </model-select>
-      </div>
+      </div> -->
 
       <ul class="list-group mt-1 border rounded-0 border-0">
         <li
           :class="
             selectedTab == 1
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1 '
           "
           @click="
             selectedTab = 1;
@@ -42,8 +79,8 @@
         <li
           :class="
             selectedTab == 2
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
           "
           @click="
             selectedTab = 2;
@@ -61,8 +98,8 @@
         <li
           :class="
             selectedTab == 3
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
           "
           @click="
             selectedTab = 3;
@@ -80,8 +117,8 @@
         <li
           :class="
             selectedTab == 5
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
           "
           @click="
             selectedTab = 5;
@@ -98,8 +135,8 @@
         <li
           :class="
             selectedTab == 4
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
           "
           @click="
             selectedTab = 4;
@@ -117,8 +154,8 @@
         <li
           :class="
             selectedTab == 6
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
           "
           @click="
             selectedTab = 6;
@@ -134,8 +171,8 @@
         <li
           :class="
             selectedTab == 7
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start hovered mt-1'
           "
           @click="
             selectedTab = 7;
@@ -150,12 +187,13 @@
           </div>
         </li>
 
-        <hr />
+        <hr style="color: black" />
+
         <li
           :class="
             selectedTab == 8
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
           "
           @click="
             selectedTab = 8;
@@ -163,7 +201,7 @@
           "
           style="cursor: default"
         >
-          <div class="ms-2 me-auto">
+          <div class="me-auto w-100">
             <div class="fw-bold">
               <i class="fa-solid fa-people-group me-2"></i>General Members
             </div>
@@ -173,8 +211,8 @@
         <li
           :class="
             selectedTab == 10
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start border border-0 hovered mt-1'
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start   hovered mt-1'
           "
           @click="
             selectedTab = 10;
@@ -339,7 +377,7 @@
 
     <!-- Page Content  -->
     <div id="content" style="overflow-y: scroll; height: 100vh">
-      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <button
             v-if="this.store.isLoggedIn && !screenShort"
@@ -370,7 +408,7 @@
             </button>
           </div>
         </div>
-      </nav>
+      </nav> -->
       <div>
         <div class="p-2">
           <router-view></router-view>
@@ -399,7 +437,7 @@ export default {
       options: [
         { value: "91", text: "aa" + " - " + "1" },
 
-        { value: "24", text: "more a" + " - " + "9" },
+        { value: "24", text: "BIKANERI BHATERWALI SEVRICES" + " - " + "9" },
       ],
       item: {},
       searchText: "",
@@ -532,18 +570,21 @@ export default {
 } */
 
 .hovered {
-  background-color: rgb(79, 70, 229);
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0);
+  border-width: 0px;
+  color: #000;
 }
 
 .hovered:hover {
-  background-color: #fff;
-  color: rgb(79, 70, 229);
+  /* background-color: #e0f3ff; */
+  color: #0262b9;
 }
 
 .hovered-active {
-  background-color: #2d3b5e;
-  color: #fff;
+  background-color: #e0f3ff;
+  color: #0262b9;
+  border-left-color: #0262b9;
+  border-left-width: 4px;
   z-index: 3;
 }
 
@@ -556,7 +597,7 @@ export default {
   /* padding: 10px; */
   min-height: 100vh;
   transition: all 0.3s;
-  background-color: #ece8e8;
+  background-color: #edf0f2;
 }
 
 .dropdown-menu-wide {

@@ -1,9 +1,19 @@
 <template>
   <div>
+    <div class="bg-white shadow shadow-sm mt-1 p-2">
+      <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
+        Showing Boards <i>for project id BMRC-9877</i>
+      </nav>
+    </div>
+
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <button class="btn btn-primary mt-2" @click="this.$router.push('/createboard')">
+          <button
+            class="btn btn-primary mt-2"
+            @click="this.$router.push('/createboard')"
+            style="background-color: #0262b9"
+          >
             Create a Board
           </button>
         </div>
@@ -15,7 +25,7 @@
               placeholder="Search Board"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary" style="background-color: #0262b9">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
@@ -35,10 +45,10 @@
           <tbody>
             <tr v-for="item in boardList" :key="item.id">
               <td style="width: 40%">
-                <span
+                <a
                   id="feedbackTitle"
                   @click="this.$router.push('/boarddetail/' + item.id)"
-                  >{{ item.boardName }}</span
+                  >{{ item.boardName }}</a
                 >
               </td>
               <td>{{ item.boardDescription }}</td>

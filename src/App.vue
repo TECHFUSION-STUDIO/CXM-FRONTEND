@@ -8,12 +8,16 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss">
 /* #feedbackTitle:hover {
   color: dodgerblue;
   text-decoration: underline;
   cursor: pointer;
 } */
+
+a {
+  cursor: pointer;
+}
 
 .zoombadge:hover {
   transform: scale(

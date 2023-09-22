@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="bg-white shadow shadow-sm mt-1 p-2">
+      <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
+        Showing Loggers <i>for project id BMRC-9877</i>
+      </nav>
+    </div>
+
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3"></div>
@@ -11,7 +17,8 @@
               placeholder="Search Category"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary"             style="background-color: #0262b9"
+>
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
@@ -30,12 +37,13 @@
           </thead>
           <tbody>
             <tr v-for="item in loggerList" :key="item.id">
-              <td
-                id="feedbackTitle"
-                @click="this.$router.push('/loggerdetail/' + item.id)"
-                style="width: 40%"
-              >
-                {{ item.loggerName }}
+              <td style="width: 40%">
+                <a
+                  id="feedbackTitle"
+                  @click="this.$router.push('/loggerdetail/' + item.id)"
+                >
+                  {{ item.loggerName }}</a
+                >
               </td>
               <td>{{ item.loggerEmail }}</td>
               <td>{{ item.loggerContact }}</td>
