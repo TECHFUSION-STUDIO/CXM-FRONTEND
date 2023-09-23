@@ -3,12 +3,39 @@
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
           <li class="breadcrumb-item">
-            <a href="#" @click="this.$router.push('/surveys/')">Survey </a>
+            <a @click="this.$router.push('/surveys/')">Survey </a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Survey Name</li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Showing Survey Detail <i> for {{ surveyDetail.surveyFormName }} </i>
+          </li>
         </ol>
       </nav>
+    </div>
+
+    <div class="bg-white shadow shadow-sm mt-3 p-2">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-muted">Survey Id : {{ surveyDetail.id }}</p>
+          <h5>{{ surveyDetail.surveyFormName }}</h5>
+
+          <div class="row">
+            <div class="col-auto">
+              <p>Status : {{ surveyDetail.surveyFormStatus }}</p>
+            </div>
+            <div class="col-auto">
+              <p>Added on : {{ surveyDetail.addedDateTime }}</p>
+            </div>
+          </div>
+
+          <p>
+            {{ surveyDetail.surveyFormDescription }}
+          </p>
+        </div>
+      </div>
     </div>
 
     <div>
@@ -16,78 +43,34 @@
         <div class="row">
           <div class="col">
             <button
-              class="btn btn-primary w-100"
+              class="btn btn-outline-primary w-100"
               @click="this.$router.push('/surveys/' + id)"
             >
-              Survey Detail
+              Analytics
             </button>
           </div>
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/raw')"
+              @click="this.$router.push('/surveys/' + id+'/question')"
             >
-              Raw Feedback Screen
+              Question
+            </button>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-outline-primary w-100"
+              @click="this.$router.push('/surveys/' + id + '/responses')"
+            >
+              Responses
             </button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm p-3">
-      <div class="d-flex mb-2">
-        <div class="me-auto">
-          <h6>Survey Questions</h6>
-        </div>
-        <!-- <div class="p-2">Flex item</div> -->
-        <div>
-          <button
-            class="btn btn-sm btn-primary"
-            @click="this.$router.push('/surveys/' + id + '/createquestion')"
-          >
-            Add Question
-          </button>
-        </div>
-      </div>
-
-      <div class="table-responsive-md mt-2">
-        <table class="table table-bordered table-hover mt-4 w-100">
-          <thead>
-            <tr class="bg-light">
-              <td style="width: 40%">Question</td>
-              <td>Type</td>
-              <td>Category</td>
-              <td>Mandatory</td>
-              <td>Status</td>
-              <td>Created Time</td>
-              <td>Last Updated Time</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in surveyFormQuestionDetail" :key="item.id">
-              <td>{{ item.surveyQuestion }}</td>
-              <td>{{ item.surveyQuestionType }}</td>
-              <td>{{ item.surveyQuestionCategory }}</td>
-              <td>{{ item.surveyQuestionRequired }}</td>
-              <td>{{ item.surveyQuestionStatus }}</td>
-              <td>{{ item.addedDateTime }}</td>
-              <td>{{ item.lastModifiedDateTime }}</td>
-              <td>
-                <button
-                  class="btn btn-primary btn-sm me-1"
-                  @click="
-                    this.$router.push('/surveys/' + id + '/editquestion/' + item.id)
-                  "
-                >
-                  Edit
-                </button>
-                <!-- <button class="btn btn-danger btn-sm">Delete</button> -->
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="bg-white shadow shadow-sm p-3 mt-2">
+      <router-view></router-view>
     </div>
 
     <div class="text-center mt-3 mb-3">
@@ -111,14 +94,26 @@ export default {
     return {
       id: "",
       surveyFormQuestionDetail: {},
+      surveyDetail: {},
     };
   },
   mounted() {
     this.id = this.$route.params.surveyId;
+    this.fetchSurveyDetail();
     this.fetchSurveyQuestionDetail();
   },
 
   methods: {
+    fetchSurveyDetail() {
+      axiosConn
+        .get("/getsurveyformbyid?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .then((res) => {
+          this.surveyDetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     fetchSurveyQuestionDetail() {
       axiosConn
         .get("/getallsurveyquestion?businessId=1&projectId=1&surveyFormId=" + this.id)

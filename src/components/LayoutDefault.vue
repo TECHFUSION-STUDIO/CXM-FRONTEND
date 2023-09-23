@@ -31,9 +31,9 @@
     </div>
   </nav>
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
-    <div class="ms-auto text-white p-1">
-      <span class="me-2">MY PROFILE</span> |
-      <span class="me-2 ms-2">SUPPORT</span>
+    <div class="ms-auto text-white  p-1" style="font-size: 14px">
+      <span class="me-2" style="cursor: pointer">MY PROFILE</span> |
+      <span class="me-2 ms-2" style="cursor: pointer">SUPPORT</span>
     </div>
   </div>
   <div class="wrapper bg-light">

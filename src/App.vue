@@ -8,7 +8,7 @@
 export default {};
 </script>
 
-<style lang="scss">
+<style lang="css">
 /* #feedbackTitle:hover {
   color: dodgerblue;
   text-decoration: underline;

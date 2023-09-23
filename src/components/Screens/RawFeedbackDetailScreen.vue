@@ -3,11 +3,14 @@
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
-          <li class="breadcrumb-item"><a href="#">Survey </a></li>
-          <li class="breadcrumb-item"><a href="#">Survey Name</a></li>
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
+          <li class="breadcrumb-item"><a @click="this.$router.push('/surveys/')">Survey </a></li>
+          <li class="breadcrumb-item"><a @click="this.$router.push('/surveys/')">Survey Name</a></li>
 
-          <li class="breadcrumb-item"><a href="#">Raw Feedback</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Feedback Detail</li>
+          <li class="breadcrumb-item"><a @click="this.$router.push('/surveys/')">Feedback</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Showing Feedback Detail <i>for feedback id  </i></li>
         </ol>
       </nav>
     </div>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="bg-white shadow shadow-sm p-3">
       <div class="d-flex mb-2">
         <div class="me-auto">
           <h6>Survey Questions</h6>
@@ -36,10 +35,7 @@
               <td>{{ item.surveyQuestionType }}</td>
               <td>{{ item.surveyQuestionCategory }}</td>
               <td>{{ item.surveyQuestionRequired }}</td>
-              <td>
-                <!-- {{ item.surveyQuestionStatus }} -->
-                <span class="badge text-bg-success">{{ item.surveyQuestionStatus }}</span>
-              </td>
+              <td>{{ item.surveyQuestionStatus }}</td>
               <td>{{ item.addedDateTime }}</td>
               <td>{{ item.lastModifiedDateTime }}</td>
               <td>
@@ -58,7 +54,6 @@
         </table>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

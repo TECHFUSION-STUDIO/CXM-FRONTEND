@@ -280,6 +280,6 @@ export default {
 
 <style scoped>
 .bkgnd {
-  background-image: url("../assets/loginimage.jpg");
+  background-image: url("../assets/logo.png");
 }
 </style>

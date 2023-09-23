@@ -37,13 +37,31 @@ const routes = [
         path: '/surveys/:surveyId',
         name: 'surveysdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyDetailScreen.vue'),
+        children:[
+          {
+            path: '/surveys/:surveyId/',
+            name: 'surveydetails',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SuveyAnalyticsScreen.vue'),
+          },
+          {
+            path: '/surveys/:surveyId/question',
+            name: 'surveyquestion',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyQuestionScreen.vue'),
+          },
+          {
+            path: '/surveys/:surveyId/responses',
+            name: 'surveyresponses',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
+          },
+        
+        ]
       },
 
-      {
-        path: '/surveys/:surveyId/raw',
-        name: 'rawfeedbackscreen',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
-      },
+      // {
+      //   path: '/surveys/:surveyId/raw',
+      //   name: 'rawfeedbackscreen',
+      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
+      // },
       {
         path: '/surveys/:surveyId/createquestion',
         name: 'createquestion',

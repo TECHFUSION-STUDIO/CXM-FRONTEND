@@ -11,7 +11,7 @@
             <a @click="this.$router.push('/logger')">Loggers </a>
           </li>
 
-          <li class="breadcrumb-item active" aria-current="page">Logger Detail</li>
+          <li class="breadcrumb-item active" aria-current="page">Showing Logger Detail for<i> Logger id {{ loggerDetail.id }}</i></li>
         </ol>
       </nav>
     </div>
