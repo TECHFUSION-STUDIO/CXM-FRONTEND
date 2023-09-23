@@ -527,7 +527,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+/* @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"; */
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -546,8 +546,8 @@ export default {
   max-width: 250px;
   color: #fff;
   transition: all 0.3s;
-  padding-left: 5px;
-  padding-right: 5px;
+  /* padding-left: 5px;
+  padding-right: 5px; */
   padding-bottom: 5px;
   padding-top: 0px;
 }

@@ -40,34 +40,7 @@
             ></textarea>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Question Type</label>
-            <select
-              id="categoryStatus"
-              class="form-select"
-              v-model="inpSurveyQuestionType"
-            >
-              <option>Active</option>
-              <option>Inactive</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Question Category</label>
-            <select
-              id="categoryStatus"
-              class="form-select"
-              v-model="inpSurveyQuestionCategory"
-            >
-              <option value="NPS">NPS</option>
-              <option value="5 Star">5 Star</option>
-              <option value="Questionaire">Questionaire</option>
-              <option value="Voting">Voting</option>
-            </select>
-          </div>
-        </div>
+
         <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Required</label>
@@ -94,6 +67,40 @@
             </select>
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Question Category</label>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="inpSurveyQuestionCategory"
+            >
+              <option value="NPS">NPS</option>
+              <option value="Rating">Rating</option>
+              <option value="Questionaire">Questionaire</option>
+              <option value="Voting">Voting</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Question Type</label>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="inpSurveyQuestionType"
+            >
+              <option value="inputtext">Input Text</option>
+              <option value="inputparagraph">Input Paragraph</option>
+              <option value="checkbox">Multiple Choice</option>
+              <option value="radio">Single Choice</option>
+              <option value="dropdown">Dropdown</option>
+            </select>
+          </div>
+        </div>
+
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>

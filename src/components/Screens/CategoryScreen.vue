@@ -40,7 +40,7 @@
             <tr class="bg-light">
               <td style="width: 40%">Category Name</td>
               <td class="text-center">Status</td>
-              <td class="text-center">Tot Usage</td>
+              <td class="text-center">Tot usage</td>
               <td class="text-end">Added on</td>
             </tr>
           </thead>
@@ -59,7 +59,7 @@
                 <span class="badge text-bg-success">{{ item.categoryStatus }}</span>
               </td>
 
-              <td class="text-center">vds</td>
+              <td class="text-center">123</td>
               <td class="text-end">{{ item.addedDateTime }}</td>
             </tr>
           </tbody>

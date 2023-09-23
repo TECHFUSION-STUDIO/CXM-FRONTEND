@@ -21,7 +21,8 @@
               <div class="text-muted">Category Id : {{ categoryDetail.id }}</div>
               <div class="ms-auto">
                 <button
-                  class="btn btn-primary btn-sm"
+                  class="btn btn-primary btn-sm"   style="background-color: #0262b9"
+
                   @click="this.$router.push('/editcategory/' + id)"
                 >
                   Edit

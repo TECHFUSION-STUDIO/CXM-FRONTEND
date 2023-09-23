@@ -57,7 +57,7 @@
                 <!-- {{ item.tagStatus }} -->
                 <span class="badge text-bg-success">{{ item.tagStatus }}</span>
               </td>
-              <td>vds</td>
+              <td>215</td>
               <td>{{ item.addedDateTime }}</td>
             </tr>
           </tbody>

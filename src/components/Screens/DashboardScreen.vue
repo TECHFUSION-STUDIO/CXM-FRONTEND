@@ -8,6 +8,12 @@
 <script>
 export default {
   name: "DashboardScreen",
+  data(){
+    return{
+      mouseMovement:''
+    }
+  },
+
 
 };
 </script>
