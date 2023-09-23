@@ -84,7 +84,7 @@
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" v-if="inpSurveyQuestionCategory == 'Questionaire'">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Type</label>
             <select
@@ -92,14 +92,60 @@
               class="form-select"
               v-model="inpSurveyQuestionType"
             >
-              <option value="inputtext">Input Text</option>
-              <option value="inputparagraph">Input Paragraph</option>
-              <option value="checkbox">Multiple Choice</option>
-              <option value="radio">Single Choice</option>
-              <option value="dropdown">Dropdown</option>
+              <option value="Input Text">Input Text</option>
+              <option value="Input Paragraph">Input Paragraph</option>
+              <option value="Multiple Choice">Multiple Choice</option>
+              <option value="Single Choice">Single Choice</option>
+              <option value="Dropdown">Dropdown</option>
             </select>
           </div>
         </div>
+
+        <div
+          class="col-md-6"
+          v-if="
+            inpSurveyQuestionCategory == 'Questionaire' &&
+            (inpSurveyQuestionType == 'Multiple Choice' ||
+              inpSurveyQuestionType == 'Single Choice' ||
+              inpSurveyQuestionType == 'Dropdown')
+          "
+        >
+          <div class="mb-3">
+            
+            <label for="categoryName" class="form-label"
+              >Enter the number of Options in {{ inpSurveyQuestionType }}
+            </label>
+            <input
+              class="form-control"
+              id="categoryName"
+              type="number"
+              v-model="inpSurveyQuestionAnswerTotOptions"
+            />
+          </div>
+        </div>
+
+        <template
+          v-if="
+            inpSurveyQuestionCategory == 'Questionaire' &&
+            (inpSurveyQuestionType == 'Multiple Choice' ||
+              inpSurveyQuestionType == 'Single Choice' ||
+              inpSurveyQuestionType == 'Dropdown') && inpSurveyQuestionAnswerTotOptions>0
+          "
+        >
+        <label for="categoryName" class="form-label"
+              >Enter the  Options below
+            </label>
+          <div
+            class="col-md-12"
+            v-for="item in inpSurveyQuestionAnswerTotOptions"
+            :key="item"
+          >
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">{{ item }}</span>
+              <input type="text" class="form-control" :placeholder="'Enter option ' +item" @blur="(e)=>addOptions(e, item)" />
+            </div>
+          </div>
+        </template>
 
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
@@ -108,7 +154,7 @@
               class="btn btn-outline-success m-2 w-25"
               @click="createSurveyQuestion()"
             >
-              Update
+              Create
             </button>
           </div>
         </div>
@@ -132,6 +178,11 @@ export default {
       inpSurveyQuestionCategory: "",
       inpSurveyQuestionRequired: "",
 
+      //
+
+      inpSurveyQuestionAnswerTotOptions: 0,
+      inpSurveyQuestionAnswerOptionsArray: [],
+
       axiosConn,
     };
   },
@@ -139,6 +190,12 @@ export default {
     this.id = this.$route.params.surveyId;
   },
   methods: {
+    addOptions(e, index){
+      if(e.target.value != null ){
+        this.inpSurveyQuestionAnswerOptionsArray[index-1] = (e.target.value);
+        console.log(this.inpSurveyQuestionAnswerOptionsArray);
+      }
+    },
     createSurveyQuestion() {
       axiosConn
         .post("/createsurveyquestion", {
@@ -150,6 +207,8 @@ export default {
           surveyQuestionDesc: this.inpSurveyQuestionDesc,
           surveyQuestionType: this.inpSurveyQuestionType,
           surveyQuestionCategory: this.inpSurveyQuestionCategory,
+          optionList: this.inpSurveyQuestionAnswerOptionsArray,
+          surveyQuestionTotalOption: this.inpSurveyQuestionAnswerTotOptions,
           lastModifiedDateTime: "2023-06-24T10:57:19.485Z",
           addedDateTime: "2023-06-24T10:57:19.485Z",
           surveyQuestionRequired: this.inpSurveyQuestionRequired,

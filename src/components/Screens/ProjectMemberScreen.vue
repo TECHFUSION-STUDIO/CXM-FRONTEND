@@ -5,7 +5,6 @@
         Showing Project Members <i>for project id BMRC-9877</i>
       </nav>
     </div>
-
     <!-- <h4>Welcome to Memeber Screen</h4> -->
     <div class="p-2 bg-white shadow shadow-sm mt-2" v-if="false">
       <button class="btn btn-success mt-2" @click="this.$router.push('/createfeedback')">
@@ -104,6 +103,8 @@ export default {
   },
   mounted() {
     this.fetchAllMember();
+
+    
   },
   methods: {
     fetchAllMember() {
@@ -121,4 +122,5 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+</style>

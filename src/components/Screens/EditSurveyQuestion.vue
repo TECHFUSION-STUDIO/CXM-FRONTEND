@@ -41,34 +41,7 @@
             ></textarea>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Question Type</label>
-            <select
-              id="categoryStatus"
-              class="form-select"
-              v-model="surveyQuestionDetail.surveyQuestionType"
-            >
-              <option>Active</option>
-              <option>Inactive</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Question Category</label>
-            <select
-              id="categoryStatus"
-              class="form-select"
-              v-model="surveyQuestionDetail.surveyQuestionCategory"
-            >
-              <option value="NPS">NPS</option>
-              <option value="5 Star">5 Star</option>
-              <option value="Questionaire">Questionaire</option>
-              <option value="Voting">Voting</option>
-            </select>
-          </div>
-        </div>
+
         <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Required</label>
@@ -95,6 +68,94 @@
             </select>
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Question Category</label>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyQuestionDetail.surveyQuestionCategory"
+            >
+              <option value="NPS">NPS</option>
+              <option value="Rating">Rating</option>
+              <option value="Questionaire">Questionaire</option>
+              <option value="Voting">Voting</option>
+            </select>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6"
+          v-if="surveyQuestionDetail.surveyQuestionCategory == 'Questionaire'"
+        >
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Question Type</label>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyQuestionDetail.surveyQuestionType"
+            >
+              <option value="Input Text">Input Text</option>
+              <option value="Input Paragraph">Input Paragraph</option>
+              <option value="Multiple Choice">Multiple Choice</option>
+              <option value="Single Choice">Single Choice</option>
+              <option value="Dropdown">Dropdown</option>
+            </select>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6"
+          v-if="
+            surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
+            (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
+              surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
+              surveyQuestionDetail.surveyQuestionType == 'Dropdown')
+          "
+        >
+          <div class="mb-3">
+            <label for="categoryName" class="form-label"
+              >Enter the number of Options in
+              {{ surveyQuestionDetail.surveyQuestionType }}
+            </label>
+            <input
+              class="form-control"
+              id="categoryName"
+              type="number"
+              v-model="surveyQuestionDetail.surveyQuestionTotalOption"
+            />
+          </div>
+        </div>
+
+        <template
+          v-if="
+            surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
+            (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
+              surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
+              surveyQuestionDetail.surveyQuestionType == 'Dropdown') &&
+            surveyQuestionDetail.surveyQuestionTotalOption > 0
+          "
+        >
+          <label for="categoryName" class="form-label">Enter the Options below </label>
+          <div
+            class="col-md-12"
+            v-for="item in surveyQuestionDetail.surveyQuestionTotalOption"
+            :key="item"
+          >
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">{{ item }}</span>
+              <input
+                type="text"
+                class="form-control"
+                v-model="inpSurveyQuestionAnswerOptionsArray[item - 1]"
+                :placeholder="'Enter option ' + item"
+                @blur="(e) => addOptions(e, item)"
+              />
+            </div>
+          </div>
+        </template>
+
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
@@ -122,6 +183,7 @@ export default {
       id: "",
       surveyId: "",
       surveyQuestionDetail: {},
+      inpSurveyQuestionAnswerOptionsArray: [],
       axiosConn,
     };
   },
@@ -132,6 +194,12 @@ export default {
     this.fetchSurveyQuestionDetail();
   },
   methods: {
+    addOptions(e, index) {
+      if (e.target.value != null) {
+        this.inpSurveyQuestionAnswerOptionsArray[index - 1] = e.target.value;
+        console.log(this.inpSurveyQuestionAnswerOptionsArray);
+      }
+    },
     fetchSurveyQuestionDetail() {
       axiosConn
         .get(
@@ -140,12 +208,28 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.surveyQuestionDetail = res.data;
+          this.inpSurveyQuestionAnswerOptionsArray = res.data.surveyQuestionOptions.map(
+            (a) => a.option
+          );
         })
         .catch((err) => {
           console.log(err);
         });
     },
     updateSurveyQuestionDetail() {
+      if (
+        this.inpSurveyQuestionAnswerOptionsArray.length >
+        this.surveyQuestionDetail.surveyQuestionTotalOption
+      ) {
+        this.inpSurveyQuestionAnswerOptionsArray.splice(
+          this.surveyQuestionDetail.surveyQuestionTotalOption,
+          this.inpSurveyQuestionAnswerOptionsArray.length -
+            this.surveyQuestionDetail.surveyQuestionTotalOption
+        );
+      }
+      this.surveyQuestionDetail.optionList = this.inpSurveyQuestionAnswerOptionsArray;
+      console.log(this.surveyQuestionDetail.optionList);
+
       axiosConn
         .post("/updatesurveyquestion", this.surveyQuestionDetail)
         .then((res) => {
