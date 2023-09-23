@@ -50,11 +50,10 @@
         <input
           class="form-control"
           type="search"
-          placeholder="Search Services"
+          placeholder="Search Members"
           aria-label="Search"
         />
-        <button class="btn btn-primary"             style="background-color: #0262b9"
->
+        <button class="btn btn-primary" style="background-color: #0262b9">
           <i class="fa-brands fa-searchengin"></i>
         </button>
       </div>

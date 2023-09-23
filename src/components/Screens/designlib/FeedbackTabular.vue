@@ -67,7 +67,7 @@
                       </span>
                     </button>
                   </div>
-                  <div>
+                  <div v-if="this.calledFrom != '' && this.calledFrom != null">
                     <select class="form-select form-select-sm">
                       <option value="1">View Mode</option>
                       <option value="2">Work Mode</option>

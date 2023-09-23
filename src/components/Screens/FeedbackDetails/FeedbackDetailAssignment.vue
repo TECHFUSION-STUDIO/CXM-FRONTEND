@@ -63,13 +63,7 @@
         <input class="form-control" disabled />
       </p>
 
-      <hr />
-      <p>
-        <label for="customRange1" class="form-label">Source Type :</label>
-      </p>
-      <p>
-        <label for="customRange1" class="form-label">Source Item :</label>
-      </p>
+      
       <hr />
       <div class="row">
         <div class="col-md-4">

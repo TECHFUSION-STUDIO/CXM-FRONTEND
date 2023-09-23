@@ -220,7 +220,7 @@
           "
           style="cursor: default"
         >
-          <div class="ms-2 me-auto">
+          <div class=" me-auto">
             <div class="fw-bold">
               <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Log Out
             </div>

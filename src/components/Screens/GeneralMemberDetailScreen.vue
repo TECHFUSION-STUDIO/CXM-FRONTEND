@@ -66,14 +66,14 @@
               <model-select
                 :options="inpProjectSelected.options"
                 v-model="inpProjectSelected.item"
-                placeholder="placeholder text"
+                placeholder="Select a Project"
                 @searchchange="printSearchText"
                 class="form-control border border-2 border-info"
               >
               </model-select>
             </td>
             <td>
-              <select class="form-select" v-model="inpProjectRoleSelected">
+              <select class="form-select"  v-model="inpProjectRoleSelected">
                 <option value="Admin">Admin</option>
                 <option value="Member">Member</option>
               </select>

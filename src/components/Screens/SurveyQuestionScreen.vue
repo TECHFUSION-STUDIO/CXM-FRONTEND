@@ -7,7 +7,7 @@
         <!-- <div class="p-2">Flex item</div> -->
         <div>
           <button
-            class="btn btn-sm btn-primary"
+            class="btn btn-sm btn-primary"  style="background-color: #0262b9"
             @click="this.$router.push('/surveys/' + id + '/createquestion')"
           >
             Add Question
@@ -40,7 +40,7 @@
               <td>{{ item.lastModifiedDateTime }}</td>
               <td>
                 <button
-                  class="btn btn-primary btn-sm me-1"
+                  class="btn btn-primary btn-sm me-1"  style="background-color: #0262b9"
                   @click="
                     this.$router.push('/surveys/' + id + '/editquestion/' + item.id)
                   "

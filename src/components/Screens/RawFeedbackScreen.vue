@@ -26,13 +26,11 @@
       </div>
     </div> -->
 
-    <div class="bg-white shadow shadow-sm p-3">
       <FeedbackTabular
         :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
         feedbackType="RAW"
         :calledFrom="'RAW_SURVEY@' + id"
       />
-    </div>
   </div>
 </template>
 

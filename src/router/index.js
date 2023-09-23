@@ -68,28 +68,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),
       },
      
-      {
-        path: '/surveys/:surveyId/surveysettings/',
-        name: 'surveysettings',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySettingScreen.vue'),
-        children:[
-          {
-            path: '/surveys/:surveyId/surveysettings/question',
-            name: 'surveysettingsquestion',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyQuestionScreen.vue'),
-          },
-          {
-            path: '/surveys/:surveyId/surveysettings/integration',
-            name: 'surveysettingsintegration',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyIntegrationScreen.vue'),
-          },
-          {
-            path: '/surveys/:surveyId/surveysettings/general',
-            name: 'surveysettingsgeneral',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
-          },
-        ]
-      },
+    
     
       {
         path: '/surveys/:surveyId/editquestion/:surveyQuestionId',
