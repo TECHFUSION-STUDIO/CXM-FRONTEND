@@ -17,25 +17,32 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-2">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="text-muted">Survey Id : {{ surveyDetail.id }}</p>
-          <h5>{{ surveyDetail.surveyFormName }}</h5>
-
-          <div class="row">
-            <div class="col-auto">
-              <p>Status : {{ surveyDetail.surveyFormStatus }}</p>
-            </div>
-            <div class="col-auto">
-              <p>Added on : {{ surveyDetail.addedDateTime }}</p>
-            </div>
-          </div>
-
-          <p>
-            {{ surveyDetail.surveyFormDescription }}
-          </p>
+      <div class="d-flex mb-3">
+        <div class="text-muted">Survey Id : {{ surveyDetail.id }}</div>
+        <div class="ms-auto">
+          <button
+            class="btn btn-primary btn-sm"
+            @click="this.$router.push('/editsurvey/' + id)"
+          >
+            Edit
+          </button>
         </div>
       </div>
+
+      <h5>{{ surveyDetail.surveyFormName }}</h5>
+
+      <div class="row">
+        <div class="col-auto">
+          <p>Status : {{ surveyDetail.surveyFormStatus }}</p>
+        </div>
+        <div class="col-auto">
+          <p>Added on : {{ surveyDetail.addedDateTime }}</p>
+        </div>
+      </div>
+
+      <p>
+        {{ surveyDetail.surveyFormDescription }}
+      </p>
     </div>
 
     <div>
@@ -52,7 +59,7 @@
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id+'/question')"
+              @click="this.$router.push('/surveys/' + id + '/question')"
             >
               Question
             </button>

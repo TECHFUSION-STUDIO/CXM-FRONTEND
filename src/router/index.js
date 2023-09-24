@@ -2,10 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-        path: '/setup',
-        name: 'setup',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SetupScreen.vue'),
-      },
+    path: '/setup',
+    name: 'setup',
+    component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SetupScreen.vue'),
+  },
   {
     path: '/',
     name: 'home',
@@ -32,12 +32,18 @@ const routes = [
         name: 'createsurveys',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyScreen.vue'),
       },
-    
+
+      {
+        path: '/editsurvey/:surveyId',
+        name: 'editsurvey',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
+      },
+
       {
         path: '/surveys/:surveyId',
         name: 'surveysdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyDetailScreen.vue'),
-        children:[
+        children: [
           {
             path: '/surveys/:surveyId/',
             name: 'surveydetails',
@@ -53,7 +59,7 @@ const routes = [
             name: 'surveyresponses',
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
           },
-        
+
         ]
       },
 
@@ -67,9 +73,9 @@ const routes = [
         name: 'createquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),
       },
-     
-    
-    
+
+
+
       {
         path: '/surveys/:surveyId/editquestion/:surveyQuestionId',
         name: 'editquestion',
@@ -81,7 +87,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackDetailScreen.vue'),
       },
 
-  
+
       {
         path: '/logger',
         name: 'logger',
@@ -184,7 +190,7 @@ const routes = [
         name: 'projectmemberdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberDetailScreen.vue'),
       },
-    ] 
+    ]
   },
   {
     path: '/login',
