@@ -3,13 +3,14 @@
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
           <li class="breadcrumb-item">
-            <a href="#" @click="this.$router.push('/surveys/')">Survey </a>
+            <a @click="this.$router.push('/surveys/')">Survey </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="#" @click="this.$router.push('/surveys/' + surveyId)"
-              >Survey Detail</a
-            >
+            <a @click="this.$router.push('/surveys/' + surveyId)">Survey Detail</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">Edit Survey Question</li>
         </ol>
@@ -108,16 +109,21 @@
         <div
           class="col-md-6"
           v-if="
-            surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
-            (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
-              surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
-              surveyQuestionDetail.surveyQuestionType == 'Dropdown')
+            (surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
+              (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
+                surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
+                surveyQuestionDetail.surveyQuestionType == 'Dropdown')) ||
+            surveyQuestionDetail.surveyQuestionCategory == 'Voting'
           "
         >
           <div class="mb-3">
-            <label for="categoryName" class="form-label"
-              >Enter the number of Options in
-              {{ surveyQuestionDetail.surveyQuestionType }}
+            <label for="categoryName" class="form-label">
+              {{
+                surveyQuestionDetail.surveyQuestionCategory == "Questionaire"
+                  ? "Enter the number of options in " +
+                    surveyQuestionDetail.surveyQuestionType
+                  : "Enter the number of voting options"
+              }}
             </label>
             <input
               class="form-control"
@@ -130,10 +136,11 @@
 
         <template
           v-if="
-            surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
-            (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
-              surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
-              surveyQuestionDetail.surveyQuestionType == 'Dropdown') &&
+            ((surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
+              (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
+                surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
+                surveyQuestionDetail.surveyQuestionType == 'Dropdown')) ||
+              surveyQuestionDetail.surveyQuestionCategory == 'Voting') &&
             surveyQuestionDetail.surveyQuestionTotalOption > 0
           "
         >

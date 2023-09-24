@@ -3,11 +3,14 @@
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
           <li class="breadcrumb-item">
-            <a href="#" @click="this.$router.push('/surveys/')">Survey </a>
+            <a @click="this.$router.push('/surveys/')">Survey </a>
           </li>
           <li class="breadcrumb-item">
-            <a href="#" @click="this.$router.push('/surveys/' + id)">Survey Detail</a>
+            <a @click="this.$router.push('/surveys/' + id)">Survey Detail</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
             Create Survey Question
@@ -104,16 +107,20 @@
         <div
           class="col-md-6"
           v-if="
-            inpSurveyQuestionCategory == 'Questionaire' &&
-            (inpSurveyQuestionType == 'Multiple Choice' ||
-              inpSurveyQuestionType == 'Single Choice' ||
-              inpSurveyQuestionType == 'Dropdown')
+            (inpSurveyQuestionCategory == 'Questionaire' &&
+              (inpSurveyQuestionType == 'Multiple Choice' ||
+                inpSurveyQuestionType == 'Single Choice' ||
+                inpSurveyQuestionType == 'Dropdown')) ||
+            inpSurveyQuestionCategory == 'Voting'
           "
         >
           <div class="mb-3">
-            
             <label for="categoryName" class="form-label"
-              >Enter the number of Options in {{ inpSurveyQuestionType }}
+              >{{
+                inpSurveyQuestionCategory == "Questionaire"
+                  ? "Enter the number of options in " + inpSurveyQuestionType
+                  : "Enter the number of voting options"
+              }}
             </label>
             <input
               class="form-control"
@@ -126,15 +133,15 @@
 
         <template
           v-if="
-            inpSurveyQuestionCategory == 'Questionaire' &&
-            (inpSurveyQuestionType == 'Multiple Choice' ||
-              inpSurveyQuestionType == 'Single Choice' ||
-              inpSurveyQuestionType == 'Dropdown') && inpSurveyQuestionAnswerTotOptions>0
+            ((inpSurveyQuestionCategory == 'Questionaire' &&
+              (inpSurveyQuestionType == 'Multiple Choice' ||
+                inpSurveyQuestionType == 'Single Choice' ||
+                inpSurveyQuestionType == 'Dropdown')) ||
+              inpSurveyQuestionCategory == 'Voting') &&
+            inpSurveyQuestionAnswerTotOptions > 0
           "
         >
-        <label for="categoryName" class="form-label"
-              >Enter the  Options below
-            </label>
+          <label for="categoryName" class="form-label">Enter the Options below </label>
           <div
             class="col-md-12"
             v-for="item in inpSurveyQuestionAnswerTotOptions"
@@ -142,7 +149,12 @@
           >
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">{{ item }}</span>
-              <input type="text" class="form-control" :placeholder="'Enter option ' +item" @blur="(e)=>addOptions(e, item)" />
+              <input
+                type="text"
+                class="form-control"
+                :placeholder="'Enter option ' + item"
+                @blur="(e) => addOptions(e, item)"
+              />
             </div>
           </div>
         </template>
@@ -190,9 +202,9 @@ export default {
     this.id = this.$route.params.surveyId;
   },
   methods: {
-    addOptions(e, index){
-      if(e.target.value != null ){
-        this.inpSurveyQuestionAnswerOptionsArray[index-1] = (e.target.value);
+    addOptions(e, index) {
+      if (e.target.value != null) {
+        this.inpSurveyQuestionAnswerOptionsArray[index - 1] = e.target.value;
         console.log(this.inpSurveyQuestionAnswerOptionsArray);
       }
     },
