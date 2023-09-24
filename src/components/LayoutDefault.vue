@@ -31,7 +31,7 @@
     </div>
   </nav>
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
-    <div class="ms-auto text-white  p-1" style="font-size: 14px">
+    <div class="ms-auto text-white p-1" style="font-size: 14px">
       <span class="me-2" style="cursor: pointer">MY PROFILE</span> |
       <span class="me-2 ms-2" style="cursor: pointer">SUPPORT</span>
     </div>
@@ -220,7 +220,7 @@
           "
           style="cursor: default"
         >
-          <div class=" me-auto">
+          <div class="me-auto">
             <div class="fw-bold">
               <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Log Out
             </div>
