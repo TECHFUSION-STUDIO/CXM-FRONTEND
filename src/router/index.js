@@ -17,6 +17,13 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DashboardScreen.vue'),
       },
 
+
+      {
+        path: '/account',
+        name: 'account',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MyAccount.vue'),
+      },
+
       {
         path: '/createproject',
         name: 'createproject',
@@ -58,6 +65,11 @@ const routes = [
             path: '/surveys/:surveyId/responses',
             name: 'surveyresponses',
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
+          },
+          {
+            path: '/surveys/:surveyId/loggers',
+            name: 'surveyloggers',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyLoggerScreen.vue'),
           },
 
         ]

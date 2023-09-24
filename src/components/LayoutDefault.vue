@@ -8,9 +8,7 @@
         class="btn btn-primary"
         @click="openDrawer ? (openDrawer = false) : (openDrawer = true)"
       >
-        <i v-if="openDrawer" class="fa-solid fa-xmark"></i>
-
-        <i v-else class="fas fa-align-left"></i>
+        <i class="fas fa-align-left"></i>
       </button>
 
       <h5 class="navbar-nav me-auto ms-3">
@@ -32,7 +30,10 @@
   </nav>
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
     <div class="ms-auto text-white p-1" style="font-size: 14px">
-      <span class="me-2" style="cursor: pointer">MY PROFILE</span> |
+      <span class="me-2" style="cursor: pointer" @click="this.$router.push('/account')"
+        >MY PROFILE</span
+      >
+      |
       <span class="me-2 ms-2" style="cursor: pointer">SUPPORT</span>
     </div>
   </div>

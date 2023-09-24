@@ -1,48 +1,40 @@
 <template>
   <div>
     <div class="bg-white shadow shadow-sm p-3">
-      <p class="text-muted mb-0">Id : {{ feedbackDetails.id }}</p>
+      <p class="text-muted mb-0">Id : {{ this.FeedbackStore.feedbackDetails.id }}</p>
 
-      <h5 class="mt-1">{{ feedbackDetails.feedbackDescription }}</h5>
+      <h5 class="mt-1">{{ this.FeedbackStore.feedbackDetails.feedbackDescription }}</h5>
       <p class="text-muted">
-        Created By Anonymous via Page Name at {{ feedbackDetails.addedDateTime }}
+        Created By Anonymous via Page Name at
+        {{ this.FeedbackStore.feedbackDetails.addedDateTime }}
       </p>
 
-      <p>{{ feedbackDetails.feedbackDescription }}</p>
+      <p>{{ this.FeedbackStore.feedbackDetails.feedbackDescription }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import axiosConn from "@/axioscon";
+// import axiosConn from "@/axioscon";
+import FeedbackMixin from "../mixins/FeedbackMixin";
+import { FeedbackStore } from "../mixins/FeedbackStore";
 
 export default {
   name: "FeedbackDetail",
+  mixins: [FeedbackMixin],
+
   data() {
     return {
       id: this.$route.params.fid,
-      feedbackDetails: {},
+      FeedbackStore,
     };
   },
   mounted() {
     this.id = this.$route.params.fid;
-    this.fetchFeedbackDetail();
+    console.log(this.FeedbackStore.feedbackDetails);
+    console.log(this.FeedbackStore.testTemp);
   },
-  methods: {
-    fetchFeedbackDetail() {
-      axiosConn
-        .get(
-          "/getfeedbackdetailsbyid?businessId=1&projectId=" + 1 + "&feedbackId=" + this.id
-        )
-        .then((res) => {
-          console.log(res);
-          this.feedbackDetails = res.data.feedbackDetail;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 

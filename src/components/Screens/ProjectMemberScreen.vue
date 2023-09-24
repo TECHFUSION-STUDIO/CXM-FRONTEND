@@ -71,7 +71,11 @@
         <tbody class="table-group-divider">
           <tr v-for="item in memberList" :key="item.id">
             <td>
-              <a id="feedbackTitle">{{ item.teamMemberEmail }}</a>
+              <a
+                id="feedbackTitle"
+                @click="this.$router.push('/projectmemberdetail/' + item.id)"
+                >{{ item.teamMemberEmail }}</a
+              >
             </td>
             <td>{{ item.teamMemberName }}</td>
 

@@ -37,7 +37,7 @@
             <tr class="bg-light">
               <td style="width: 40%">Survey Name</td>
 
-              <td>Status</td>
+              <td class="text-center">Status</td>
               <td>Last Response</td>
               <td>Tot Response</td>
               <td>Added DateTime</td>
@@ -50,7 +50,7 @@
                   item.surveyFormName
                 }}</a>
               </td>
-              <td>
+              <td class="text-center">
                 <!-- {{ item.surveyFormStatus }} -->
                 <span class="badge text-bg-success">{{ item.surveyFormStatus }}</span>
               </td>

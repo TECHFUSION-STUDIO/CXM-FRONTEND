@@ -6,11 +6,9 @@
           <a @click="this.$router.go(-1)" title="Go to Previous Page"
             ><i class="fa-solid fa-arrow-left me-2"></i>
           </a>
-          <li class="breadcrumb-item"><a @click="this.$router.push('/surveys/')">Survey </a></li>
-          <li class="breadcrumb-item"><a @click="this.$router.push('/surveys/')">Survey Name</a></li>
-
-          <li class="breadcrumb-item"><a @click="this.$router.push('/surveys/')">Feedback</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Showing Feedback Detail <i>for feedback id  </i></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Showing Feedback Detail
+          </li>
         </ol>
       </nav>
     </div>
@@ -20,9 +18,9 @@
           <FeedbackDetail />
           <FeedbackDetailTag />
 
-          <FeedbackMigrate :feedbackDetails="feedbackDetails" />
+          <FeedbackMigrate />
 
-          <FeedbackDetailCollab />
+          <!-- <FeedbackDetailCollab /> -->
           <FeedbackComments />
         </div>
 
@@ -43,51 +41,38 @@
 import FeedbackDetail from "./FeedbackDetails/FeedbackDetail.vue";
 import FeedbackMigrate from "./FeedbackDetails/FeedbackMigrate.vue";
 import FeedbackComments from "./FeedbackDetails/FeedbackComments.vue";
-import FeedbackDetailCollab from "./FeedbackDetails/FeedbackDetailCollab.vue";
+// import FeedbackDetailCollab from "./FeedbackDetails/FeedbackDetailCollab.vue";
 import FeedbackDetailTag from "./FeedbackDetails/FeedbackDetailTag.vue";
 import FeedbackDetailAssignmentVue from "./FeedbackDetails/FeedbackDetailAssignment.vue";
-import axiosConn from "@/axioscon";
+// import axiosConn from "@/axioscon";
+import FeedbackMixin from "./mixins/FeedbackMixin";
 
 export default {
   name: "RawFeedbackDetailScreen",
   components: {
-    FeedbackDetailCollab,
+    // FeedbackDetailCollab,
     FeedbackDetailTag,
     FeedbackComments,
     FeedbackDetailAssignmentVue,
     FeedbackDetail,
     FeedbackMigrate,
   },
+  mixins: [FeedbackMixin],
+
   data() {
     return {
       id: this.$route.params.fid,
-      feedbackDetails: {},
     };
   },
   mounted() {
     this.id = this.$route.params.fid;
     console.log(this.id);
+  },
+  created() {
     this.fetchFeedbackDetail();
   },
 
-  methods: {
-    fetchFeedbackDetail() {
-      axiosConn
-        .get(
-          "/getfeedbackdetailsbyid?businessId=1&feedbackType=FILTERED&projectId=" +
-            1 +
-            "&feedbackId=" +
-            this.id
-        )
-        .then((res) => {
-          console.log(res);
-          this.feedbackDetails = res.data.feedbackDetail;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  },
+  methods: {},
 };
 </script>
 

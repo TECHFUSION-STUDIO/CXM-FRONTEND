@@ -10,7 +10,6 @@
         <model-select
           :options="statusSelect.options"
           v-model="statusSelect.item"
-          @searchchange="printSearchText"
           class="form-control border border-2 border-info"
         />
       </p>
@@ -20,19 +19,24 @@
           :options="assignedBoardSelect.options"
           v-model="assignedBoardSelect.item"
           placeholder="placeholder text"
-          @searchchange="printSearchText"
           class="form-control border border-2 border-info"
         />
       </p>
+      <!-- @searchchange="printSearchText1" -->
+
       <p>
         <label for="customRange1" class="form-label">Assigned to :</label>
         <model-select
           :options="assignedToSelect.options"
           v-model="assignedToSelect.item"
           placeholder="placeholder text"
-          @searchchange="printSearchText1"
           class="form-control border border-2 border-info"
         />
+      </p>
+
+      <p>
+        <label for="customRange1" class="form-label">Assigned By :</label>
+        <input type="text" class="form-control" />
       </p>
 
       <p>
@@ -41,7 +45,6 @@
           :options="categorySelect.options"
           v-model="categorySelect.item"
           placeholder="placeholder text"
-          @searchchange="printSearchText1"
           class="form-control border border-2 border-info"
         />
       </p>
@@ -63,7 +66,6 @@
         <input class="form-control" disabled />
       </p>
 
-      
       <hr />
       <div class="row">
         <div class="col-md-4">
@@ -125,13 +127,16 @@
 <script>
 import { ModelSelect } from "vue-search-select";
 import "vue-search-select/dist/VueSearchSelect.css";
-import axiosConn from "@/axioscon";
+// import axiosConn from "@/axioscon";
+import FeedbackMixin from "../mixins/FeedbackMixin";
+import { FeedbackStore } from "../mixins/FeedbackStore";
 
 export default {
   name: "FeedbackDetailAssignment",
   components: {
     ModelSelect,
   },
+  mixins: [FeedbackMixin],
   data() {
     return {
       id: this.$route.params.fid,
@@ -140,26 +145,15 @@ export default {
         item: {},
         searchText: "",
       },
+
       assignedToSelect: {
-        options: [
-          { value: "1", text: "aa" + " - " + "1" },
-          { value: "2", text: "ab" + " - " + "2" },
-          { value: "3", text: "bc" + " - " + "3" },
-          { value: "4", text: "cd" + " - " + "4" },
-          { value: "5", text: "de" + " - " + "5" },
-        ],
+        options: [],
         item: {},
         searchText: "",
       },
 
       categorySelect: {
-        options: [
-          { value: "1", text: "aa" + " - " + "1" },
-          { value: "2", text: "ab" + " - " + "2" },
-          { value: "3", text: "bc" + " - " + "3" },
-          { value: "4", text: "cd" + " - " + "4" },
-          { value: "5", text: "de" + " - " + "5" },
-        ],
+        options: [],
         item: {},
         searchText: "",
       },
@@ -175,57 +169,32 @@ export default {
         item: {},
         searchText: "",
       },
-      feedbackDetails: {},
+      FeedbackStore,
     };
   },
-  updated() {
-    console.log(this.assignedToSelect);
-  },
+
   mounted() {
     this.id = this.$route.params.fid;
-    this.fetchFeedbackDetail();
-    // this.fetchAllCategory();
-    // this.fetchAllBoards();
-  },
-  // beforeRouteUpdate(to, from, next) {
-  //   console.log("Before Route Update" + to.params.fid);
-  //   this.id = to.params.fid;
-  //   console.log(this.id);
+    // this.fetchFeedbackDetail();
+    console.log(this.FeedbackStore.feedbackDetails);
 
-  //   this.fetchAllCategory();
-  //   this.fetchAllBoards();
-  //   next();
-  // },
-  methods: {
-    fetchFeedbackDetail() {
-      axiosConn
-        .get(
-          "/getfeedbackdetailsbyid?businessId=1&feedbackType=FILTERED&projectId=" +
-            1 +
-            "&feedbackId=" +
-            this.id
-        )
-        .then((res) => {
-          console.log(res);
-          this.feedbackDetails = res.data.feedbackDetail;
-          this.categorySelect.options = res.data.allCategory.map((a) => {
-            return {
-              text: a.categoryName,
-              value: a.id,
-            };
-          });
-          this.assignedBoardSelect.options = res.data.allBoards.map((a) => {
-            return {
-              text: a.boardName,
-              value: a.id,
-            };
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
+    console.log(this.FeedbackStore.allCategory);
+    this.categorySelect.options = this.FeedbackStore.allCategory.map((a) => {
+      return {
+        text: a.categoryName,
+        value: a.id,
+      };
+    });
+
+    this.assignedBoardSelect.options = this.FeedbackStore.allBoards.map((a) => {
+      return {
+        text: a.boardName,
+        value: a.id,
+      };
+    });
   },
+  created() {},
+  methods: {},
 };
 </script>
 

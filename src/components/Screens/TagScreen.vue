@@ -33,8 +33,8 @@
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Tag Name</td>
-              <td>Status</td>
-              <td>Tot Usage</td>
+              <td class="text-center">Status</td>
+              <!-- <td>Tot Usage</td> -->
               <td>Created on</td>
             </tr>
           </thead>
@@ -48,11 +48,10 @@
                 >
               </td>
 
-              <td>
-                <!-- {{ item.tagStatus }} -->
+              <td class="text-center">
                 <span class="badge text-bg-success">{{ item.tagStatus }}</span>
               </td>
-              <td>215</td>
+              <!-- <td>215</td> -->
               <td>{{ item.addedDateTime }}</td>
             </tr>
           </tbody>

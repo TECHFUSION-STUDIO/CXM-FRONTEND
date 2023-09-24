@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="overflow-y: auto">
     <section class="bkgnd">
       <div class="p-5 m-0 text-center text-lg-start row" style="height: 100vh">
         <div class="col-lg-7 align-items-center">

@@ -26,11 +26,11 @@
       </div>
     </div> -->
 
-      <FeedbackTabular
-        :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
-        feedbackType="RAW"
-        :calledFrom="'RAW_SURVEY@' + id"
-      />
+    <FeedbackTabular
+      :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
+      feedbackType="RAW"
+      :calledFrom="'SURVEY@' + id"
+    />
   </div>
 </template>
 

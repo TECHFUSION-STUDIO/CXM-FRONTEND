@@ -45,12 +45,6 @@
                     >
                       Sort
                     </button>
-                    <!-- <button
-                      class="btn btn-info btn-sm"
-                      @click="showFilterDialog = !showFilterDialog"
-                    >
-                      Filter
-                    </button> -->
 
                     <button
                       type="button"
@@ -121,7 +115,10 @@
               <td>{{ item.addedDateTime }}</td>
               <td>{{ item.lastModified }}</td>
             </tr>
-            <tr class="bg-light" v-if="true">
+            <tr v-if="rawFeedbackList.length == 0">
+              <td class="text-center" colspan="9"><i>No Data Found</i></td>
+            </tr>
+            <tr class="bg-light" v-if="rawFeedbackList.length > 0">
               <td colspan="9">
                 <div class="d-flex">
                   <div class="me-auto">
@@ -187,7 +184,7 @@ import SortDialog from "./SortDialog.vue";
 import FilterDialog from "./FilterDialog.vue";
 export default {
   name: "FeedbackTabular",
-  props: ["id", "criteria", "feedbackType", "calledFrom"],
+  props: ["criteria", "feedbackType", "calledFrom"],
   components: {
     ModelSelect,
     SortDialog,

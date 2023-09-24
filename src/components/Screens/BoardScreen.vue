@@ -33,9 +33,9 @@
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Board Name</td>
-              <td>Description</td>
-              <td>Status</td>
-              <td>Visibility</td>
+              <!-- <td>Description</td> -->
+              <td class="text-center">Status</td>
+              <td class="text-center">Visibility</td>
             </tr>
           </thead>
           <tbody>
@@ -47,13 +47,11 @@
                   >{{ item.boardName }}</a
                 >
               </td>
-              <td>{{ item.boardDescription }}</td>
-              <td>
-                <!-- {{ item.status }} -->
+              <!-- <td>{{ item.boardDescription }}</td> -->
+              <td class="text-center">
                 <span class="badge text-bg-success">{{ item.status }}</span>
               </td>
-              <td>
-                <!-- {{ item.visibility }} -->
+              <td class="text-center">
                 <span class="badge text-bg-success">{{ item.visibility }}</span>
               </td>
             </tr>
