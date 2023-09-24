@@ -15,6 +15,14 @@ export default {};
   cursor: pointer;
 } */
 
+.btn-primary {
+  background-color: #0262b9;
+}
+
+.btn-danger {
+  background-color: #d62015;
+}
+
 a {
   cursor: pointer;
 }

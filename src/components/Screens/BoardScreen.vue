@@ -9,11 +9,7 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <button
-            class="btn btn-primary mt-2"
-            @click="this.$router.push('/createboard')"
-            style="background-color: #0262b9"
-          >
+          <button class="btn btn-primary mt-2" @click="this.$router.push('/createboard')">
             Create a Board
           </button>
         </div>
@@ -25,7 +21,7 @@
               placeholder="Search Board"
               aria-label="Search"
             />
-            <button class="btn btn-primary" style="background-color: #0262b9">
+            <button class="btn btn-primary">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>

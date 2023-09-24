@@ -1,7 +1,6 @@
 <template>
   <div>
-
-     <div class="bg-white shadow shadow-sm mt-1 p-2">
+    <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         Showing Category <i>for project id BMRC-9877</i>
       </nav>
@@ -12,8 +11,7 @@
         <div class="col-md-3">
           <button
             class="btn btn-primary mt-2"
-            @click="this.$router.push('/createcategory')"             style="background-color: #0262b9"
-
+            @click="this.$router.push('/createcategory')"
           >
             Create a Category
           </button>
@@ -26,8 +24,7 @@
               placeholder="Search Category"
               aria-label="Search"
             />
-            <button class="btn btn-primary"             style="background-color: #0262b9"
->
+            <button class="btn btn-primary">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>

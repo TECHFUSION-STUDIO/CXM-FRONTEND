@@ -52,7 +52,7 @@
           placeholder="Search Members"
           aria-label="Search"
         />
-        <button class="btn btn-primary" style="background-color: #0262b9">
+        <button class="btn btn-primary">
           <i class="fa-brands fa-searchengin"></i>
         </button>
       </div>
@@ -103,8 +103,6 @@ export default {
   },
   mounted() {
     this.fetchAllMember();
-
-    
   },
   methods: {
     fetchAllMember() {
@@ -122,5 +120,4 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
-</style>
+<style lang="css" scoped></style>
