@@ -44,21 +44,6 @@
       :class="openDrawer ? 'active' : ''"
       style="overflow-y: auto; height: 100vh; background-color: #dee2e6"
     >
-      <!-- <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
-        CXM by TFS (Beta)
-      </div> -->
-
-      <!-- <div class="w-100 p-2 border border-top-0 border-start-0 border-end-0">
-        <model-select
-          :options="options"
-          v-model="item"
-          placeholder="Select a Project"
-          @searchchange="printSearchText"
-          class="form-control border border-2 border-info"
-        >
-        </model-select>
-      </div> -->
-
       <ul class="list-group mt-1 border rounded-0 border-0">
         <li
           :class="
@@ -376,39 +361,7 @@
     </nav>
 
     <!-- Page Content  -->
-    <div id="content" style="overflow-y: scroll; height: 100vh">
-      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-          <button
-            v-if="this.store.isLoggedIn && !screenShort"
-            type="button"
-            id="sidebarCollapse"
-            class="btn btn-info"
-            @click="openDrawer ? (openDrawer = false) : (openDrawer = true)"
-          >
-            <i v-if="openDrawer" class="fa-solid fa-xmark"></i>
-
-            <i v-else class="fas fa-align-left"></i>
-          </button>
-
-          <button
-            v-if="this.store.isLoggedIn && screenShort"
-            type="button"
-            id="sidebarCollapse"
-            class="btn btn-info"
-            @click="openDrawer ? (openDrawer = false) : (openDrawer = true)"
-          >
-            <i v-if="!openDrawer" class="fas fa-align-left"></i>
-            <i v-else class="fa-solid fa-xmark"></i>
-          </button>
-          <h5 class="navbar-nav me-auto ms-3">{{ headerTitle }}</h5>
-          <div class="d-flex" role="search">
-            <button class="btn btn-light">
-              <i class="fa-solid fa-user"></i>
-            </button>
-          </div>
-        </div>
-      </nav> -->
+    <div id="content">
       <div>
         <div class="p-2">
           <router-view></router-view>
@@ -595,7 +548,10 @@ export default {
 #content {
   width: 100%;
   /* padding: 10px; */
-  min-height: 100vh;
+  overflow-y: auto;
+
+  min-height: 89vh;
+  height: 89vh;
   transition: all 0.3s;
   background-color: #edf0f2;
 }
