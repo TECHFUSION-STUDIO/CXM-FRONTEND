@@ -26,7 +26,7 @@
               placeholder="Search Feedbacks"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>

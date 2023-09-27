@@ -183,6 +183,25 @@
           "
           @click="
             selectedTab = 8;
+            this.$router.push('/vendor');
+          "
+          style="cursor: default"
+        >
+          <div class="me-auto w-100">
+            <div class="fw-bold">
+              <i class="fa-solid fa-people-group me-2"></i>Manage Vendors
+            </div>
+          </div>
+        </li>
+
+        <li
+          :class="
+            selectedTab == 9
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+          "
+          @click="
+            selectedTab = 9;
             this.$router.push('/generalmember');
           "
           style="cursor: default"

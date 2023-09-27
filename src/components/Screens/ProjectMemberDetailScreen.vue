@@ -51,7 +51,6 @@
             >Do you want to give access to all boards ?</label
           >
           <select class="form-select" id="inputGroupSelect01" v-model="isAllBoardAccess">
-            <option selected>Choose...</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
@@ -66,6 +65,10 @@
           >
           </multi-select>
         </div>
+        <div class="">
+          <button class="btn btn-sm btn-outline-danger m-2">Reset</button>
+          <button class="btn btn-sm btn-primary m-2">Update</button>
+        </div>
       </div>
       <hr class="mt-3" />
 
@@ -77,7 +80,6 @@
             >Do you want to give access to all surveys ?</label
           >
           <select class="form-select" id="inputGroupSelect01" v-model="isAllSurveyAccess">
-            <option selected>Choose...</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
@@ -92,6 +94,10 @@
           >
           </multi-select>
         </div>
+      </div>
+      <div class="">
+        <button class="btn btn-sm btn-outline-danger m-2">Reset</button>
+        <button class="btn btn-sm btn-primary m-2">Update</button>
       </div>
     </div>
   </div>

@@ -7,6 +7,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SetupScreen.vue'),
   },
   {
+    path: '/feedbackeditormode',
+    name: 'feedbackeditormode',
+    component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FeedbackEditorMode.vue'),
+  },
+  {
     path: '/',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../components/LayoutDefault.vue'),
@@ -17,6 +22,30 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DashboardScreen.vue'),
       },
 
+      {
+        path: '/vendor',
+        name: 'vendor',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/VendorScreen.vue'),
+      },
+
+      {
+        path: '/createvendor',
+        name: 'createvendor',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateVendorScreen.vue'),
+      },
+
+      
+      {
+        path: '/editvendor/:id',
+        name: 'editvendor',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditVendorScreen.vue'),
+      },
+
+      {
+        path: '/vendordetail/:id',
+        name: 'vendordetail',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/VendorDetailScreen.vue'),
+      },
 
       {
         path: '/account',
