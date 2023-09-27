@@ -73,6 +73,19 @@
       <br />
     </div>
 
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Assign Vendor</label>
+      <model-select
+        :options="memberVendor.options"
+        v-model="memberVendor.item"
+        placeholder="Select a Vendor"
+        @searchchange="printSearchText"
+        class="form-control border border-2 border-info"
+      >
+      </model-select>
+      <br />
+    </div>
+
     <div class="text-center">
       <button class="btn btn-outline-danger m-2 w-25">Reset</button>
       <button class="btn btn-outline-success m-2 w-25" @click="createMember()">
@@ -84,9 +97,13 @@
 
 <script>
 import axioscon from "../../axioscon.js";
-
+import { ModelSelect } from "vue-search-select";
+import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "CreateMemberScreen",
+  components: {
+    ModelSelect,
+  },
   data() {
     return {
       axioscon,
@@ -97,10 +114,25 @@ export default {
       memberContact: "",
       memberEmail: "",
       memberStatus: "",
+      memberVendor: {
+        options: [
+          { text: "MMT PVT LTS", value: "MMT PVT LTS", id: 1 },
+          {
+            text: "RAJIV SERVBICE CLEASING PVT LTD",
+            value: "RAJIV SERVBICE CLEASING PVT LTD",
+            id: 2,
+          },
+        ],
+        item: {},
+        searchText: "",
+      },
     };
   },
 
   methods: {
+    printSearchText(searchText) {
+      this.memberVendor.searchText = searchText;
+    },
     createMember() {
       axioscon
         .post("/createteammember", {
