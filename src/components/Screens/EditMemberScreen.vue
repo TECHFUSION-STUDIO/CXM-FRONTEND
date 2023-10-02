@@ -76,6 +76,19 @@
       <br />
     </div>
 
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Assign Vendor</label>
+      <model-select
+        :options="memberVendor.options"
+        v-model="memberVendor.item"
+        placeholder="Select a Vendor"
+        @searchchange="printSearchText"
+        class="form-control border border-2 border-info"
+      >
+      </model-select>
+      <br />
+    </div>
+
     <div class="text-center">
       <button class="btn btn-outline-danger m-2 w-25">Reset</button>
       <button class="btn btn-outline-success m-2 w-25" @click="updateMember()">
@@ -87,22 +100,35 @@
 
 <script>
 import axioscon from "../../axioscon.js";
-
+import { ModelSelect } from "vue-search-select";
+import "vue-search-select/dist/VueSearchSelect.css";
 export default {
   name: "EditMemberScreen",
+  components: {
+    ModelSelect,
+  },
   data() {
     return {
       axioscon,
       memberDetail: {},
 
       id: "",
+      memberVendor: {
+        options: [],
+        item: {},
+        searchText: "",
+      },
     };
   },
   mounted() {
     this.id = this.$route.params.memberId;
     this.fetchMemberDetail();
+    this.getAllVendors();
   },
   methods: {
+    printSearchText(searchText) {
+      this.memberVendor.searchText = searchText;
+    },
     fetchMemberDetail() {
       axioscon
         .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
@@ -119,6 +145,25 @@ export default {
         .post("/updateteammember", this.memberDetail)
         .then((res) => {
           console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getAllVendors() {
+      axioscon
+        .get("/getVendor?businessId=1")
+        .then((res) => {
+          console.log(res);
+
+          this.memberVendor.options = res.data.map((a) => {
+            return {
+              text: a.vendorOrgName,
+              value: a.id,
+              id: a.id,
+            };
+          });
+          console.log(this.vendorList);
         })
         .catch((err) => {
           console.log(err);

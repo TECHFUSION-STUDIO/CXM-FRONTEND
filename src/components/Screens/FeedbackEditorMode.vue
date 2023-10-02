@@ -1,29 +1,62 @@
 <template>
-  <div class="row" style="overflow-y: hidden; height: 100vh">
-    <div class="col-md-3 bg-primary">
-      <div>
-        <div class="bg-info p-1 ms-auto me-auto" role="alert">
-          <span class="badge text-bg-light m-1"
-            >Sorted {{ orderBy }} by {{ orderByAsc ? "Ascending" : "Descending" }}
-          </span>
+  <div class="container-fluid">
+    <div class="row" style="overflow-y: auto; height: 100vh">
+      <div class="col-md-3 p-0 shadow shadow-lg" style="background-color: #dee2e6">
+        <div>
+          <div class="p-1 w-100 bg-info" role="alert">
+            <span class="badge text-bg-light m-1"
+              >Sorted {{ orderBy }} by {{ orderByAsc ? "Ascending" : "Descending" }}
+            </span>
 
-          <span class="badge text-bg-light m-1"
-            >surveyId = 1
-            <i class="fa-regular fa-circle-xmark ms-1 zoombadge"></i>
-          </span>
+            <span class="badge text-bg-light m-1"
+              >surveyId = 1
+              <i class="fa-regular fa-circle-xmark ms-1 zoombadge"></i>
+            </span>
+          </div>
+        </div>
+        <div class="mt-2">
+          <p class="ms-3 mb-1"><i>Upcoming Feeds :</i></p>
+          <div class="card mt-2">
+            <p class="text-muted mb-0">Feedback Id :</p>
+            <p class="pt-0">
+              Feedback NAme<br />
+              Type: RAW Status : OPEN
+            </p>
+          </div>
+        </div>
+        <hr />
+        <div class="mt-2">
+          <p class="ms-3 mb-1"><i>Skipped Feeds :</i></p>
+          <div class="card mt-2">
+            <p class="text-muted mb-0">Feedback Id :</p>
+            <p class="pt-0">
+              Feedback NAme<br />
+              Type: RAW Status : OPEN
+            </p>
+          </div>
+        </div>
+
+        <hr />
+        <div class="mt-2">
+          <p class="ms-3 mb-1"><i>Completed Feeds :</i></p>
+          <div class="card mt-2">
+            <p class="text-muted mb-0">Feedback Id :</p>
+            <p class="pt-0">
+              Feedback NAme<br />
+              Type: RAW Status : OPEN
+            </p>
+          </div>
+        </div>
+
+        <hr />
+        <div class="mt-2">
+          <div class="row"></div>
         </div>
       </div>
-      <div class="card">
-        <p class="text-muted mb-0">Feedback Id :</p>
-        <p class="pt-0">
-          Feedback NAme<br />
-          Type: RAW Status : OPEN
-        </p>
-      </div>
-    </div>
 
-    <div class="col-md-9" style="overflow-y: scroll">
-      <div></div>
+      <div class="col-md-9 p-2" style="overflow-y: scroll">
+        <div class="alert alert-primary" role="alert">Feedback Id : 1</div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,11 +76,12 @@ export default {
   cursor: pointer;
   padding: 5px;
   margin: 15px;
-  border: 3px solid #22d2a0;
-  box-shadow: 5px -5px 0 -1px #ffffff, 5px -5px #22d2a0;
+  border: 1px solid #0262b9;
+  box-shadow: 4px -4px 0 -1px #ffffff, 4px -4px #0262b9;
   cursor: pointer;
 }
 .card:hover {
-  transform: scale(1.025);
+  transform: scale(1.01);
+  background-color: #e0f3ff;
 }
 </style>

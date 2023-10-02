@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="d-flex mb-3">
-            <div class="text-muted">Vendor Id : 1</div>
+            <div class="text-muted">Vendor Id : {{ vendorData.id }}</div>
             <div class="ms-auto">
               <button
                 class="btn btn-primary btn-sm"
@@ -32,17 +32,17 @@
               </button>
             </div>
           </div>
-          <h5>RAMESHWARAM CAFE AND RESTAURANT PRIVATE LIMITED</h5>
+          <h5>{{ vendorData.vendorOrgName }}</h5>
 
           <div class="row">
             <div class="col-auto">
-              <p>Status : A</p>
+              <p>Status : {{ vendorData.vendorStatus }}</p>
             </div>
 
             <div class="col-auto"><p>Total Feedback : 6476589</p></div>
             <div class="col-auto"><p>Last used at : 6476589</p></div>
             <div class="col-auto">
-              <p>Added on : 2023-09-28</p>
+              <p>Added on : {{ vendorData.addedDateTime }}</p>
             </div>
           </div>
           <p v-html="vendorDesc"></p>
@@ -53,13 +53,32 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
 export default {
   namme: "VendorDetailScreen",
   data() {
     return {
       id: this.$route.params.id,
       vendorDesc: "Hdibkdhihb  hlf hfol <a>nkvhnvk</a>",
+      vendorData: {},
     };
+  },
+  mounted() {
+    this.getVendors();
+  },
+  methods: {
+    getVendors() {
+      axiosConn
+        .get("/getVendor?vendorId=" + this.id)
+        .then((res) => {
+          console.log(res);
+          this.vendorData = res.data;
+          console.log(this.vendorList);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>

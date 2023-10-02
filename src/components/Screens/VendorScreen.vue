@@ -33,44 +33,29 @@
       <table class="table table-hover table-bordered mt-3">
         <thead>
           <tr class="bg-light">
-            <td>Vendor Name</td>
-            <td>Total Member</td>
-            <!-- <td>Contact</td> -->
-            <td>Total Projects</td>
+            <td>Vendor Org</td>
+            <td>Vendor Email</td>
+            <td>Vendor Status</td>
+            <td>Vendor Identification</td>
             <td>Added Date</td>
           </tr>
         </thead>
         <tbody class="table-group-divider">
-          <tr v-for="item in memberList" :key="item.id">
+          <tr v-for="item in vendorList" :key="item.id">
             <td>
               <a
                 id="feedbackTitle"
-                @click="this.$router.push('/memberdetail/' + item.id)"
-                >{{ item.teamMemberEmail }}</a
+                @click="this.$router.push('/vendordetail/' + item.id)"
+                >{{ item.vendorOrgName }}</a
               >
             </td>
-            <td>{{ item.teamMemberName }}</td>
-
-            <!-- <td>{{ item.teamMemberContact }}</td> -->
+            <td>{{ item.vendorEmail }}</td>
             <td>
-              {{ item.teamMemberRole }}
+              {{ item.vendorStatus }}
             </td>
 
+            <td>{{ item.vendorIdentification }}</td>
             <td>{{ item.addedDateTime }}</td>
-          </tr>
-
-          <tr>
-            <td>
-              <a id="feedbackTitle" @click="this.$router.push('/vendordetail/' + 1)"
-                >abc</a
-              >
-            </td>
-            <td>abc</td>
-
-            <!-- <td>{{ item.teamMemberContact }}</td> -->
-            <td>abc</td>
-
-            <td>abc</td>
           </tr>
         </tbody>
       </table>
@@ -79,9 +64,32 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
 export default {
   name: "VendorScreen",
+  data() {
+    return {
+      vendorList: [],
+    };
+  },
+  mounted() {
+    this.getAllVendors();
+  },
+  methods: {
+    getAllVendors() {
+      axiosConn
+        .get("/getVendor?businessId=1")
+        .then((res) => {
+          console.log(res);
+          this.vendorList = res.data;
+          console.log(this.vendorList);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

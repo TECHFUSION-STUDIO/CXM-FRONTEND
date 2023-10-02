@@ -115,18 +115,14 @@ export default {
       memberEmail: "",
       memberStatus: "",
       memberVendor: {
-        options: [
-          { text: "MMT PVT LTS", value: "MMT PVT LTS", id: 1 },
-          {
-            text: "RAJIV SERVBICE CLEASING PVT LTD",
-            value: "RAJIV SERVBICE CLEASING PVT LTD",
-            id: 2,
-          },
-        ],
+        options: [],
         item: {},
         searchText: "",
       },
     };
+  },
+  mounted() {
+    this.getAllVendors();
   },
 
   methods: {
@@ -151,6 +147,24 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getAllVendors() {
+      axioscon
+        .get("/getVendor?businessId=1")
+        .then((res) => {
+          console.log(res);
+
+          this.memberVendor.options = res.data.map((a) => {
+            return {
+              text: a.vendorOrgName,
+              value: a.id,
+              id: a.id,
+            };
+          });
         })
         .catch((err) => {
           console.log(err);

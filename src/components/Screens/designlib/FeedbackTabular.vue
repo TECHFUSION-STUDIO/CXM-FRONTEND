@@ -62,10 +62,18 @@
                     </button>
                   </div>
                   <div v-if="this.calledFrom != '' && this.calledFrom != null">
-                    <select class="form-select form-select-sm">
+                    <!-- <select class="form-select form-select-sm">
                       <option value="1">View Mode</option>
                       <option value="2">Work Mode</option>
-                    </select>
+                    </select> -->
+                    <a
+                      :href="'/feedbackeditormode/'"
+                      target="_blank"
+                      type="button"
+                      class="btn btn-sm btn-primary position-relative"
+                    >
+                      Work Mode
+                    </a>
                   </div>
                 </div>
 
