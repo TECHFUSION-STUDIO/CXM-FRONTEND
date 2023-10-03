@@ -189,7 +189,7 @@
         >
           <div class="me-auto w-100">
             <div class="fw-bold">
-              <i class="fa-solid fa-people-group me-2"></i>Manage Vendors
+              <i class="fa-solid fa-building me-2"></i>Manage Vendors
             </div>
           </div>
         </li>

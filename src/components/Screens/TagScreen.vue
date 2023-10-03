@@ -54,6 +54,9 @@
               <!-- <td>215</td> -->
               <td>{{ item.addedDateTime }}</td>
             </tr>
+            <tr v-if="tagList.length == 0">
+              <td class="text-center" colspan="3"><i>No Data Found</i></td>
+            </tr>
           </tbody>
         </table>
       </div>

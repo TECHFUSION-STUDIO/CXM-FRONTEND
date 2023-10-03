@@ -59,6 +59,9 @@
               <td></td>
               <td>{{ item.addedDateTime }}</td>
             </tr>
+            <tr v-if="surveyFormList.length == 0">
+              <td class="text-center" colspan="5"><i>No Data Found</i></td>
+            </tr>
           </tbody>
         </table>
 

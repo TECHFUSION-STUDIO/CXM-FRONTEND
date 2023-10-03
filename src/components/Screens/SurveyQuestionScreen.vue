@@ -48,6 +48,9 @@
               <!-- <button class="btn btn-danger btn-sm">Delete</button> -->
             </td>
           </tr>
+          <tr v-if="surveyFormQuestionDetail.length == 0">
+            <td class="text-center" colspan="8"><i>No Data Found</i></td>
+          </tr>
         </tbody>
       </table>
     </div>

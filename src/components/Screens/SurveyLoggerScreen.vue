@@ -39,6 +39,9 @@
             <td>{{ item.loggerContact }}</td>
             <td>{{ item.addedDateTime }}</td>
           </tr>
+          <tr v-if="loggerList.length == 0">
+            <td class="text-center" colspan="4"><i>No Data Found</i></td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -57,6 +57,10 @@
               <!-- <td class="text-center">123</td> -->
               <td class="text-end">{{ item.addedDateTime }}</td>
             </tr>
+
+            <tr v-if="categoryList.length == 0">
+              <td class="text-center" colspan="3"><i>No Data Found</i></td>
+            </tr>
           </tbody>
         </table>
       </div>
