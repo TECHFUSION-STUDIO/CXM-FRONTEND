@@ -7,9 +7,13 @@
             ><i class="fa-solid fa-arrow-left me-2"></i>
           </a>
 
-          <li class="breadcrumb-item"><a @click="this.$router.push('/generalmember')">General Members </a></li>
+          <li class="breadcrumb-item">
+            <a @click="this.$router.push('/generalmember')">General Members </a>
+          </li>
 
-          <li class="breadcrumb-item active" aria-current="page">Showing Member Detail <i>for member id {{ memberDetail.id }}</i></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Showing Member Detail <i>for member id {{ memberDetail.id }}</i>
+          </li>
         </ol>
       </nav>
     </div>
@@ -49,9 +53,9 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-2">
-      <h6>Associated Projects</h6>
+      <h6>Projects Access</h6>
 
-      <table class="table table-hover table-bordered mt-4 w-100">
+      <table class="table table-hover table-bordered mt-3 w-100">
         <thead>
           <tr class="bg-light">
             <td style="width: 40%">Project</td>
@@ -73,7 +77,7 @@
               </model-select>
             </td>
             <td>
-              <select class="form-select"  v-model="inpProjectRoleSelected">
+              <select class="form-select" v-model="inpProjectRoleSelected">
                 <option value="Admin">Admin</option>
                 <option value="Member">Member</option>
               </select>
@@ -132,6 +136,7 @@ export default {
         item: {},
         searchText: "",
       },
+
       axiosConn,
     };
   },
@@ -215,13 +220,11 @@ export default {
           console.log(err);
         });
     },
+
     reset() {
       this.inpProjectSelected.item = {};
     },
-    selectOption() {
-      // select option from parent component
-      this.inpProjectSelected.item = this.inpProjectSelected.options[1];
-    },
+
     printSearchText(searchText) {
       this.inpProjectSelected.searchText = searchText;
     },

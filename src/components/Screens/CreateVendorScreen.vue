@@ -153,7 +153,7 @@
             />
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Vendor Status</label>
             <select class="form-select" v-model="vendorStatus">
@@ -203,11 +203,12 @@ export default {
           vendorOrgName: this.vendorOrgName,
           vendorOwnerName: this.vendorOwnerName,
           vendorStatus: this.vendorStatus,
+          vendorIdentification: this.vendorIdentification,
           vendorAddress: this.vendorAddress,
           vendorCity: this.vendorCity,
           vendorState: this.vendorState,
           vendorCountry: this.vendorCountry,
-          vendorPincode: this.vendorZip,
+          vendorZip: this.vendorZip,
           vendorContact1: this.vendorContact1,
           vendorContact2: this.vendorContact2,
           vendorEmail: this.vendorEmail,

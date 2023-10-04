@@ -134,6 +134,7 @@ export default {
         .post("/createteammember", {
           memberDetails: {
             businessId: 1,
+            vendorId: this.memberVendor.item.id,
             teamMemberName: this.memberName,
             teamMemberEmail: this.memberEmail,
             teamMemberContact: this.memberContact,

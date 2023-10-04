@@ -94,7 +94,7 @@
             </tr>
             <tr class="bg-light">
               <td><input type="checkbox" class="form-check-input" /></td>
-              <td style="width: 40%">Feedback</td>
+              <td style="width: 40%">Feedback Response</td>
               <td>Impact</td>
               <td>Effort</td>
               <td>Priority</td>

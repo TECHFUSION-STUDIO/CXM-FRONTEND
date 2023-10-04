@@ -33,8 +33,12 @@
                   aria-label=".form-select-sm example"
                   v-model="filterField"
                 >
-                  <option v-for="item in store.feedbackProp" :key="item" :value="item">
-                    {{ item }}
+                  <option
+                    v-for="item in store.feedbackProp"
+                    :key="item.key"
+                    :value="item.key"
+                  >
+                    {{ item.value }}
                   </option>
                 </select>
               </div>

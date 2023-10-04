@@ -135,12 +135,22 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;
+          if (res.data.vendorId != null) {
+            this.memberVendor.item = {
+              text: res.data.vendorId.vendorOrgName,
+              value: res.data.vendorId.id,
+              id: res.data.vendorId.id,
+            };
+          }
         })
         .catch((err) => {
           console.log(err);
         });
     },
     updateMember() {
+      if (this.memberVendor.item != null && this.memberVendor.item != {}) {
+        this.memberDetail.vendorId = this.memberVendor.item.id;
+      }
       axioscon
         .post("/updateteammember", this.memberDetail)
         .then((res) => {
