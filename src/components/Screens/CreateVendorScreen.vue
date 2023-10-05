@@ -162,6 +162,28 @@
             </select>
           </div>
         </div>
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="categoryDesc" class="form-label">Vendor Description</label>
+            <textarea
+              class="form-control"
+              id="categoryDesc"
+              rows="3"
+              v-model="vendorDescription"
+            ></textarea>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="categoryDesc" class="form-label">Vendor Additional Detail</label>
+            <textarea
+              class="form-control"
+              id="categoryDesc"
+              rows="3"
+              v-model="vendorAdditionalDetails"
+            ></textarea>
+          </div>
+        </div>
       </div>
 
       <div class="text-center mt-3 mb-3">
@@ -192,6 +214,8 @@ export default {
       vendorZip: "",
       vendorCountry: "",
       vendorStatus: "",
+      vendorAdditionalDetails: "",
+      vendorDescription: "",
       axiosConn,
     };
   },
@@ -212,6 +236,8 @@ export default {
           vendorContact1: this.vendorContact1,
           vendorContact2: this.vendorContact2,
           vendorEmail: this.vendorEmail,
+          vendorDescription: this.vendorDescription,
+          vendorAdditionalDetails: this.vendorAdditionalDetails,
           vendorMembersCount: 0,
           addedDateTime: "",
           lastUpdatedDateTime: "",

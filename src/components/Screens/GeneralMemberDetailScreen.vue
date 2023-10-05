@@ -44,6 +44,15 @@
             <div class="col-auto">
               <p>Status : {{ memberDetail.teamMemberStatus }}</p>
             </div>
+
+            <div class="col-auto" v-if="memberDetail.vendorId != null">
+              <p>
+                Vendor :
+                {{
+                  memberDetail.vendorId != null ? memberDetail.vendorId.vendorOrgName : ""
+                }}
+              </p>
+            </div>
             <div class="col-auto">
               <p>Added on : {{ memberDetail.addedDateTime }}</p>
             </div>

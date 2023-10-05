@@ -95,6 +95,13 @@ const routes = [
             name: 'surveyresponses',
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
           },
+
+          {
+            path: '/surveys/:surveyId/submission',
+            name: 'surveysubmission',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySubmissionScreen.vue'),
+          },
+     
           {
             path: '/surveys/:surveyId/loggers',
             name: 'surveyloggers',
@@ -102,6 +109,12 @@ const routes = [
           },
 
         ]
+      },
+
+      {
+        path: '/surveys/:surveyId/submission/:submissionId',
+        name: 'surveysubmissiondetail',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySubmissionDetailScreen.vue'),
       },
 
       // {

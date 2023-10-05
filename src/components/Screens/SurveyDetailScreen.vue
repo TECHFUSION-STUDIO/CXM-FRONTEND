@@ -76,6 +76,15 @@
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
+              @click="this.$router.push('/surveys/' + id + '/submission')"
+            >
+              Submission
+            </button>
+          </div>
+
+          <div class="col">
+            <button
+              class="btn btn-outline-primary w-100"
               @click="this.$router.push('/surveys/' + id + '/loggers')"
             >
               Loggers

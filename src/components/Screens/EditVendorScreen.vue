@@ -166,6 +166,29 @@
             </select>
           </div>
         </div>
+
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="categoryDesc" class="form-label">Vendor Description</label>
+            <textarea
+              class="form-control"
+              id="categoryDesc"
+              rows="3"
+              v-model="vendorData.vendorDescription"
+            ></textarea>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="categoryDesc" class="form-label">Vendor Additional Detail</label>
+            <textarea
+              class="form-control"
+              id="categoryDesc"
+              rows="3"
+              v-model="vendorData.vendorAdditionalDetails"
+            ></textarea>
+          </div>
+        </div>
       </div>
 
       <div class="text-center mt-3 mb-3">
