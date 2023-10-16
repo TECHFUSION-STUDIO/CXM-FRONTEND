@@ -27,19 +27,19 @@ export const store = reactive({
          {key:"addedDateTime", value: 'Feedback Created on'}
     ],
     filterOperation: [
-        "GREATER_THAN",
-        "LESS_THAN",
-        "GREATER_THAN_EQUAL",
-        "LESS_THAN_EQUAL",
-        "NOT_EQUAL",
-        "EQUAL",
-        "MATCH",
-        "MATCH_START",
-        "MATCH_END",
-        "IN",
-        "NOT_IN",
-        "ORDER_BY_ASC",
-        "ORDER_BY_DESC"
+         {key:"GREATER_THAN", value:"Greater Than (>)"},
+         {key:"LESS_THAN", value:"Less Than (<)"},
+         {key:"GREATER_THAN_EQUAL", value:"Greater Than Equal To (>=)"},
+         {key:"LESS_THAN_EQUAL", value:"Less Than Equal To (<=)"},
+         {key:"NOT_EQUAL", value:"Not Equal To (!=)"},
+         {key:"EQUAL", value:"Equals (=)"},
+         {key:"MATCH", value:"Contains"},
+        //  {key:"MATCH_START", value:"Starts With"},
+        //  {key:"MATCH_END",value:"Ends With"},
+        //  {key:"IN", value:"Present In"},
+        //  {key:"NOT_IN", value:"Not Present In"},
+        //  {key:"ORDER_BY_ASC", value:"Order By Descending Order"},
+        //  {key:"ORDER_BY_DESC", value:"Order By Ascending Order"}
     ],
     feedbackStatus: [
         "OPEN",

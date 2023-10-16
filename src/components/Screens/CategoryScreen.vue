@@ -38,7 +38,7 @@
               <td style="width: 40%">Category Name</td>
               <td class="text-center">Status</td>
               <!-- <td class="text-center">Tot usage</td> -->
-              <td class="text-end">Added on</td>
+              <td class="text-center">Added on</td>
             </tr>
           </thead>
           <tbody>
@@ -55,7 +55,7 @@
               </td>
 
               <!-- <td class="text-center">123</td> -->
-              <td class="text-end">{{ item.addedDateTime }}</td>
+              <td class="text-center">{{ item.addedDateTime }}</td>
             </tr>
 
             <tr v-if="categoryList.length == 0">

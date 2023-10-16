@@ -60,7 +60,7 @@
             <input
               class="form-control"
               type="search"
-              placeholder="Search Tag"
+              placeholder="Search Member"
               aria-label="Search"
             />
             <button class="btn btn-primary">
