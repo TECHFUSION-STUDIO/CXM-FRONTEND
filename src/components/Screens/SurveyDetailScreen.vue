@@ -47,7 +47,7 @@
 
     <div>
       <div class="bg-white shadow shadow-sm mt-3 p-3">
-        <div class="row">
+        <div class="row" v-if="false">
           <div class="col">
             <button
               class="btn btn-outline-primary w-100"
@@ -91,21 +91,83 @@
             </button>
           </div>
         </div>
+
+        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+          <button
+            class="nav-link active"
+            id="nav-Analytics-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-Analytics"
+            type="button"
+            role="tab"
+            aria-controls="nav-Analytics"
+            aria-selected="true"
+            @click="this.$router.push('/surveys/' + id)"
+          >
+            Analytics
+          </button>
+          <button
+            class="nav-link"
+            id="nav-Question-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-Question"
+            type="button"
+            role="tab"
+            aria-controls="nav-Question"
+            aria-selected="false"
+            @click="this.$router.push('/surveys/' + id + '/question')"
+          >
+            Question
+          </button>
+          <button
+            class="nav-link"
+            id="nav-Responses-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-Responses"
+            type="button"
+            role="tab"
+            aria-controls="nav-Responses"
+            aria-selected="false"
+            @click="this.$router.push('/surveys/' + id + '/responses')"
+          >
+            Responses
+          </button>
+          <button
+            class="nav-link"
+            id="nav-Submission-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-Submission"
+            type="button"
+            role="tab"
+            aria-controls="nav-Submission"
+            aria-selected="false"
+            @click="this.$router.push('/surveys/' + id + '/submission')"
+          >
+            Submission
+          </button>
+          <button
+            class="nav-link"
+            id="nav-Loggers-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-Loggers"
+            type="button"
+            role="tab"
+            aria-controls="nav-Loggers"
+            aria-selected="false"
+            @click="this.$router.push('/surveys/' + id + '/loggers')"
+          >
+            Loggers
+          </button>
+        </div>
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm p-3 mt-2">
+    <div class="bg-white shadow shadow-sm p-3 mt-0">
       <router-view></router-view>
     </div>
 
-    <div class="text-center mt-3 mb-3">
-      <button class="btn btn-danger m-2 w-25">Delete</button>
-      <button
-        class="btn btn-primary m-2 w-25"
-        @click="this.$router.push('/surveys/' + id + '/surveysettings/general/')"
-      >
-        Survey Settings
-      </button>
+    <div class="text-end mt-3 mb-3">
+      <button class="btn btn-outline-danger m-2 btn-sm">Delete Survey</button>
     </div>
   </div>
 </template>
