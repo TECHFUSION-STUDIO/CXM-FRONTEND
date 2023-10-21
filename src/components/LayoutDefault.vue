@@ -16,20 +16,18 @@
       </h5>
       <div class="d-flex" role="search">
         <div class="w-100">
-          <!-- <model-select
-            placeholder="Select a Project"
-            @searchchange="printSearchText"
-            class="form-control border border-2 border-info"
-          >
-          </model-select> -->
-
-          <multiselect
+          <!-- <multiselect
             :options="options"
             v-model="item"
             placeholder="Select one"
             label="projectName"
             track-by="id"
-          ></multiselect>
+          ></multiselect> -->
+          <select class="form-select" v-model="item">
+            <option v-for="item in options" :key="item.id">
+              {{ item.projectName }}
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -419,12 +417,12 @@
 <script>
 import { store } from "@/store";
 import axioscon from "../axioscon.js";
-import Multiselect from "vue-multiselect";
+// import Multiselect from "vue-multiselect";
 
 export default {
   name: "DashboardApp",
   components: {
-    Multiselect,
+    // Multiselect,
   },
   data() {
     return {

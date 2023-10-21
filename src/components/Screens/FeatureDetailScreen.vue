@@ -59,10 +59,13 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="OPEN">OPEN</option>
+              <option value="INPROGRESS">INPROGRESS</option>
+              <option value="DONE">DONE</option>
+
+              <option value="REOPEN">REOPEN</option>
+
+              <option value="CLOSED">CLOSED</option>
             </select>
           </div>
 
@@ -73,10 +76,10 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option selected></option>
+              <option v-for="item in boardList" :key="item.id" :value="item.id">
+                {{ item.boardName }}
+              </option>
             </select>
           </div>
 
@@ -87,10 +90,10 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option selected></option>
+              <option v-for="item in categoryList" :key="item.id" :value="item.id">
+                {{ item.categoryName }}
+              </option>
             </select>
           </div>
         </div>
@@ -103,10 +106,17 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
 
@@ -117,10 +127,17 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
 
@@ -131,10 +148,17 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
             >
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
         </div>
@@ -199,12 +223,38 @@ export default {
     return {
       featureDetail: {},
       id: this.$route.params.featureId,
+      boardList: [],
+      categoryList: [],
     };
   },
   mounted() {
     this.fetchFeatureDetail();
+    this.fetchAllCategory();
+    this.fetchAllBoard();
   },
   methods: {
+    fetchAllCategory() {
+      axiosConn
+        .get("/getallcategory?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.categoryList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    fetchAllBoard() {
+      axiosConn
+        .get("/getallboard?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.boardList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     fetchFeatureDetail() {
       axiosConn
         .get("/getFeatureDetail?featureId=" + this.id)
