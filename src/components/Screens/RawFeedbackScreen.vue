@@ -10,7 +10,7 @@
 
 <script>
 // import axiosConn from "@/axioscon";
-import FeedbackTabular from "./designlib/FeedbackTabular.vue";
+import FeedbackTabular from "./tables/FeedbackTabular.vue";
 
 export default {
   name: "RawFeedbackScreen",

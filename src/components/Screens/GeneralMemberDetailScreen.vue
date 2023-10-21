@@ -76,14 +76,21 @@
         <tbody>
           <tr class="table-primary">
             <td style="width: 40%">
-              <model-select
+              <!-- <model-select
                 :options="inpProjectSelected.options"
                 v-model="inpProjectSelected.item"
                 placeholder="Select a Project"
                 @searchchange="printSearchText"
                 class="form-control border border-2 border-info"
               >
-              </model-select>
+              </model-select> -->
+              <multiselect
+                v-model="inpProjectSelected.value"
+                :options="inpProjectSelected.options"
+                placeholder="Select one"
+                label="projectName"
+                track-by="id"
+              ></multiselect>
             </td>
             <td>
               <select class="form-select" v-model="inpProjectRoleSelected">
@@ -126,12 +133,12 @@
 
 <script>
 import axiosConn from "@/axioscon";
-import { ModelSelect } from "vue-search-select";
-import "vue-search-select/dist/VueSearchSelect.css";
+import Multiselect from "vue-multiselect";
+
 export default {
   name: "GeneralMemberDetailScreen",
   components: {
-    ModelSelect,
+    Multiselect,
   },
   data() {
     return {
@@ -141,9 +148,8 @@ export default {
       teamMemberProjectList: [],
       inpProjectRoleSelected: "",
       inpProjectSelected: {
+        value: {},
         options: [],
-        item: {},
-        searchText: "",
       },
 
       axiosConn,
@@ -185,14 +191,7 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.projectList = res.data;
-          this.inpProjectSelected.options = this.projectList.map((a, index) => {
-            return {
-              value: index,
-              text: a.projectName,
-              id: a.id,
-              //id: a.id,
-            };
-          });
+          this.inpProjectSelected.options = res.data;
           console.log(this.inpProjectSelected.options);
         })
         .catch((err) => {
@@ -203,7 +202,7 @@ export default {
       axiosConn
         .post("/createteammemberproject", {
           businessId: 1,
-          projectId: this.inpProjectSelected.item.id,
+          projectId: this.inpProjectSelected.value.id,
           teamMemberId: this.id,
           teamMemberProjectRole: this.inpProjectRoleSelected,
           lastModifiedDateTime: "2023-06-29T07:18:28.533Z",

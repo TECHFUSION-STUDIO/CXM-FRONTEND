@@ -8,6 +8,8 @@
 export default {};
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+
 <style lang="css">
 /* #feedbackTitle:hover {
   color: dodgerblue;

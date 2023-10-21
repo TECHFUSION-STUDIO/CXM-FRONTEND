@@ -6,8 +6,12 @@
           <a @click="this.$router.go(-1)" title="Go to Previous Page"
             ><i class="fa-solid fa-arrow-left me-2"></i>
           </a>
-          <li class="breadcrumb-item"><a  @click="this.$router.push('/board')">Boards </a></li>
-          <li class="breadcrumb-item active" aria-current="page">Showing Board Detail for <i>{{ boardDetail.boardName }}</i></li>
+          <li class="breadcrumb-item">
+            <a @click="this.$router.push('/board')">Boards </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Showing Board Detail for <i>{{ boardDetail.boardName }}</i>
+          </li>
         </ol>
       </nav>
     </div>
@@ -45,65 +49,29 @@
         </div>
       </div>
     </div>
-
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <FeedbackTabular
-        :criteria="{ key: 'boardId', value: id, operation: 'EQUAL' }"
-        feedbackType="FILTERED"
-      />
-    </div>
-
-    <div class="text-center mt-3 mb-3">
-      <button class="btn btn-danger m-2 w-25">Delete</button>
+    <div class="text-end mt-3 mb-3">
+      <button class="btn btn-outline-danger m-2 btn-sm">Delete Survey</button>
     </div>
   </div>
 </template>
 
 <script>
 import axiosConn from "@/axioscon";
-import FeedbackTabular from "./designlib/FeedbackTabular.vue";
 export default {
   name: "BoardDetailScreen",
-  components: {
-    FeedbackTabular,
-  },
+
   data() {
     return {
       id: this.$route.params.boardId,
       boardDetail: {},
       axiosConn,
-      rawFeedbackList: [],
     };
   },
   mounted() {
     this.id = this.$route.params.boardId;
     this.fetchBoardDetail();
-    // this.fetchAllFeedback();
   },
   methods: {
-    fetchAllFeedback() {
-      axiosConn
-        .post("/getAllFilteredFeedback", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: "addedDateTime",
-          orderByAsc: true,
-          criteria: [
-            {
-              key: "boardId",
-              value: this.id,
-              operation: "EQUAL",
-            },
-          ],
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.rawFeedbackList = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     fetchBoardDetail() {
       axiosConn
         .get("/getboardbyid?businessId=1&projectId=1&boardId=" + this.id)

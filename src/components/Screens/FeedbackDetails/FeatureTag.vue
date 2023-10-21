@@ -4,13 +4,17 @@
       <h6>Tags</h6>
 
       <div class="mt-3" id="collapseAddTag">
-        <multi-select
+        <multiselect
+          v-model="value"
+          tag-placeholder="Add this as new tag"
+          placeholder="Search or add a tag"
+          label="tagName"
+          track-by="id"
           :options="options"
-          :selected-options="items"
-          placeholder="select item"
+          :multiple="true"
+          :taggable="true"
           @select="onSelect"
-        >
-        </multi-select>
+        ></multiselect>
       </div>
     </div>
   </div>
@@ -18,27 +22,25 @@
 
 <script>
 import axioscon from "../../../axioscon.js";
-import { MultiSelect } from "vue-search-select";
-import "vue-search-select/dist/VueSearchSelect.css";
+import Multiselect from "vue-multiselect";
+
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 export default {
-  name: "FeedbackDetailTag",
+  name: "FeatureTag",
   components: {
-    MultiSelect,
+    Multiselect,
   },
   data() {
     return {
       axioscon,
       id: this.$route.params.fid,
       options: [],
-      items: [],
-      searchText: "", // If value is falsy, reset searchText & searchItem
-      lastSelectItem: {},
+      value: [],
     };
   },
   mounted() {
-    this.id = this.$route.params.fid;
+    this.id = this.$route.params.featureId;
     console.log(this.id);
     // this.fetchAllTags();
     // this.fetchFeedbackTags();
@@ -59,9 +61,8 @@ export default {
   // },
 
   methods: {
-    onSelect(items, lastSelectItem) {
-      this.items = items;
-      this.lastSelectItem = lastSelectItem;
+    onSelect(selectedOption, id) {
+      console.log(selectedOption + id);
       this.submitAddTag();
     },
     fetchAllTags() {
@@ -69,13 +70,7 @@ export default {
         .get("/getalltag?businessId=1&projectId=1")
         .then((res) => {
           console.log(res);
-          this.options = res.data.map((a) => {
-            return {
-              value: a.id,
-              text: a.tagName,
-            };
-          });
-          console.log(this.options);
+          this.options = res.data;
         })
         .catch((err) => {
           console.log(err);
@@ -86,21 +81,16 @@ export default {
       console.log(this.id);
       axioscon
         .get(
-          "/gettagsbyfeedbackid?businessId=" +
+          "/gettagsbyfeatureid?businessId=" +
             1 +
             "&projectId=" +
             1 +
-            "&feedbackId=" +
+            "&featureId=" +
             this.id
         )
         .then((res) => {
           console.log(res.data);
-          this.items = res.data.map((a) => {
-            return {
-              value: a.id,
-              text: a.tagName,
-            };
-          });
+          this.value = res.data;
         })
         .catch((err) => {
           console.log(err);
@@ -108,12 +98,12 @@ export default {
     },
 
     submitAddTag() {
-      let selectedTagList = this.items.map((a) => a.value);
+      let selectedTagList = this.value.map((a) => a.id);
       console.log(selectedTagList);
       axioscon
-        .post("/addfeedbacktags", {
+        .post("/addfeaturetags", {
           tagIdList: selectedTagList,
-          feedbackId: this.id,
+          featureId: this.id,
           businessId: "1",
           projectId: "1",
         })

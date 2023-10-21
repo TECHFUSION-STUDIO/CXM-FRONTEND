@@ -52,13 +52,6 @@
         </div>
       </div>
 
-      <div class="bg-white shadow shadow-sm mt-3 p-3">
-        <FeedbackTabular
-          :criteria="{ key: 'feedbackCategory', value: id, operation: 'EQUAL' }"
-          feedbackCategory="ALL"
-        />
-      </div>
-
       <div class="text-center mt-3 mb-3">
         <button class="btn btn-danger m-2 w-25">Delete</button>
       </div>
@@ -68,51 +61,21 @@
 
 <script>
 import axiosConn from "@/axioscon";
-import FeedbackTabular from "./designlib/FeedbackTabular.vue";
-
 export default {
   name: "CategoryDetailScreen",
-  components: {
-    FeedbackTabular,
-  },
+
   data() {
     return {
       id: this.$route.params.categoryId,
       categoryDetail: {},
-      rawFeedbackList: [],
-
       axiosConn,
     };
   },
   mounted() {
     this.id = this.$route.params.categoryId;
     this.fetchCategoryDetail();
-    // this.fetchAllFeedback();
   },
   methods: {
-    fetchAllFeedback() {
-      axiosConn
-        .post("/getAllFeedback", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: "addedDateTime",
-          orderByAsc: true,
-          criteria: [
-            {
-              key: "feedbackCategory",
-              value: this.id,
-              operation: "EQUAL",
-            },
-          ],
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.rawFeedbackList = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     fetchCategoryDetail() {
       axiosConn
         .get("/getcategorybyid?businessId=1&projectId=1&categoryId=" + this.id)

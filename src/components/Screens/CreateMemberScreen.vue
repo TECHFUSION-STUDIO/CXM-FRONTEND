@@ -75,14 +75,22 @@
 
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Assign Vendor</label>
-      <model-select
+      <!-- <model-select
         :options="memberVendor.options"
         v-model="memberVendor.item"
         placeholder="Select a Vendor"
         @searchchange="printSearchText"
         class="form-control border border-2 border-info"
       >
-      </model-select>
+      </model-select> -->
+      <multiselect
+        :options="memberVendor.options"
+        v-model="memberVendor.value"
+        placeholder="Select one"
+        label="vendorOrgName"
+        track-by="id"
+      ></multiselect>
+
       <br />
     </div>
 
@@ -97,12 +105,12 @@
 
 <script>
 import axioscon from "../../axioscon.js";
-import { ModelSelect } from "vue-search-select";
-import "vue-search-select/dist/VueSearchSelect.css";
+import Multiselect from "vue-multiselect";
+
 export default {
   name: "CreateMemberScreen",
   components: {
-    ModelSelect,
+    Multiselect,
   },
   data() {
     return {
@@ -115,9 +123,14 @@ export default {
       memberEmail: "",
       memberStatus: "",
       memberVendor: {
-        options: [],
-        item: {},
-        searchText: "",
+        value: { name: "Vue.js", language: "JavaScript" },
+        options: [
+          { name: "Vue.js", language: "JavaScript" },
+          { name: "Rails", language: "Ruby" },
+          { name: "Sinatra", language: "Ruby" },
+          { name: "Laravel", language: "PHP" },
+          { name: "Phoenix", language: "Elixir" },
+        ],
       },
     };
   },
@@ -126,15 +139,12 @@ export default {
   },
 
   methods: {
-    printSearchText(searchText) {
-      this.memberVendor.searchText = searchText;
-    },
     createMember() {
       axioscon
         .post("/createteammember", {
           memberDetails: {
             businessId: 1,
-            vendorId: this.memberVendor.item.id,
+            vendorId: this.memberVendor.value.id,
             teamMemberName: this.memberName,
             teamMemberEmail: this.memberEmail,
             teamMemberContact: this.memberContact,
@@ -159,13 +169,7 @@ export default {
         .then((res) => {
           console.log(res);
 
-          this.memberVendor.options = res.data.map((a) => {
-            return {
-              text: a.vendorOrgName,
-              value: a.id,
-              id: a.id,
-            };
-          });
+          this.memberVendor.options = res.data;
         })
         .catch((err) => {
           console.log(err);

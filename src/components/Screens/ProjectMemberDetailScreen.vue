@@ -65,13 +65,25 @@
         </div>
 
         <div class="mt-3" v-if="isAllBoardAccess == 'No'">
-          <multi-select
+          <!-- <multi-select
             :options="boardSelect.options"
             :selected-options="boardSelect.items"
             placeholder="Type and select Boards to give access"
             @select="onBoardSelect"
           >
-          </multi-select>
+          </multi-select> -->
+
+          <multiselect
+            v-model="boardSelect.value"
+            tag-placeholder="Add this as new tag"
+            placeholder="Search or add a tag"
+            label="boardName"
+            track-by="id"
+            :options="boardSelect.options"
+            :multiple="true"
+            :taggable="true"
+            @tag="onBoardSelect"
+          ></multiselect>
         </div>
         <div class="">
           <button class="btn btn-sm btn-outline-danger m-2">Reset</button>
@@ -93,32 +105,43 @@
           </select>
         </div>
 
-        <div class="mt-3" v-if="isAllSurveyAccess == 'No'">
+        <!-- <div class="mt-3" v-if="isAllSurveyAccess == 'No'">
           <multi-select
             :options="surveySelect.options"
             :selected-options="surveySelect.items"
             placeholder="Type and select Survey To give access"
             @select="onSurveySelect"
           >
-          </multi-select>
-        </div>
+          </multi-select> -->
+
+        <multiselect
+          v-model="surveySelect.value"
+          tag-placeholder="Add this as new tag"
+          placeholder="Search or add a tag"
+          label="surveyFormName"
+          track-by="id"
+          :options="surveySelect.options"
+          :multiple="true"
+          :taggable="true"
+          @tag="onSurveySelect"
+        ></multiselect>
       </div>
-      <div class="">
-        <button class="btn btn-sm btn-outline-danger m-2">Reset</button>
-        <button class="btn btn-sm btn-primary m-2">Update</button>
-      </div>
+    </div>
+    <div class="">
+      <button class="btn btn-sm btn-outline-danger m-2">Reset</button>
+      <button class="btn btn-sm btn-primary m-2">Update</button>
     </div>
   </div>
 </template>
 
 <script>
 import axiosConn from "@/axioscon";
-import { MultiSelect } from "vue-search-select";
-import "vue-search-select/dist/VueSearchSelect.css";
+import Multiselect from "vue-multiselect";
+
 export default {
   name: "ProjectMemberDetailScreen",
   components: {
-    MultiSelect,
+    Multiselect,
   },
   data() {
     return {
@@ -127,15 +150,13 @@ export default {
       isAllBoardAccess: "",
       boardSelect: {
         options: [],
-        items: [],
-        lastSelectItem: {},
+        value: [],
       },
 
       isAllSurveyAccess: "",
       surveySelect: {
         options: [],
-        items: [],
-        lastSelectItem: {},
+        value: [],
       },
 
       axiosConn,
@@ -148,16 +169,33 @@ export default {
     this.fetchAllSurvey();
   },
   methods: {
-    onBoardSelect(items, lastSelectItem) {
-      this.boardSelect.items = items;
-      this.boardSelect.lastSelectItem = lastSelectItem;
-      // this.submitAddTag();
+    onBoardSelect(newTag) {
+      console.log(newTag);
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
+      };
+      this.boardSelect.options.push(tag);
+      this.boardSelect.value.push(tag);
     },
-    onSurveySelect(items, lastSelectItem) {
-      this.surveySelect.items = items;
-      this.surveySelect.lastSelectItem = lastSelectItem;
-      // this.submitAddTag();
+    onSurveySelect(newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
+      };
+      this.surveySelect.options.push(tag);
+      this.surveySelect.value.push(tag);
     },
+    // onBoardSelect(items, lastSelectItem) {
+    //   this.boardSelect.items = items;
+    //   this.boardSelect.lastSelectItem = lastSelectItem;
+    //   // this.submitAddTag();
+    // },
+    // onSurveySelect(items, lastSelectItem) {
+    //   this.surveySelect.items = items;
+    //   this.surveySelect.lastSelectItem = lastSelectItem;
+    //   // this.submitAddTag();
+    // },
     fetchMemberDetail() {
       axiosConn
         .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
@@ -174,12 +212,7 @@ export default {
         .get("/getallsurveyform?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
-          this.surveySelect.options = res.data.map((a) => {
-            return {
-              value: a.id,
-              text: a.surveyFormName,
-            };
-          });
+          this.surveySelect.options = res.data;
         })
         .catch((err) => {
           console.log(err);
@@ -190,12 +223,7 @@ export default {
         .get("/getallboard?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
-          this.boardSelect.options = res.data.map((a) => {
-            return {
-              value: a.id,
-              text: a.boardName,
-            };
-          });
+          this.boardSelect.options = res.data;
         })
         .catch((err) => {
           console.log(err);

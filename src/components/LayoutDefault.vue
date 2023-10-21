@@ -16,14 +16,20 @@
       </h5>
       <div class="d-flex" role="search">
         <div class="w-100">
-          <model-select
-            :options="options"
-            v-model="item"
+          <!-- <model-select
             placeholder="Select a Project"
             @searchchange="printSearchText"
             class="form-control border border-2 border-info"
           >
-          </model-select>
+          </model-select> -->
+
+          <multiselect
+            :options="options"
+            v-model="item"
+            placeholder="Select one"
+            label="projectName"
+            track-by="id"
+          ></multiselect>
         </div>
       </div>
     </div>
@@ -96,6 +102,25 @@
           <div class="ms-2 me-auto">
             <div class="fw-bold">
               <i class="fa-solid fa-address-book me-2"></i>Loggers
+            </div>
+          </div>
+        </li>
+
+        <li
+          :class="
+            selectedTab == 11
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+          "
+          @click="
+            selectedTab = 11;
+            this.$router.push('/feature');
+          "
+          style="cursor: default"
+        >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">
+              <i class="fa-solid fa-diagram-project me-2"></i>Feature
             </div>
           </div>
         </li>
@@ -394,12 +419,12 @@
 <script>
 import { store } from "@/store";
 import axioscon from "../axioscon.js";
-import { ModelSelect } from "vue-search-select";
-import "vue-search-select/dist/VueSearchSelect.css";
+import Multiselect from "vue-multiselect";
+
 export default {
   name: "DashboardApp",
   components: {
-    ModelSelect,
+    Multiselect,
   },
   data() {
     return {
@@ -407,11 +432,7 @@ export default {
       screenShort: false,
       selectedTab: null,
       headerTitle: "",
-      options: [
-        { value: "91", text: "aa" + " - " + "1" },
-
-        { value: "24", text: "BIKANERI BHATERWALI SEVRICES" + " - " + "9" },
-      ],
+      options: [],
       item: {},
       searchText: "",
       store,
@@ -434,9 +455,7 @@ export default {
         .get("/getallprojects?businessId=" + 1)
         .then((res) => {
           console.log(res);
-          this.options = res.data.map((a) => {
-            return { text: a.projectName, value: a.id };
-          });
+          this.options = res.data;
           if (this.options != null && this.options.length > 0)
             this.item = this.options[0];
         })

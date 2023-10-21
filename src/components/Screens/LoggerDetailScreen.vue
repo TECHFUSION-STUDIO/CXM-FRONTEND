@@ -11,7 +11,9 @@
             <a @click="this.$router.push('/logger')">Loggers </a>
           </li>
 
-          <li class="breadcrumb-item active" aria-current="page">Showing Logger Detail for<i> Logger id {{ loggerDetail.id }}</i></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Showing Logger Detail for<i> Logger id {{ loggerDetail.id }}</i>
+          </li>
         </ol>
       </nav>
     </div>
@@ -57,7 +59,7 @@
 
 <script>
 import axiosConn from "@/axioscon";
-import FeedbackTabular from "./designlib/FeedbackTabular.vue";
+import FeedbackTabular from "./tables/FeedbackTabular.vue";
 
 export default {
   name: "LoggerDetailScreen",

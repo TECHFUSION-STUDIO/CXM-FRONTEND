@@ -34,30 +34,29 @@ export default {
   data() {
     return {
       commentDesc: "",
-      id: this.$route.params.fid,
+      id: this.$route.params.featureId,
       commentList: [],
     };
   },
   mounted() {
-    this.id = this.$route.params.fid;
-    console.log(this.id);
+    this.id = this.$route.params.featureId;
     this.fetchAllComments();
   },
 
-  beforeRouteUpdate(to, from, next) {
-    console.log("Before Route Update" + to.params.fid);
-    this.id = to.params.fid;
-    console.log(this.id);
-    this.fetchAllComments();
-    next();
-  },
+  // beforeRouteUpdate(to, from, next) {
+  //   console.log("Before Route Update" + to.params.featureId);
+  //   this.id = to.params.featureId;
+  //   console.log(this.id);
+  //   this.fetchAllComments();
+  //   next();
+  // },
   methods: {
     fetchAllComments() {
       axiosConn
         .get(
-          "/getallfeedbackcomments?businessId=1&projectId=" +
+          "/getallfeaturecomments?businessId=1&projectId=" +
             localStorage.getItem("selectedProject") +
-            "&feedbackId=" +
+            "&featureId=" +
             this.id
         )
         .then((res) => {
@@ -70,13 +69,12 @@ export default {
     },
     addComment() {
       axiosConn
-        .post("/addfeedbackcomments", {
-          addedBy: 0,
-          addedDateTime: "",
+        .post("/addfeaturecomments", {
           businessId: 1,
-          comment: this.commentDesc,
-          feedbackId: this.id,
           projectId: localStorage.getItem("selectedProject"),
+          featureId: this.id,
+          comment: this.commentDesc,
+          addedBy: 0,
         })
         .then((res) => {
           console.log(res.data);

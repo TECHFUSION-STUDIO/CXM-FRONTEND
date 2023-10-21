@@ -86,6 +86,15 @@
         class="form-control border border-2 border-info"
       >
       </model-select>
+
+      <multiselect
+        :options="memberVendor.value"
+        v-model="memberVendor.item"
+        placeholder="Select one"
+        label="vendorName"
+        track-by="id"
+      ></multiselect>
+
       <br />
     </div>
 
@@ -100,12 +109,12 @@
 
 <script>
 import axioscon from "../../axioscon.js";
-import { ModelSelect } from "vue-search-select";
-import "vue-search-select/dist/VueSearchSelect.css";
+import Multiselect from "vue-multiselect";
+
 export default {
   name: "EditMemberScreen",
   components: {
-    ModelSelect,
+    Multiselect,
   },
   data() {
     return {
@@ -114,9 +123,8 @@ export default {
 
       id: "",
       memberVendor: {
+        value: { name: "Vue.js", language: "JavaScript" },
         options: [],
-        item: {},
-        searchText: "",
       },
     };
   },
@@ -126,9 +134,6 @@ export default {
     this.getAllVendors();
   },
   methods: {
-    printSearchText(searchText) {
-      this.memberVendor.searchText = searchText;
-    },
     fetchMemberDetail() {
       axioscon
         .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
@@ -136,11 +141,7 @@ export default {
           console.log(res.data);
           this.memberDetail = res.data;
           if (res.data.vendorId != null) {
-            this.memberVendor.item = {
-              text: res.data.vendorId.vendorOrgName,
-              value: res.data.vendorId.id,
-              id: res.data.vendorId.id,
-            };
+            this.memberVendor.item = res.data.vendorId;
           }
         })
         .catch((err) => {
@@ -166,13 +167,7 @@ export default {
         .then((res) => {
           console.log(res);
 
-          this.memberVendor.options = res.data.map((a) => {
-            return {
-              text: a.vendorOrgName,
-              value: a.id,
-              id: a.id,
-            };
-          });
+          this.memberVendor.options = res.data;
           console.log(this.vendorList);
         })
         .catch((err) => {

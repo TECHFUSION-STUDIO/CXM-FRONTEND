@@ -59,6 +59,29 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateProjectScreen.vue'),
       },
       {
+        path: '/feature',
+        name: 'feature',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FeatureScreen.vue'),
+      },
+
+      {
+        path: '/createfeature',
+        name: 'createfeature',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateFeatureScreen.vue'),
+      },
+
+      {
+        path: '/editfeature/:featureId',
+        name: 'editfeature',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditFeatureScreen.vue'),
+      },
+
+      {
+        path: '/feature/:featureId',
+        name: 'featureDetail',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FeatureDetailScreen.vue'),
+      },
+      {
         path: '/surveys',
         name: 'surveys',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyScreen.vue'),
