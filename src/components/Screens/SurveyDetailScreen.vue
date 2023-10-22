@@ -158,6 +158,20 @@
           >
             Loggers
           </button>
+
+          <button
+            class="nav-link"
+            id="nav-generateurl-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-generateurl"
+            type="button"
+            role="tab"
+            aria-controls="nav-generateurl"
+            aria-selected="false"
+            @click="this.$router.push('/surveys/' + id + '/generateurl')"
+          >
+            Generate Url
+          </button>
         </div>
       </div>
     </div>
