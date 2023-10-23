@@ -179,6 +179,25 @@
 
         <li
           :class="
+            selectedTab == 12
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+          "
+          @click="
+            selectedTab = 12;
+            this.$router.push('/coupon');
+          "
+          style="cursor: default"
+        >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">
+              <i class="fa-sharp fa-solid fa-tags me-2"></i>Coupons
+            </div>
+          </div>
+        </li>
+
+        <li
+          :class="
             selectedTab == 7
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
               : 'list-group-item d-flex justify-content-between align-items-start hovered mt-1'
@@ -255,7 +274,7 @@
           </div>
         </li>
 
-        <li style="cursor: default" v-show="false">
+        <!-- <li style="cursor: default" v-show="false">
           <div class="accordion accordion-flush mt-1" id="accordionsurvey">
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingOne">
@@ -399,7 +418,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </li> -->
       </ul>
     </nav>
 

@@ -11,6 +11,7 @@
     "@sweetalert2/theme-bootstrap-4": "^5.0.15",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
+    "qrcode.vue": "^3.4.1",
     "sweetalert2": "^11.7.22",
     "vue": "^3.2.13",
     "vue-chartjs": "^5.2.0",

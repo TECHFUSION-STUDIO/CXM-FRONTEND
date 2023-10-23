@@ -4,12 +4,16 @@
       <div class="bg-white shadow shadow-sm mt-1 p-2">
         <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
           <ol class="breadcrumb p-0 m-0">
-                      <a @click="this.$router.go(-1)" title="Go to Previous Page"
-            ><i class="fa-solid fa-arrow-left me-2"></i>
-          </a>
-            <li class="breadcrumb-item"><a  @click="this.$router.push('/tags')" >Tags </a></li>
+            <a @click="this.$router.go(-1)" title="Go to Previous Page"
+              ><i class="fa-solid fa-arrow-left me-2"></i>
+            </a>
+            <li class="breadcrumb-item">
+              <a @click="this.$router.push('/tags')">Tags </a>
+            </li>
 
-            <li class="breadcrumb-item active" aria-current="page"> Showing Tag Detail for <i>{{ tagDetail.tagName}}</i></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Showing Tag Detail for <i>{{ tagDetail.tagName }}</i>
+            </li>
           </ol>
         </nav>
       </div>
@@ -46,8 +50,8 @@
         </div>
       </div>
 
-      <div class="text-center mt-3 mb-3">
-        <button class="btn btn-danger m-2 w-25">Delete</button>
+      <div class="text-end mt-3 mb-3">
+        <button class="btn btn-outline-danger m-2 btn-sm">Delete Tag</button>
       </div>
     </div>
   </div>
