@@ -66,6 +66,31 @@
 
       <table class="table table-hover table-bordered mt-3 w-100">
         <thead>
+          <tr class="table-primary">
+            <td style="width: 40%" colspan="2">
+              <label class="form-label"><i>Select Project</i></label>
+
+              <multiselect
+                v-model="inpProjectSelected.value"
+                :options="inpProjectSelected.options"
+                placeholder="Select Project"
+                label="projectName"
+                track-by="id"
+              ></multiselect>
+            </td>
+            <td>
+              <label class="form-label"><i>Select Role</i></label>
+              <select class="form-select" v-model="inpProjectRoleSelected">
+                <option value="Admin">Admin</option>
+                <option value="Member">Member</option>
+              </select>
+            </td>
+            <td>
+              <button class="btn btn-primary" @click="createTeamMemberProject()">
+                Submit
+              </button>
+            </td>
+          </tr>
           <tr class="bg-light">
             <td style="width: 40%">Project</td>
             <td>Role</td>
@@ -74,37 +99,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="table-primary">
-            <td style="width: 40%">
-              <!-- <model-select
-                :options="inpProjectSelected.options"
-                v-model="inpProjectSelected.item"
-                placeholder="Select a Project"
-                @searchchange="printSearchText"
-                class="form-control border border-2 border-info"
-              >
-              </model-select> -->
-              <multiselect
-                v-model="inpProjectSelected.value"
-                :options="inpProjectSelected.options"
-                placeholder="Select one"
-                label="projectName"
-                track-by="id"
-              ></multiselect>
-            </td>
-            <td>
-              <select class="form-select" v-model="inpProjectRoleSelected">
-                <option value="Admin">Admin</option>
-                <option value="Member">Member</option>
-              </select>
-            </td>
-            <td></td>
-            <td>
-              <button class="btn btn-primary" @click="createTeamMemberProject()">
-                Submit
-              </button>
-            </td>
-          </tr>
           <tr v-for="item in teamMemberProjectList" :key="item.id">
             <td style="width: 40%">{{ item.projectName }}</td>
 
