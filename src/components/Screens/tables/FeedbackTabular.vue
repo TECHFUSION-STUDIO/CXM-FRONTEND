@@ -66,9 +66,12 @@
           <tbody>
             <tr v-for="item in rawFeedbackList" :key="item.id">
               <td style="width: 40%">
-                <router-link :to="'/feedbackdetail/' + item.id" class="feedbackTitle">
-                  {{ item.feedbackDescription }}</router-link
+                <router-link
+                  :to="'/feedbackdetail/' + item.id"
+                  style="text-decoration: none"
                 >
+                  {{ item.feedbackDescription }}
+                </router-link>
               </td>
               <td>
                 <multiselect
@@ -86,10 +89,7 @@
                 ></multiselect>
               </td>
               <td>
-                <router-link
-                  :to="'/surveys/' + surveyId + '/submission/' + item.id"
-                  class="feedbackTitle"
-                >
+                <router-link :to="'/surveys/' + surveyId + '/submission/' + item.id">
                   {{ item.formSubmissionId }}</router-link
                 >
               </td>

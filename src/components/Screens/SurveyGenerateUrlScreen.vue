@@ -106,9 +106,6 @@ export default {
       showSingleUseUrlAndQr: false,
     };
   },
-  updated() {
-    console.log(this.payload);
-  },
   methods: {
     addKeyValue() {
       if (this.keyValueCount < 5) {
