@@ -49,6 +49,54 @@
         </div>
       </div>
     </div>
+
+    <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive">
+      <div class="input-group mt-3 mx-auto w-75">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search Members"
+          aria-label="Search"
+        />
+        <button class="btn btn-primary">
+          <i class="fa-brands fa-searchengin"></i>
+        </button>
+      </div>
+
+      <table class="table table-hover table-bordered mt-3">
+        <thead>
+          <tr class="bg-light">
+            <td>Email</td>
+            <td>Name</td>
+            <td>Role</td>
+            <td>Status</td>
+            <td>Added at</td>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr v-for="item in memberList" :key="item.id">
+            <td>
+              <a
+                id="feedbackTitle"
+                @click="this.$router.push('/projectmemberdetail/' + item.id)"
+                >{{ item.teamMemberEmail }}</a
+              >
+            </td>
+            <td>{{ item.teamMemberName }}</td>
+            <td>
+              {{ item.teamMemberProjectRole }}
+            </td>
+            <td>
+              {{ item.teamMemberStatus }}
+            </td>
+            <td>{{ item.addedDateTime }}</td>
+          </tr>
+          <tr v-if="memberList.length == 0">
+            <td class="text-center" colspan="5"><i>No Data Found</i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -61,12 +109,25 @@ export default {
       id: this.$route.params.id,
       vendorDesc: "Hdibkdhihb  hlf hfol <a>nkvhnvk</a>",
       vendorData: {},
+      memberList: [],
     };
   },
   mounted() {
     this.getVendors();
+    this.fetchAllMember();
   },
   methods: {
+    fetchAllMember() {
+      axiosConn
+        .get("/getteammemberbyvendorid?businessId=1&vendorId=" + this.id)
+        .then((res) => {
+          console.log(res);
+          this.memberList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     getVendors() {
       axiosConn
         .get("/getVendor?vendorId=" + this.id)

@@ -78,20 +78,12 @@
 
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Assign Vendor</label>
-      <model-select
-        :options="memberVendor.options"
-        v-model="memberVendor.item"
-        placeholder="Select a Vendor"
-        @searchchange="printSearchText"
-        class="form-control border border-2 border-info"
-      >
-      </model-select>
 
       <multiselect
-        :options="memberVendor.value"
-        v-model="memberVendor.item"
+        :options="memberVendor.options"
+        v-model="memberVendor.value"
         placeholder="Select one"
-        label="vendorName"
+        label="vendorOrgName"
         track-by="id"
       ></multiselect>
 
@@ -149,8 +141,8 @@ export default {
         });
     },
     updateMember() {
-      if (this.memberVendor.item != null && this.memberVendor.item != {}) {
-        this.memberDetail.vendorId = this.memberVendor.item.id;
+      if (this.memberVendor.value != null && this.memberVendor.value != {}) {
+        this.memberDetail.vendorId = this.memberVendor.value.id;
       }
       axioscon
         .post("/updateteammember", this.memberDetail)
