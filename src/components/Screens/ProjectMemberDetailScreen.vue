@@ -104,32 +104,24 @@
             <option value="No">No</option>
           </select>
         </div>
-
-        <!-- <div class="mt-3" v-if="isAllSurveyAccess == 'No'">
-          <multi-select
+        <div class="mt-3" v-if="isAllSurveyAccess == 'No'">
+          <multiselect
+            v-model="surveySelect.value"
+            tag-placeholder="Add this as new tag"
+            placeholder="Search or add a tag"
+            label="surveyFormName"
+            track-by="id"
             :options="surveySelect.options"
-            :selected-options="surveySelect.items"
-            placeholder="Type and select Survey To give access"
-            @select="onSurveySelect"
-          >
-          </multi-select> -->
-
-        <multiselect
-          v-model="surveySelect.value"
-          tag-placeholder="Add this as new tag"
-          placeholder="Search or add a tag"
-          label="surveyFormName"
-          track-by="id"
-          :options="surveySelect.options"
-          :multiple="true"
-          :taggable="true"
-          @tag="onSurveySelect"
-        ></multiselect>
+            :multiple="true"
+            :taggable="true"
+            @tag="onSurveySelect"
+          ></multiselect>
+        </div>
+        <div class="">
+          <button class="btn btn-sm btn-outline-danger m-2">Reset</button>
+          <button class="btn btn-sm btn-primary m-2">Update</button>
+        </div>
       </div>
-    </div>
-    <div class="">
-      <button class="btn btn-sm btn-outline-danger m-2">Reset</button>
-      <button class="btn btn-sm btn-primary m-2">Update</button>
     </div>
   </div>
 </template>

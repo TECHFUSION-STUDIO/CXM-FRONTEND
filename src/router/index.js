@@ -22,24 +22,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DashboardScreen.vue'),
       },
 
-         {
-        path: '/coupon',
-        name: 'coupon',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CouponScreen.vue'),
-      },
-
-      {
-        path: '/createcoupon',
-        name: 'createcoupon',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateCouponScreen.vue'),
-      },
-
-      {
-        path: '/editcoupon',
-        name: 'editcoupon',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditCouponScreen.vue'),
-      },
-
 
       {
         path: '/vendor',

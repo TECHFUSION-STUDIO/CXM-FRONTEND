@@ -117,9 +117,7 @@
           style="cursor: default"
         >
           <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-diagram-project me-2"></i>Feature
-            </div>
+            <div class="fw-bold"><i class="fa-regular fa-snowflake me-2"></i>Feature</div>
           </div>
         </li>
 
@@ -174,25 +172,6 @@
         >
           <div class="ms-2 me-auto">
             <div class="fw-bold"><i class="fa-sharp fa-solid fa-tags me-2"></i>Tags</div>
-          </div>
-        </li>
-
-        <li
-          :class="
-            selectedTab == 12
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 12;
-            this.$router.push('/coupon');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-sharp fa-solid fa-tags me-2"></i>Coupons
-            </div>
           </div>
         </li>
 
