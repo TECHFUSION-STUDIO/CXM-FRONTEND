@@ -199,6 +199,8 @@
       />
     </div>
 
+    <ImpactedCustomer />
+
     <FeatureComments />
 
     <div class="text-end mt-3 mb-3">
@@ -212,12 +214,14 @@ import axiosConn from "@/axioscon";
 import FeedbackTabular from "./tables/FeedbackTabular.vue";
 import FeatureComments from "./FeedbackDetails/FeatureComments.vue";
 import FeatureTag from "./FeedbackDetails/FeatureTag.vue";
+import ImpactedCustomer from "./tables/ImpactedCustomer.vue";
 export default {
   name: "FeatureDetailScreen",
   components: {
     FeedbackTabular,
     FeatureComments,
     FeatureTag,
+    ImpactedCustomer,
   },
   data() {
     return {

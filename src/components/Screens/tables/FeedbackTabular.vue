@@ -31,28 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-4 text-center">
-        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-          <button type="button" class="rounded-0 btn btn-sm btn-outline-secondary active">
-            NEW
-          </button>
-          <button type="button" class="rounded-0 btn btn-sm btn-outline-secondary">
-            ASSIGNED
-          </button>
-          <button type="button" class="rounded-0 btn btn-sm btn-outline-secondary">
-            INPROGRESS
-          </button>
-          <button type="button" class="rounded-0 btn btn-sm btn-outline-secondary">
-            TRASH
-          </button>
-          <button type="button" class="rounded-0 btn btn-sm btn-outline-secondary">
-            SPAM
-          </button>
-          <button type="button" class="rounded-0 btn btn-sm btn-outline-secondary">
-            COMPLETED
-          </button>
-        </div>
-      </div>
+
       <div class="table-responsive-md mt-4">
         <table class="table table-hover table-bordered w-100">
           <thead>

@@ -6,6 +6,8 @@ const routes = [
     name: 'setup',
     component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SetupScreen.vue'),
   },
+
+
   {
     path: '/feedbackeditormode',
     name: 'feedbackeditormode',
@@ -22,7 +24,23 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DashboardScreen.vue'),
       },
 
+      // {
+      //   path: '/impactedcustomer',
+      //   name: 'impactedcustomer',
+      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ImpactedCustomer.vue'),
+      // },
 
+      {
+        path: '/createimpactedcustomer',
+        name: 'createimpactedcustomer',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateImpactedCustomer.vue'),
+      },
+
+      // {
+      //   path: '/editimpactedcustomer',
+      //   name: 'editimpactedcustomer',
+      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditImpactedCustomer.vue'),
+      // },
       {
         path: '/vendor',
         name: 'vendor',
@@ -35,7 +53,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateVendorScreen.vue'),
       },
 
-      
+
       {
         path: '/editvendor/:id',
         name: 'editvendor',
@@ -125,7 +143,7 @@ const routes = [
             name: 'surveysubmission',
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySubmissionScreen.vue'),
           },
-     
+
           {
             path: '/surveys/:surveyId/loggers',
             name: 'surveyloggers',
