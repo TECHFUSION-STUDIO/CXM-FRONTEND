@@ -66,7 +66,7 @@ export default {
   methods: {
     fetchAllLoggerList() {
       axiosConn
-        .get("/getallloggers?businessId=1&projectId=1&surveyId=" + this.id)
+        .get("/getLoggers?businessId=1&projectId=1&surveyId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.loggerList = res.data;

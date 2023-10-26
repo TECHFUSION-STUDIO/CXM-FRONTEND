@@ -9,11 +9,6 @@ const routes = [
 
 
   {
-    path: '/feedbackeditormode',
-    name: 'feedbackeditormode',
-    component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FeedbackEditorMode.vue'),
-  },
-  {
     path: '/',
     name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../components/LayoutDefault.vue'),

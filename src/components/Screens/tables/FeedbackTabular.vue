@@ -145,6 +145,9 @@ export default {
       orderByAsc: true,
     };
   },
+  updated() {
+    console.log(this.featureValue);
+  },
   mounted() {
     this.fetchFeedback();
     this.fetchAllFeature();

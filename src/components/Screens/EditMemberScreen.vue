@@ -128,7 +128,7 @@ export default {
   methods: {
     fetchMemberDetail() {
       axioscon
-        .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
+        .get("/getTeamMember?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;

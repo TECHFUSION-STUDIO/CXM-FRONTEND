@@ -79,7 +79,7 @@ export default {
   methods: {
     fetchFeatureDetail() {
       axiosConn
-        .get("/getFeatureDetail?featureId=" + this.id)
+        .get("/getFeature?featureId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.featureDetail = res.data;

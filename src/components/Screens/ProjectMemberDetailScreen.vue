@@ -190,7 +190,7 @@ export default {
     // },
     fetchMemberDetail() {
       axiosConn
-        .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
+        .get("/getTeamMember?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;
@@ -201,7 +201,7 @@ export default {
     },
     fetchAllSurvey() {
       axiosConn
-        .get("/getallsurveyform?businessId=1&projectId=1")
+        .get("/getSurveyForm?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.surveySelect.options = res.data;
@@ -212,7 +212,7 @@ export default {
     },
     fetchAllBoard() {
       axiosConn
-        .get("/getallboard?businessId=1&projectId=1")
+        .get("/getBoard?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.boardSelect.options = res.data;

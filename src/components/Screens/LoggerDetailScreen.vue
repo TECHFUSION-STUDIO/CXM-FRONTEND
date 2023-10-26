@@ -105,7 +105,7 @@ export default {
     },
     fetchLoggerDetail() {
       axiosConn
-        .get("/getloggersbyid?businessId=1&projectId=1&loggerId=" + this.id)
+        .get("/getLoggers?businessId=1&projectId=1&loggerId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.loggerDetail = res.data;

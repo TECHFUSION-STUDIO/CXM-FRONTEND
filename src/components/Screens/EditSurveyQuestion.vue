@@ -209,9 +209,7 @@ export default {
     },
     fetchSurveyQuestionDetail() {
       axiosConn
-        .get(
-          "/getsurveyquestionbyid?businessId=1&projectId=1&surveyQuestionId=" + this.id
-        )
+        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyQuestionId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.surveyQuestionDetail = res.data;

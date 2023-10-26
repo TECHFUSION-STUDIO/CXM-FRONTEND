@@ -96,7 +96,7 @@ export default {
   methods: {
     fetchBoardDetail() {
       axiosConn
-        .get("/getboardbyid?businessId=1&projectId=1&boardId=" + this.id)
+        .get("/getBoard?businessId=1&projectId=1&boardId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.boardDetail = res.data;

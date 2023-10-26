@@ -239,7 +239,7 @@ export default {
   methods: {
     fetchAllCategory() {
       axiosConn
-        .get("/getallcategory?businessId=1&projectId=1")
+        .get("/getCategory?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.categoryList = res.data;
@@ -250,7 +250,7 @@ export default {
     },
     fetchAllBoard() {
       axiosConn
-        .get("/getallboard?businessId=1&projectId=1")
+        .get("/getBoard?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.boardList = res.data;
@@ -261,7 +261,7 @@ export default {
     },
     fetchFeatureDetail() {
       axiosConn
-        .get("/getFeatureDetail?featureId=" + this.id)
+        .get("/getFeature?featureId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.featureDetail = res.data;

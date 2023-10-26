@@ -82,7 +82,7 @@ export default {
   methods: {
     fetchAllTags() {
       axiosConn
-        .get("/getalltag?businessId=1&projectId=1")
+        .get("/getTag?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.tagList = res.data;

@@ -157,7 +157,7 @@ export default {
   methods: {
     fetchMemberDetail() {
       axiosConn
-        .get("/getteammemberbyid?businessId=1&memberId=" + this.id)
+        .get("/getTeamMember?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;
@@ -180,7 +180,7 @@ export default {
 
     fetchAllProjects() {
       axiosConn
-        .get("/getallprojects?businessId=1")
+        .get("/getProjects?businessId=1")
         .then((res) => {
           console.log(res.data);
           this.projectList = res.data;

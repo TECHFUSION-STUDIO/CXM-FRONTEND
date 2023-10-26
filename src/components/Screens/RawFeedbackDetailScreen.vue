@@ -84,7 +84,7 @@ export default {
   methods: {
     fetchFeedback() {
       axiosConn
-        .get("/getfeedbackdetailsbyid?businessId=1&projectId=1&feedbackId=" + this.id)
+        .get("/getFeedback?businessId=1&projectId=1&feedbackId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.feedbackDetail = res.data;

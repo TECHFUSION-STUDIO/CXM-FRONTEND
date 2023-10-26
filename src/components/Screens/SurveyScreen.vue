@@ -101,7 +101,7 @@ export default {
   methods: {
     fetchAllSurveyForm() {
       axiosConn
-        .get("/getallsurveyform?businessId=1&projectId=1")
+        .get("/getSurveyForm?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.surveyFormList = res.data;

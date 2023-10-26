@@ -86,7 +86,7 @@ export default {
   methods: {
     fetchAllCategory() {
       axiosConn
-        .get("/getallcategory?businessId=1&projectId=1")
+        .get("/getCategory?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.categoryList = res.data;
