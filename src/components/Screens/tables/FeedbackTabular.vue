@@ -37,7 +37,21 @@
           <thead>
             <tr class="bg-light">
               <td style="width: 40%">Feedback Response</td>
-              <td>Feature</td>
+              <td style="width: 40%">
+                Feature
+                <router-link
+                  to="/createfeature/"
+                  style="text-decoration: none; font-size: 12px"
+                >
+                  <a
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#staticBackdrop"
+                    aria-controls="staticBackdrop"
+                  >
+                    Create Feature
+                  </a>
+                </router-link>
+              </td>
               <td>Sub. Id</td>
               <!-- <td>Created Time</td> -->
             </tr>
@@ -52,10 +66,10 @@
                   {{ item.feedbackDescription }}
                 </router-link>
               </td>
-              <td>
+              <td style="width: 40%">
                 <multiselect
-                  tag-placeholder="Add this as new tag"
-                  placeholder="Search or add a tag"
+                  tag-placeholder="Add this feature"
+                  placeholder="Search feature"
                   label="featureName"
                   track-by="id"
                   :multiple="true"
@@ -113,6 +127,27 @@
         </div>
       </div>
     </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      id="staticBackdrop"
+      aria-labelledby="staticBackdropLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">Create Feature</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div><CreateFeatureScreenVue type="offcanvas" /></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -120,12 +155,13 @@
 import axiosConn from "@/axioscon";
 
 import Multiselect from "vue-multiselect";
-
+import CreateFeatureScreenVue from "../CreateFeatureScreen";
 export default {
   name: "FeedbackTabular",
   props: ["criteria", "feedbackType", "calledFrom"],
   components: {
     Multiselect,
+    CreateFeatureScreenVue,
   },
   data() {
     return {
@@ -143,10 +179,12 @@ export default {
       showFilterDialog: false,
       orderBy: "addedDateTime",
       orderByAsc: true,
+
+      showMenu: false,
     };
   },
   updated() {
-    console.log(this.featureValue);
+    console.log(this.showMenu);
   },
   mounted() {
     this.fetchFeedback();
@@ -239,7 +277,7 @@ export default {
     fetchSurveyQuestionDetail() {
       axiosConn
         .get(
-          "/getallsurveyquestion?businessId=1&projectId=1&surveyFormId=" +
+          "/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" +
             this.calledFrom.substring(this.calledFrom.indexOf("@") + 1)
         )
         .then((res) => {

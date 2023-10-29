@@ -207,7 +207,7 @@ export default {
   methods: {
     fetchSurveyDetail() {
       axiosConn
-        .get("/getsurveyformbyid?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/getSurveyForm?businessId=1&projectId=1&surveyFormId=" + this.id)
         .then((res) => {
           this.surveyDetail = res.data;
         })
@@ -217,7 +217,7 @@ export default {
     },
     fetchSurveyQuestionDetail() {
       axiosConn
-        .get("/getallsurveyquestion?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.surveyFormQuestionDetail = res.data;

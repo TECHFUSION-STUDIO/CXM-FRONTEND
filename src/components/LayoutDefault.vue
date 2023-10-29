@@ -448,7 +448,7 @@ export default {
   methods: {
     fetchProjects() {
       axioscon
-        .get("/getallprojects?businessId=" + 1)
+        .get("/getProjects?businessId=" + 1)
         .then((res) => {
           console.log(res);
           this.options = res.data;

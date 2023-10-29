@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-white shadow shadow-sm mt-1 p-2">
+    <div class="bg-white shadow shadow-sm mt-1 p-2" v-if="type != 'offcanvas'">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
           <a @click="this.$router.go(-1)" title="Go to Previous Page"
@@ -15,7 +15,7 @@
       </nav>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
+    <div :class="type != 'offcanvas' ? 'bg-white shadow shadow-sm mt-3 p-3' : ''">
       <div class="row">
         <div class="col-md-12">
           <div class="mb-3">
@@ -136,6 +136,7 @@ import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 import axiosConn from "@/axioscon";
 export default {
   name: "CreateFeatureScreen",
+  props: ["type"],
   data() {
     return {
       featureName: "",

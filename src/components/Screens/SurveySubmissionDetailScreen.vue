@@ -95,10 +95,7 @@ export default {
     },
     getAllFeedback() {
       axiosConn
-        .get(
-          "/getfeedbackdetailsbysubmissionid?businessId=1&projectId=1&submissionId=" +
-            this.id
-        )
+        .get("/getFeedback?businessId=1&projectId=1&submissionId=" + this.id)
         .then((res) => {
           console.log(res);
           this.feedbackList = res.data;
