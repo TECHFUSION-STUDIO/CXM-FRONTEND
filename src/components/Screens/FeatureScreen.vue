@@ -21,6 +21,7 @@
             data-bs-toggle="offcanvas"
             data-bs-target="#staticBackdrop"
             aria-controls="staticBackdrop"
+            @click.prevent="showCreateFeatureMenu = true"
           >
             Create Feature
           </button>
@@ -88,8 +89,10 @@
 
     <div
       class="offcanvas offcanvas-end"
-      data-bs-backdrop="static"
+      :class="showCreateFeatureMenu ? 'show' : ''"
       tabindex="-1"
+      :style="{ visibility: showCreateFeatureMenu ? 'visible' : 'hidden' }"
+      data-bs-backdrop="static"
       id="staticBackdrop"
       aria-labelledby="staticBackdropLabel"
     >
@@ -100,10 +103,16 @@
           class="btn-close"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
+          @click.prevent="showCreateFeatureMenu = false"
         ></button>
       </div>
       <div class="offcanvas-body">
-        <div><CreateFeatureScreen type="offcanvas" /></div>
+        <div>
+          <CreateFeatureScreen
+            type="offcanvas"
+            @success="showCreateFeatureMenu = false"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -121,6 +130,7 @@ export default {
   data() {
     return {
       featureList: [],
+      showCreateFeatureMenu: false,
       axiosConn,
     };
   },

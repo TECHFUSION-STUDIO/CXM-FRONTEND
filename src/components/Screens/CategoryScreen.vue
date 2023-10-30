@@ -54,9 +54,18 @@
           <tbody>
             <tr v-for="item in categoryList" :key="item.id">
               <td style="width: 40%">
-                <a
+                <!-- <a
                   id="feedbackTitle"
                   @click="this.$router.push('/categorydetail/' + item.id)"
+                  >{{ item.categoryName }}</a
+                > -->
+
+                <a
+                  id="feedbackTitle"
+                  @click.prevent="showCategoryDetail(item)"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#staticBackdropCategoryDetail"
+                  aria-controls="staticBackdropCategoryDetail"
                   >{{ item.categoryName }}</a
                 >
               </td>
@@ -96,6 +105,57 @@
         <div><CreateCategoryScreen type="offcanvas" /></div>
       </div>
     </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      :class="showCategoryDetailMenu ? 'show' : ''"
+      tabindex="-1"
+      :style="{ visibility: showCategoryDetailMenu ? 'visible' : 'hidden' }"
+      data-bs-backdrop="static"
+      id="staticBackdropCategoryDetail"
+      aria-labelledby="staticBackdropCategoryDetailLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropCategoryDetailLabel">
+          Category Detail
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          @click.prevent="
+            showCategoryDetailMenu = false;
+            categoryDetail = {};
+          "
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          <p class="text-muted">Category Id : {{ categoryDetail.id }}</p>
+          <h5>{{ categoryDetail.categoryName }}</h5>
+          <p>{{ categoryDetail.categoryDesc }}</p>
+          <div class="mt-3">
+            Status :
+            <span class="badge text-bg-success">{{ categoryDetail.categoryStatus }}</span>
+          </div>
+          <div class="mt-2">
+            <p>Added on : {{ categoryDetail.addedDateTime }}</p>
+          </div>
+
+          <div class="text-end">
+            <button
+              class="btn btn-primary btn-sm m-1"
+              @click="this.$router.push('/categorydetail/' + tagDetail.id)"
+            >
+              Edit Category
+            </button>
+
+            <button class="btn btn-outline-danger btn-sm m-1">Delete Category</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -110,6 +170,8 @@ export default {
   data() {
     return {
       categoryList: [],
+      categoryDetail: {},
+      showCategoryDetailMenu: false,
       axiosConn,
     };
   },
@@ -127,6 +189,11 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+
+    showCategoryDetail(item) {
+      this.showCategoryDetailMenu = true;
+      this.categoryDetail = item;
     },
   },
 };

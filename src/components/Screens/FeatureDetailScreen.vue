@@ -199,7 +199,7 @@
       />
     </div>
 
-    <ImpactedCustomer />
+    <ImpactedCustomer type="feature" />
 
     <FeatureComments />
 

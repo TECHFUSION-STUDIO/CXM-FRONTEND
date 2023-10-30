@@ -168,7 +168,7 @@ export default {
     },
     fetchAllTeamMemberProject() {
       axiosConn
-        .get("/getallteammemberprojectbymemberId?businessId=1&memberId=" + this.id)
+        .get("/getTeamMemberProject?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.teamMemberProjectList = res.data;

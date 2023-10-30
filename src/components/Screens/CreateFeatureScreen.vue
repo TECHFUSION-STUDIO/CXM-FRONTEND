@@ -166,6 +166,7 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+
           Swal.fire({
             toast: true,
             animation: false,
@@ -177,6 +178,8 @@ export default {
             timer: 3000,
             background: "white",
           });
+
+          this.$emit("success", true);
         })
         .catch((err) => {
           console.log(err);

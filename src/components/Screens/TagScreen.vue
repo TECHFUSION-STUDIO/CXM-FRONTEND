@@ -51,9 +51,19 @@
           <tbody>
             <tr v-for="item in tagList" :key="item.id">
               <td style="width: 40%">
-                <a
+                <!-- <a
                   id="feedbackTitle"
                   @click="this.$router.push('/tagsdetail/' + item.id)"
+                
+                  >{{ item.tagName }}</a
+                > -->
+
+                <a
+                  id="feedbackTitle"
+                  @click.prevent="showTagDetail(item)"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#staticBackdropTagDetail"
+                  aria-controls="staticBackdropTagDetail"
                   >{{ item.tagName }}</a
                 >
               </td>
@@ -92,6 +102,54 @@
         <div><CreateTagScreen type="offcanvas" /></div>
       </div>
     </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      :class="showTagDetailMenu ? 'show' : ''"
+      tabindex="-1"
+      :style="{ visibility: showTagDetailMenu ? 'visible' : 'hidden' }"
+      data-bs-backdrop="static"
+      id="staticBackdropTagDetail"
+      aria-labelledby="staticBackdropTagDetailLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropTagDetailLabel">Tag Detail</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          @click.prevent="
+            showTagDetailMenu = false;
+            tagDetail = {};
+          "
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          <p class="text-muted">Tag Id : {{ tagDetail.id }}</p>
+          <h5>{{ tagDetail.tagName }}</h5>
+          <div class="mt-3">
+            Status :
+            <span class="badge text-bg-success">{{ tagDetail.tagStatus }}</span>
+          </div>
+          <div class="mt-2">
+            <p>Added on : {{ tagDetail.addedDateTime }}</p>
+          </div>
+
+          <div class="text-end">
+            <button
+              class="btn btn-primary btn-sm m-1"
+              @click="this.$router.push('/edittags/' + tagDetail.id)"
+            >
+              Edit Tag
+            </button>
+
+            <button class="btn btn-outline-danger btn-sm m-1">Delete Tag</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -105,6 +163,8 @@ export default {
   data() {
     return {
       tagList: [],
+      showTagDetailMenu: false,
+      tagDetail: {},
       axiosConn,
     };
   },
@@ -122,6 +182,10 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    showTagDetail(item) {
+      this.showTagDetailMenu = true;
+      this.tagDetail = item;
     },
   },
 };

@@ -4,6 +4,7 @@
       <div class="row w-100">
         <div class="col-md-6">
           <button
+            v-if="false"
             class="btn btn-primary mt-2"
             @click="this.$router.push('/createimpactedcustomer')"
           >
@@ -31,32 +32,25 @@
             <tr class="bg-light">
               <td>Impacted Ph</td>
               <td class="text-center">Impacted Email</td>
+              <td class="text-center">Impacted Name</td>
               <td class="text-center">Customer Type</td>
-              <td class="text-center">Data Detail</td>
-
-              <td class="text-center">Feedback Id</td>
-              <td class="text-center">Is Notified?</td>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>9330142778</td>
-              <td class="text-center">avi.kumarsinha@lumen.com</td>
+            <tr v-for="(item, index) in impactList" :key="index">
+              <td>{{ item.ph }}</td>
+              <td class="text-center">{{ item.email }}</td>
+              <td class="text-center">{{ item.name }}</td>
               <td class="text-center">
-                <router-link :to="'/feedbackdetail/' + 1" style="text-decoration: none"
-                  >Logger / Additional</router-link
+                <router-link
+                  :to="'/loggerdetail/' + item.id"
+                  style="text-decoration: none"
+                  >{{ item.type }}</router-link
                 >
               </td>
-              <td class="text-center">orderId:8584803849 | mob:985778475</td>
-              <td class="text-center">
-                <router-link :to="'/feedbackdetail/' + 1" style="text-decoration: none"
-                  >1
-                </router-link>
-              </td>
-              <td class="text-center">Yes</td>
             </tr>
-            <tr>
-              <td class="text-center" colspan="7"><i>No Data Found</i></td>
+            <tr v-if="impactList.length == 0">
+              <td class="text-center" colspan="5"><i>No Data Found</i></td>
             </tr>
           </tbody>
         </table>
@@ -66,8 +60,38 @@
 </template>
 
 <script>
+import axiosConn from "@/axioscon";
 export default {
   name: "ImpactedCustomer",
+  props: ["type"],
+  data() {
+    return {
+      impactList: [],
+      id:
+        this.type == "feature"
+          ? this.$route.params.featureId
+          : this.$route.params.boardId,
+    };
+  },
+  mounted() {
+    this.fetchImpactedCustomer();
+  },
+  methods: {
+    fetchImpactedCustomer() {
+      axiosConn
+        .get(
+          "/getImpactedCustomer?businessId=1&projectId=1&" +
+            (this.type == "feature" ? "featureId=" + this.id : "boardId=" + this.id)
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.impactList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 

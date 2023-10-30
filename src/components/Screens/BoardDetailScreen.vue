@@ -110,6 +110,8 @@
       </div>
     </div>
 
+    <ImpactedCustomer type="feature" />
+
     <div class="text-end mt-3 mb-3">
       <button class="btn btn-outline-danger m-2 btn-sm">Delete Survey</button>
     </div>
@@ -118,9 +120,13 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import ImpactedCustomer from "./tables/ImpactedCustomer.vue";
+
 export default {
   name: "BoardDetailScreen",
-
+  components: {
+    ImpactedCustomer,
+  },
   data() {
     return {
       id: this.$route.params.boardId,
