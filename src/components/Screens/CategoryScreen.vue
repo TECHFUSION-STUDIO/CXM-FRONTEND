@@ -21,6 +21,7 @@
             data-bs-toggle="offcanvas"
             data-bs-target="#staticBackdrop"
             aria-controls="staticBackdrop"
+            @click.prevent="showCreateCategoryMenu = true"
           >
             Create Category
           </button>
@@ -88,7 +89,9 @@
     <div
       class="offcanvas offcanvas-end"
       data-bs-backdrop="static"
+      :class="showCreateCategoryMenu ? 'show' : ''"
       tabindex="-1"
+      :style="{ visibility: showCreateCategoryMenu ? 'visible' : 'hidden' }"
       id="staticBackdrop"
       aria-labelledby="staticBackdropLabel"
     >
@@ -99,6 +102,7 @@
           class="btn-close"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
+          @click.prevent="showCreateCategoryMenu = false"
         ></button>
       </div>
       <div class="offcanvas-body">
@@ -172,6 +176,7 @@ export default {
       categoryList: [],
       categoryDetail: {},
       showCategoryDetailMenu: false,
+      showCreateCategoryMenu: false,
       axiosConn,
     };
   },

@@ -51,7 +51,12 @@
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <button class="btn btn-outline-success m-2 w-25" @click="createCategory()">
+            <button
+              class="btn btn-outline-success m-2 w-25"
+              @click="createCategory()"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            >
               Submit
             </button>
           </div>
@@ -63,6 +68,8 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 export default {
   name: "CreateCategoryScreen",
   props: ["type"],
@@ -88,6 +95,20 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          Swal.fire({
+            toast: true,
+            animation: false,
+            text: "Category saved successfully!",
+            icon: "success",
+            position: "top",
+            width: 300,
+            padding: "1em",
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
+
+          this.$emit("success", true);
         })
         .catch((err) => {
           console.log(err);

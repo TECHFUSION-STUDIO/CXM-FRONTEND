@@ -18,6 +18,7 @@
             data-bs-toggle="offcanvas"
             data-bs-target="#staticBackdrop"
             aria-controls="staticBackdrop"
+            @click.prevent="showCreateTagMenu = true"
           >
             Create Tag
           </button>
@@ -85,7 +86,9 @@
     <div
       class="offcanvas offcanvas-end"
       data-bs-backdrop="static"
+      :class="showCreateTagMenu ? 'show' : ''"
       tabindex="-1"
+      :style="{ visibility: showCreateTagMenu ? 'visible' : 'hidden' }"
       id="staticBackdrop"
       aria-labelledby="staticBackdropLabel"
     >
@@ -96,10 +99,13 @@
           class="btn-close"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
+          @click="showCreateTagMenu = false"
         ></button>
       </div>
       <div class="offcanvas-body">
-        <div><CreateTagScreen type="offcanvas" /></div>
+        <div>
+          <CreateTagScreen type="offcanvas" @success="showCreateTagMenu = false" />
+        </div>
       </div>
     </div>
 
@@ -164,6 +170,7 @@ export default {
     return {
       tagList: [],
       showTagDetailMenu: false,
+      showCreateTagMenu: false,
       tagDetail: {},
       axiosConn,
     };

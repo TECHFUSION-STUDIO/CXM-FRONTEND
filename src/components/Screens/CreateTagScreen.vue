@@ -35,7 +35,12 @@
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <button class="btn btn-outline-success m-2 w-25" @click="createTag()">
+            <button
+              class="btn btn-outline-success m-2 w-25"
+              @click="createTag()"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            >
               Submit
             </button>
           </div>
@@ -92,6 +97,8 @@ export default {
             timer: 3000,
             background: "white",
           });
+
+          this.$emit("success", true);
         })
         .catch((err) => {
           console.log(err);
