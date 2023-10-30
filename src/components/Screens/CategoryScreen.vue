@@ -9,11 +9,20 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <button
+          <!-- <button
             class="btn btn-primary mt-2"
             @click="this.$router.push('/createcategory')"
           >
-            Create a Category
+            Create Category
+          </button> -->
+          <button
+            class="btn btn-primary mt-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#staticBackdrop"
+            aria-controls="staticBackdrop"
+          >
+            Create Category
           </button>
         </div>
         <div class="col-md-6">
@@ -66,14 +75,38 @@
         </table>
       </div>
     </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      id="staticBackdrop"
+      aria-labelledby="staticBackdropLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">Create Category</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div><CreateCategoryScreen type="offcanvas" /></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axiosConn from "@/axioscon";
 
+import CreateCategoryScreen from "./CreateCategoryScreen.vue";
+
 export default {
   name: "CategoryScreen",
+  components: { CreateCategoryScreen },
   data() {
     return {
       categoryList: [],

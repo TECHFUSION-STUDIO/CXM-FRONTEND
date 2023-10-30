@@ -54,7 +54,7 @@ export default {
     fetchAllComments() {
       axiosConn
         .get(
-          "/getallfeaturecomments?businessId=1&projectId=" +
+          "/getFeatureComments?businessId=1&projectId=" +
             localStorage.getItem("selectedProject") +
             "&featureId=" +
             this.id

@@ -128,7 +128,7 @@ export default {
 
     fetchFeedbackFeature() {
       axiosConn
-        .get("/getFeatureAssociatedWithFeedback?feedbackId=" + this.id)
+        .get("/getFeature?feedbackId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.feedbackFeatureList = res.data;

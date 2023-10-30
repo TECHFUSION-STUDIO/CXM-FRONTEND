@@ -9,9 +9,18 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <button
+          <!-- <button
             class="btn btn-primary mt-2"
             @click="this.$router.push('/createfeature')"
+          >
+            Create Feature
+          </button> -->
+          <button
+            class="btn btn-primary mt-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#staticBackdrop"
+            aria-controls="staticBackdrop"
           >
             Create Feature
           </button>
@@ -76,13 +85,39 @@
         </table>
       </div>
     </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      id="staticBackdrop"
+      aria-labelledby="staticBackdropLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">Create Feature</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div><CreateFeatureScreen type="offcanvas" /></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axiosConn from "@/axioscon";
+import CreateFeatureScreen from "./CreateFeatureScreen.vue";
+
 export default {
   name: "FeatureScreen",
+  components: {
+    CreateFeatureScreen,
+  },
   data() {
     return {
       featureList: [],
