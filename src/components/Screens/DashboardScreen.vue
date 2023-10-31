@@ -3,13 +3,19 @@
 </template>
 
 <script>
+// import axiosConn from "@/axioscon";
 export default {
   name: "DashboardScreen",
 
   data() {
     return {};
   },
-  methods: {},
+  mounted() {
+    this.getDa();
+  },
+  methods: {
+    getDa() {},
+  },
 };
 </script>
 
