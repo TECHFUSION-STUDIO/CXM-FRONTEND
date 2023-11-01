@@ -136,7 +136,9 @@
       </div>
       <div class="offcanvas-body">
         <div>
-          <p class="text-muted">Category Id : {{ categoryDetail.id }}</p>
+          <p class="text-muted">
+            <i>Category Id : {{ categoryDetail.id }}</i>
+          </p>
           <h5>{{ categoryDetail.categoryName }}</h5>
           <p>{{ categoryDetail.categoryDesc }}</p>
           <div class="mt-3">

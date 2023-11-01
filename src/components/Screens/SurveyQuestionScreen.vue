@@ -26,33 +26,115 @@
             <td>Status</td>
             <td>Created Time</td>
             <td>Last Updated Time</td>
-            <td></td>
+            <!-- <td></td> -->
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in surveyFormQuestionDetail" :key="item.id">
-            <td>{{ item.surveyQuestion }}</td>
+            <td>
+              <a
+                id="feedbackTitle"
+                @click.prevent="showQuestionDetail(item)"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#staticBackdropQuestionDetail"
+                aria-controls="staticBackdropQuestionDetail"
+                >{{ item.surveyQuestion }}</a
+              >
+            </td>
             <td>{{ item.surveyQuestionType }}</td>
             <td>{{ item.surveyQuestionCategory }}</td>
             <td>{{ item.surveyQuestionRequired }}</td>
             <td>{{ item.surveyQuestionStatus }}</td>
             <td>{{ item.addedDateTime }}</td>
             <td>{{ item.lastModifiedDateTime }}</td>
-            <td>
+            <!-- <td>
               <button
                 class="btn btn-primary btn-sm me-1"
                 @click="this.$router.push('/surveys/' + id + '/editquestion/' + item.id)"
               >
                 Edit
               </button>
-              <!-- <button class="btn btn-danger btn-sm">Delete</button> -->
-            </td>
+            </td> -->
           </tr>
           <tr v-if="surveyFormQuestionDetail.length == 0">
             <td class="text-center" colspan="8"><i>No Data Found</i></td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      :class="showQuestionDetailMenu ? 'show' : ''"
+      tabindex="-1"
+      :style="{ visibility: showQuestionDetailMenu ? 'visible' : 'hidden' }"
+      data-bs-backdrop="static"
+      id="staticBackdropQuestionDetail"
+      aria-labelledby="staticBackdropQuestionDetailLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropQuestionDetailLabel">
+          Question Detail
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          @click.prevent="
+            showQuestionDetailMenu = false;
+            questionDetail = {};
+          "
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          <p class="text-muted">
+            <i>Question Id : {{ questionDetail.id }}</i>
+          </p>
+          <h6>{{ questionDetail.surveyQuestion }}</h6>
+          <ol class="list-group list-group-numbered">
+            <li
+              v-for="item in questionDetail.surveyQuestionOptions"
+              class="list-group-item"
+              :key="item.id"
+            >
+              {{ item.option }}
+            </li>
+          </ol>
+          <div class="mt-3">
+            Status :
+            <span class="badge text-bg-success">{{
+              questionDetail.surveyQuestionStatus
+            }}</span>
+          </div>
+          <div class="mt-2">Type : {{ questionDetail.surveyQuestionType }}</div>
+
+          <div class="mt-2">Category : {{ questionDetail.surveyQuestionCategory }}</div>
+
+          <div class="mt-2">
+            Is Required? : {{ questionDetail.surveyQuestionRequired }}
+          </div>
+          <div class="mt-2">
+            Last Updated on : {{ questionDetail.lastModifiedDateTime }}
+          </div>
+
+          <div class="mt-2">Added on : {{ questionDetail.addedDateTime }}</div>
+
+          <div class="text-end mt-3">
+            <button
+              class="btn btn-primary btn-sm m-1"
+              @click="
+                this.$router.push('/surveys/' + id + '/editquestion/' + questionDetail.id)
+              "
+            >
+              Edit Question
+            </button>
+
+            <button class="btn btn-outline-danger btn-sm m-1">Delete Question</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -66,20 +148,36 @@ export default {
     return {
       id: "",
       surveyFormQuestionDetail: [{}],
+      showQuestionDetailMenu: false,
+      questionDetail: {},
     };
   },
   mounted() {
     this.id = this.$route.params.surveyId;
-    this.fetchSurveyQuestionDetail();
+    this.fetchSurveyQuestion();
   },
 
   methods: {
-    fetchSurveyQuestionDetail() {
+    fetchSurveyQuestion() {
       axiosConn
         .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.surveyFormQuestionDetail = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    showQuestionDetail(item) {
+      this.showQuestionDetailMenu = true;
+      this.questionDetail = item;
+      axiosConn
+        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyQuestionId=" + item.id)
+        .then((res) => {
+          console.log(res.data);
+          this.questionDetail = res.data;
         })
         .catch((err) => {
           console.log(err);

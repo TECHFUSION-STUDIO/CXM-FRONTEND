@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>{{ top }}</div>
 </template>
 
 <script>
@@ -8,13 +8,25 @@ export default {
   name: "DashboardScreen",
 
   data() {
-    return {};
+    return { top: {} };
   },
   mounted() {
     this.getDa();
   },
   methods: {
-    getDa() {},
+    getDa() {
+      try {
+        if (
+          "browsingTopics" in document &&
+          document.featurePolicy.allowsFeature("browsing-topics")
+        ) {
+          console.log(document.browsingTopics());
+        }
+      } catch (e) {
+        console.error("Could not call topics API", e);
+      }
+      console.log(document.browsingTopics());
+    },
   },
 };
 </script>

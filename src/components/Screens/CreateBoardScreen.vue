@@ -49,7 +49,7 @@
             />
           </div>
         </div> -->
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
           <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Visibility</label>
             <select id="boardStatus" class="form-select" v-model="inpboardVisibility">
@@ -57,14 +57,14 @@
               <option value="Inactive">Inactive</option>
             </select>
           </div>
-        </div>
+        </div> -->
 
         <div class="col-md-12">
           <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Status</label>
             <select id="boardStatus" class="form-select" v-model="inpboardStatus">
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
             </select>
           </div>
         </div>

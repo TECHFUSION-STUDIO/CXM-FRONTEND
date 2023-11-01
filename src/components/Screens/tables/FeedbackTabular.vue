@@ -36,7 +36,7 @@
         <table class="table table-hover table-bordered w-100">
           <thead>
             <tr class="bg-light">
-              <td style="width: 40%">Feedback Response</td>
+              <td style="width: 40%">Response</td>
               <td style="width: 40%">
                 Feature
                 <router-link
@@ -211,8 +211,11 @@ export default {
       console.log(this.featureFeedbackIdOpened.feature);
       axiosConn
         .post("/createFeatureFeedback", {
-          featureId: selectedOption.id,
-          feedbackId: this.featureFeedbackIdOpened.id,
+          addedDateTime: 0,
+          featureFeedbackId: {
+            featureId: selectedOption.id,
+            feedbackId: this.featureFeedbackIdOpened.id,
+          },
         })
         .then((res) => {
           console.log(res.data);
@@ -230,7 +233,12 @@ export default {
       console.log(id);
       console.log(this.featureFeedbackIdOpened.feature);
       axiosConn
-        .get("/deleteFeatureFeedback?id=")
+        .get(
+          "/deleteFeatureFeedback?featureId=" +
+            removedOption.id +
+            "&feedbackId=" +
+            this.featureFeedbackIdOpened.id
+        )
         .then((res) => {
           console.log(res.data);
         })

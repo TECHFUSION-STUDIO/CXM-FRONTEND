@@ -10,7 +10,7 @@
             <a @click="this.$router.push('/surveys/')">Survey </a>
           </li>
           <li class="breadcrumb-item">
-            <a @click="this.$router.push('/surveys/' + id)">Survey Detail</a>
+            <a @click="this.$router.push('/surveys/' + surveyId)">Survey Detail</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">Edit Survey Question</li>
         </ol>

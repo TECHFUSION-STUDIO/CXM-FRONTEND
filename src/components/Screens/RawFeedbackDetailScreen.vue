@@ -98,8 +98,11 @@ export default {
       console.log(id);
       axiosConn
         .post("/createFeatureFeedback", {
-          featureId: selectedOption.id,
-          feedbackId: this.id,
+          addedDateTime: 0,
+          featureFeedbackId: {
+            featureId: selectedOption.id,
+            feedbackId: this.id,
+          },
         })
         .then((res) => {
           console.log(res.data);
@@ -116,7 +119,12 @@ export default {
       console.log(removedOption);
       console.log(id);
       axiosConn
-        .get("/deleteFeatureFeedback?feedbackId=&featureId=")
+        .get(
+          "/deleteFeatureFeedback?featureId=" +
+            removedOption.id +
+            "&feedbackId=" +
+            this.id
+        )
         .then((res) => {
           console.log(res.data);
         })

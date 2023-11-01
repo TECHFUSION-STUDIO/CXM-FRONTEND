@@ -64,8 +64,8 @@
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Survey Status</label>
             <select id="categoryStatus" class="form-select" v-model="inpSurveyStatus">
-              <option>Active</option>
-              <option>Inactive</option>
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
             </select>
           </div>
         </div>
@@ -89,33 +89,66 @@ export default {
   data() {
     return {
       inpSurveyName: "",
-      inpSurveyStatus: "",
+      inpSurveyStatus: "INACTIVE",
       inpSurveyStartTime: "",
       inpSurveyEndTime: "",
       inpSurveyDesc: "",
-
+      errMsg: {
+        surveyName: "",
+        status: "",
+        startTime: "",
+        timeerror: "",
+      },
       axiosConn,
     };
   },
+
   methods: {
+    validate() {
+      if (this.inpSurveyName != null && this.inpSurveyName.trim() != "") {
+        if (this.inpSurveyStatus != null && this.inpSurveyStatus.trim() != "") {
+          if (this.inpSurveyStartTime != null && this.inpSurveyStartTime.trim() != "") {
+            if (this.inpSurveyEndTime != null && this.inpSurveyEndTime.trim() != "") {
+              if (
+                Date.parse(this.inpSurveyEndTime) > Date.parse(this.inpSurveyStartTime)
+              ) {
+                return true;
+              } else {
+                return false;
+              }
+            } else {
+              return true;
+            }
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    },
     createSurvey() {
-      axiosConn
-        .post("/createsurveyform", {
-          businessId: 1,
-          projectId: 1,
-          surveyFormName: this.inpSurveyName,
-          surveyFormDescription: this.inpSurveyDesc,
-          surveyFormStatus: this.inpSurveyStatus,
-          startDateTime: this.inpSurveyStartTime,
-          endDateTime: this.inpSurveyEndTime,
-          addedDateTime: "2023-06-24T10:16:01.682Z",
-        })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (this.validate()) {
+        axiosConn
+          .post("/createsurveyform", {
+            businessId: 1,
+            projectId: 1,
+            surveyFormName: this.inpSurveyName,
+            surveyFormDescription: this.inpSurveyDesc,
+            surveyFormStatus: this.inpSurveyStatus,
+            startDateTime: this.inpSurveyStartTime,
+            endDateTime: this.inpSurveyEndTime,
+            addedDateTime: "2023-06-24T10:16:01.682Z",
+          })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     },
   },
 };

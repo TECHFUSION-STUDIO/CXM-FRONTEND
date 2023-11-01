@@ -133,7 +133,9 @@
       </div>
       <div class="offcanvas-body">
         <div>
-          <p class="text-muted">Tag Id : {{ tagDetail.id }}</p>
+          <p class="text-muted">
+            <i>Tag Id : {{ tagDetail.id }}</i>
+          </p>
           <h5>{{ tagDetail.tagName }}</h5>
           <div class="mt-3">
             Status :
