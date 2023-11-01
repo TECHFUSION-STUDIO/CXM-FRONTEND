@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mt-3">
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="basic-addon1">Logger Email</span>

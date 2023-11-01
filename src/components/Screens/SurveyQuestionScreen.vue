@@ -22,11 +22,8 @@
             <td style="width: 40%">Question</td>
             <td>Type</td>
             <td>Category</td>
-            <td>Mandatory</td>
             <td>Status</td>
             <td>Created Time</td>
-            <td>Last Updated Time</td>
-            <!-- <td></td> -->
           </tr>
         </thead>
         <tbody>
@@ -43,18 +40,8 @@
             </td>
             <td>{{ item.surveyQuestionType }}</td>
             <td>{{ item.surveyQuestionCategory }}</td>
-            <td>{{ item.surveyQuestionRequired }}</td>
             <td>{{ item.surveyQuestionStatus }}</td>
             <td>{{ item.addedDateTime }}</td>
-            <td>{{ item.lastModifiedDateTime }}</td>
-            <!-- <td>
-              <button
-                class="btn btn-primary btn-sm me-1"
-                @click="this.$router.push('/surveys/' + id + '/editquestion/' + item.id)"
-              >
-                Edit
-              </button>
-            </td> -->
           </tr>
           <tr v-if="surveyFormQuestionDetail.length == 0">
             <td class="text-center" colspan="8"><i>No Data Found</i></td>

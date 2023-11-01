@@ -34,18 +34,113 @@
           </div>
           <h5>{{ vendorData.vendorOrgName }}</h5>
 
-          <div class="row">
-            <div class="col-auto">
-              <p>Status : {{ vendorData.vendorStatus }}</p>
-            </div>
-
-            <div class="col-auto"><p>Total Feedback : 6476589</p></div>
-            <div class="col-auto"><p>Last used at : 6476589</p></div>
-            <div class="col-auto">
-              <p>Added on : {{ vendorData.addedDateTime }}</p>
-            </div>
-          </div>
           <p v-html="vendorDesc"></p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Email</span>
+            <input
+              type="email"
+              class="form-control"
+              disabled
+              :value="vendorData.vendorEmail"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Owener NAme</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="vendorData.vendorOwnerName"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Identification</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="vendorData.vendorIdentification"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Status</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="vendorData.vendorStatus"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1"> Contact 1</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="vendorData.vendorContact1"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1"> Contact 2</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="vendorData.vendorContact2"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="vendorData.addedDateTime"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Last update on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="vendorData.lastUpdatedDateTime"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text">Address</span>
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+              rows="5"
+              :value="this.vendorAddress"
+              disabled
+            >
+            </textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -109,6 +204,7 @@ export default {
       id: this.$route.params.id,
       vendorDesc: "Hdibkdhihb  hlf hfol <a>nkvhnvk</a>",
       vendorData: {},
+      vendorAddress: "",
       memberList: [],
     };
   },
@@ -119,7 +215,7 @@ export default {
   methods: {
     fetchAllMember() {
       axiosConn
-        .get("/getteammemberbyvendorid?businessId=1&vendorId=" + this.id)
+        .get("/getTeamMember?businessId=1&vendorId=" + this.id)
         .then((res) => {
           console.log(res);
           this.memberList = res.data;
@@ -134,7 +230,16 @@ export default {
         .then((res) => {
           console.log(res);
           this.vendorData = res.data;
-          console.log(this.vendorList);
+          this.vendorAddress =
+            res.data.vendorAddress +
+            "\n" +
+            res.data.vendorCity +
+            "-" +
+            res.data.vendorZip +
+            "\n" +
+            res.data.vendorState +
+            "\n" +
+            res.data.vendorCountry;
         })
         .catch((err) => {
           console.log(err);

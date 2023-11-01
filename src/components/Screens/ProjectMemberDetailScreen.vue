@@ -23,28 +23,67 @@
         <div class="col-md-12">
           <p class="text-muted">Member Id : {{ memberDetail.id }}</p>
           <h5>{{ memberDetail.teamMemberName }}</h5>
+        </div>
+      </div>
 
-          <div class="row">
-            <div class="col-auto">
-              <p>Email : {{ memberDetail.teamMemberEmail }}</p>
-            </div>
-            <div class="col-auto">
-              <p>Contact : {{ memberDetail.teamMemberContact }}</p>
-            </div>
-            <div class="col-auto">
-              <p>Status : {{ memberDetail.teamMemberStatus }}</p>
-            </div>
-            <div class="col-auto" v-if="memberDetail.vendorId != null">
-              <p>
-                Vendor :
-                {{
-                  memberDetail.vendorId != null ? memberDetail.vendorId.vendorOrgName : ""
-                }}
-              </p>
-            </div>
-            <div class="col-auto">
-              <p>Added on : {{ memberDetail.addedDateTime }}</p>
-            </div>
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Member Email</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="memberDetail.teamMemberEmail"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Member Contact</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="memberDetail.teamMemberContact"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Member Status</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="memberDetail.teamMemberStatus"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-4" v-if="memberDetail.vendorId != null">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Vendor</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="
+                memberDetail.vendorId != null ? memberDetail.vendorId.vendorOrgName : ''
+              "
+            />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="memberDetail.addedDateTime"
+            />
           </div>
         </div>
       </div>
