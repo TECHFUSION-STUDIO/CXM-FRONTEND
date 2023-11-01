@@ -58,6 +58,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
+              v-model="featureDetail.featureStatus"
             >
               <option value="OPEN">OPEN</option>
               <option value="INPROGRESS">INPROGRESS</option>
@@ -75,6 +76,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
+              v-model="featureDetail.boardId"
             >
               <option selected></option>
               <option v-for="item in boardList" :key="item.id" :value="item.id">
@@ -89,6 +91,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
+              v-model="featureDetail.featureCategory"
             >
               <option selected></option>
               <option v-for="item in categoryList" :key="item.id" :value="item.id">
@@ -105,6 +108,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
+              v-model="featureDetail.featureImpact"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -126,6 +130,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
+              v-model="featureDetail.featureEffort"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -147,6 +152,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
+              v-model="featureDetail.featurePriority"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -193,13 +199,14 @@
     </div>
     <FeatureTag />
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <FeedbackTabular
-        :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }"
-        feedbackType="ALL"
-      />
+      <h6>Feedback Responses</h6>
+      <FeedbackTabular :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }" />
     </div>
+    <div class="bg-white shadow shadow-sm mt-3 p-3">
+      <h6>Impacted Customer</h6>
 
-    <ImpactedCustomer type="feature" />
+      <ImpactedCustomer type="feature" />
+    </div>
 
     <FeatureComments />
 

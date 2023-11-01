@@ -2,7 +2,6 @@
   <div>
     <FeedbackTabular
       :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
-      feedbackType="RAW"
       :calledFrom="'SURVEY@' + id"
     />
   </div>

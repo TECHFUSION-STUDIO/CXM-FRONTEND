@@ -31,18 +31,56 @@
 
       <h5>{{ surveyDetail.surveyFormName }}</h5>
 
-      <div class="row">
-        <div class="col-auto">
-          <p>Status : {{ surveyDetail.surveyFormStatus }}</p>
-        </div>
-        <div class="col-auto">
-          <p>Added on : {{ surveyDetail.addedDateTime }}</p>
-        </div>
-      </div>
-
       <p>
         {{ surveyDetail.surveyFormDescription }}
       </p>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Status</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="surveyDetail.surveyFormStatus"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="surveyDetail.addedDateTime"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Start at</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="surveyDetail.startDateTime"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">End on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="surveyDetail.endDateTime"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
     <div>
@@ -209,6 +247,7 @@ export default {
       axiosConn
         .get("/getSurveyForm?businessId=1&projectId=1&surveyFormId=" + this.id)
         .then((res) => {
+          console.log(res.data);
           this.surveyDetail = res.data;
         })
         .catch((err) => {

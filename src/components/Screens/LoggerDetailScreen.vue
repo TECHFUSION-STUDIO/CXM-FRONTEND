@@ -24,35 +24,62 @@
           <p class="text-muted">Logger Id : {{ loggerDetail.id }}</p>
           <h5>{{ loggerDetail.loggerName }}</h5>
 
-          <div class="row">
-            <div class="col-auto">
-              <p>Email : {{ loggerDetail.loggerEmail }}</p>
-            </div>
-            <div class="col-auto">
-              <p>Contact : {{ loggerDetail.loggerContact }}</p>
-            </div>
-            <div class="col-auto">
-              <p>Logger Type : {{ loggerDetail.loggerType }}</p>
-            </div>
-            <div class="col-auto"><p>Total Response : 6476589</p></div>
-            <div class="col-auto"><p>Last Response Recorded : 6476589</p></div>
-            <div class="col-auto">
-              <p>Added on : {{ loggerDetail.addedDateTime }}</p>
-            </div>
-          </div>
-
           <p>
             {{ loggerDetail.loggerAdditionalDetail }}
           </p>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Logger Email</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="loggerDetail.loggerEmail"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Logger Contact</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="loggerDetail.loggerContact"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Logger Type</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="loggerDetail.loggerType"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="loggerDetail.addedDateTime"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <FeedbackTabular
-        :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }"
-        feedbackType="ALL"
-      />
+      <FeedbackTabular :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }" />
     </div>
   </div>
 </template>

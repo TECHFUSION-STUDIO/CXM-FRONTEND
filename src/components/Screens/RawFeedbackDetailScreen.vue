@@ -26,7 +26,7 @@
         <p>{{ feedbackDetail.feedbackDescription }}</p>
       </div>
       <div class="bg-white shadow shadow-sm mt-3 p-2">
-        <h6>Feature</h6>
+        <h6>Linked Feature</h6>
         <multiselect
           class="mt-2"
           tag-placeholder="Add this as new tag"

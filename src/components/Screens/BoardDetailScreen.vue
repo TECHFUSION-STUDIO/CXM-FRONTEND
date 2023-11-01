@@ -32,20 +32,35 @@
           </div>
           <h5>{{ boardDetail.boardName }}</h5>
 
-          <div class="row">
-            <div class="col-auto">
-              <p>Status : {{ boardDetail.status }}</p>
-            </div>
-
-            <div class="col-auto"><p>Total Feedbacks : 6476589</p></div>
-            <div class="col-auto"><p>Last feedback added at : 6476589</p></div>
-            <div class="col-auto">
-              <p>Board Created on : {{ boardDetail.addedDateTime }}</p>
-            </div>
-          </div>
           <p>
             {{ boardDetail.boardDescription }}
           </p>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Board Status</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="boardDetail.status"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="boardDetail.addedDateTime"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -110,8 +125,9 @@
       </div>
     </div>
 
-    <ImpactedCustomer type="feature" />
-
+    <div class="bg-white shadow shadow-sm mt-3 p-3">
+      <ImpactedCustomer type="feature" />
+    </div>
     <div class="text-end mt-3 mb-3">
       <button class="btn btn-outline-danger m-2 btn-sm">Delete Survey</button>
     </div>

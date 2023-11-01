@@ -32,14 +32,21 @@
         <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
+              <td>Board Id</td>
               <td style="width: 40%">Board Name</td>
               <!-- <td>Description</td> -->
               <td class="text-center">Status</td>
-              <td class="text-center">Visibility</td>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in boardList" :key="item.id">
+              <td>
+                <a
+                  id="feedbackTitle"
+                  @click="this.$router.push('/boarddetail/' + item.id)"
+                  >{{ item.id }}</a
+                >
+              </td>
               <td style="width: 40%">
                 <a
                   id="feedbackTitle"
@@ -50,9 +57,6 @@
               <!-- <td>{{ item.boardDescription }}</td> -->
               <td class="text-center">
                 <span class="badge text-bg-success">{{ item.status }}</span>
-              </td>
-              <td class="text-center">
-                <span class="badge text-bg-success">{{ item.visibility }}</span>
               </td>
             </tr>
             <tr v-if="boardList.length == 0">
