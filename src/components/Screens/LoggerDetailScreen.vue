@@ -53,7 +53,7 @@
             />
           </div>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="basic-addon1">Logger Type</span>
             <input
@@ -63,7 +63,7 @@
               :value="loggerDetail.loggerType"
             />
           </div>
-        </div>
+        </div> -->
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="basic-addon1">Created on</span>

@@ -34,16 +34,19 @@
           <p>
             {{ featureDetail.featureDescription }}
           </p>
-          <div class="row">
-            <div class="col-auto">
-              <p>Status : {{ featureDetail.featureStatus }}</p>
-            </div>
+        </div>
+      </div>
 
-            <div class="col-auto"><p>Strength : 6476589</p></div>
-            <div class="col-auto"><p>Last feedback added at : 6476589</p></div>
-            <div class="col-auto">
-              <p>Board Created on : {{ featureDetail.addedDateTime }}</p>
-            </div>
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="featureDetail.addedDateTime"
+            />
           </div>
         </div>
       </div>
