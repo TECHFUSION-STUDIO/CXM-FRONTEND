@@ -79,10 +79,17 @@
               aria-label="Default select example"
               v-model="featureImpact"
             >
-              <option selected></option>
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
         </div>
@@ -95,10 +102,17 @@
               aria-label="Default select example"
               v-model="featureEffort"
             >
-              <option selected></option>
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
         </div>
@@ -110,10 +124,17 @@
               aria-label="Default select example"
               v-model="featurePriority"
             >
-              <option selected></option>
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
         </div>
@@ -139,6 +160,7 @@
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 import axiosConn from "@/axioscon";
+
 export default {
   name: "CreateFeatureScreen",
   props: ["type"],

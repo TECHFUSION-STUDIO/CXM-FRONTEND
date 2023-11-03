@@ -18,12 +18,34 @@
         <p class="text-muted mb-0">Id : {{ feedbackDetail.id }}</p>
 
         <h5 class="mt-1">{{ feedbackDetail.feedbackDescription }}</h5>
-        <p class="text-muted">
-          Created By Anonymous via Page Name at
-          {{ feedbackDetail.addedDateTime }}
+        <p>
+          <span class="badge text-bg-primary me-1">
+            {{ questionDetail.surveyQuestionCategory }}</span
+          >
+
+          <span class="badge text-bg-primary">
+            {{ questionDetail.surveyQuestionType }}</span
+          >
         </p>
 
-        <p>{{ feedbackDetail.feedbackDescription }}</p>
+        <h6 class="text-muted">
+          {{ questionDetail.surveyQuestion }}
+        </h6>
+        <p class="text-muted">
+          <i>
+            Logged by
+            <a
+              :href="'/loggerdetail/' + loggerDetail.id"
+              target="blank"
+              class="text-decoration-none"
+              >{{ loggerDetail.id }}</a
+            >
+            , Created By Anonymous via Page Name at
+            {{ feedbackDetail.addedDateTime }}</i
+          >
+        </p>
+
+        <p></p>
       </div>
       <div class="bg-white shadow shadow-sm mt-3 p-2">
         <h6>Linked Feature</h6>
@@ -71,6 +93,8 @@ export default {
       featureList: [],
       feedbackFeatureList: [],
       feedbackDetail: {},
+      questionDetail: {},
+      loggerDetail: {},
     };
   },
   mounted() {
@@ -88,6 +112,8 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.feedbackDetail = res.data;
+          this.questionDetail = res.data.questionId;
+          this.loggerDetail = res.data.loggerId;
         })
         .catch((err) => {
           console.log(err);

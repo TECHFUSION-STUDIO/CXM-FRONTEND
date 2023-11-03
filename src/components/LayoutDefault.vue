@@ -619,7 +619,7 @@ export default {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -250px;
+    margin-left: -220px;
   }
 
   #sidebar.active {

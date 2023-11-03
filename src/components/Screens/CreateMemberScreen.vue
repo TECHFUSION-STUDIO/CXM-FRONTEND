@@ -50,19 +50,6 @@
           />
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"
-            >Member Description</label
-          >
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            v-model="memberDesc"
-          ></textarea>
-        </div>
-      </div>
 
       <div class="col-md-6">
         <div class="mb-3">
@@ -106,8 +93,19 @@
             label="vendorOrgName"
             track-by="id"
           ></multiselect>
-
-          <br />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Member Description</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            v-model="memberDesc"
+          ></textarea>
         </div>
       </div>
     </div>

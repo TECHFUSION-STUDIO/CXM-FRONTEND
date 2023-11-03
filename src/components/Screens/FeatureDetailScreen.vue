@@ -62,45 +62,45 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
               v-model="featureDetail.featureStatus"
+              @change="updateFeature()"
             >
-              <option value="OPEN">OPEN</option>
-              <option value="INPROGRESS">INPROGRESS</option>
-              <option value="DONE">DONE</option>
-
-              <option value="REOPEN">REOPEN</option>
-
-              <option value="CLOSED">CLOSED</option>
+              <option v-for="item in constants.FEATURE_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
 
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Board</label>
-            <select
-              class="form-select"
-              id="inputGroupSelect03"
-              aria-label="Example select with button addon"
-              v-model="featureDetail.boardId"
-            >
-              <option selected></option>
-              <option v-for="item in boardList" :key="item.id" :value="item.id">
-                {{ item.boardName }}
-              </option>
-            </select>
+
+            <multiselect
+              class="form-control p-0 border border-0"
+              :options="boardList.options"
+              v-model="boardList.value"
+              placeholder="Select one"
+              label="boardName"
+              track-by="id"
+              selectLabel=""
+              deselectLabel=""
+              @select="updateBoard('add')"
+              @remove="updateBoard('remove')"
+            ></multiselect>
           </div>
 
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
-            <select
-              class="form-select"
-              id="inputGroupSelect03"
-              aria-label="Example select with button addon"
-              v-model="featureDetail.featureCategory"
-            >
-              <option selected></option>
-              <option v-for="item in categoryList" :key="item.id" :value="item.id">
-                {{ item.categoryName }}
-              </option>
-            </select>
+            <multiselect
+              class="form-control p-0 border border-0"
+              :options="categoryList.options"
+              v-model="categoryList.value"
+              placeholder="Select one"
+              label="categoryName"
+              track-by="id"
+              selectLabel=""
+              deselectLabel=""
+              @select="updateCatgeory('add')"
+              @remove="updateCatgeory('remove')"
+            ></multiselect>
           </div>
         </div>
 
@@ -112,6 +112,7 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
               v-model="featureDetail.featureImpact"
+              @change="updateFeature()"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -134,6 +135,7 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
               v-model="featureDetail.featureEffort"
+              @change="updateFeature()"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -156,6 +158,7 @@
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
               v-model="featureDetail.featurePriority"
+              @change="updateFeature()"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -175,7 +178,14 @@
         <div class="col-md-4">
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Assignee</label>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" />
+            <multiselect
+              class="form-control p-0 border border-0"
+              :options="questionDropDown.options"
+              v-model="questionDropDown.value"
+              placeholder="Select one"
+              label="surveyQuestion"
+              track-by="id"
+            ></multiselect>
           </div>
 
           <div class="input-group mb-3">
@@ -225,6 +235,11 @@ import FeedbackTabular from "./tables/FeedbackTabular.vue";
 import FeatureComments from "./FeedbackDetails/FeatureComments.vue";
 import FeatureTag from "./FeedbackDetails/FeatureTag.vue";
 import ImpactedCustomer from "./tables/ImpactedCustomer.vue";
+import { constants } from "./constants";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
+import Multiselect from "vue-multiselect";
+
 export default {
   name: "FeatureDetailScreen",
   components: {
@@ -232,13 +247,29 @@ export default {
     FeatureComments,
     FeatureTag,
     ImpactedCustomer,
+    Multiselect,
   },
   data() {
     return {
+      questionDropDown: {
+        options: [],
+        value: {},
+        isLoading: false,
+      },
+
+      categoryList: {
+        options: [],
+        value: {},
+      },
+
+      boardList: {
+        options: [],
+        value: {},
+      },
+
       featureDetail: {},
       id: this.$route.params.featureId,
-      boardList: [],
-      categoryList: [],
+      constants,
     };
   },
   mounted() {
@@ -246,13 +277,70 @@ export default {
     this.fetchAllCategory();
     this.fetchAllBoard();
   },
+  updated() {
+    console.log(this.featureDetail);
+  },
   methods: {
+    updateCatgeory(type) {
+      console.log("id");
+      if (type == "add") {
+        this.featureDetail.featureCategory = this.categoryList.value.id;
+      } else if (type == "remove") {
+        this.featureDetail.featureCategory = "";
+      }
+      this.updateFeature();
+    },
+    updateBoard(type) {
+      if (type == "add") {
+        this.featureDetail.boardId = this.boardList.value.id;
+      } else if (type == "remove") {
+        this.featureDetail.boardId = "";
+      }
+      this.updateFeature();
+    },
+    updateFeature() {
+      axiosConn
+        .post("/updatefeature", {
+          businessId: this.featureDetail.businessId,
+          projectId: this.featureDetail.projectId,
+          boardId: this.featureDetail.boardId.id,
+          assigneeId: this.featureDetail.assigneeId,
+          reporterId: this.featureDetail.reporterId,
+          createdBy: this.featureDetail.createdBy,
+          featureName: this.featureDetail.featureName,
+          featureDescription: this.featureDetail.featureDescription,
+          featureStatus: this.featureDetail.featureStatus,
+          featureCategory: this.featureDetail.featureCategory.id,
+          featurePriority: this.featureDetail.featurePriority,
+          featureImpact: this.featureDetail.featureImpact,
+          featureEffort: this.featureDetail.featureEffort,
+          lastModified: this.featureDetail.lastModified,
+          addedDateTime: this.featureDetail.addedDateTime,
+        })
+        .then((res) => {
+          console.log(res.data);
+          Swal.fire({
+            toast: true,
+            text: "Feature updated successfully",
+            icon: "success",
+            position: "top",
+            width: 300,
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
+          this.fetchFeatureDetail();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     fetchAllCategory() {
       axiosConn
         .get("/getCategory?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
-          this.categoryList = res.data;
+          this.categoryList.options = res.data;
         })
         .catch((err) => {
           console.log(err);
@@ -263,7 +351,7 @@ export default {
         .get("/getBoard?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
-          this.boardList = res.data;
+          this.boardList.options = res.data;
         })
         .catch((err) => {
           console.log(err);
@@ -275,6 +363,8 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.featureDetail = res.data;
+          this.boardList.value = res.data.boardId;
+          this.categoryList.value = res.data.featureCategory;
         })
         .catch((err) => {
           console.log(err);

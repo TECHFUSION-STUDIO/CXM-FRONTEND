@@ -217,16 +217,7 @@ export default {
       this.surveySelect.options.push(tag);
       this.surveySelect.value.push(tag);
     },
-    // onBoardSelect(items, lastSelectItem) {
-    //   this.boardSelect.items = items;
-    //   this.boardSelect.lastSelectItem = lastSelectItem;
-    //   // this.submitAddTag();
-    // },
-    // onSurveySelect(items, lastSelectItem) {
-    //   this.surveySelect.items = items;
-    //   this.surveySelect.lastSelectItem = lastSelectItem;
-    //   // this.submitAddTag();
-    // },
+
     fetchMemberDetail() {
       axiosConn
         .get("/getTeamMember?businessId=1&memberId=" + this.id)
