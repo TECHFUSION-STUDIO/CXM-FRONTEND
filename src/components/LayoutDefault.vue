@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
       <button
-        v-if="this.store.isLoggedIn && !screenShort"
+        v-if="this.store.IS_LOGGED_IN && !screenShort"
         type="button"
         id="sidebarCollapse"
         class="btn btn-primary"
@@ -44,7 +44,7 @@
   <div class="wrapper bg-light">
     <!-- Sidebar  -->
     <nav
-      v-if="this.store.isLoggedIn"
+      v-if="this.store.IS_LOGGED_IN"
       id="sidebar"
       :class="openDrawer ? 'active' : ''"
       style="overflow-y: auto; height: 100vh; background-color: #dee2e6"
