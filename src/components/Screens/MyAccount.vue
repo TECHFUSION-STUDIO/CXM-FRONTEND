@@ -11,8 +11,142 @@
         </ol>
       </nav>
     </div>
-    <div class="bg-white shadow shadow-sm mt-3 p-2"></div>
+
+    <div class="bg-white shadow shadow-sm mt-3 p-3">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Profile Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="memberName"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Profile Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="memberName"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Profession</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="memberEmail"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Contact</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="memberContact"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Twitter</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="memberName"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">LinkedIn</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="memberName"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Website url</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              v-model="memberName"
+            />
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Member Role</label
+            >
+            <select class="form-select" v-model="memberRole">
+              <option value="Admin">Admin</option>
+              <option value="Member">Member</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Member Status</label
+            >
+            <select class="form-select" v-model="memberStatus">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Assign Vendor</label
+            >
+            <!-- <multiselect
+              :options="memberVendor.options"
+              v-model="memberVendor.value"
+              placeholder="Select one"
+              label="vendorOrgName"
+              track-by="id"
+            ></multiselect> -->
+            <br />
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-outline-danger m-2 w-25">Reset</button>
+        <button class="btn btn-outline-success m-2 w-25" @click="createMember()">
+          Submit
+        </button>
+      </div>
+    </div>
   </div>
+
+  <div></div>
 </template>
 
 <script>

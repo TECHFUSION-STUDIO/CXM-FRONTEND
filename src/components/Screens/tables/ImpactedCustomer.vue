@@ -37,14 +37,12 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in impactList" :key="index">
-            <td>{{ item.ph }}</td>
-            <td class="text-center">{{ item.email }}</td>
-            <td class="text-center">{{ item.name }}</td>
+            <td>{{ item.loggerContact }}</td>
+            <td class="text-center">{{ item.loggerEmail }}</td>
+            <td class="text-center">{{ item.loggerName }}</td>
             <td class="text-center">
-              <router-link
-                :to="'/loggerdetail/' + item.id"
-                style="text-decoration: none"
-                >{{ item.type }}</router-link
+              <router-link :to="'/loggerdetail/' + item.id" style="text-decoration: none"
+                >Logger</router-link
               >
             </td>
           </tr>
@@ -78,7 +76,7 @@ export default {
     fetchImpactedCustomer() {
       axiosConn
         .get(
-          "/getImpactedCustomer?businessId=1&projectId=1&" +
+          "/getLoggers?businessId=1&projectId=1&" +
             (this.type == "feature" ? "featureId=" + this.id : "boardId=" + this.id)
         )
         .then((res) => {

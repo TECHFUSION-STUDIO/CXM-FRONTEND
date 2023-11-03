@@ -145,11 +145,6 @@ const routes = [
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyLoggerScreen.vue'),
           },
 
-          {
-            path: '/surveys/:surveyId/generateurl',
-            name: 'surveygenerateUrl',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyGenerateUrlScreen.vue'),
-          },
 
         ]
       },

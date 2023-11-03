@@ -236,6 +236,23 @@
 
         <li
           :class="
+            selectedTab == 12
+              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
+          "
+          @click="
+            selectedTab = 12;
+            this.$router.push('/account');
+          "
+          style="cursor: default"
+        >
+          <div class="me-auto w-100">
+            <div class="fw-bold"><i class="fa-solid fa-building me-2"></i>My Account</div>
+          </div>
+        </li>
+
+        <li
+          :class="
             selectedTab == 10
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
               : 'list-group-item d-flex justify-content-between align-items-start   hovered mt-1'
@@ -530,8 +547,8 @@ export default {
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
+  min-width: 220px;
+  max-width: 220px;
   color: #fff;
   transition: all 0.3s;
   /* padding-left: 5px;
@@ -541,7 +558,7 @@ export default {
 }
 
 #sidebar.active {
-  margin-left: -250px;
+  margin-left: -220px;
 }
 
 /* #sidebar .sidebar-header {

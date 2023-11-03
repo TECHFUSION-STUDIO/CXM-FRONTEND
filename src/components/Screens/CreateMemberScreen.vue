@@ -16,66 +16,82 @@
   </div>
 
   <div class="bg-white shadow shadow-sm mt-3 p-3">
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Member Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="exampleFormControlInput1"
-        v-model="memberName"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Member Email</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        v-model="memberEmail"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Member Contact</label>
-      <input
-        type="tel"
-        class="form-control"
-        id="exampleFormControlInput1"
-        v-model="memberContact"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label"
-        >Member Description</label
-      >
-      <textarea
-        class="form-control"
-        id="exampleFormControlTextarea1"
-        rows="3"
-        v-model="memberDesc"
-      ></textarea>
-    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Member Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            v-model="memberName"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Member Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleFormControlInput1"
+            v-model="memberEmail"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Member Contact</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="exampleFormControlInput1"
+            v-model="memberContact"
+          />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Member Description</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            v-model="memberDesc"
+          ></textarea>
+        </div>
+      </div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Member Role</label>
-      <select class="form-select" v-model="memberRole">
-        <option value="Admin">Admin</option>
-        <option value="Member">Member</option>
-      </select>
-      <br />
-    </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Member Role</label>
+          <select class="form-select" v-model="memberRole">
+            <option value="Admin">Admin</option>
+            <option value="Member">Member</option>
+          </select>
+        </div>
+      </div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Member Status</label>
-      <select class="form-select" v-model="memberStatus">
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-      </select>
-      <br />
-    </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Member Status</label
+          >
+          <select class="form-select" v-model="memberStatus">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Assign Vendor</label>
-      <!-- <model-select
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Assign Vendor</label
+          >
+          <!-- <model-select
         :options="memberVendor.options"
         v-model="memberVendor.item"
         placeholder="Select a Vendor"
@@ -83,15 +99,17 @@
         class="form-control border border-2 border-info"
       >
       </model-select> -->
-      <multiselect
-        :options="memberVendor.options"
-        v-model="memberVendor.value"
-        placeholder="Select one"
-        label="vendorOrgName"
-        track-by="id"
-      ></multiselect>
+          <multiselect
+            :options="memberVendor.options"
+            v-model="memberVendor.value"
+            placeholder="Select one"
+            label="vendorOrgName"
+            track-by="id"
+          ></multiselect>
 
-      <br />
+          <br />
+        </div>
+      </div>
     </div>
 
     <div class="text-center">

@@ -89,7 +89,7 @@
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-2">
+    <div class="bg-white shadow shadow-sm mt-3 p-2" v-if="falsex">
       <div>
         <p><strong>Project Board Access</strong></p>
 
