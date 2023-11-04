@@ -176,6 +176,7 @@ export default {
       rawFeedbackList: [],
       showMenu: false,
       id: "",
+      endpoint: "",
     };
   },
   updated() {
@@ -186,10 +187,27 @@ export default {
     if (this.calledFrom != "" && this.calledFrom != null) {
       if (this.calledFrom == "loggerId") {
         this.id = this.$route.params.loggerId;
+        this.endpoint =
+          "businessId=1&projectId=1&" +
+          this.calledFrom +
+          "=" +
+          this.$route.params.loggerId;
       } else if (this.calledFrom == "surveyFormId") {
         this.id = this.$route.params.surveyId;
+
+        this.endpoint =
+          "businessId=1&projectId=1&" +
+          this.calledFrom +
+          "=" +
+          this.$route.params.surveyId;
       } else if (this.calledFrom == "featureId") {
         this.id = this.$route.params.featureId;
+
+        this.endpoint =
+          "businessId=1&projectId=1&" +
+          this.calledFrom +
+          "=" +
+          this.$route.params.featureId;
       }
       this.fetchSurveyQuestionDetail();
     }
@@ -268,7 +286,7 @@ export default {
     },
     fetchFeedback() {
       axiosConn
-        .get("/getFeedback?businessId=1&projectId=1&" + this.calledFrom + "=" + this.id)
+        .get("/getFeedback?" + this.endpoint)
         .then((res) => {
           console.log(res.data);
           this.rawFeedbackList = res.data;
