@@ -133,7 +133,7 @@ export default {
           console.log(res.data);
           this.memberDetail = res.data;
           if (res.data.vendorId != null) {
-            this.memberVendor.item = res.data.vendorId;
+            this.memberVendor.value = res.data.vendorId;
           }
         })
         .catch((err) => {
@@ -143,6 +143,8 @@ export default {
     updateMember() {
       if (this.memberVendor.value != null && this.memberVendor.value != {}) {
         this.memberDetail.vendorId = this.memberVendor.value.id;
+      } else {
+        this.memberDetail.vendorId = null;
       }
       axioscon
         .post("/updateteammember", this.memberDetail)

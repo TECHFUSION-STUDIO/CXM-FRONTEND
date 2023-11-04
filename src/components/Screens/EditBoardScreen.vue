@@ -48,13 +48,17 @@
         <div class="col-md-12">
           <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Status</label>
-            <select id="boardStatus" class="form-select" v-model="boardDetail.status">
+            <select
+              id="boardStatus"
+              class="form-select"
+              v-model="boardDetail.boardStatus"
+            >
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
             </select>
           </div>
         </div>
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
           <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Visibility</label>
             <select id="boardStatus" class="form-select" v-model="boardDetail.visibility">
@@ -62,7 +66,7 @@
               <option value="Inactive">Inactive</option>
             </select>
           </div>
-        </div>
+        </div> -->
 
         <div class="col-md-12">
           <div class="text-center">

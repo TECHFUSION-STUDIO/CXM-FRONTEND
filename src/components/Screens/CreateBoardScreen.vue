@@ -108,7 +108,7 @@ export default {
           boardDescription: this.inpboardDesc,
           boardType: "GENERAL",
           visibility: this.inpboardVisibility,
-          status: this.inpboardStatus,
+          boardStatus: this.inpboardStatus,
           addedDateTime: "2023-06-24T09:35:38.067Z",
         })
         .then((res) => {

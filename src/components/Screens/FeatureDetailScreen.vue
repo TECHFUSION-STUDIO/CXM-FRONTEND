@@ -301,16 +301,24 @@ export default {
     updateFeature() {
       axiosConn
         .post("/updatefeature", {
+          id: this.featureDetail.id,
           businessId: this.featureDetail.businessId,
           projectId: this.featureDetail.projectId,
-          boardId: this.featureDetail.boardId.id,
+          boardId:
+            this.featureDetail.boardId != null && this.featureDetail.boardId != ""
+              ? this.featureDetail.boardId.id
+              : null,
           assigneeId: this.featureDetail.assigneeId,
           reporterId: this.featureDetail.reporterId,
           createdBy: this.featureDetail.createdBy,
           featureName: this.featureDetail.featureName,
           featureDescription: this.featureDetail.featureDescription,
           featureStatus: this.featureDetail.featureStatus,
-          featureCategory: this.featureDetail.featureCategory.id,
+          featureCategory:
+            this.featureDetail.featureCategory != null &&
+            this.featureDetail.featureCategory != ""
+              ? this.featureDetail.featureCategory.id
+              : null,
           featurePriority: this.featureDetail.featurePriority,
           featureImpact: this.featureDetail.featureImpact,
           featureEffort: this.featureDetail.featureEffort,

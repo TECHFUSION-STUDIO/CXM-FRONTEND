@@ -46,7 +46,7 @@
               type="text"
               class="form-control"
               disabled
-              :value="boardDetail.status"
+              :value="boardDetail.boardStatus"
             />
           </div>
         </div>

@@ -40,12 +40,10 @@
               class="text-decoration-none"
               >{{ loggerDetail.id }}</a
             >
-            , Created By Anonymous via Page Name at
+            , Posted By {{ feedbackDetail.postedById }} Anonymous via Page Name at
             {{ feedbackDetail.addedDateTime }}</i
           >
         </p>
-
-        <p></p>
       </div>
       <div class="bg-white shadow shadow-sm mt-3 p-2">
         <h6>Linked Feature</h6>

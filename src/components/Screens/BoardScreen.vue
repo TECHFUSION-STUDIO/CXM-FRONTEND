@@ -56,7 +56,7 @@
               </td>
               <!-- <td>{{ item.boardDescription }}</td> -->
               <td class="text-center">
-                <span class="badge text-bg-success">{{ item.status }}</span>
+                <span class="badge text-bg-success">{{ item.boardStatus }}</span>
               </td>
             </tr>
             <tr v-if="boardList.length == 0">
