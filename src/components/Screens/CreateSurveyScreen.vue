@@ -16,7 +16,7 @@
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryName" class="form-label">Survey Name</label>
             <input
@@ -25,6 +25,15 @@
               id="categoryName"
               v-model="inpSurveyName"
             />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Survey Status</label>
+            <select id="categoryStatus" class="form-select" v-model="inpSurveyStatus">
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
+            </select>
           </div>
         </div>
         <div class="col-md-12">
@@ -60,19 +69,14 @@
             />
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Survey Status</label>
-            <select id="categoryStatus" class="form-select" v-model="inpSurveyStatus">
-              <option value="ACTIVE">Active</option>
-              <option value="INACTIVE">Inactive</option>
-            </select>
-          </div>
-        </div>
+
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
-            <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <button class="btn btn-outline-success m-2 w-25" @click="createSurvey()">
+            <button class="btn btn-outline-danger m-2 w-25 fw-bold">Reset</button>
+            <button
+              class="btn btn-outline-success m-2 w-25 fw-bold"
+              @click="createSurvey()"
+            >
               Submit
             </button>
           </div>

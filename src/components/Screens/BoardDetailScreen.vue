@@ -42,12 +42,16 @@
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="basic-addon1">Board Status</span>
-            <input
-              type="text"
-              class="form-control"
-              disabled
-              :value="boardDetail.boardStatus"
-            />
+            <select
+              id="boardStatus"
+              class="form-select"
+              v-model="boardDetail.boardStatus"
+              @change="updateBoardDetail()"
+            >
+              <option v-for="item in constants.BOARD_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
+            </select>
           </div>
         </div>
 
@@ -140,7 +144,9 @@
 import axiosConn from "@/axioscon";
 import ImpactedCustomer from "./tables/ImpactedCustomer.vue";
 import FeatureTabular from "./tables/FeatureTabular.vue";
-
+import { constants } from "./constants.js";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 export default {
   name: "BoardDetailScreen",
   components: {
@@ -153,12 +159,12 @@ export default {
       boardDetail: {},
       featureList: [],
       axiosConn,
+      constants,
     };
   },
   mounted() {
     this.id = this.$route.params.boardId;
     this.fetchBoardDetail();
-    this.fetchAllFeature();
   },
   methods: {
     fetchBoardDetail() {
@@ -172,17 +178,21 @@ export default {
           console.log(err);
         });
     },
-    fetchAllFeature() {
+    updateBoardDetail() {
       axiosConn
-        .post("/getAllFeature", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: "addedDateTime",
-          orderByAsc: false,
-        })
+        .post("/updateboard", this.boardDetail)
         .then((res) => {
           console.log(res.data);
-          this.featureList = res.data;
+          Swal.fire({
+            toast: true,
+            text: "Board updated successfully",
+            icon: "success",
+            position: "top",
+            width: 300,
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
         })
         .catch((err) => {
           console.log(err);

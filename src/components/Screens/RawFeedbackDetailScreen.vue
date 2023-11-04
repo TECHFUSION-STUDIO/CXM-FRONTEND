@@ -33,15 +33,19 @@
         </h6>
         <p class="text-muted">
           <i>
-            Logged by
-            <a
-              :href="'/loggerdetail/' + loggerDetail.id"
-              target="blank"
-              class="text-decoration-none"
-              >{{ loggerDetail.id }}</a
-            >
-            , Posted By {{ feedbackDetail.postedById }} Anonymous via Page Name at
-            {{ feedbackDetail.addedDateTime }}</i
+            <span v-if="loggerDetail.id != null && loggerDetail.id != ''">
+              Logged by
+              <a
+                :href="'/loggerdetail/' + loggerDetail.id"
+                target="blank"
+                class="text-decoration-none"
+                >{{ loggerDetail.id }}</a
+              >
+            </span>
+            <span v-if="loggerDetail.postedById != null && loggerDetail.postedById != ''">
+              Posted By {{ feedbackDetail.postedById }}
+            </span>
+            Page Name at {{ feedbackDetail.addedDateTime }}</i
           >
         </p>
       </div>

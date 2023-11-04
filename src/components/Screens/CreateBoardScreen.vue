@@ -63,8 +63,9 @@
           <div class="mb-3">
             <label for="boardStatus" class="form-label">Board Status</label>
             <select id="boardStatus" class="form-select" v-model="inpboardStatus">
-              <option value="ACTIVE">Active</option>
-              <option value="INACTIVE">Inactive</option>
+              <option v-for="item in constants.BOARD_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
@@ -84,7 +85,7 @@
 
 <script>
 import axiosConn from "@/axioscon";
-
+import { constants } from "./constants.js";
 export default {
   name: "CreateBoardScreen",
 
@@ -96,6 +97,7 @@ export default {
       inpboardCapacity: "",
       inpboardStatus: "",
       axiosConn,
+      constants,
     };
   },
   methods: {

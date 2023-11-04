@@ -53,8 +53,9 @@
               class="form-select"
               v-model="boardDetail.boardStatus"
             >
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option v-for="item in constants.BOARD_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
@@ -83,6 +84,7 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import { constants } from "./constants.js";
 
 export default {
   name: "EditBoardScreen",
@@ -91,6 +93,7 @@ export default {
       id: "",
       boardDetail: {},
       axiosConn,
+      constants,
     };
   },
   mounted() {

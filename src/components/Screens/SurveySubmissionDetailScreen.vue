@@ -27,19 +27,55 @@
         <div class="text-muted">Submission Id : {{ submissionDetail.id }}</div>
       </div>
 
-      <div class="row">
-        <div class="col-auto">
-          <p>Logger Id : {{ submissionDetail.loggerId }}</p>
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Logger Id</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="submissionDetail.loggerId"
+            />
+            <button class="btn btn-sm btn-outline-secondary" @click="this.$router.push('/loggerdetail/'+submissionDetail.loggerId)">
+              <i class="fa-solid fa-up-right-from-square"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Form Opened at</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="submissionDetail.addedDateTime"
+            />
+          </div>
         </div>
 
-        <div class="col-auto">
-          <p>Time spent : 20 seconds</p>
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Form Submitted at</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="submissionDetail.addedDateTime"
+            />
+          </div>
         </div>
-        <div class="col-auto">
-          <p>Opened at : {{ submissionDetail.addedDateTime }}</p>
-        </div>
-        <div class="col-auto">
-          <p>Added on : {{ submissionDetail.addedDateTime }}</p>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Time spent</span>
+            <input
+              type="datetime-local"
+              class="form-control"
+              disabled
+              :value="'20 seconds'"
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -145,7 +145,7 @@
       </div>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive">
+    <div class="bg-white shadow shadow-sm mt-3 mb-3 p-3 table-responsive">
       <div class="input-group mt-3 mx-auto w-75">
         <input
           class="form-control"

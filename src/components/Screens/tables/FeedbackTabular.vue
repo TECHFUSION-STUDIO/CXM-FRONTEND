@@ -53,7 +53,7 @@
                 </router-link>
               </td>
               <td>Sub. Id</td>
-              <!-- <td>Created Time</td> -->
+              <td>Logger Id</td>
             </tr>
           </thead>
           <tbody>
@@ -88,7 +88,11 @@
                   {{ item.formSubmissionId }}</router-link
                 >
               </td>
-              <!-- <td>{{ item.addedDateTime }}</td> -->
+              <td>
+                <router-link :to="'/loggerdetail/' + item.loggerId">
+                  {{ item.loggerId }}</router-link
+                >
+              </td>
             </tr>
             <tr v-if="rawFeedbackList.length == 0">
               <td class="text-center" colspan="4"><i>No Data Found</i></td>
