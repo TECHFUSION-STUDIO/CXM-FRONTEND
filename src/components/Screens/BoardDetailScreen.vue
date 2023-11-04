@@ -66,7 +66,9 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <div class="d-flex justify-content-center">
+      <FeatureTabular :calledFrom="'boardId'" />
+
+      <!-- <div class="d-flex justify-content-center">
         <div class="input-group mt-2 w-50">
           <input
             class="form-control"
@@ -78,8 +80,8 @@
             <i class="fa-brands fa-searchengin"></i>
           </button>
         </div>
-      </div>
-      <div class="table-responsive-md mt-3">
+      </div> -->
+      <!-- <div class="table-responsive-md mt-3">
         <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
@@ -122,11 +124,11 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> -->
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <ImpactedCustomer type="feature" />
+      <ImpactedCustomer type="board" />
     </div>
     <div class="text-end mt-3 mb-3">
       <button class="btn btn-outline-danger m-2 btn-sm">Delete Survey</button>
@@ -137,11 +139,13 @@
 <script>
 import axiosConn from "@/axioscon";
 import ImpactedCustomer from "./tables/ImpactedCustomer.vue";
+import FeatureTabular from "./tables/FeatureTabular.vue";
 
 export default {
   name: "BoardDetailScreen",
   components: {
     ImpactedCustomer,
+    FeatureTabular,
   },
   data() {
     return {

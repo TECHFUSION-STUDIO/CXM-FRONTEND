@@ -10,7 +10,7 @@
       <div class="row w-100">
         <div class="col-md-3">
           <button class="btn btn-primary mt-2" @click="this.$router.push('/createboard')">
-            Create a Board
+            Create Board
           </button>
         </div>
         <div class="col-md-6">

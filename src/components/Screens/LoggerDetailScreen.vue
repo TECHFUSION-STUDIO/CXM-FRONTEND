@@ -79,7 +79,10 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <FeedbackTabular :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }" />
+      <FeedbackTabular
+        :calledFrom="'loggerId'"
+        :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }"
+      />
     </div>
   </div>
 </template>

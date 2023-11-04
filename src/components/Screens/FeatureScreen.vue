@@ -9,12 +9,6 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <!-- <button
-            class="btn btn-primary mt-2"
-            @click="this.$router.push('/createfeature')"
-          >
-            Create Feature
-          </button> -->
           <button
             class="btn btn-primary mt-2"
             type="button"
@@ -41,7 +35,21 @@
         </div>
         <div class="col-md-3"></div>
       </div>
-      <div class="table-responsive-md mt-3">
+      <FeatureTabular :calledFrom="'featureId'" />
+      <!-- <div class="table-responsive-md mt-3">
+        <div class="w-50">
+          <div class="input-group mt-2">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Search Feature"
+              aria-label="Search"
+            />
+            <button class="btn btn-primary">
+              <i class="fa-brands fa-searchengin"></i>
+            </button>
+          </div>
+        </div>
         <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
@@ -84,7 +92,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> -->
     </div>
 
     <div
@@ -121,41 +129,22 @@
 <script>
 import axiosConn from "@/axioscon";
 import CreateFeatureScreen from "./CreateFeatureScreen.vue";
-
+import FeatureTabular from "./tables/FeatureTabular.vue";
 export default {
   name: "FeatureScreen",
   components: {
     CreateFeatureScreen,
+    FeatureTabular,
   },
   data() {
     return {
-      featureList: [],
       showCreateFeatureMenu: false,
       axiosConn,
     };
   },
 
-  mounted() {
-    this.fetchAllFeature();
-  },
-  methods: {
-    fetchAllFeature() {
-      axiosConn
-        .post("/getAllFeature", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: "addedDateTime",
-          orderByAsc: false,
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.featureList = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  },
+  mounted() {},
+  methods: {},
 };
 </script>
 

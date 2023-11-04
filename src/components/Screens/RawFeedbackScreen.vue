@@ -2,7 +2,7 @@
   <div>
     <FeedbackTabular
       :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
-      :calledFrom="'SURVEY@' + id"
+      :calledFrom="'surveyFormId'"
     />
   </div>
 </template>

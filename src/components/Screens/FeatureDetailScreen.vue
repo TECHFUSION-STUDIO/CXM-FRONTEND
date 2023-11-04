@@ -213,7 +213,10 @@
     <FeatureTag />
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <h6>Feedback Responses</h6>
-      <FeedbackTabular :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }" />
+      <FeedbackTabular
+        :calledFrom="'featureId'"
+        :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }"
+      />
     </div>
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <h6>Impacted Customer</h6>
@@ -284,17 +287,17 @@ export default {
     updateCatgeory(type) {
       console.log("id");
       if (type == "add") {
-        this.featureDetail.featureCategory = this.categoryList.value.id;
+        this.featureDetail.featureCategory = this.categoryList.value;
       } else if (type == "remove") {
-        this.featureDetail.featureCategory = "";
+        this.featureDetail.featureCategory = null;
       }
       this.updateFeature();
     },
     updateBoard(type) {
       if (type == "add") {
-        this.featureDetail.boardId = this.boardList.value.id;
+        this.featureDetail.boardId = this.boardList.value;
       } else if (type == "remove") {
-        this.featureDetail.boardId = "";
+        this.featureDetail.boardId = null;
       }
       this.updateFeature();
     },

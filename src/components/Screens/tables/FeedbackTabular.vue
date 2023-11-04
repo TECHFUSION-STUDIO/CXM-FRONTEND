@@ -77,7 +77,7 @@
                   @select="addTag"
                   @remove="removeTag"
                   :options="featureList"
-                  v-model="item.feature"
+                  v-model="item.featureList"
                   @open="openedDrop(item)"
                 ></multiselect>
               </td>
@@ -158,7 +158,7 @@ import Multiselect from "vue-multiselect";
 import CreateFeatureScreenVue from "../CreateFeatureScreen";
 export default {
   name: "FeedbackTabular",
-  props: ["criteria", "feedbackType", "calledFrom"],
+  props: ["criteria", "calledFrom"],
   components: {
     Multiselect,
     CreateFeatureScreenVue,
@@ -173,25 +173,27 @@ export default {
       featureList: [],
       featureFeedbackIdOpened: "",
       featureValue: [],
-      criteriaLocal: [this.criteria],
       rawFeedbackList: [],
-      showSortDialog: false,
-      showFilterDialog: false,
-      orderBy: "addedDateTime",
-      orderByAsc: true,
-
       showMenu: false,
+      id: "",
     };
   },
   updated() {
     console.log(this.showMenu);
   },
   mounted() {
-    this.fetchFeedback();
     this.fetchAllFeature();
     if (this.calledFrom != "" && this.calledFrom != null) {
+      if (this.calledFrom == "loggerId") {
+        this.id = this.$route.params.loggerId;
+      } else if (this.calledFrom == "surveyFormId") {
+        this.id = this.$route.params.surveyId;
+      } else if (this.calledFrom == "featureId") {
+        this.id = this.$route.params.featureId;
+      }
       this.fetchSurveyQuestionDetail();
     }
+    this.fetchFeedback();
   },
   watch: {
     item(newQuestion, oldQuestion) {
@@ -266,13 +268,7 @@ export default {
     },
     fetchFeedback() {
       axiosConn
-        .post("/getAllFeedback", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: this.orderBy,
-          orderByAsc: this.orderByAsc,
-          criteria: this.criteriaLocal,
-        })
+        .get("/getFeedback?businessId=1&projectId=1&" + this.calledFrom + "=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.rawFeedbackList = res.data;
@@ -284,10 +280,7 @@ export default {
 
     fetchSurveyQuestionDetail() {
       axiosConn
-        .get(
-          "/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" +
-            this.calledFrom.substring(this.calledFrom.indexOf("@") + 1)
-        )
+        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.questionDropDown.options = res.data;
