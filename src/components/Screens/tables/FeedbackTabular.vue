@@ -82,7 +82,9 @@
                 ></multiselect>
               </td>
               <td>
-                <router-link :to="'/surveys/' + surveyId + '/submission/' + item.id">
+                <router-link
+                  :to="'/surveys/' + surveyId + '/submission/' + item.formSubmissionId"
+                >
                   {{ item.formSubmissionId }}</router-link
                 >
               </td>
