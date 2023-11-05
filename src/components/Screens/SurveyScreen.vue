@@ -13,7 +13,7 @@
             class="btn btn-primary mt-2"
             @click="this.$router.push('/createsurveys')"
           >
-            Create a Survey
+            Create Survey
           </button>
         </div>
         <div class="col-md-6">

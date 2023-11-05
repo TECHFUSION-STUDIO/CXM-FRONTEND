@@ -20,19 +20,7 @@
             Create Feature
           </button>
         </div>
-        <div class="col-md-6">
-          <div class="input-group mt-2">
-            <input
-              class="form-control"
-              type="search"
-              placeholder="Search Feature"
-              aria-label="Search"
-            />
-            <button class="btn btn-primary">
-              <i class="fa-brands fa-searchengin"></i>
-            </button>
-          </div>
-        </div>
+        <div class="col-md-6"></div>
         <div class="col-md-3"></div>
       </div>
       <FeatureTabular :calledFrom="'featureId'" />

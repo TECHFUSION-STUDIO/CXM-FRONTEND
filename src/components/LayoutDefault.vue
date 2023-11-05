@@ -134,9 +134,7 @@
           style="cursor: default"
         >
           <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-diagram-project me-2"></i>Boards
-            </div>
+            <div class="fw-bold"><i class="fa-solid fa-folder-open me-2"></i>Boards</div>
           </div>
         </li>
         <li
@@ -229,7 +227,7 @@
         >
           <div class="me-auto w-100">
             <div class="fw-bold">
-              <i class="fa-solid fa-people-group me-2"></i>General Members
+              <i class="fa-solid fa-users-gear me-2"></i>General Members
             </div>
           </div>
         </li>
@@ -247,7 +245,7 @@
           style="cursor: default"
         >
           <div class="me-auto w-100">
-            <div class="fw-bold"><i class="fa-solid fa-building me-2"></i>My Account</div>
+            <div class="fw-bold"><i class="fa-solid fa-user me-2"></i>My Account</div>
           </div>
         </li>
 
@@ -269,152 +267,6 @@
             </div>
           </div>
         </li>
-
-        <!-- <li style="cursor: default" v-show="false">
-          <div class="accordion accordion-flush mt-1" id="accordionsurvey">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button
-                  class="accordion-button collapsed rounded-0"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapsesurvey"
-                  aria-expanded="false"
-                  aria-controls="flush-collapsesurvey"
-                >
-                  Surveys
-                </button>
-              </h2>
-              <div
-                id="flush-collapsesurvey"
-                class="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionsurvey"
-              >
-                <div class="accordion-body">
-                  <button class="btn btn-light w-100 text-start" type="button">
-                    <i class="fa-solid fa-people-group me-2"></i>General Members
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion accordion-flush mt-1" id="accordionlogger">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapselogger"
-                  aria-expanded="false"
-                  aria-controls="flush-collapselogger"
-                >
-                  Loggers
-                </button>
-              </h2>
-              <div
-                id="flush-collapselogger"
-                class="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionlogger"
-              >
-                <div class="accordion-body">
-                  <button class="btn btn-light w-100 text-start" type="button">
-                    <i class="fa-solid fa-people-group me-2"></i>View Loggers
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="accordion accordion-flush mt-1" id="accordioncategory">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapsecategory"
-                  aria-expanded="false"
-                  aria-controls="flush-collapsecategory"
-                >
-                  Category
-                </button>
-              </h2>
-              <div
-                id="flush-collapsecategory"
-                class="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordioncategory"
-              >
-                <div class="accordion-body">
-                  <button class="btn btn-light w-100 text-start" type="button">
-                    <i class="fa-solid fa-people-group me-2"></i>View Category
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion accordion-flush mt-1" id="accordiontags">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapsetags"
-                  aria-expanded="false"
-                  aria-controls="flush-collapsetags"
-                >
-                  Tags
-                </button>
-              </h2>
-              <div
-                id="flush-collapsetags"
-                class="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordiontags"
-              >
-                <div class="accordion-body">
-                  <button class="btn btn-light w-100 text-start" type="button">
-                    <i class="fa-solid fa-people-group me-2"></i>View Tags
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="accordion accordion-flush mt-1" id="accordionprojectmember">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseprojectmember"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseprojectmember"
-                >
-                  Project Members
-                </button>
-              </h2>
-              <div
-                id="flush-collapseprojectmember"
-                class="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionprojectmember"
-              >
-                <div class="accordion-body">
-                  <button class="btn btn-light w-100 text-start" type="button">
-                    <i class="fa-solid fa-people-group me-2"></i>View Members
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li> -->
       </ul>
     </nav>
 
@@ -454,6 +306,7 @@ export default {
   },
   mounted() {
     this.fetchProjects();
+    this.titleDetector();
   },
   watch: {
     item: function (oldItem, newItem) {

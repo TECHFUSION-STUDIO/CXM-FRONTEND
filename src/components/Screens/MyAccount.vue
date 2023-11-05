@@ -119,25 +119,9 @@
             </select>
           </div>
         </div>
-
-        <div class="col-md-12">
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label"
-              >Assign Vendor</label
-            >
-            <!-- <multiselect
-              :options="memberVendor.options"
-              v-model="memberVendor.value"
-              placeholder="Select one"
-              label="vendorOrgName"
-              track-by="id"
-            ></multiselect> -->
-            <br />
-          </div>
-        </div>
       </div>
 
-      <div class="text-center">
+      <div class="text-center mt-4 mb-4">
         <button class="btn btn-outline-danger m-2 w-25">Reset</button>
         <button class="btn btn-outline-success m-2 w-25" @click="createMember()">
           Submit

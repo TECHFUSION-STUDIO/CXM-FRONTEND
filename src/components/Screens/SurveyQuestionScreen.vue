@@ -102,13 +102,14 @@
           <div class="mt-2">Category : {{ questionDetail.surveyQuestionCategory }}</div>
 
           <div class="mt-2">
-            Is Required? : {{ questionDetail.surveyQuestionRequired }}
+            Is Required? :
+            {{ questionDetail.surveyQuestionRequired }}
           </div>
           <div class="mt-2">
             Last Updated on : {{ questionDetail.lastModifiedDateTime }}
           </div>
 
-          <div class="mt-2">Added on : {{ questionDetail.addedDateTime }}</div>
+          <div class="mt-2">Added on :{{ questionDetail.addedDateTime }}</div>
 
           <div class="text-end mt-3">
             <button
@@ -130,7 +131,6 @@
 
 <script>
 import axiosConn from "@/axioscon";
-
 export default {
   name: "SurveyQuestionScreen",
   data() {

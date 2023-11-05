@@ -45,7 +45,7 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive">
-      <div class="input-group mt-3 mx-auto w-75">
+      <div class="input-group mt-3 mx-auto w-50">
         <input
           class="form-control"
           type="search"

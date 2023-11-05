@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="table-responsive-md mt-3">
-      <div class="w-50">
+      <div class="w-50 mx-auto">
         <div class="input-group mt-2">
           <input
             class="form-control"
