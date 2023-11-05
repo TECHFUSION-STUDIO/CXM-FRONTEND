@@ -71,7 +71,7 @@
                 >
               </td>
               <td class="text-center">
-                <span class="badge text-bg-success">{{ item.categoryStatus }}</span>
+                <span class="text-success fw-bold">{{ item.categoryStatus }}</span>
               </td>
 
               <!-- <td class="text-center">123</td> -->
@@ -143,7 +143,7 @@
           <p>{{ categoryDetail.categoryDesc }}</p>
           <div class="mt-3">
             Status :
-            <span class="badge text-bg-success">{{ categoryDetail.categoryStatus }}</span>
+            <span class="text-success fw-bold">{{ categoryDetail.categoryStatus }}</span>
           </div>
           <div class="mt-2">
             <p>Added on : {{ categoryDetail.addedDateTime }}</p>
@@ -152,7 +152,7 @@
           <div class="text-end">
             <button
               class="btn btn-primary btn-sm m-1"
-              @click="this.$router.push('/categorydetail/' + tagDetail.id)"
+              @click="this.$router.push('/editcategory/' + categoryDetail.id)"
             >
               Edit Category
             </button>

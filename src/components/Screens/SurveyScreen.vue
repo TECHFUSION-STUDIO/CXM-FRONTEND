@@ -52,7 +52,7 @@
               </td>
               <td class="text-center">
                 <!-- {{ item.surveyFormStatus }} -->
-                <span class="badge text-bg-success">{{ item.surveyFormStatus }}</span>
+                <span class="text-success fw-bold">{{ item.surveyFormStatus }}</span>
               </td>
               <td>vs</td>
 

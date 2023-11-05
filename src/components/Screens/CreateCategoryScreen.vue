@@ -43,8 +43,9 @@
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Category Status</label>
             <select id="categoryStatus" class="form-select" v-model="inpCategoryStatus">
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
@@ -70,6 +71,8 @@
 import axiosConn from "@/axioscon";
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
+import { constants } from "./constants";
+
 export default {
   name: "CreateCategoryScreen",
   props: ["type"],
@@ -80,6 +83,7 @@ export default {
       inpCategoryDesc: "",
       inpCategoryStatus: "",
       axiosConn,
+      constants,
     };
   },
   methods: {

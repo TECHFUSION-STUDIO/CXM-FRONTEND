@@ -51,8 +51,9 @@
               class="form-select"
               v-model="categoryDetail.categoryStatus"
             >
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
@@ -74,6 +75,7 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import { constants } from "./constants";
 
 export default {
   name: "EditCategoryScreen",
@@ -83,6 +85,7 @@ export default {
       id: "",
       categoryDetail: {},
       axiosConn,
+      constants,
     };
   },
   mounted() {

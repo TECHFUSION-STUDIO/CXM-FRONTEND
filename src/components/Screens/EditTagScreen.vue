@@ -36,8 +36,9 @@
           <div class="mb-2">
             <label class="form-label" for="tagStatus">Tag Status</label>
             <select id="tagStatus" class="form-select" v-model="tagDetail.tagStatus">
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
@@ -55,6 +56,7 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import { constants } from "./constants";
 
 export default {
   name: "EditTagScreen",
@@ -63,6 +65,7 @@ export default {
       id: "",
       tagDetail: {},
       axiosConn,
+      constants,
     };
   },
   mounted() {

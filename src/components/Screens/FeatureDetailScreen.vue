@@ -34,20 +34,10 @@
           <p>
             {{ featureDetail.featureDescription }}
           </p>
-        </div>
-      </div>
 
-      <div class="row mt-3">
-        <div class="col-md-4">
-          <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Created on</span>
-            <input
-              type="datetime-local"
-              class="form-control"
-              disabled
-              :value="featureDetail.addedDateTime"
-            />
-          </div>
+          <p class="text-muted">
+            <i>Created on {{ featureDetail.addedDateTime }}</i>
+          </p>
         </div>
       </div>
     </div>
@@ -212,8 +202,9 @@
     </div>
     <FeatureTag />
     <div class="bg-white shadow shadow-sm mt-3 p-3">
-      <h6>Feedback Responses</h6>
+      <h6>Linked Feedback Responses</h6>
       <FeedbackTabular
+        class="mt-3"
         :calledFrom="'featureId'"
         :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }"
       />

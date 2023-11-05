@@ -27,7 +27,9 @@
           <div class="mb-2">
             <label class="form-label" for="tagStatus">Tag Status</label>
             <select id="tagStatus" class="form-select" v-model="inpTagStatus">
-              <option value="Active">Active</option>
+              <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
               <option value="Inactive">Inactive</option>
             </select>
           </div>
@@ -54,7 +56,7 @@
 import axiosConn from "@/axioscon";
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
-
+import { constants } from "./constants";
 export default {
   name: "CreateTagScreen",
   props: ["type"],
@@ -64,6 +66,7 @@ export default {
       inpTagName: "",
       inpTagStatus: "",
       axiosConn,
+      constants,
     };
   },
   methods: {

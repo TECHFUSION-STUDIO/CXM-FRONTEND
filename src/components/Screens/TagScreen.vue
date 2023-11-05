@@ -52,13 +52,6 @@
           <tbody>
             <tr v-for="item in tagList" :key="item.id">
               <td style="width: 40%">
-                <!-- <a
-                  id="feedbackTitle"
-                  @click="this.$router.push('/tagsdetail/' + item.id)"
-                
-                  >{{ item.tagName }}</a
-                > -->
-
                 <a
                   id="feedbackTitle"
                   @click.prevent="showTagDetail(item)"
@@ -70,7 +63,8 @@
               </td>
 
               <td class="text-center">
-                <span class="badge text-bg-success">{{ item.tagStatus }}</span>
+                <!-- <span class="text-success fw-bold">{{ item.tagStatus }}</span> -->
+                <span class="text-success fw-bold">{{ item.tagStatus }}</span>
               </td>
               <!-- <td>215</td> -->
               <td>{{ item.addedDateTime }}</td>
@@ -139,7 +133,7 @@
           <h5>{{ tagDetail.tagName }}</h5>
           <div class="mt-3">
             Status :
-            <span class="badge text-bg-success">{{ tagDetail.tagStatus }}</span>
+            <span class="text-success fw-bold">{{ tagDetail.tagStatus }}</span>
           </div>
           <div class="mt-2">
             <p>Added on : {{ tagDetail.addedDateTime }}</p>

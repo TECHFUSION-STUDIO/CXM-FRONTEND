@@ -23,7 +23,7 @@ export const constants = reactive({
 
     GENERIC_STATUS:
 
-        ['ACTIVE', 'INACTIVE', 'TRASH'],
+        ['ACTIVE', 'INACTIVE'],
 
 
 

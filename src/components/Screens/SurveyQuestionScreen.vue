@@ -40,7 +40,9 @@
             </td>
             <td>{{ item.surveyQuestionType }}</td>
             <td>{{ item.surveyQuestionCategory }}</td>
-            <td>{{ item.surveyQuestionStatus }}</td>
+            <td>
+              <span class="text-success fw-bold">{{ item.surveyQuestionStatus }}</span>
+            </td>
             <td>{{ item.addedDateTime }}</td>
           </tr>
           <tr v-if="surveyFormQuestionDetail.length == 0">
@@ -91,7 +93,7 @@
           </ol>
           <div class="mt-3">
             Status :
-            <span class="badge text-bg-success">{{
+            <span class="text-success fw-bold">{{
               questionDetail.surveyQuestionStatus
             }}</span>
           </div>

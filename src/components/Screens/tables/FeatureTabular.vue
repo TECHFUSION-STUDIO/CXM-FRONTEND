@@ -35,7 +35,7 @@
               }}</a>
             </td>
             <td class="text-center">
-              <span class="badge text-bg-success">{{ item.featureStatus }}</span>
+              <span class="text-success fw-bold">{{ item.featureStatus }}</span>
             </td>
             <td class="text-center">
               {{
