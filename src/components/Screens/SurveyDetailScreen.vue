@@ -21,7 +21,7 @@
         <div class="text-muted">Survey Id : {{ surveyDetail.id }}</div>
         <div class="ms-auto">
           <button
-            class="btn btn-primary btn-sm"
+            class="btn btn-primary btn-sm ps-3 pe-3"
             @click="this.$router.push('/editsurvey/' + id)"
           >
             Edit

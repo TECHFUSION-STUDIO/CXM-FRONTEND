@@ -70,6 +70,8 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
+      <h6>Linked Features</h6>
+
       <FeatureTabular :calledFrom="'boardId'" />
 
       <!-- <div class="d-flex justify-content-center">

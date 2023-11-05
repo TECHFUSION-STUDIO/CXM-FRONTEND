@@ -13,6 +13,7 @@
               placeholder="Select one"
               label="surveyQuestion"
               track-by="id"
+              @select="fetchFeedback()"
             ></multiselect>
           </span>
         </div>
@@ -186,7 +187,7 @@ export default {
     };
   },
   updated() {
-    console.log(this.showMenu);
+    console.log(this.questionDropDown);
   },
   mounted() {
     this.fetchAllFeature();
@@ -291,8 +292,19 @@ export default {
         });
     },
     fetchFeedback() {
+      var feedbackEndpoint = this.endpoint;
+      if (
+        this.questionDropDown.value != null &&
+        this.questionDropDown.value.surveyQuestion != "All" &&
+        this.questionDropDown.value.surveyQuestion != null &&
+        this.questionDropDown.value.id != null &&
+        this.questionDropDown.value.id != 0
+      ) {
+        feedbackEndpoint =
+          this.endpoint + "&questionId=" + this.questionDropDown.value.id;
+      }
       axiosConn
-        .get("/getFeedback?" + this.endpoint)
+        .get("/getFeedback?" + feedbackEndpoint)
         .then((res) => {
           console.log(res.data);
           this.rawFeedbackList = res.data;
@@ -307,7 +319,17 @@ export default {
         .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.questionDropDown.options = res.data;
+          var temp = [
+            {
+              id: 0,
+              surveyQuestion: "All",
+            },
+          ];
+          this.questionDropDown.value = {
+            id: 0,
+            surveyQuestion: "All",
+          };
+          this.questionDropDown.options = [...temp, ...res.data];
         })
         .catch((err) => {
           console.log(err);
