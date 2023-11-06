@@ -67,8 +67,9 @@
             >Member Status</label
           >
           <select class="form-select" v-model="memberStatus">
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
+            <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+              {{ item }}
+            </option>
           </select>
         </div>
       </div>
@@ -122,6 +123,7 @@
 <script>
 import axioscon from "../../axioscon.js";
 import Multiselect from "vue-multiselect";
+import { constants } from "./constants";
 
 export default {
   name: "CreateMemberScreen",
@@ -148,6 +150,7 @@ export default {
           { name: "Phoenix", language: "Elixir" },
         ],
       },
+      constants,
     };
   },
   mounted() {

@@ -70,8 +70,9 @@
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">Member Status</label>
       <select class="form-select" v-model="memberDetail.teamMemberStatus">
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
+        <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+          {{ item }}
+        </option>
       </select>
       <br />
     </div>
@@ -102,6 +103,7 @@
 <script>
 import axioscon from "../../axioscon.js";
 import Multiselect from "vue-multiselect";
+import { constants } from "./constants";
 
 export default {
   name: "EditMemberScreen",
@@ -117,6 +119,7 @@ export default {
       memberVendor: {
         value: { name: "Vue.js", language: "JavaScript" },
         options: [],
+        constants,
       },
     };
   },

@@ -142,11 +142,13 @@
           <h5>{{ categoryDetail.categoryName }}</h5>
           <p>{{ categoryDetail.categoryDesc }}</p>
           <div class="mt-3">
-            Status :
+            <span class="fw-medium">Status : </span>
             <span class="text-success fw-bold">{{ categoryDetail.categoryStatus }}</span>
           </div>
           <div class="mt-2">
-            <p>Added on : {{ categoryDetail.addedDateTime }}</p>
+            <p>
+              <span class="fw-medium">Added on : </span>{{ categoryDetail.addedDateTime }}
+            </p>
           </div>
 
           <div class="text-end">

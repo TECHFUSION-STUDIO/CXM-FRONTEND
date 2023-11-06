@@ -4,7 +4,7 @@ const routes = [
   {
     path: '/setup',
     name: 'setup',
-    component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SetupScreen.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../components/SetupScreen.vue'),
   },
 
 

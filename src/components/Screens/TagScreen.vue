@@ -132,11 +132,11 @@
           </p>
           <h5>{{ tagDetail.tagName }}</h5>
           <div class="mt-3">
-            Status :
+            <span class="fw-medium">Status : </span>
             <span class="text-success fw-bold">{{ tagDetail.tagStatus }}</span>
           </div>
           <div class="mt-2">
-            <p>Added on : {{ tagDetail.addedDateTime }}</p>
+            <p><span class="fw-medium">Added on : </span>{{ tagDetail.addedDateTime }}</p>
           </div>
 
           <div class="text-end">

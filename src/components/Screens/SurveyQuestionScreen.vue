@@ -92,24 +92,32 @@
             </li>
           </ol>
           <div class="mt-3">
-            Status :
+            <span class="fw-medium">Status : </span>
             <span class="text-success fw-bold">{{
               questionDetail.surveyQuestionStatus
             }}</span>
           </div>
-          <div class="mt-2">Type : {{ questionDetail.surveyQuestionType }}</div>
-
-          <div class="mt-2">Category : {{ questionDetail.surveyQuestionCategory }}</div>
-
           <div class="mt-2">
-            Is Required? :
-            {{ questionDetail.surveyQuestionRequired }}
-          </div>
-          <div class="mt-2">
-            Last Updated on : {{ questionDetail.lastModifiedDateTime }}
+            <span class="fw-medium">Type : </span>{{ questionDetail.surveyQuestionType }}
           </div>
 
-          <div class="mt-2">Added on :{{ questionDetail.addedDateTime }}</div>
+          <div class="mt-2">
+            <span class="fw-medium">Category : </span
+            >{{ questionDetail.surveyQuestionCategory }}
+          </div>
+
+          <div class="mt-2">
+            <span class="fw-medium">Is Required? : </span>
+            {{ questionDetail.surveyQuestionRequired ? "Yes" : "No" }}
+          </div>
+          <div class="mt-2">
+            <span class="fw-medium">Last Updated on : </span>
+            {{ questionDetail.lastModifiedDateTime }}
+          </div>
+
+          <div class="mt-2">
+            <span class="fw-medium">Added on : </span>{{ questionDetail.addedDateTime }}
+          </div>
 
           <div class="text-end mt-3">
             <button
