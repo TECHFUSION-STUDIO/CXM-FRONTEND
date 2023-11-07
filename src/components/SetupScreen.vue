@@ -59,210 +59,14 @@
           </button>
         </div>
         <div class="mt-5" v-if="activePage == 'profile'">
-          <h5>Profile Setup</h5>
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Profile Email<i class="fa-solid fa-envelope ms-2"></i
-                ></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberName"
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Profile Name<i class="fa-solid fa-signature ms-2"></i
-                ></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberName"
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Profession<i class="fa-solid fa-user-tie ms-2"></i
-                ></label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberEmail"
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Contact<i class="fa-solid fa-phone ms-2"></i
-                ></label>
-                <input
-                  type="tel"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberContact"
-                />
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label"
-                  >Twitter<i class="fa-brands fa-square-twitter ms-2"></i
-                ></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberName"
-                />
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label"
-                  >LinkedIn<i class="fa-brands fa-linkedin ms-2"></i
-                ></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberName"
-                />
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label"
-                  >Website url<i class="fa-solid fa-globe ms-2"></i
-                ></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberName"
-                />
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="text-center mt-4">
-                <button class="btn btn-primary w-25" @click="completeProfileSetup()">
-                  Proceed
-                </button>
-              </div>
-            </div>
-          </div>
+          <ProfileSetup @target="setActivePage" />
         </div>
         <div class="mt-5" v-if="activePage == 'workspace'">
-          <h5>Workspace Setup</h5>
-          <p class="text-muted"><i>Please create a workspace to proceed</i></p>
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Enter Workspace Name</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="exampleFormControlInput1"
-                  v-model="memberName"
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Workspace Category</label
-                >
-                <select class="form-select" aria-label="Default select example">
-                  <option value="1">Sports</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="text-center mt-4">
-                <button class="btn btn-primary m-1 w-25" @click="backToProfileSetup()">
-                  Back
-                </button>
-                <button
-                  class="btn btn-primary m-1 w-25"
-                  @click="completeWorkspaceSetup()"
-                >
-                  Proceed
-                </button>
-              </div>
-            </div>
-          </div>
+          <WorkspaceSetup @target="setActivePage" />
         </div>
 
         <div class="mt-5" v-if="activePage == 'plan'">
-          <h5>Plan Setup</h5>
-
-          <div class="mt-4">
-            We have enrolled you to a 15 days <b>free</b> trial on our Basic Plan.
-          </div>
-
-          <div class="row mt-4 mb-3">
-            <div class="col-md-12">
-              <p class="text-muted fs-5"><i>Basic Plan</i></p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">2 Surveys</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">5 Questions/Surveys</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">500 Responses/Month</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">1 Member/Month</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">10 Boards</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">100 Feature</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">20 Vendors</p>
-            </div>
-
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">500 Feedback/Month</p>
-            </div>
-            <div class="col-md-3 text-center">
-              <p class="p-3 border">500 Feedback/Month</p>
-            </div>
-          </div>
-
-          <div>
-            Check details of all our plans ( Basic , Business , Enterprise ).
-            <a href="#">View all Plans</a>
-          </div>
-          <div>
-            <div class="text-center mt-4">
-              <button class="btn btn-primary m-1 w-25" @click="backToWorkspaceSetup()">
-                Back
-              </button>
-              <button class="btn btn-primary m-1 w-25" @click="completePlanSetup()">
-                Finish
-              </button>
-            </div>
-          </div>
+          <PlanSetup @target="setActivePage" />
         </div>
       </div>
     </div>
@@ -271,18 +75,28 @@
 
 <script>
 import axioscon from "../axioscon";
+import PlanSetup from "./SetupScreens/PlanSetup.vue";
+import ProfileSetup from "./SetupScreens/ProfileSetup.vue";
+import WorkspaceSetup from "./SetupScreens/WorkspaceSetup.vue";
 
 export default {
   name: "SetupScreen",
-
+  components: {
+    PlanSetup,
+    ProfileSetup,
+    WorkspaceSetup,
+  },
   data() {
     return {
       axioscon,
-      activePage: "plan",
+      activePage: "profile",
     };
   },
-
+  updated() {
+    console.log(this.activePage);
+  },
   methods: {
+    migrate() {},
     completeProfileSetup() {
       this.activePage = "workspace";
     },
@@ -298,6 +112,9 @@ export default {
     completePlanSetup() {
       this.$router.push("/");
     },
+    setActivePage(a) {
+      this.activePage = a;
+    },
   },
 };
 </script>
@@ -305,6 +122,7 @@ export default {
 <style>
 body {
   background-color: #edf0f2;
+  overflow-y: auto;
 }
 .dialog {
   width: 75%;
