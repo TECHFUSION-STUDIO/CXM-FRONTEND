@@ -88,7 +88,7 @@
               class="list-group-item"
               :key="item.id"
             >
-              {{ item.option }}
+              {{ item.optionValue }}
             </li>
           </ol>
           <div class="mt-3">

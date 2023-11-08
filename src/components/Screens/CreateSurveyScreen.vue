@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="mb-3">
-            <label for="categoryName" class="form-label">Survey Name</label>
+            <label for="categoryName" class="form-label">Survey Name<span class="ms-1 fw-bold"><sup>*</sup></span></label>
             <input
               type="text"
               class="form-control"

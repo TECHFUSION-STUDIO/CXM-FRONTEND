@@ -146,8 +146,9 @@
                 v-model="item.teamMemberProjectRole"
                 @change="updateTeamMemberProject(item)"
               >
-                <option value="Admin">Admin</option>
-                <option value="Member">Member</option>
+                <option v-for="item in constants.MEMBER_ROLE" :key="item" :value="item">
+                  {{ item }}
+                </option>
               </select>
             </td>
             <td>{{ item.addedDateTime }}</td>
@@ -168,7 +169,7 @@
 <script>
 import axiosConn from "@/axioscon";
 import Multiselect from "vue-multiselect";
-
+import { constants } from "./constants.js";
 export default {
   name: "GeneralMemberDetailScreen",
   components: {
@@ -185,7 +186,7 @@ export default {
         value: {},
         options: [],
       },
-
+      constants,
       axiosConn,
     };
   },

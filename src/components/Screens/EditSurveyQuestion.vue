@@ -81,6 +81,7 @@
               <option value="NPS">NPS</option>
               <option value="Rating">Rating</option>
               <option value="Questionaire">Questionaire</option>
+              <option value="Surveys">Surveys</option>
               <option value="Voting">Voting</option>
             </select>
           </div>
@@ -88,7 +89,7 @@
 
         <div
           class="col-md-6"
-          v-if="surveyQuestionDetail.surveyQuestionCategory == 'Questionaire'"
+          v-if="surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' || inpSurveyQuestionCategory == 'Surveys'"
         >
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Type</label>
@@ -97,8 +98,8 @@
               class="form-select"
               v-model="surveyQuestionDetail.surveyQuestionType"
             >
-              <option value="Input Text">Input Text</option>
-              <option value="Input Paragraph">Input Paragraph</option>
+               <option value="Single Line Text">Single Line Text</option>
+              <option value="Multi Line Text">Multi Line Text</option>
               <option value="Multiple Choice">Multiple Choice</option>
               <option value="Single Choice">Single Choice</option>
               <option value="Dropdown">Dropdown</option>
@@ -109,7 +110,7 @@
         <div
           class="col-md-6"
           v-if="
-            (surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
+            ((surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' || inpSurveyQuestionCategory == 'Surveys' )&&
               (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
                 surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
                 surveyQuestionDetail.surveyQuestionType == 'Dropdown')) ||
@@ -119,7 +120,7 @@
           <div class="mb-3">
             <label for="categoryName" class="form-label">
               {{
-                surveyQuestionDetail.surveyQuestionCategory == "Questionaire"
+                (surveyQuestionDetail.surveyQuestionCategory == "Questionaire" || inpSurveyQuestionCategory == 'Surveys')
                   ? "Enter the number of options in " +
                     surveyQuestionDetail.surveyQuestionType
                   : "Enter the number of voting options"
@@ -136,7 +137,7 @@
 
         <template
           v-if="
-            ((surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' &&
+            (((surveyQuestionDetail.surveyQuestionCategory == 'Questionaire' || inpSurveyQuestionCategory == 'Surveys') &&
               (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
                 surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
                 surveyQuestionDetail.surveyQuestionType == 'Dropdown')) ||

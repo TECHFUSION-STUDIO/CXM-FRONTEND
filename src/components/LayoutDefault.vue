@@ -173,7 +173,7 @@
           </div>
         </li>
 
-        <li
+        <!-- <li
           :class="
             selectedTab == 7
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
@@ -190,11 +190,11 @@
               <i class="fa-solid fa-people-group me-2"></i>Project Members
             </div>
           </div>
-        </li>
+        </li> -->
 
         <hr style="color: black" />
 
-        <li
+        <!-- <li
           :class="
             selectedTab == 8
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
@@ -211,9 +211,9 @@
               <i class="fa-solid fa-building me-2"></i>Manage Vendors
             </div>
           </div>
-        </li>
+        </li> -->
 
-        <li
+        <!-- <li
           :class="
             selectedTab == 9
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
@@ -230,7 +230,7 @@
               <i class="fa-solid fa-users-gear me-2"></i>General Members
             </div>
           </div>
-        </li>
+        </li> -->
 
         <li
           :class="
@@ -382,6 +382,12 @@ export default {
   },
 };
 </script>
+
+<style>
+body {
+  overflow-y: hidden;
+}
+</style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

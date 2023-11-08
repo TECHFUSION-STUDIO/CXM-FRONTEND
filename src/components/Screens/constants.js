@@ -29,7 +29,9 @@ export const constants = reactive({
 
     MEMBER_STATUS:
 
-        ['INVITED', 'ACTIVE', 'INACTIVE', 'TRASH']
+        ['INVITED', 'ACTIVE', 'INACTIVE', 'TRASH'],
+
+    MEMBER_ROLE: ['ADMIN', 'MEMBER']
 
 
 })
