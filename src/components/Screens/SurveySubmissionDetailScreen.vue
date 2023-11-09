@@ -114,6 +114,7 @@ export default {
     };
   },
   mounted() {
+    console.log(this.$router.options.history);
     this.getSubmissionDetail();
     this.getAllFeedback();
   },
