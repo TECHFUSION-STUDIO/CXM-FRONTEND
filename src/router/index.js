@@ -19,48 +19,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DashboardScreen.vue'),
       },
 
-      // {
-      //   path: '/impactedcustomer',
-      //   name: 'impactedcustomer',
-      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ImpactedCustomer.vue'),
-      // },
-
-      {
-        path: '/createimpactedcustomer',
-        name: 'createimpactedcustomer',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateImpactedCustomer.vue'),
-      },
-
-      // {
-      //   path: '/editimpactedcustomer',
-      //   name: 'editimpactedcustomer',
-      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditImpactedCustomer.vue'),
-      // },
-      {
-        path: '/vendor',
-        name: 'vendor',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/VendorScreen.vue'),
-      },
-
-      {
-        path: '/createvendor',
-        name: 'createvendor',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateVendorScreen.vue'),
-      },
-
-
-      {
-        path: '/editvendor/:id',
-        name: 'editvendor',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditVendorScreen.vue'),
-      },
-
-      {
-        path: '/vendordetail/:id',
-        name: 'vendordetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/VendorDetailScreen.vue'),
-      },
-
+  
       {
         path: '/account',
         name: 'account',
@@ -252,15 +211,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/TagDetailScreen.vue'),
       },
       {
-        path: '/projectmember',
-        name: 'projectmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberScreen.vue'),
+        path: '/member',
+        name: 'member',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberScreen.vue'),
       },
-      {
-        path: '/generalmember',
-        name: 'generalmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/GeneralMemberScreen.vue'),
-      },
+
       {
         path: '/createmember',
         name: 'createmember',
@@ -272,15 +227,11 @@ const routes = [
         name: 'editmember',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditMemberScreen.vue'),
       },
-      {
-        path: '/memberdetail/:memberId',
-        name: 'memberdetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/GeneralMemberDetailScreen.vue'),
-      },
+
       {
         path: '/projectmemberdetail/:memberId',
         name: 'projectmemberdetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberDetailScreen.vue'),
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberDetailScreen.vue'),
       },
     ]
   },

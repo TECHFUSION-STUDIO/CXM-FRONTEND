@@ -79,7 +79,6 @@ import FeedbackComments from "./FeedbackDetails/FeedbackComments.vue";
 import Multiselect from "vue-multiselect";
 
 import axiosConn from "@/axioscon";
-import FeedbackMixin from "./mixins/FeedbackMixin";
 
 export default {
   name: "RawFeedbackDetailScreen",
@@ -87,8 +86,6 @@ export default {
     FeedbackComments,
     Multiselect,
   },
-  mixins: [FeedbackMixin],
-
   data() {
     return {
       id: this.$route.params.fid,

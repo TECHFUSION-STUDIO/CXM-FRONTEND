@@ -2,13 +2,12 @@
   <div>
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
-        Showing Global Members <i>for project id BMRC-9877</i>
+        Showing Project Members <i>for project id BMRC-9877</i>
       </nav>
     </div>
-
     <!-- <h4>Welcome to Memeber Screen</h4> -->
     <div class="p-2 bg-white shadow shadow-sm mt-2" v-if="false">
-      <button class="btn btn-success mt-2" @click="this.$router.push('/createmembers')">
+      <button class="btn btn-success mt-2" @click="this.$router.push('/createfeedback')">
         <i class="fa-regular fa-square-plus me-2"></i>Add Member
       </button>
     </div>
@@ -46,29 +45,16 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive">
-      <div class="row w-100">
-        <div class="col-md-3">
-          <button
-            class="btn btn-primary mt-2"
-            @click="this.$router.push('/createmember')"
-          >
-            Create Member
-          </button>
-        </div>
-        <div class="col-md-6">
-          <div class="input-group mt-2">
-            <input
-              class="form-control"
-              type="search"
-              placeholder="Search Member"
-              aria-label="Search"
-            />
-            <button class="btn btn-primary">
-              <i class="fa-brands fa-searchengin"></i>
-            </button>
-          </div>
-        </div>
-        <div class="col-md-3"></div>
+      <div class="input-group mt-3 mx-auto w-50">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search Members"
+          aria-label="Search"
+        />
+        <button class="btn btn-primary">
+          <i class="fa-brands fa-searchengin"></i>
+        </button>
       </div>
 
       <table class="table table-hover table-bordered mt-3">
@@ -87,7 +73,7 @@
             <td>
               <a
                 id="feedbackTitle"
-                @click="this.$router.push('/memberdetail/' + item.id)"
+                @click="this.$router.push('/projectmemberdetail/' + item.id)"
                 >{{ item.teamMemberEmail }}</a
               >
             </td>
@@ -95,7 +81,7 @@
 
             <!-- <td>{{ item.teamMemberContact }}</td> -->
             <td>
-              {{ item.teamMemberRole }}
+              {{ item.teamMemberProjectRole }}
             </td>
             <td>
               {{ item.teamMemberStatus }}
@@ -115,7 +101,7 @@
 import axioscon from "../../axioscon.js";
 
 export default {
-  name: "GeneralMemberScreen",
+  name: "MemberScreen",
   data() {
     return {
       memberList: [],
@@ -128,7 +114,7 @@ export default {
   methods: {
     fetchAllMember() {
       axioscon
-        .get("/getMember?businessId=1")
+        .get("/getMember?businessId=1&projectId=1")
         .then((res) => {
           console.log(res);
           this.memberList = res.data;

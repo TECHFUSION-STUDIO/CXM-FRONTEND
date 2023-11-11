@@ -170,7 +170,7 @@ import axiosConn from "@/axioscon";
 import Multiselect from "vue-multiselect";
 
 export default {
-  name: "ProjectMemberDetailScreen",
+  name: "MemberDetailScreen",
   components: {
     Multiselect,
   },

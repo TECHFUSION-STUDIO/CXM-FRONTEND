@@ -172,7 +172,7 @@
           </div>
         </li>
 
-        <!-- <li
+         <li
           :class="
             selectedTab == 7
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
@@ -180,16 +180,16 @@
           "
           @click="
             selectedTab = 7;
-            this.$router.push('/projectmember');
+            this.$router.push('/member');
           "
           style="cursor: default"
         >
           <div class="ms-2 me-auto">
             <div class="fw-bold">
-              <i class="fa-solid fa-people-group me-2"></i>Project Members
+              <i class="fa-solid fa-people-group me-2"></i>Members
             </div>
           </div>
-        </li> -->
+        </li> 
 
         <hr style="color: black" />
 
