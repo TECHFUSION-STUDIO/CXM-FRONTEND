@@ -209,6 +209,30 @@
         :criteria="{ key: 'loggerId', value: id, operation: 'EQUAL' }"
       />
     </div>
+    <div class="bg-white shadow shadow-sm mt-3 p-3" v-if="false">
+      <h6>Parent of</h6>
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <td class="text-center">Id</td>
+            <td class="text-center">Feature Name</td>
+            <td class="text-center">Status</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Id</td>
+            <td>Feature Name</td>
+            <td class="text-center">Status</td>
+          </tr>
+          <tr>
+            <td>Id</td>
+            <td>Feature Name</td>
+            <td class="text-center">Status</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <h6>Impacted Customer</h6>
 

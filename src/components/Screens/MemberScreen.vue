@@ -5,46 +5,17 @@
         Showing Project Members <i>for project id BMRC-9877</i>
       </nav>
     </div>
-    <!-- <h4>Welcome to Memeber Screen</h4> -->
-    <div class="p-2 bg-white shadow shadow-sm mt-2" v-if="false">
-      <button class="btn btn-success mt-2" @click="this.$router.push('/createfeedback')">
-        <i class="fa-regular fa-square-plus me-2"></i>Add Member
-      </button>
-    </div>
-    <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive" v-if="false">
-      <div class="row w-100">
-        <div class="col-md-3">
-          <input
-            class="form-control m-1"
-            type="email"
-            placeholder="Email"
-            v-model="searchVal"
-          />
-        </div>
-        <div class="col-md-3">
-          <input
-            class="form-control m-1"
-            type="text"
-            placeholder="Name"
-            aria-label="Search"
-            v-model="searchVal"
-          />
-        </div>
-        <div class="col-md-3">
-          <select class="form-select m-1">
-            <option>Admin</option>
-            <option>Member</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-outline-success m-1">
-            <i class="fa-regular fa-square-plus me-2"></i>Submit
-          </button>
-        </div>
-      </div>
-    </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive">
+      <button
+        class="btn btn-primary mt-2"
+        @click.prevent="showInviteMemberMenu = true"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#staticBackdropCreateMember"
+        aria-controls="staticBackdropCreateMember"
+      >
+        Invite Member
+      </button>
       <div class="input-group mt-3 mx-auto w-50">
         <input
           class="form-control"
@@ -60,12 +31,12 @@
       <table class="table table-hover table-bordered mt-3">
         <thead>
           <tr class="bg-light">
-            <td>Email</td>
+            <td>Id</td>
             <td>Name</td>
-            <!-- <td>Contact</td> -->
+            <td>Email</td>
             <td>Role</td>
             <td>Status</td>
-            <td>Added at</td>
+            <td>Added Date</td>
           </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -73,38 +44,98 @@
             <td>
               <a
                 id="feedbackTitle"
-                @click="this.$router.push('/projectmemberdetail/' + item.id)"
-                >{{ item.teamMemberEmail }}</a
+                @click="this.$router.push('/memberdetail/' + item.id)"
+                >{{ item.id }}</a
               >
             </td>
-            <td>{{ item.teamMemberName }}</td>
-
-            <!-- <td>{{ item.teamMemberContact }}</td> -->
+            <td>{{ item.memberName }}</td>
             <td>
-              {{ item.teamMemberProjectRole }}
+              <a
+                id="feedbackTitle"
+                @click="this.$router.push('/memberdetail/' + item.id)"
+                >{{ item.memberEmail }}</a
+              >
+            </td>
+            <td>{{ item.memberName }}</td>
+            <td>
+              {{ item.memberProjectRole }}
             </td>
             <td>
-              {{ item.teamMemberStatus }}
+              {{ item.memberStatus }}
             </td>
             <td>{{ item.addedDateTime }}</td>
           </tr>
           <tr v-if="memberList.length == 0">
-            <td class="text-center" colspan="5"><i>No Data Found</i></td>
+            <td class="text-center" colspan="6"><i>No Data Found</i></td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      :class="showInviteMemberMenu ? 'show' : ''"
+      tabindex="-1"
+      :style="{ visibility: showInviteMemberMenu ? 'visible' : 'hidden' }"
+      data-bs-backdrop="static"
+      id="staticBackdropCreateMember"
+      aria-labelledby="staticBackdropCreateMemberLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropCCreateMemberLabel">
+          Invite Member
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          @click.prevent="showInviteMemberMenu = false"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          <label class="typo__label">Add Email to invite</label>
+          <multiselect
+            class="mt-2"
+            v-model="inviteMember.value"
+            tag-placeholder=""
+            placeholder="Add email"
+            label="name"
+            track-by="name"
+            :options="inviteMember.options"
+            :multiple="true"
+            :taggable="true"
+            @tag="addTag"
+          ></multiselect>
+
+          <div class="text-end mt-4">
+            <button class="btn btn-primary btn-sm m-1">Send Invitation</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axioscon from "../../axioscon.js";
+import Multiselect from "vue-multiselect";
 
 export default {
-  name: "MemberScreen",
+  name: "ProjectMemberScreen",
+  components: {
+    Multiselect,
+  },
   data() {
     return {
       memberList: [],
+      showInviteMemberMenu: false,
+      inviteMember: {
+        value: [],
+        options: [],
+      },
+
       axioscon,
     };
   },
@@ -122,6 +153,13 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    addTag(newTag) {
+      const tag = {
+        name: newTag,
+      };
+      this.inviteMember.options.push(tag);
+      this.inviteMember.value.push(tag);
     },
   },
 };

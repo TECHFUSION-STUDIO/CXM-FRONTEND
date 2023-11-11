@@ -139,10 +139,62 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div class="text-center mt-3 mb-3">
-            <button class="btn btn-outline-danger m-2 w-25">Reset</button>
+          <div class="mb-3">
+            <label class="form-label" for="ajax">Survey Id</label>
+            <multiselect
+              v-model="surveyList.value"
+              id="ajax"
+              label="surveyFormName"
+              track-by="id"
+              placeholder="Type to search"
+              open-direction="bottom"
+              :options="surveyList.option"
+              :searchable="true"
+              :loading="surveyList.isLoading"
+              :internal-search="false"
+              :clear-on-select="true"
+              :close-on-select="true"
+              :options-limit="300"
+              :limit="3"
+              :max-height="600"
+              :show-no-results="false"
+              :hide-selected="false"
+              @search-change="asyncFindSurvey"
+            >
+            </multiselect>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label class="form-label" for="ajax">Select Parent</label>
+            <multiselect
+              v-model="featureList.value"
+              id="ajax"
+              label="featureName"
+              track-by="id"
+              placeholder="Type to search"
+              open-direction="bottom"
+              :options="featureList.option"
+              :searchable="true"
+              :loading="featureList.isLoading"
+              :internal-search="false"
+              :clear-on-select="true"
+              :close-on-select="true"
+              :options-limit="300"
+              :limit="3"
+              :max-height="600"
+              :show-no-results="false"
+              :hide-selected="false"
+              @search-change="asyncFind"
+            >
+            </multiselect>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="text-end mt-3 mb-3">
             <button
-              class="btn btn-outline-success m-2 w-25"
+              class="btn btn-sm btn-primary m-2 w-25"
               @click="createFeature()"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
@@ -160,10 +212,14 @@
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 import axiosConn from "@/axioscon";
+import Multiselect from "vue-multiselect";
 
 export default {
   name: "CreateFeatureScreen",
   props: ["type"],
+  components: {
+    Multiselect,
+  },
   data() {
     return {
       featureName: "",
@@ -174,9 +230,50 @@ export default {
       featureImpact: "",
       featureEffort: "",
       featurePriority: "",
+      featureList: {
+        value: [],
+        option: [],
+        isLoading: false,
+      },
+
+      surveyList: {
+        value: [],
+        option: [],
+        isLoading: false,
+      },
     };
   },
   methods: {
+    asyncFind(query) {
+      console.log(query);
+      this.featureList.isLoading = true;
+      axiosConn
+        .get("/getFeature?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.featureList.option = res.data;
+          this.featureList.isLoading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    asyncFindSurvey(query) {
+      console.log(query);
+      this.surveyList.isLoading = true;
+      axiosConn
+        .get("/getSurveyForm?businessId=1&projectId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.surveyList.option = res.data;
+          this.surveyList.isLoading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
     createFeature() {
       axiosConn
         .post("/createFeature", {
@@ -190,6 +287,7 @@ export default {
           featurePriority: this.featurePriority,
           featureImpact: this.featureImpact,
           featureEffort: this.featureEffort,
+          parentId: this.featureList.value.id,
         })
         .then((res) => {
           console.log(res.data);

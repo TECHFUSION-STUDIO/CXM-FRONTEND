@@ -277,12 +277,7 @@ export default {
 
     fetchAllFeature() {
       axiosConn
-        .post("/getFeature", {
-          businessId: 1,
-          projectId: 1,
-          orderBy: "addedDateTime",
-          orderByAsc: false,
-        })
+        .get("/getFeature?businessId=1&projectId=1")
         .then((res) => {
           console.log(res.data);
           this.featureList = res.data;

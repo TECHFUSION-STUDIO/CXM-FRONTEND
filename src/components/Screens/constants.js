@@ -6,7 +6,7 @@ export const constants = reactive({
 
     BOARD_STATUS:
 
-        ['OPEN', 'IMPLEMENTING', 'COMPLETED', 'CLOSED'],
+    ['ACTIVE', 'INACTIVE'],
 
 
     FEATURE_STATUS:

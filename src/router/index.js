@@ -104,6 +104,12 @@ const routes = [
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyLoggerScreen.vue'),
           },
 
+          {
+            path: '/surveys/:surveyId/settings',
+            name: 'surveysettings',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySettingScreen.vue'),
+          },
+
 
         ]
       },
@@ -229,8 +235,8 @@ const routes = [
       },
 
       {
-        path: '/projectmemberdetail/:memberId',
-        name: 'projectmemberdetail',
+        path: '/member/:memberId',
+        name: 'memberdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberDetailScreen.vue'),
       },
     ]
@@ -239,6 +245,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "about" */ '../components/LoginScreen.vue')
+  },
+  {
+    path: '/forgotPassword',
+    name: 'forgotPassword',
+    component: () => import(/* webpackChunkName: "about" */ '../components/ForgotPasswordScreen.vue')
+  },
+  {
+    path: '/resetPassword',
+    name: 'resetPassword',
+    component: () => import(/* webpackChunkName: "about" */ '../components/ResetPasswordScreen.vue')
   },
   {
     path: '/signup',

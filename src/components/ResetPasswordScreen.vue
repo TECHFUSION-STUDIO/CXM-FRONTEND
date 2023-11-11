@@ -6,27 +6,19 @@
       <div class="row w-100">
         <div class="col-md-7 p-5">
           <h5><i class="fa-solid fa-florin-sign"></i> FeedArc</h5>
-          <h5 class="mt-5">Login</h5>
+          <h5 class="mt-5">Reset Password</h5>
           <div class="mt-3">
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Email</label>
-              <input
-                type="email"
-                v-model="email"
-                class="form-control"
-                id="exampleFormControlInput1"
-                placeholder="name@example.com"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Password</label>
+              <label for="exampleFormControlTextarea1" class="form-label fw-medium"
+                >New Password</label
+              >
               <div class="input-group">
                 <input
                   :type="!showPassword ? 'password' : 'text'"
-                  class="form-control"
+                  v-model="password"
+                  :class="isPasswordValid ? 'form-control is-valid' : 'form-control'"
                   id="exampleFormControlInput1"
                   placeholder="*****"
-                  v-model="password"
                   required
                 />
 
@@ -42,34 +34,19 @@
                   ></i
                 ></span>
               </div>
+              <i class="text-muted" style="font-size: 12px"
+                >Password should contain 1 uppercase, 1 lowercase, 1 numeric and 1 special
+                character and should not be less than 8 characters</i
+              >
             </div>
             <div class="mb-3 mt-4 text-center">
               <button
                 class="btn btn-primary w-100"
-                :disabled="!this.isEmailValid || this.password.trim().length < 8"
+                href="/login"
+                :disabled="!isPasswordValid"
               >
-                Login
+                Reset
               </button>
-            </div>
-
-            <div class="mb-3 d-flex mt-2 text-end">
-              <div class="me-auto p-2">
-                Don't have account?<router-link
-                  to="/signup"
-                  style="text-decoration: none"
-                >
-                  <a class="text-danger" style="font-size: 14px; text-decoration: none">
-                    Sign up</a
-                  >
-                </router-link>
-              </div>
-              <div class="p-2">
-                <router-link to="/forgotPassword" style="text-decoration: none">
-                  <a class="text-danger" style="font-size: 14px; text-decoration: none"
-                    >Forgot password?</a
-                  >
-                </router-link>
-              </div>
             </div>
           </div>
         </div>
@@ -83,26 +60,23 @@
 import axioscon from "../axioscon";
 
 export default {
-  name: "LoginScreen",
+  name: "ResetPasswordScreen",
 
   data() {
     return {
-      showPassword: false,
-      email: "",
+      isPasswordValid: false,
       password: "",
-      isEmailValid: false,
+      showPassword: false,
       axioscon,
     };
   },
   updated() {
-    console.log(this.email.trim().length <= 3);
-    console.log(this.password.trim().length < 8);
-    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 
-    if (this.email.match(emailRegex)) {
-      this.isEmailValid = true;
+    if (this.password.match(passwordRegex)) {
+      this.isPasswordValid = true;
     } else {
-      this.isEmailValid = false;
+      this.isPasswordValid = false;
     }
   },
   methods: {},

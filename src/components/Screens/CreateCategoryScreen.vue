@@ -50,10 +50,9 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div class="text-center mt-3 mb-3">
-            <button class="btn btn-outline-danger m-2 w-25">Reset</button>
+          <div class="text-end mt-3 mb-3">
             <button
-              class="btn btn-outline-success m-2 w-25"
+              class="btn btn-sm btn-primary m-2 w-25"
               @click="createCategory()"
               data-bs-dismiss="offcanvas"
               aria-label="Close"

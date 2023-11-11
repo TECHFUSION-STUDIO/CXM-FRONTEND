@@ -35,36 +35,9 @@
           <p>
             {{ boardDetail.boardDescription }}
           </p>
-        </div>
-      </div>
-
-      <div class="row mt-3">
-        <div class="col-md-4">
-          <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Board Status</span>
-            <select
-              id="boardStatus"
-              class="form-select"
-              v-model="boardDetail.boardStatus"
-              @change="updateBoardDetail()"
-            >
-              <option v-for="item in constants.BOARD_STATUS" :key="item" :value="item">
-                {{ item }}
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Created on</span>
-            <input
-              type="datetime-local"
-              class="form-control"
-              disabled
-              :value="boardDetail.addedDateTime"
-            />
-          </div>
+          <p class="text-muted">
+            <i>Created on {{ boardDetail.addedDateTime }}</i>
+          </p>
         </div>
       </div>
     </div>

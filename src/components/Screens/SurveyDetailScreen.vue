@@ -196,6 +196,19 @@
           >
             Loggers
           </button>
+          <button
+            class="nav-link"
+            id="nav-Loggers-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-Loggers"
+            type="button"
+            role="tab"
+            aria-controls="nav-Loggers"
+            aria-selected="false"
+            @click="this.$router.push('/surveys/' + id + '/settings')"
+          >
+            Settings
+          </button>
         </div>
       </div>
     </div>
