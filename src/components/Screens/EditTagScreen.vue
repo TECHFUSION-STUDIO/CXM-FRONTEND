@@ -86,7 +86,7 @@ export default {
     },
     updateTagDetail() {
       axiosConn
-        .post("/updatetags", this.tagDetail)
+        .post("/updateTags", this.tagDetail)
         .then((res) => {
           console.log(res.data);
         })

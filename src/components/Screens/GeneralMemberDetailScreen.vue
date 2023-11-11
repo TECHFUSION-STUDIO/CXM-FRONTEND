@@ -199,7 +199,7 @@ export default {
   methods: {
     fetchMemberDetail() {
       axiosConn
-        .get("/getTeamMember?businessId=1&memberId=" + this.id)
+        .get("/getMember?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;
@@ -210,7 +210,7 @@ export default {
     },
     fetchAllTeamMemberProject() {
       axiosConn
-        .get("/getTeamMemberProject?businessId=1&memberId=" + this.id)
+        .get("/getMemberProject?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.teamMemberProjectList = res.data;
@@ -235,7 +235,7 @@ export default {
     },
     createTeamMemberProject() {
       axiosConn
-        .post("/createteammemberproject", {
+        .post("/createMemberProject", {
           businessId: 1,
           projectId: this.inpProjectSelected.value.id,
           teamMemberId: this.id,
@@ -254,7 +254,7 @@ export default {
     updateTeamMemberProject(item) {
       console.log(item);
       axiosConn
-        .post("/updateteammemberproject", item)
+        .post("/updateMemberProject", item)
         .then((res) => {
           console.log(res.data);
           this.fetchAllTeamMemberProject();

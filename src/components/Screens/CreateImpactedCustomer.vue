@@ -119,7 +119,7 @@ export default {
   methods: {
     fetchAllFeature() {
       axiosConn
-        .post("/getAllFeature", {
+        .post("/getFeature", {
           businessId: 1,
           projectId: 1,
           orderBy: "addedDateTime",

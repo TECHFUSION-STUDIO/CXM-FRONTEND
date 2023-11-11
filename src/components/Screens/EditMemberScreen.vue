@@ -131,7 +131,7 @@ export default {
   methods: {
     fetchMemberDetail() {
       axioscon
-        .get("/getTeamMember?businessId=1&memberId=" + this.id)
+        .get("/getMember?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;
@@ -150,7 +150,7 @@ export default {
         this.memberDetail.vendorId = null;
       }
       axioscon
-        .post("/updateteammember", this.memberDetail)
+        .post("/updateMember", this.memberDetail)
         .then((res) => {
           console.log(res.data);
         })

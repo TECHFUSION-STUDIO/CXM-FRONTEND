@@ -237,7 +237,7 @@ export default {
       console.log(this.surveyQuestionDetail.optionList);
 
       axiosConn
-        .post("/updatesurveyquestion", this.surveyQuestionDetail)
+        .post("/updateSurveyQuestion", this.surveyQuestionDetail)
         .then((res) => {
           console.log(res.data);
         })

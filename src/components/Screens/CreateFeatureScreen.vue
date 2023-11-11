@@ -179,7 +179,7 @@ export default {
   methods: {
     createFeature() {
       axiosConn
-        .post("/createfeature", {
+        .post("/createFeature", {
           businessId: 1,
           projectId: 1,
 

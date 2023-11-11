@@ -350,7 +350,7 @@ export default {
   methods: {
     fetchSurveyQuestionDetail() {
       axioscon
-        .get("/getallsurveyquestion?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.surveyFormQuestionDetail = res.data.map((a) => {

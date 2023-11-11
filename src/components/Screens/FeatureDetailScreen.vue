@@ -294,7 +294,7 @@ export default {
     },
     updateFeature() {
       axiosConn
-        .post("/updatefeature", {
+        .post("/updateFeature", {
           id: this.featureDetail.id,
           businessId: this.featureDetail.businessId,
           projectId: this.featureDetail.projectId,

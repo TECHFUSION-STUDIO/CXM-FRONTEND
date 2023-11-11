@@ -91,7 +91,7 @@ export default {
 
     updateFeature() {
       axiosConn
-        .post("/updatefeature", this.featureDetail)
+        .post("/updateFeature", this.featureDetail)
         .then((res) => {
           console.log(res.data);
           Swal.fire({

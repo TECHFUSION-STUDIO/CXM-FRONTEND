@@ -74,7 +74,7 @@ export default {
   methods: {
     createProject() {
       axioscon
-        .post("/createprojects", {
+        .post("/createProjects", {
           addedDateTime: "",
           lastModifiedDatetime: "2023-06-26T17:03:10.147Z",
           businessId: 1,

@@ -215,7 +215,7 @@ export default {
   methods: {
     fetchAllMember() {
       axiosConn
-        .get("/getTeamMember?businessId=1&vendorId=" + this.id)
+        .get("/getMember?businessId=1&vendorId=" + this.id)
         .then((res) => {
           console.log(res);
           this.memberList = res.data;

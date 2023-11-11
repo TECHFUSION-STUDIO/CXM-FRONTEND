@@ -112,7 +112,7 @@ export default {
   methods: {
     fetchAllFeedback() {
       axiosConn
-        .post("/getAllFeedback", {
+        .post("/getFeedback", {
           businessId: 1,
           projectId: 1,
           orderBy: "addedDateTime",

@@ -220,7 +220,7 @@ export default {
 
     fetchMemberDetail() {
       axiosConn
-        .get("/getTeamMember?businessId=1&memberId=" + this.id)
+        .get("/getMember?businessId=1&memberId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.memberDetail = res.data;

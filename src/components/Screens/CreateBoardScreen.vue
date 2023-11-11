@@ -103,7 +103,7 @@ export default {
   methods: {
     createBoard() {
       axiosConn
-        .post("/createboard", {
+        .post("/createBoard", {
           businessId: 1,
           projectId: 1,
           boardName: this.inpboardName,

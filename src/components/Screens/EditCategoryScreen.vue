@@ -106,7 +106,7 @@ export default {
     },
     updateCategoryDetail() {
       axiosConn
-        .post("/updatecategory", this.categoryDetail)
+        .post("/updateCategory", this.categoryDetail)
         .then((res) => {
           console.log(res.data);
         })

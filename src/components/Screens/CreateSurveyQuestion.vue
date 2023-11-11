@@ -211,7 +211,7 @@ export default {
     },
     createSurveyQuestion() {
       axiosConn
-        .post("/createsurveyquestion", {
+        .post("/createSurveyQuestion", {
           businessId: 1,
           projectId: 1,
           surveyFormId: this.id,

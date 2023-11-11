@@ -70,7 +70,7 @@ export default {
     },
     addComment() {
       axiosConn
-        .post("/addfeedbackcomments", {
+        .post("/addFeedbackComments", {
           addedBy: 0,
           addedDateTime: "",
           businessId: 1,

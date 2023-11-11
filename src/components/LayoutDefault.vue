@@ -120,8 +120,7 @@
             <div class="fw-bold"><i class="fa-regular fa-snowflake me-2"></i>Feature</div>
           </div>
         </li>
-
-        <!-- <li
+ <li
           :class="
             selectedTab == 5
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
@@ -136,7 +135,7 @@
           <div class="ms-2 me-auto">
             <div class="fw-bold"><i class="fa-solid fa-folder-open me-2"></i>Boards</div>
           </div>
-        </li> -->
+        </li>
         <li
           :class="
             selectedTab == 4

@@ -94,7 +94,7 @@ export default {
       let selectedTagList = this.value.map((a) => a.id);
       console.log(selectedTagList);
       axioscon
-        .post("/addfeaturetags", {
+        .post("/addFeatureTags", {
           tagIdList: selectedTagList,
           featureId: this.id,
           businessId: "1",

@@ -69,7 +69,7 @@ export default {
     },
     addComment() {
       axiosConn
-        .post("/addfeaturecomments", {
+        .post("/addFeatureComments", {
           businessId: 1,
           projectId: localStorage.getItem("selectedProject"),
           featureId: this.id,

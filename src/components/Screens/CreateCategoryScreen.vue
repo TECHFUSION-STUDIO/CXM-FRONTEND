@@ -89,7 +89,7 @@ export default {
   methods: {
     createCategory() {
       axiosConn
-        .post("/createcategory", {
+        .post("/createCategory", {
           businessId: 1,
           projectId: 1,
           categoryName: this.inpCategoryName,

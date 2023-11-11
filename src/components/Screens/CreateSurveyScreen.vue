@@ -136,7 +136,7 @@ export default {
     createSurvey() {
       if (this.validate()) {
         axiosConn
-          .post("/createsurveyform", {
+          .post("/createSurveyForm", {
             businessId: 1,
             projectId: 1,
             surveyFormName: this.inpSurveyName,

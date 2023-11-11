@@ -182,7 +182,7 @@ export default {
     },
     updateBoardDetail() {
       axiosConn
-        .post("/updateboard", this.boardDetail)
+        .post("/updateBoard", this.boardDetail)
         .then((res) => {
           console.log(res.data);
           Swal.fire({

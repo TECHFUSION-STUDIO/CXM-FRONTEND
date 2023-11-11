@@ -121,7 +121,7 @@ export default {
     },
     updateSurveyFormDetail() {
       axiosConn
-        .post("/updatesurveyform", this.surveyFormDetail)
+        .post("/updateSurveyForm", this.surveyFormDetail)
         .then((res) => {
           console.log(res.data);
         })

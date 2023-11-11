@@ -160,7 +160,7 @@ export default {
   methods: {
     createMember() {
       axioscon
-        .post("/createteammember", {
+        .post("/createMember", {
           memberDetails: {
             businessId: 1,
             vendorId: this.memberVendor.value.id,
