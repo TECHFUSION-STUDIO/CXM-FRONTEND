@@ -174,6 +174,14 @@ export default {
   mounted() {
     this.fetchAllTags();
   },
+  computed: {
+    axiosParams() {
+      const params = new URLSearchParams();
+      params.append("param1", "value1");
+      params.append("param2", "value2");
+      return params;
+    },
+  },
   methods: {
     fetchAllTags() {
       axiosConn

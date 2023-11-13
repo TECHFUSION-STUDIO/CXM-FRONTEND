@@ -138,7 +138,7 @@
             </select>
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" v-if="caller != 'survey'">
           <div class="mb-3">
             <label class="form-label" for="ajax">Survey Id</label>
             <multiselect
@@ -216,7 +216,7 @@ import Multiselect from "vue-multiselect";
 
 export default {
   name: "CreateFeatureScreen",
-  props: ["type"],
+  props: ["type", "caller"],
   components: {
     Multiselect,
   },
@@ -235,7 +235,6 @@ export default {
         option: [],
         isLoading: false,
       },
-
       surveyList: {
         value: [],
         option: [],
@@ -288,6 +287,10 @@ export default {
           featureImpact: this.featureImpact,
           featureEffort: this.featureEffort,
           parentId: this.featureList.value.id,
+          surveyFormId:
+            this.caller == "survey"
+              ? this.$route.params.surveyId
+              : this.surveyList.value.id,
         })
         .then((res) => {
           console.log(res.data);

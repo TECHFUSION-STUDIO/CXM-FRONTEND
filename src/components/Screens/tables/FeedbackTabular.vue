@@ -152,7 +152,7 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-        <div><CreateFeatureScreenVue type="offcanvas" /></div>
+        <div><CreateFeatureScreenVue type="offcanvas" caller="survey" /></div>
       </div>
     </div>
   </div>
