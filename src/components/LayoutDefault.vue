@@ -16,18 +16,39 @@
       </h5>
       <div class="d-flex" role="search">
         <div class="w-100">
-          <!-- <multiselect
-            :options="options"
-            v-model="item"
-            placeholder="Select one"
-            label="projectName"
-            track-by="id"
-          ></multiselect> -->
-          <select class="form-select" v-model="item">
-            <option v-for="item in options" :key="item.id">
-              {{ item.projectName }}
-            </option>
-          </select>
+          <div class="dropdown-center">
+            <button
+              class="btn btn-outline-secondary btn-sm dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span class="text-truncate d-inline p-0 m-0" style="width: 200px">
+                {{
+                  item == null || item == {} ? "Select Workspace" : item.projectName
+                }}</span
+              >
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end dropdown-menu-sm-end dropdown-menu-md-end shadow mt-0"
+              style="max-width: 100%"
+            >
+              <li v-for="i in options" :key="i.id" @click="item = i">
+                <a class="dropdown-item text-truncate" :title="i.projectName" href="#"
+                  >{{ i.projectName }}
+                </a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item">Separated link</a></li>
+              <li><hr class="dropdown-divider" /></li>
+
+              <li class="text-center">
+                <a class="dropdown-item btn"
+                  ><i class="fa-solid fa-folder-plus me-1"></i>Create Workspace</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -120,7 +141,7 @@
             <div class="fw-bold"><i class="fa-regular fa-snowflake me-2"></i>Feature</div>
           </div>
         </li>
- <li
+        <li
           :class="
             selectedTab == 5
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
@@ -172,7 +193,7 @@
           </div>
         </li>
 
-         <li
+        <li
           :class="
             selectedTab == 7
               ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
@@ -189,47 +210,9 @@
               <i class="fa-solid fa-people-group me-2"></i>Members
             </div>
           </div>
-        </li> 
+        </li>
 
         <hr style="color: black" />
-
-        <!-- <li
-          :class="
-            selectedTab == 8
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 8;
-            this.$router.push('/vendor');
-          "
-          style="cursor: default"
-        >
-          <div class="me-auto w-100">
-            <div class="fw-bold">
-              <i class="fa-solid fa-building me-2"></i>Manage Vendors
-            </div>
-          </div>
-        </li> -->
-
-        <!-- <li
-          :class="
-            selectedTab == 9
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 9;
-            this.$router.push('/generalmember');
-          "
-          style="cursor: default"
-        >
-          <div class="me-auto w-100">
-            <div class="fw-bold">
-              <i class="fa-solid fa-users-gear me-2"></i>General Members
-            </div>
-          </div>
-        </li> -->
 
         <li
           :class="
@@ -283,13 +266,9 @@
 <script>
 import { store } from "@/store";
 import axioscon from "../axioscon.js";
-// import Multiselect from "vue-multiselect";
 
 export default {
   name: "DashboardApp",
-  components: {
-    // Multiselect,
-  },
   data() {
     return {
       openDrawer: false,

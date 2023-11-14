@@ -5,9 +5,7 @@
     <div class="row mt-4">
       <div class="col-md-6">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
-            >Enter Workspace Name</label
-          >
+          <label for="exampleFormControlInput1" class="form-label">Workspace Name</label>
           <input
             type="text"
             class="form-control"
@@ -33,6 +31,19 @@
         </div>
       </div>
       <div class="col-md-12">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Workspace Description</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            v-model="workspaceDescription"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-12">
         <div class="text-center mt-4">
           <button class="btn btn-primary m-1 w-25" @click="backToProfileSetup()">
             Back
@@ -53,6 +64,7 @@ export default {
     return {
       workspaceName: "",
       workspaceCategory: "",
+      workspaceDescription: "",
     };
   },
   methods: {
