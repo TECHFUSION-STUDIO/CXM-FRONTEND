@@ -55,11 +55,22 @@
   </nav>
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
     <div class="ms-auto text-white p-1" style="font-size: 14px">
-      <span class="me-2" style="cursor: pointer" @click="this.$router.push('/account')"
-        >MY PROFILE</span
-      >
+      <span
+        class="me-2 ms-2"
+        style="cursor: pointer"
+        @click="this.$router.push('/account')"
+        ><i class="fa-regular fa-bell"></i></span
+      >|
+      <span
+        class="me-2 ms-2"
+        style="cursor: pointer"
+        @click="this.$router.push('/account')"
+        ><i class="fa-solid fa-address-card"></i
+      ></span>
       |
-      <span class="me-2 ms-2" style="cursor: pointer">SUPPORT</span>
+      <span class="me-2 ms-2" style="cursor: pointer"
+        ><i class="fa-solid fa-question"></i
+      ></span>
     </div>
   </div>
   <div class="wrapper bg-light">
@@ -71,184 +82,28 @@
       style="overflow-y: auto; height: 100vh; background-color: #dee2e6"
     >
       <ul class="list-group mt-1 border rounded-0 border-0">
-        <li
-          :class="
-            selectedTab == 1
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1 '
-          "
-          @click="
-            selectedTab = 1;
-            this.$router.push('/dashboard');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"><i class="fa-solid fa-house me-2"></i>Dashboard</div>
-          </div>
-        </li>
-        <li
-          :class="
-            selectedTab == 2
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 2;
-            this.$router.push('/surveys');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-comment-dots me-2"></i>Surveys
+        <template v-for="(item, index) in sideBarMenu" :key="index">
+          <li
+            v-if="item.title != 'hr'"
+            :class="
+              selectedTab == index
+                ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+                : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1 '
+            "
+            @click="
+              selectedTab = index;
+              this.$router.push(item.url);
+            "
+            style="cursor: default"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">
+                <i :class="item.icon + ' me-2'"></i>{{ item.title }}
+              </div>
             </div>
-          </div>
-        </li>
-
-        <li
-          :class="
-            selectedTab == 3
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 3;
-            this.$router.push('/logger');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-address-book me-2"></i>Loggers
-            </div>
-          </div>
-        </li>
-
-        <li
-          :class="
-            selectedTab == 11
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 11;
-            this.$router.push('/feature');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"><i class="fa-regular fa-snowflake me-2"></i>Feature</div>
-          </div>
-        </li>
-        <li
-          :class="
-            selectedTab == 5
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 5;
-            this.$router.push('/board');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"><i class="fa-solid fa-folder-open me-2"></i>Boards</div>
-          </div>
-        </li>
-        <li
-          :class="
-            selectedTab == 4
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 4;
-            this.$router.push('/category');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-code-branch me-2"></i>Category
-            </div>
-          </div>
-        </li>
-
-        <li
-          :class="
-            selectedTab == 6
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 6;
-            this.$router.push('/tags');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"><i class="fa-sharp fa-solid fa-tags me-2"></i>Tags</div>
-          </div>
-        </li>
-
-        <li
-          :class="
-            selectedTab == 7
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-          "
-          @click="
-            selectedTab = 7;
-            this.$router.push('/member');
-          "
-          style="cursor: default"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-people-group me-2"></i>Members
-            </div>
-          </div>
-        </li>
-
-        <hr style="color: black" />
-
-        <li
-          :class="
-            selectedTab == 12
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1'
-          "
-          @click="
-            selectedTab = 12;
-            this.$router.push('/account');
-          "
-          style="cursor: default"
-        >
-          <div class="me-auto w-100">
-            <div class="fw-bold"><i class="fa-solid fa-user me-2"></i>My Account</div>
-          </div>
-        </li>
-
-        <li
-          :class="
-            selectedTab == 10
-              ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
-              : 'list-group-item d-flex justify-content-between align-items-start   hovered mt-1'
-          "
-          @click="
-            selectedTab = 10;
-            this.$router.push('/login');
-          "
-          style="cursor: default"
-        >
-          <div class="me-auto">
-            <div class="fw-bold">
-              <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Log Out
-            </div>
-          </div>
-        </li>
+          </li>
+          <hr v-else style="color: black" />
+        </template>
       </ul>
     </nav>
 
@@ -279,6 +134,27 @@ export default {
       item: {},
       searchText: "",
       store,
+      sideBarMenu: [
+        {
+          title: "Dashboard",
+          url: "/dashboard",
+          icon: "fa-solid fa-house ",
+        },
+        {
+          title: "Survey",
+          url: "/surveys",
+          icon: "fa-solid fa-comment-dots",
+        },
+        { title: "Logger", url: "/logger", icon: "fa-solid fa-address-book" },
+        { title: "Feature", url: "/feature", icon: "fa-regular fa-snowflake" },
+        { title: "Board", url: "/board", icon: "fa-solid fa-folder-open" },
+        { title: "Category", url: "/category", icon: "fa-solid fa-code-branch" },
+        { title: "Tags", url: "/tags", icon: "fa-sharp fa-solid fa-tags" },
+        { title: "Member", url: "/member", icon: "fa-solid fa-people-group" },
+        { title: "hr", url: " ", icon: " " },
+        { title: "My Account", url: "/account", icon: "fa-solid fa-user" },
+        { title: "Log out", url: "/login", icon: "fa-solid fa-arrow-right-from-bracket" },
+      ],
       axioscon,
     };
   },
