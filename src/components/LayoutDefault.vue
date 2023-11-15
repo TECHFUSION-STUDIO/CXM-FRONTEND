@@ -97,7 +97,7 @@
             style="cursor: default"
           >
             <div class="ms-2 me-auto">
-              <div class="fw-bold">
+              <div class="fw-medium">
                 <i :class="item.icon + ' me-2'"></i>{{ item.title }}
               </div>
             </div>
