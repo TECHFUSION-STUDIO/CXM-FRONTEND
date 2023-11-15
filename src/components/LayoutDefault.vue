@@ -58,17 +58,19 @@
       <span
         class="me-2 ms-2"
         style="cursor: pointer"
+        title="Notifications"
         @click="this.$router.push('/account')"
         ><i class="fa-regular fa-bell"></i></span
       >|
       <span
         class="me-2 ms-2"
         style="cursor: pointer"
+        title="My Account"
         @click="this.$router.push('/account')"
         ><i class="fa-solid fa-address-card"></i
       ></span>
       |
-      <span class="me-2 ms-2" style="cursor: pointer"
+      <span class="me-2 ms-2" style="cursor: pointer" title="Help & Support"
         ><i class="fa-solid fa-question"></i
       ></span>
     </div>
