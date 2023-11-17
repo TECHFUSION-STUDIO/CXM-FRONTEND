@@ -16,7 +16,7 @@ axiosConn.interceptors.request.use(function (config) {
     // if(sessionStorage.getItem('jwt_token')) {
     //   config.headers.Authorization = `Bearer ${sessionStorage.getItem('jwt_token')}`;
     // }
-    config.headers.Authorization = 'eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImF2aUBnbWFpbC5jb20iLCJpc3MiOiJURlMiLCJpYXQiOjE2OTk5NzkyMDksImV4cCI6MTcwMDA2NTYwOX0.B5da-Bnc8A_X1_noN87l9KMfV9d7prBjoErrQQI2xd6D8gGhUSIOHQTnC0v4YaTn6X9QR1_otY3dOWpZVn0MNg'
+    config.headers.Authorization = 'eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImF2aUBnbWFpbC5jb20iLCJpc3MiOiJURlMiLCJpYXQiOjE3MDAxNTM4NDQsImV4cCI6MTcwMjc0NTg0NH0.lLyBrKr9vxpg895sYH0tqr-luNZok1_1WhfTWKnNosULVuN5sNQ66UQwy7q9ptZTwY6vkGdz3v42Gcs28PIEvA'
     return config;
   }, function (error) {
     // Request error

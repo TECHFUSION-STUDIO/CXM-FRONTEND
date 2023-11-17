@@ -72,7 +72,7 @@ export default {
   methods: {
     createTag() {
       axiosConn
-        .post("/createTags", {
+        .post("/createTag", {
           businessId: 1,
           projectId: 1,
           tagName: this.inpTagName,

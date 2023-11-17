@@ -99,7 +99,6 @@
           class="btn-close"
           data-bs-dismiss="offcanvas"
           aria-label="Close"
-          @click.prevent="showCreateFeatureMenu = false"
         ></button>
       </div>
       <div class="offcanvas-body">

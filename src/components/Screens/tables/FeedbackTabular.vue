@@ -235,10 +235,10 @@ export default {
     addTag(selectedOption, id) {
       console.log(selectedOption);
       console.log(id);
-      console.log(this.featureFeedbackIdOpened.feature);
+      console.log(this.featureFeedbackIdOpened.id);
       axiosConn
         .post("/createFeatureFeedback", {
-          addedDateTime: 0,
+          addedDateTime: "",
           featureFeedbackId: {
             featureId: selectedOption.id,
             feedbackId: this.featureFeedbackIdOpened.id,

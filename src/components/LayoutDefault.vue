@@ -33,17 +33,22 @@
               class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end dropdown-menu-sm-end dropdown-menu-md-end shadow mt-0"
               style="max-width: 100%"
             >
+              <li>
+                <a class="dropdown-item text-muted"><i>Owner</i></a>
+              </li>
               <li v-for="i in options" :key="i.id" @click="item = i">
                 <a class="dropdown-item text-truncate" :title="i.projectName" href="#"
                   >{{ i.projectName }}
                 </a>
               </li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item">Separated link</a></li>
+              <li>
+                <a class="dropdown-item text-muted"><i>Member</i></a>
+              </li>
               <li><hr class="dropdown-divider" /></li>
 
               <li class="text-center">
-                <a class="dropdown-item btn"
+                <a class="dropdown-item btn text-truncate"
                   ><i class="fa-solid fa-folder-plus me-1"></i>Create Workspace</a
                 >
               </li>
@@ -55,11 +60,7 @@
   </nav>
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
     <div class="ms-auto text-white p-1" style="font-size: 14px">
-      <span
-        class="me-2 ms-2"
-        style="cursor: pointer"
-        title="Notifications"
-        @click="this.$router.push('/account')"
+      <span class="me-2 ms-2" style="cursor: pointer" title="Notifications"
         ><i class="fa-regular fa-bell"></i></span
       >|
       <span
@@ -262,8 +263,8 @@ body {
 }
 
 #sidebar {
-  min-width: 220px;
-  max-width: 220px;
+  min-width: 180px;
+  max-width: 180px;
   color: #fff;
   transition: all 0.3s;
   /* padding-left: 5px;
@@ -273,7 +274,7 @@ body {
 }
 
 #sidebar.active {
-  margin-left: -220px;
+  margin-left: -180px;
 }
 
 /* #sidebar .sidebar-header {
@@ -334,7 +335,7 @@ body {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -220px;
+    margin-left: -180px;
   }
 
   #sidebar.active {
