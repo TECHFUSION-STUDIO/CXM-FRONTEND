@@ -61,23 +61,6 @@
           </div>
 
           <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Board</label>
-
-            <multiselect
-              class="form-control p-0 border border-0"
-              :options="boardList.options"
-              v-model="boardList.value"
-              placeholder="Select one"
-              label="boardName"
-              track-by="id"
-              selectLabel=""
-              deselectLabel=""
-              @select="updateBoard('add')"
-              @remove="updateBoard('remove')"
-            ></multiselect>
-          </div>
-
-          <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
             <multiselect
               class="form-control p-0 border border-0"

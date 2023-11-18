@@ -150,7 +150,6 @@ export default {
         },
         { title: "Logger", url: "/logger", icon: "fa-solid fa-address-book" },
         { title: "Feature", url: "/feature", icon: "fa-regular fa-snowflake" },
-        { title: "Board", url: "/board", icon: "fa-solid fa-folder-open" },
         { title: "Category", url: "/category", icon: "fa-solid fa-code-branch" },
         { title: "Tags", url: "/tags", icon: "fa-sharp fa-solid fa-tags" },
         { title: "Member", url: "/member", icon: "fa-solid fa-people-group" },

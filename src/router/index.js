@@ -156,26 +156,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/LoggerDetailScreen.vue'),
       },
 
-      {
-        path: '/board',
-        name: 'board',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BoardScreen.vue'),
-      },
-      {
-        path: '/createboard',
-        name: 'createboard',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateBoardScreen.vue'),
-      },
-      {
-        path: '/editboard/:boardId',
-        name: 'editboard',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditBoardScreen.vue'),
-      },
-      {
-        path: '/boarddetail/:boardId',
-        name: 'boarddetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BoardDetailScreen.vue'),
-      },
+     
       {
         path: '/category',
         name: 'category',
