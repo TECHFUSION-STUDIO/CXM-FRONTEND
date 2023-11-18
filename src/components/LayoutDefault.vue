@@ -99,7 +99,7 @@
             "
             style="cursor: default"
           >
-            <div class="ms-2 me-auto">
+            <div class="ms-1 me-auto">
               <div class="fw-medium">
                 <i :class="item.icon + ' me-2'"></i>{{ item.title }}
               </div>
@@ -148,8 +148,9 @@ export default {
           url: "/surveys",
           icon: "fa-solid fa-comment-dots",
         },
-        { title: "Logger", url: "/logger", icon: "fa-solid fa-address-book" },
-        { title: "Feature", url: "/feature", icon: "fa-regular fa-snowflake" },
+        { title: "Epic", url: "/feature", icon: "fa-regular fa-snowflake" },
+        { title: "Reporter", url: "/logger", icon: "fa-solid fa-address-book" },
+
         { title: "Category", url: "/category", icon: "fa-solid fa-code-branch" },
         { title: "Tags", url: "/tags", icon: "fa-sharp fa-solid fa-tags" },
         { title: "Member", url: "/member", icon: "fa-solid fa-people-group" },
@@ -262,8 +263,8 @@ body {
 }
 
 #sidebar {
-  min-width: 180px;
-  max-width: 180px;
+  min-width: 160px;
+  max-width: 160px;
   color: #fff;
   transition: all 0.3s;
   /* padding-left: 5px;
@@ -273,7 +274,7 @@ body {
 }
 
 #sidebar.active {
-  margin-left: -180px;
+  margin-left: -160px;
 }
 
 /* #sidebar .sidebar-header {
@@ -334,7 +335,7 @@ body {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -180px;
+    margin-left: -160px;
   }
 
   #sidebar.active {
