@@ -60,7 +60,13 @@
   </nav>
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
     <div class="ms-auto text-white p-1" style="font-size: 14px">
-      <span class="me-2 ms-2" style="cursor: pointer" title="Notifications"
+      <span
+        class="me-2 ms-2"
+        style="cursor: pointer"
+        title="Notifications"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#notification"
+        aria-controls="notification"
         ><i class="fa-regular fa-bell"></i></span
       >|
       <span
@@ -117,6 +123,26 @@
           <router-view></router-view>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="notification"
+    aria-labelledby="notificationLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="notificationLabel">Notification</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>Nothing to show</div>
     </div>
   </div>
 </template>

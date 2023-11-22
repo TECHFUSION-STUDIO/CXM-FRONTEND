@@ -153,11 +153,12 @@
             <label class="input-group-text" for="inputGroupSelect01">Assignee</label>
             <multiselect
               class="form-control p-0 border border-0"
-              :options="questionDropDown.options"
-              v-model="questionDropDown.value"
+              :options="assigneeDropDown.options"
+              v-model="assigneeDropDown.value"
               placeholder="Select one"
-              label="surveyQuestion"
+              label="memberName"
               track-by="id"
+              hideSelected="true"
             ></multiselect>
           </div>
 
@@ -252,9 +253,19 @@ export default {
   },
   data() {
     return {
-      questionDropDown: {
-        options: [],
-        value: {},
+      assigneeDropDown: {
+        options: [
+          {
+            id: -1,
+            memberName: "Unassigned",
+            memberEmail: "string",
+          },
+        ],
+        value: {
+          id: -1,
+          memberName: "Unassigned",
+          memberEmail: "",
+        },
         isLoading: false,
       },
 

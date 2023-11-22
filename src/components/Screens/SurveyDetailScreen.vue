@@ -47,6 +47,18 @@
             />
           </div>
         </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Survey Type</span>
+            <input
+              type="text"
+              class="form-control"
+              disabled
+              :value="surveyDetail.surveyType"
+            />
+          </div>
+        </div>
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="basic-addon1">Created on</span>
@@ -85,51 +97,6 @@
 
     <div>
       <div class="bg-white shadow shadow-sm mt-3 p-3">
-        <div class="row" v-if="false">
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id)"
-            >
-              Analytics
-            </button>
-          </div>
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/question')"
-            >
-              Question
-            </button>
-          </div>
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/responses')"
-            >
-              Responses
-            </button>
-          </div>
-
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/submission')"
-            >
-              Submission
-            </button>
-          </div>
-
-          <div class="col">
-            <button
-              class="btn btn-outline-primary w-100"
-              @click="this.$router.push('/surveys/' + id + '/loggers')"
-            >
-              Loggers
-            </button>
-          </div>
-        </div>
-
         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
           <button
             class="nav-link active"

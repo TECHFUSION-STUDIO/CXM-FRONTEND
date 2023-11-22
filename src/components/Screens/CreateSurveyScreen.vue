@@ -16,9 +16,11 @@
 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="mb-3">
-            <label for="categoryName" class="form-label">Survey Name<span class="ms-1 fw-bold"><sup>*</sup></span></label>
+            <label for="categoryName" class="form-label"
+              >Survey Name<span class="ms-1 fw-bold"><sup>*</sup></span></label
+            >
             <input
               type="text"
               class="form-control"
@@ -27,15 +29,7 @@
             />
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Survey Status</label>
-            <select id="categoryStatus" class="form-select" v-model="inpSurveyStatus">
-              <option value="ACTIVE">Active</option>
-              <option value="INACTIVE">Inactive</option>
-            </select>
-          </div>
-        </div>
+
         <div class="col-md-12">
           <div class="mb-3">
             <label for="categoryDesc" class="form-label">Survey Description</label>
@@ -69,6 +63,24 @@
             />
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Survey Status</label>
+            <select id="categoryStatus" class="form-select" v-model="inpSurveyStatus">
+              <option value="ACTIVE">Active</option>
+              <option value="INACTIVE">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Survey Type</label>
+            <select id="categoryStatus" class="form-select" v-model="inpSurveyType">
+              <option value="SURVEY">Survey</option>
+              <option value="QUIZ" disabled>Quiz (coming soon)</option>
+            </select>
+          </div>
+        </div>
 
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
@@ -97,6 +109,7 @@ export default {
       inpSurveyStartTime: "",
       inpSurveyEndTime: "",
       inpSurveyDesc: "",
+      inpSurveyType: "SURVEY",
       errMsg: {
         surveyName: "",
         status: "",
@@ -111,17 +124,21 @@ export default {
     validate() {
       if (this.inpSurveyName != null && this.inpSurveyName.trim() != "") {
         if (this.inpSurveyStatus != null && this.inpSurveyStatus.trim() != "") {
-          if (this.inpSurveyStartTime != null && this.inpSurveyStartTime.trim() != "") {
-            if (this.inpSurveyEndTime != null && this.inpSurveyEndTime.trim() != "") {
-              if (
-                Date.parse(this.inpSurveyEndTime) > Date.parse(this.inpSurveyStartTime)
-              ) {
-                return true;
+          if (this.inpSurveyType != null && this.inpSurveyType.trim() != "") {
+            if (this.inpSurveyStartTime != null && this.inpSurveyStartTime.trim() != "") {
+              if (this.inpSurveyEndTime != null && this.inpSurveyEndTime.trim() != "") {
+                if (
+                  Date.parse(this.inpSurveyEndTime) > Date.parse(this.inpSurveyStartTime)
+                ) {
+                  return true;
+                } else {
+                  return false;
+                }
               } else {
-                return false;
+                return true;
               }
             } else {
-              return true;
+              return false;
             }
           } else {
             return false;
@@ -143,6 +160,7 @@ export default {
             surveyFormDescription: this.inpSurveyDesc,
             surveyFormStatus: this.inpSurveyStatus,
             startDateTime: this.inpSurveyStartTime,
+            surveyType: this.inpSurveyType,
             endDateTime: this.inpSurveyEndTime,
             addedDateTime: "2023-06-24T10:16:01.682Z",
           })

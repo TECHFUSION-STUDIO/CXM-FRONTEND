@@ -95,6 +95,7 @@ export default {
     };
   },
   updated() {
+    console.log(window.navigator);
     console.log(this.email.trim().length <= 3);
     console.log(this.password.trim().length < 8);
     var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

@@ -61,7 +61,7 @@
             />
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Survey Status</label>
             <select
@@ -74,10 +74,22 @@
             </select>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Survey Type</label>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyFormDetail.surveyType"
+            >
+              <option value="SURVEY">Survey</option>
+              <option value="QUIZ" disabled>Quiz (coming soon)</option>
+            </select>
+          </div>
+        </div>
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <!-- <button class="btn btn-outline-primary m-2 w-25">Edit</button> -->
             <button
               class="btn btn-outline-success m-2 w-25"
               @click="updateSurveyFormDetail()"

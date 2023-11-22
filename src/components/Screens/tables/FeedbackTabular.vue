@@ -67,7 +67,7 @@
                   {{ item.feedbackDescription }}
                 </router-link>
               </td>
-              <td style="width: 40%" @click="openedDrop(item)">
+              <td style="width: 40%" @mouseover="openedDrop(item)">
                 <multiselect
                   tag-placeholder="Add this feature"
                   placeholder="Search feature"
