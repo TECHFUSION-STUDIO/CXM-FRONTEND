@@ -37,7 +37,10 @@
               disabled
               :value="submissionDetail.loggerId"
             />
-            <button class="btn btn-sm btn-outline-secondary" @click="this.$router.push('/loggerdetail/'+submissionDetail.loggerId)">
+            <button
+              class="btn btn-sm btn-outline-secondary"
+              @click="this.$router.push('/loggerdetail/' + submissionDetail.loggerId)"
+            >
               <i class="fa-solid fa-up-right-from-square"></i>
             </button>
           </div>
@@ -69,12 +72,63 @@
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text" id="basic-addon1">Time spent</span>
-            <input
-              type="datetime-local"
-              class="form-control"
-              disabled
-              :value="'20 seconds'"
-            />
+            <input type="text" class="form-control" disabled :value="'20 seconds'" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Device ip Address</span>
+            <input type="text" class="form-control" disabled />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Device Geo</span>
+            <input type="text" class="form-control" disabled />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Device OS</span>
+            <input type="text" class="form-control" disabled />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Device Browser</span>
+            <input type="text" class="form-control" disabled :value="'20 seconds'" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Devivce Type</span>
+            <input type="text" class="form-control" disabled :value="'20 seconds'" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Device Model</span>
+            <input type="text" class="form-control" disabled :value="'20 seconds'" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Device AppModel</span>
+            <input type="text" class="form-control" disabled :value="'20 seconds'" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="basic-addon1">Device Timezone</span>
+            <input type="text" class="form-control" disabled :value="'20 seconds'" />
           </div>
         </div>
       </div>
