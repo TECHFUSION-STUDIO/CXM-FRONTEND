@@ -1,6 +1,6 @@
 <template>
   <div class="ps-2 pe-2 pb-3">
-    <label class="me-2">All new Epics created for this form should be :</label>
+    <label class="me-2">All new Epics created for this Form should be :</label>
     <div class="form-check form-check-inline">
       <input
         class="form-check-input"
@@ -20,6 +20,12 @@
         value="option2"
       />
       <label class="form-check-label" for="inlineRadio2">Private</label>
+    </div>
+
+    <div class="text-start mt-3">
+      <button class="btn btn-outline-primary btn-sm ms-0 m-1">Reset</button>
+
+      <button class="btn btn-outline-primary btn-sm m-1">Update</button>
     </div>
   </div>
 </template>

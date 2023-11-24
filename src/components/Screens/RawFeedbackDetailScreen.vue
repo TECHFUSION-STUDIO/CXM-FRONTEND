@@ -20,17 +20,17 @@
         <h5 class="mt-1">{{ feedbackDetail.feedbackDescription }}</h5>
         <p>
           <span class="badge text-bg-primary me-1">
+            <span class="fst-italic">Question Category :</span>
             {{ questionDetail.surveyQuestionCategory }}</span
           >
 
           <span class="badge text-bg-primary">
+            <span class="fst-italic"> Question Type </span> :
             {{ questionDetail.surveyQuestionType }}</span
           >
         </p>
 
-        <h6 class="text-muted">
-          {{ questionDetail.surveyQuestion }}
-        </h6>
+        <p class="text-muted">Question : {{ questionDetail.surveyQuestion }}</p>
         <p class="text-muted">
           <i>
             <span v-if="loggerDetail.id != null && loggerDetail.id != ''">
