@@ -7,7 +7,8 @@
         type="radio"
         name="inlineRadioOptions"
         id="inlineRadio1"
-        value="option1"
+        value="Public"
+        v-model="featureAccessModifier"
       />
       <label class="form-check-label" for="inlineRadio1">Public</label>
     </div>
@@ -17,7 +18,8 @@
         type="radio"
         name="inlineRadioOptions"
         id="inlineRadio2"
-        value="option2"
+        value="Private"
+        v-model="featureAccessModifier"
       />
       <label class="form-check-label" for="inlineRadio2">Private</label>
     </div>
@@ -36,6 +38,7 @@ export default {
   data() {
     return {
       id: "",
+      featureAccessModifier: "Public",
     };
   },
   mounted() {

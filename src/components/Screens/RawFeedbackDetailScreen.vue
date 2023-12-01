@@ -19,11 +19,6 @@
 
         <h5 class="mt-1">{{ feedbackDetail.feedbackDescription }}</h5>
         <p>
-          <span class="badge text-bg-primary me-1">
-            <span class="fst-italic">Question Category :</span>
-            {{ questionDetail.surveyQuestionCategory }}</span
-          >
-
           <span class="badge text-bg-primary">
             <span class="fst-italic"> Question Type </span> :
             {{ questionDetail.surveyQuestionType }}</span

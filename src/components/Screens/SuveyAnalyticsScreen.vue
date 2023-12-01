@@ -22,7 +22,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title fw-normal">Page Views</h5>
-            <p class="card-text fs-1 fst-italic">63%</p>
+            <p class="card-text fs-1 fst-italic">780000</p>
           </div>
         </div>
       </div>
@@ -42,16 +42,16 @@
         <div class="card">
           <div class="card-body row">
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Total Views</h5>
+              <h6 class="card-title fw-normal">Total Views</h6>
               <p class="card-text fs-2 fst-italic">1800</p>
             </div>
 
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Retention Rate</h5>
-              <p class="card-text fs-1 fst-italic text-success">47%</p>
+              <h6 class="card-title fw-normal">Retention Rate</h6>
+              <p class="card-text fw-bold fs-2 fst-italic text-success">47%</p>
             </div>
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Total Submission</h5>
+              <h6 class="card-title fw-normal">Total Submission</h6>
               <p class="card-text fs-2 fst-italic">800</p>
             </div>
           </div>
@@ -99,17 +99,17 @@
         <div class="card">
           <div class="card-body row">
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Min Submission time</h5>
-              <p class="card-text fs-1 fst-italic">2 min</p>
+              <h6 class="card-title fw-normal">Min Submission time</h6>
+              <p class="card-text fs-2 fst-italic">2 min</p>
             </div>
 
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Avg Submission time</h5>
-              <p class="card-text fs-1 fst-italic text-success">4.7 min</p>
+              <h6 class="card-title fw-normal">Avg Submission time</h6>
+              <p class="card-text fs-2 fw-bold fst-italic text-success">4.7 min</p>
             </div>
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Max Submission time</h5>
-              <p class="card-text fs-1 fst-italic">10 min</p>
+              <h6 class="card-title fw-normal">Max Submission time</h6>
+              <p class="card-text fs-2 fst-italic">10 min</p>
             </div>
           </div>
           <LineChart
@@ -144,17 +144,17 @@
         <div class="card">
           <div class="card-body row">
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Anonymous Submission</h5>
-              <p class="card-text fs-1 fst-italic">700</p>
+              <h6 class="card-title fw-normal">Anonymous Submission</h6>
+              <p class="card-text fs-2 fst-italic">700</p>
             </div>
 
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Member Submission</h5>
-              <p class="card-text fs-1 fst-italic">1500</p>
+              <h6 class="card-title fw-normal">Member Submission</h6>
+              <p class="card-text fs-2 fst-italic">1500</p>
             </div>
             <div class="col-md-4">
-              <h5 class="card-title fw-normal">Genuine Submission</h5>
-              <p class="card-text fs-1 fst-italic">100</p>
+              <h6 class="card-title fw-normal">Genuine Submission</h6>
+              <p class="card-text fs-2 fst-italic">100</p>
             </div>
           </div>
           <LineChart
@@ -188,17 +188,17 @@
           <div class="card-body">
             <div class="row text-center">
               <div class="col-md-4">
-                <h5 class="card-title fw-normal">Positive Response</h5>
-                <p class="card-text fs-1 fst-italic text-success">700</p>
+                <h6 class="card-title fw-normal">Positive Response</h6>
+                <p class="card-text fs-2 fst-italic text-success">700</p>
               </div>
 
               <div class="col-md-4">
-                <h5 class="card-title fw-normal">Neutral Response</h5>
-                <p class="card-text fs-1 fst-italic text-primary">1500</p>
+                <h6 class="card-title fw-normal">Neutral Response</h6>
+                <p class="card-text fs-2 fst-italic text-primary">1500</p>
               </div>
               <div class="col-md-4">
-                <h5 class="card-title fw-normal">Negative Response</h5>
-                <p class="card-text fs-1 fst-italic text-danger">100</p>
+                <h6 class="card-title fw-normal">Negative Response</h6>
+                <p class="card-text fs-2 fst-italic text-danger">100</p>
               </div>
             </div>
 

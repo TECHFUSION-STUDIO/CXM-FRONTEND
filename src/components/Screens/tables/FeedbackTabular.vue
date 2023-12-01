@@ -3,7 +3,7 @@
     <div>
       <div class="ms-0 me-0 row d-flex justify-content-center">
         <div class="col-md-7">
-          <span
+          <!-- <span
             class="input-group-text p-0"
             v-if="this.calledFrom != '' && this.calledFrom != null"
           >
@@ -14,8 +14,10 @@
               label="surveyQuestion"
               track-by="id"
               @select="fetchFeedback()"
-            ></multiselect>
-          </span>
+            ></multiselect> 
+          </span>-->
+          <button class="btn btn-primary btn-sm me-1">Sort</button>
+          <button class="btn btn-primary btn-sm me-1">Filter</button>
         </div>
 
         <div class="col-md-5">
@@ -23,10 +25,10 @@
             <input
               class="form-control"
               type="search"
-              placeholder="Search Feedbacks"
+              placeholder="Search Response"
               aria-label="Search"
             />
-            <button class="btn btn-primary">
+            <button class="btn btn-primary btn-sm">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
