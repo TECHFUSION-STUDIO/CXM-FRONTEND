@@ -3,16 +3,16 @@
     <!-- Single choice data -->
     <div class="row mt-4">
       <div class="col-md-12">
-        <div class="card shadow shadow-sm">
+        <div class="card shadow shadow-sm" style="background-color: #e0f3ff44">
           <div class="card-body">
             <p class="text-muted">Question Id : 123455566</p>
             <p>
-              <span class="badge bg-secondary ms-1">SINGLE CHOICE</span>
-              <span class="badge bg-secondary ms-1">DROPDOWN CHOICE</span>
-              <span class="badge bg-secondary ms-1">ACTIVE</span>
-              <span class="badge bg-secondary ms-1">MANDATORY</span>
+              <span class="badge text-bg-light ms-1">TYPE : SINGLE CHOICE</span>
+              <span class="badge text-bg-light ms-1">TYPE : DROPDOWN CHOICE</span>
+              <span class="badge text-bg-light ms-1">MANDATORY : YES</span>
+              <span class="badge text-bg-light ms-1">STATUS : ACTIVE</span>
             </p>
-            <h5 class="card-title fw-normal">Please Select about our food service</h5>
+            <h5 class="card-title fw-medium">Please Select about our food service</h5>
 
             <ol
               class="list-group list-group-numbered list-group-flush mt-3 border border-1"

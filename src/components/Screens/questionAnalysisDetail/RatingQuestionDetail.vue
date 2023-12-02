@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="mt-4">
-      <div class="card shadow shadow-sm">
+      <div class="card shadow shadow-sm" style="background-color: #e0f3ff44">
         <div class="card-body">
           <p class="text-muted">Question Id : 123455566</p>
           <p>
-            <span class="badge bg-secondary ms-1">RATING</span>
-            <span class="badge bg-secondary ms-1">MANDATORY</span>
-            <span class="badge bg-secondary ms-1">ACTIVE</span>
+            <span class="badge text-bg-light ms-1">TYPE : RATING</span>
+            <span class="badge text-bg-light ms-1">MANDATORY : YES</span>
+            <span class="badge text-bg-light ms-1">STATUS : ACTIVE</span>
           </p>
 
-          <h5 class="card-title fw-normal">Please Select about our food service</h5>
+          <h5 class="card-title fw-medium">Please Select about our food service</h5>
 
           <ul class="list-group list-group-flush mt-3 border border-1">
             <li

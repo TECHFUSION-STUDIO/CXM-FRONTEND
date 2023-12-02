@@ -3,21 +3,93 @@
     <div>
       <div class="ms-0 me-0 row d-flex justify-content-center">
         <div class="col-md-7">
-          <!-- <span
-            class="input-group-text p-0"
-            v-if="this.calledFrom != '' && this.calledFrom != null"
+          <button
+            type="button"
+            class="btn btn-primary btn-sm me-1 dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
           >
-            <multiselect
-              :options="questionDropDown.options"
-              v-model="questionDropDown.value"
-              placeholder="Select one"
-              label="surveyQuestion"
-              track-by="id"
-              @select="fetchFeedback()"
-            ></multiselect> 
-          </span>-->
-          <button class="btn btn-primary btn-sm me-1">Sort</button>
-          <button class="btn btn-primary btn-sm me-1">Filter</button>
+            Sort
+          </button>
+          <form class="dropdown-menu p-3 shadow-lg">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Default radio
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault2"
+                checked
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Default checked radio
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault2"
+                checked
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Default checked radio
+              </label>
+            </div>
+            <hr />
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault2"
+                checked
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Low to High
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault2"
+                checked
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                High to Low
+              </label>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-sm me-1 btn-primary">Reset</button>
+              <button type="submit" class="btn btn-sm me-1 btn-primary">Apply</button>
+            </div>
+          </form>
+
+          <button
+            type="button"
+            class="btn btn-primary btn-sm me-1 dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
+          >
+            Filter
+          </button>
+          <form class="dropdown-menu p-4 shadow-lg"></form>
         </div>
 
         <div class="col-md-5">

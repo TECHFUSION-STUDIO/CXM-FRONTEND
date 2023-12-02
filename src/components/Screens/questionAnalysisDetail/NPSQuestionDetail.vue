@@ -2,16 +2,16 @@
   <div>
     <!-- NPs data -->
     <div class="mt-4">
-      <div class="card shadow shadow-sm">
+      <div class="card shadow shadow-sm" style="background-color: #e0f3ff44">
         <div class="card-body">
           <p class="text-muted">Question Id : 123455566</p>
           <p>
-            <span class="badge bg-secondary ms-1">NPS</span>
-            <span class="badge bg-secondary ms-1">MANDATORY</span>
-            <span class="badge bg-secondary ms-1">ACTIVE</span>
+            <span class="badge text-bg-light ms-1">TYPE : NPS</span>
+            <span class="badge text-bg-light ms-1">MANDATORY : YES</span>
+            <span class="badge text-bg-light ms-1">STATUS : ACTIVE</span>
           </p>
 
-          <h5 class="card-title fw-normal">
+          <h5 class="card-title fw-medium">
             On a scale of 0 to 10, how likely are you to recommend our business to a
             friend or colleague?
           </h5>

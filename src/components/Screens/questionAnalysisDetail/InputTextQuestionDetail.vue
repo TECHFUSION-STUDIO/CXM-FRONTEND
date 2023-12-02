@@ -3,14 +3,16 @@
     <!-- Single/Multi Line Text data -->
     <div class="row mt-4">
       <div class="col-md-12">
-        <div class="card shadow shadow-sm">
+        <div class="card shadow shadow-sm" style="background-color: #e0f3ff44">
           <div class="card-body">
             <p class="text-muted">Question Id : 123455566</p>
             <p>
-              <span class="badge bg-secondary ms-1">SINGLE LINE TEXT</span>
-              <span class="badge bg-secondary ms-1">MULTI LINE TEXT</span>
+              <span class="badge text-bg-light ms-1">TYPE : SINGLE LINE TEXT</span>
+              <span class="badge text-bg-light ms-1">TYPE : MULTI LINE TEXT</span>
+              <span class="badge text-bg-light ms-1">MANDATORY : YES</span>
+              <span class="badge text-bg-light ms-1">STATUS : ACTIVE</span>
             </p>
-            <h5 class="card-title fw-normal">Please tell us about our service</h5>
+            <h5 class="card-title fw-medium">Please tell us about our service</h5>
             <div class="row mt-3">
               <div class="col-sm-8 mb-3">
                 <div class="card">
