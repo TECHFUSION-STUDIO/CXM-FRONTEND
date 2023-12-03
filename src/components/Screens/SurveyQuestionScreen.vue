@@ -23,7 +23,7 @@
             <td>Type</td>
             <td>Status</td>
             <td>Created Time</td>
-            <td class="text-center">Detail</td>
+            <!-- <td class="text-center">Detail</td> -->
           </tr>
         </thead>
         <tbody>
@@ -43,9 +43,9 @@
               <span class="text-success fw-bold">{{ item.surveyQuestionStatus }}</span>
             </td>
             <td>{{ item.addedDateTime }}</td>
-            <td class="text-center">
+            <!-- <td class="text-center">
               <i class="fa-solid fa-circle-info" style="cursor: pointer"></i>
-            </td>
+            </td> -->
           </tr>
           <tr v-if="surveyFormQuestionDetail.length == 0">
             <td class="text-center" colspan="8"><i>No Data Found</i></td>

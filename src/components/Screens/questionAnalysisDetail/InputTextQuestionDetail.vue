@@ -5,6 +5,26 @@
       <div class="col-md-12">
         <div class="card shadow shadow-sm" style="background-color: #e0f3ff44">
           <div class="card-body">
+            <div class="mb-3">
+              <button class="btn btn-sm btn-primary rounded-0">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-sm btn-primary rounded-0 dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Up to date
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+              </ul>
+            </div>
             <p class="text-muted">Question Id : 123455566</p>
             <p>
               <span class="badge text-bg-light ms-1">TYPE : SINGLE LINE TEXT</span>

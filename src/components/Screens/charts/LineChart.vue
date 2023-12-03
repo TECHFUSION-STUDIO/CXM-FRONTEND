@@ -77,6 +77,7 @@ export default {
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
+        pointRadius: 1,
         animation: {
           duration: 2,
         },
