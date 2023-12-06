@@ -21,9 +21,9 @@
           <tr class="bg-light">
             <td style="width: 40%">Question</td>
             <td>Type</td>
-            <td>Category</td>
             <td>Status</td>
             <td>Created Time</td>
+            <!-- <td class="text-center">Detail</td> -->
           </tr>
         </thead>
         <tbody>
@@ -39,11 +39,13 @@
               >
             </td>
             <td>{{ item.surveyQuestionType }}</td>
-            <td>{{ item.surveyQuestionCategory }}</td>
             <td>
               <span class="text-success fw-bold">{{ item.surveyQuestionStatus }}</span>
             </td>
             <td>{{ item.addedDateTime }}</td>
+            <!-- <td class="text-center">
+              <i class="fa-solid fa-circle-info" style="cursor: pointer"></i>
+            </td> -->
           </tr>
           <tr v-if="surveyFormQuestionDetail.length == 0">
             <td class="text-center" colspan="8"><i>No Data Found</i></td>
@@ -51,6 +53,17 @@
         </tbody>
       </table>
     </div>
+
+    <hr class="mt-5 mb-5" />
+
+    <h6>Showing Questions Details</h6>
+    <RatingQuestionDetail />
+
+    <NPSQuestionDetail />
+
+    <InputTextQuestionDetail />
+
+    <SingleChoiceQuestionDetail />
 
     <div
       class="offcanvas offcanvas-end"
@@ -139,8 +152,18 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import NPSQuestionDetail from "./questionAnalysisDetail/NPSQuestionDetail.vue";
+import InputTextQuestionDetail from "./questionAnalysisDetail/InputTextQuestionDetail.vue";
+import SingleChoiceQuestionDetail from "./questionAnalysisDetail/SingleChoiceQuestionDetail.vue";
+import RatingQuestionDetail from "./questionAnalysisDetail/RatingQuestionDetail.vue";
 export default {
   name: "SurveyQuestionScreen",
+  components: {
+    NPSQuestionDetail,
+    InputTextQuestionDetail,
+    SingleChoiceQuestionDetail,
+    RatingQuestionDetail,
+  },
   data() {
     return {
       id: "",
