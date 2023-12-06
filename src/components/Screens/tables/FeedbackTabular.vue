@@ -193,6 +193,21 @@
       </div>
     </div>
 
+    <div class="mt-4">
+      <span class="badge border border-1 text-dark m-1">Added Date : Low to High</span>
+
+      <span class="badge border border-1 text-dark m-1" style="font-size: 13px"
+        >Reporter : Avi
+        <span class="border-start ps-2"
+          ><i class="fa-solid fa-trash-can delfilter"></i></span
+      ></span>
+      <span class="badge border border-1 text-dark m-1" style="font-size: 13px"
+        >Status : New
+        <span class="border-start ps-2"
+          ><i class="fa-solid fa-trash-can delfilter"></i></span
+      ></span>
+    </div>
+
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive-md mt-4">
@@ -495,4 +510,9 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+.delfilter:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+</style>
