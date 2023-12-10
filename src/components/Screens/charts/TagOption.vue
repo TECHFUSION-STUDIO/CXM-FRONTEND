@@ -1,11 +1,7 @@
 <template>
   <div>
-    <div class="dropdown">
-      <div
-        class="dropdown-toggle text-start"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+    <div class="dropdown w-100">
+      <div class="text-start" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="badge text-bg-danger ms-1" v-for="item in selectedText" :key="item"
           >{{ item
           }}<span class="ps-2"
@@ -19,9 +15,13 @@
       </div>
 
       <div class="dropdown-menu shadow-lg">
-        <li class="dropdown-item">
-          <input id="myInput" type="text" v-model="searchText" placeholder="Search.." />
-        </li>
+        <input
+          id="myInput"
+          type="text"
+          v-model="searchText"
+          class="m-2"
+          placeholder="Search.."
+        />
         <div style="max-height: 200px; overflow-y: auto">
           <li>
             <a

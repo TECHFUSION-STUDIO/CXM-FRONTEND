@@ -34,4 +34,8 @@ a {
     1.2
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
+input[class="form-control"]:disabled {
+  background: #ffffff;
+}
 </style>

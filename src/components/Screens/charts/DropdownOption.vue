@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="dropdown mt-4">
-      <button
-        class="btn btn-outline-primary btn-sm dropdown-toggle"
+      <div
+        class="dropdowm-toggle btn btn-sm btn-primary"
         type="button"
         role="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
         {{ selectedText != "" ? selectedText : "Drop" }}
-      </button>
+      </div>
 
       <div class="dropdown-menu">
         <li class="dropdown-item">

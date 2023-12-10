@@ -276,6 +276,7 @@
                     :selectedOptions="['dawD', 'FCSACFV']"
                     @searchText="updateSearch"
                     @selectedText="updateSelect"
+                    style="width: 100%"
                   />
                 </td>
                 <td>

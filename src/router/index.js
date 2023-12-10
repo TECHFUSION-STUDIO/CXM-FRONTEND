@@ -109,8 +109,7 @@ const routes = [
             name: 'surveysettings',
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySettingScreen.vue'),
           },
-
-
+     
         ]
       },
 
@@ -150,6 +149,7 @@ const routes = [
         name: 'logger',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/LoggerScreen.vue'),
       },
+      
       {
         path: '/loggerdetail/:loggerId',
         name: 'loggerdetail',

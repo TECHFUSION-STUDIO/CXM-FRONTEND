@@ -7,6 +7,10 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive">
+      <p class="text-muted fs-5 text-center">Member Invitation Feature Coming Soon</p>
+    </div>
+
+    <!-- <div class="bg-white shadow shadow-sm mt-3 p-3 table-responsive">
       <button
         class="btn btn-primary mt-2"
         @click.prevent="showInviteMemberMenu = true"
@@ -70,9 +74,9 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
 
-    <div
+    <!-- <div
       class="offcanvas offcanvas-end"
       :class="showInviteMemberMenu ? 'show' : ''"
       tabindex="-1"
@@ -114,18 +118,18 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import axioscon from "../../axioscon.js";
-import Multiselect from "vue-multiselect";
+// import Multiselect from "vue-multiselect";
 
 export default {
   name: "ProjectMemberScreen",
   components: {
-    Multiselect,
+    // Multiselect,
   },
   data() {
     return {

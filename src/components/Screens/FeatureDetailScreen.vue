@@ -149,7 +149,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="input-group mb-3">
+          <!-- <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Assignee</label>
             <multiselect
               class="form-control p-0 border border-0"
@@ -160,7 +160,7 @@
               track-by="id"
               hideSelected="true"
             ></multiselect>
-          </div>
+          </div> -->
 
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Reporter</label>
@@ -184,6 +184,7 @@
         </div>
       </div>
     </div>
+
     <FeatureTag />
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <h6>Linked Feedback Responses</h6>
