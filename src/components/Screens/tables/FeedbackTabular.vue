@@ -196,15 +196,20 @@
     <div class="mt-4">
       <span class="badge border border-1 text-dark m-1">Added Date : Low to High</span>
 
-      <span class="badge border border-1 text-dark m-1" style="font-size: 13px"
-        >Reporter : Avi
-        <span class="border-start ps-2"
-          ><i class="fa-solid fa-trash-can delfilter"></i></span
+      <span class="badge text-bg-light border border-1 ms-1"
+        >Reporter : Avi<span class="ps-2"
+          ><i
+            class="fa-regular fa-circle-xmark delfilter"
+            style="cursor: pointer"
+          ></i></span
       ></span>
-      <span class="badge border border-1 text-dark m-1" style="font-size: 13px"
-        >Status : New
-        <span class="border-start ps-2"
-          ><i class="fa-solid fa-trash-can delfilter"></i></span
+
+      <span class="badge text-bg-light border border-1 ms-1"
+        >Status : New<span class="ps-2"
+          ><i
+            class="fa-regular fa-circle-xmark delfilter"
+            style="cursor: pointer"
+          ></i></span
       ></span>
     </div>
 
@@ -245,7 +250,7 @@
                   </router-link>
                 </td>
                 <td style="width: 40%" @mouseover="openedDrop(item)">
-                  <multiselect
+                  <!-- <multiselect
                     tag-placeholder="Add this feature"
                     placeholder="Search feature"
                     label="featureName"
@@ -257,7 +262,22 @@
                     :options="featureList"
                     v-model="item.featureList"
                     @open="openedDrop(item)"
-                  ></multiselect>
+                  ></multiselect> -->
+                  <TagOption
+                    :finalList="[
+                      'dawD',
+                      'FCSACFV',
+                      'JNUTYRGFHNJ',
+                      'CEWSAE',
+                      'VBDR',
+                      'rrf',
+                      'ffffffffffffff',
+                    ]"
+                    :selectedOptions="['dawD', 'FCSACFV']"
+                    @searchText="updateSearch"
+                    @selectedText="updateSelect"
+                    style="width: 100%"
+                  />
                 </td>
                 <td>
                   <router-link
@@ -341,12 +361,15 @@ import axiosConn from "@/axioscon";
 import { constants } from "../constants";
 import Multiselect from "vue-multiselect";
 import CreateFeatureScreenVue from "../CreateFeatureScreen";
+import TagOption from "../charts/TagOption.vue";
+
 export default {
   name: "FeedbackTabular",
   props: ["criteria", "calledFrom"],
   components: {
     Multiselect,
     CreateFeatureScreenVue,
+    TagOption,
   },
   data() {
     return {

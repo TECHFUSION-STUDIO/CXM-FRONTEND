@@ -26,20 +26,49 @@
           </div>
         </div>
       </div>
+
+      <DropdownOption
+        :finalList="finalList"
+        @searchText="updateSearch"
+        @selectedText="updateSelect"
+      />
+      <TagOption
+        :finalList="finalList"
+        @searchText="updateSearch"
+        @selectedText="updateSelect"
+        :selectedOptions="['dawD', 'FCSACFV']"
+      />
     </div>
   </div>
 </template>
 
 <script>
 // import axiosConn from "@/axioscon";
+import DropdownOption from "./charts/DropdownOption.vue";
+
+import TagOption from "./charts/TagOption.vue";
 export default {
   name: "DashboardScreen",
-
-  data() {
-    return {};
+  components: {
+    DropdownOption,
+    TagOption,
   },
+  data() {
+    return {
+      finalList: ["dawD", "FCSACFV", "JNUTYRGFHNJ", "CEWSAE", "VBDR"],
+    };
+  },
+
   mounted() {},
-  methods: {},
+  methods: {
+    updateSearch(a) {
+      console.log(a);
+      this.finalList.push("1", "3");
+    },
+    updateSelect(a) {
+      console.log(a);
+    },
+  },
 };
 </script>
 
