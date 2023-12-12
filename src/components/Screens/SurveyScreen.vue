@@ -1,10 +1,8 @@
 <template>
   <div>
-    <v-card>
-      <template v-slot:text
-        ><v-breadcrumbs :items="['Foo', 'Bar', 'Fizz']"></v-breadcrumbs
-      ></template>
-    </v-card>
+    <v-container>
+      <v-breadcrumbs :items="['Foo', 'Bar', 'Fizz']"></v-breadcrumbs>
+    </v-container>
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         Showing Surveys <i>for project id BMRC-9877</i>
@@ -14,15 +12,13 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <button
-            class="btn btn-primary mt-2"
-            @click="this.$router.push('/createsurveys')"
+          <!-- <button class="btn btn-primary mt-2">Create Survey</button> -->
+          <v-btn size="small" @click="this.$router.push('/createsurveys')">
+            Create Survey</v-btn
           >
-            Create Survey
-          </button>
         </div>
         <div class="col-md-6">
-          <div class="input-group mt-2">
+          <!-- <div class="input-group mt-2">
             <input
               class="form-control"
               type="search"
@@ -32,7 +28,19 @@
             <button class="btn btn-primary">
               <i class="fa-brands fa-searchengin"></i>
             </button>
-          </div>
+          </div> -->
+          <v-card-text>
+            <v-text-field
+              :loading="loading"
+              density="compact"
+              variant="outlined"
+              label="Search templates"
+              append-inner-icon="mdi-magnify"
+              single-line
+              hide-details
+              @click:append-inner="onClick"
+            ></v-text-field>
+          </v-card-text>
         </div>
         <div class="col-md-3"></div>
       </div>
@@ -56,7 +64,6 @@
                 }}</a>
               </td>
               <td class="text-center">
-                <!-- {{ item.surveyFormStatus }} -->
                 <span class="text-success fw-bold">{{ item.surveyFormStatus }}</span>
               </td>
               <td>vs</td>
@@ -70,20 +77,20 @@
           </tbody>
         </table>
 
-        <!-- <div class="text-center">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link">Prev</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div> -->
+        <v-table fixed-header height="300px">
+          <thead>
+            <tr>
+              <th class="text-left">Name</th>
+              <th class="text-left">Calories</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in desserts" :key="item.name">
+              <td>{{ item.name }}</td>
+              <td>{{ item.calories }}</td>
+            </tr>
+          </tbody>
+        </v-table>
       </div>
     </div>
   </div>

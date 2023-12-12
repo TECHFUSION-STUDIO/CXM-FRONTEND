@@ -29,10 +29,47 @@
 
       <v-row class="mt-2">
         <v-col sm="12" md="12" xs="12" lg="12" xl="12"
-          ><v-card
-            title="Feedback Added"
-            text="With supporting text below as a natural lead-in to additional content."
-          >
+          ><v-card title="Feedback Added">
+            <template v-slot:text>
+              <LineChart
+                class="p-4"
+                :chartData="{
+                  labels: [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                  ],
+                  datasets: [
+                    {
+                      label: 'Min Submission time',
+                      backgroundColor: '#f87979',
+                      data: [40, 39, 10, 40, 39, 80, 40, 40, 39, 10, 40, 39, 80, 40],
+                    },
+                    {
+                      label: 'Avg Submission time',
+                      backgroundColor: '#00000',
+                      data: [30, 34, 14, 10, 10, 20, 70, 30, 34, 14, 10, 10, 20, 70],
+                    },
+                    {
+                      label: 'Max Submission time',
+                      backgroundColor: '#00000',
+                      data: [30, 34, 14, 10, 10, 20, 70, 40, 39, 10, 40, 39, 80],
+                    },
+                  ],
+                }"
+              />
+            </template>
             <v-card-actions>
               <v-btn>Click me</v-btn>
             </v-card-actions>
@@ -67,14 +104,16 @@
 <script>
 // import axiosConn from "@/axioscon";
 // import DropdownOption from "./charts/DropdownOption.vue";
+import LineChart from "./charts/LineChart.vue";
 
 // import TagOption from "./charts/TagOption.vue";
 export default {
   name: "DashboardScreen",
-  // components: {
-  //   DropdownOption,
-  //   TagOption,
-  // },
+  components: {
+    // DropdownOption,
+    // TagOption,
+    LineChart,
+  },
   data() {
     return {
       finalList: ["dawD", "FCSACFV", "JNUTYRGFHNJ", "CEWSAE", "VBDR"],
