@@ -1,7 +1,7 @@
 <template>
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
-      <button
+      <!-- <button
         v-if="this.store.IS_LOGGED_IN && !screenShort"
         type="button"
         id="sidebarCollapse"
@@ -9,9 +9,9 @@
         @click="openDrawer ? (openDrawer = false) : (openDrawer = true)"
       >
         <i class="fas fa-align-left"></i>
-      </button>
+      </button> -->
 
-      <h5 class="navbar-nav me-auto ms-3">
+      <h5 class="navbar-nav me-auto ms-2">
         <i class="fa-solid fa-florin-sign me-2"></i> FeedArc
       </h5>
       <div class="d-flex" role="search">
@@ -106,7 +106,7 @@
           >
             <div class="ms-1 me-auto">
               <div class="fw-medium">
-                <i :class="item.icon + ' me-2'"></i>{{ item.title }}
+                <i :class="item.icon + ' me-2'"></i>
               </div>
             </div>
           </li>
@@ -198,7 +198,7 @@ export default {
     return {
       openDrawer: false,
       screenShort: false,
-      selectedTab: null,
+      selectedTab: 0,
       headerTitle: "",
       options: [],
       item: {},
@@ -330,8 +330,8 @@ body {
 }
 
 #sidebar {
-  min-width: 160px;
-  max-width: 160px;
+  min-width: 60px;
+  max-width: 60px;
   color: #fff;
   transition: all 0.3s;
   /* padding-left: 5px;
@@ -341,7 +341,7 @@ body {
 }
 
 #sidebar.active {
-  margin-left: -160px;
+  margin-left: -60px;
 }
 
 /* #sidebar .sidebar-header {
@@ -402,7 +402,7 @@ body {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -160px;
+    margin-left: -60px;
   }
 
   #sidebar.active {

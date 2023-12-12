@@ -26,6 +26,7 @@
           </div>
         </div>
       </div>
+
       <v-row class="mt-2">
         <v-col sm="12" md="12" xs="12" lg="12" xl="12"
           ><v-card
@@ -45,20 +46,51 @@
           </v-card>
         </v-col></v-row
       >
+      <!-- =======
+
+      <DropdownOption
+        :finalList="finalList"
+        @searchText="updateSearch"
+        @selectedText="updateSelect"
+      />
+      <TagOption
+        :finalList="finalList"
+        @searchText="updateSearch"
+        @selectedText="updateSelect"
+        :selectedOptions="['dawD', 'FCSACFV']"
+      />
+>>>>>>> f908bc142a217f3369bfd839bf76dc55f1ea3dc1-->
     </div>
   </div>
 </template>
 
 <script>
 // import axiosConn from "@/axioscon";
+import DropdownOption from "./charts/DropdownOption.vue";
+
+import TagOption from "./charts/TagOption.vue";
 export default {
   name: "DashboardScreen",
-
-  data() {
-    return {};
+  components: {
+    DropdownOption,
+    TagOption,
   },
+  data() {
+    return {
+      finalList: ["dawD", "FCSACFV", "JNUTYRGFHNJ", "CEWSAE", "VBDR"],
+    };
+  },
+
   mounted() {},
-  methods: {},
+  methods: {
+    updateSearch(a) {
+      console.log(a);
+      this.finalList.push("1", "3");
+    },
+    updateSelect(a) {
+      console.log(a);
+    },
+  },
 };
 </script>
 
