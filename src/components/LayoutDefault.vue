@@ -1,15 +1,7 @@
 <template>
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
-      <!-- <button
-        v-if="this.store.IS_LOGGED_IN && !screenShort"
-        type="button"
-        id="sidebarCollapse"
-        class="btn btn-primary"
-        @click="openDrawer ? (openDrawer = false) : (openDrawer = true)"
-      >
-        <i class="fas fa-align-left"></i>
-      </button> -->
+    
 
       <h5 class="navbar-nav me-auto ms-2">
         <i class="fa-solid fa-florin-sign me-2"></i> FeedArc
