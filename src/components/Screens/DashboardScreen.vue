@@ -26,6 +26,25 @@
           </div>
         </div>
       </div>
+      <v-row class="mt-2">
+        <v-col sm="12" md="12" xs="12" lg="12" xl="12"
+          ><v-card
+            title="Feedback Added"
+            text="With supporting text below as a natural lead-in to additional content."
+          >
+            <v-card-actions>
+              <v-btn>Click me</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+        <v-col sm="12" md="12" xs="12" lg="12" xl="12"
+          ><v-card title="Card title" text="...">
+            <v-card-actions>
+              <v-btn>Click me</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col></v-row
+      >
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
       <button
         v-if="this.store.IS_LOGGED_IN && !screenShort"
@@ -83,7 +83,6 @@
     </div>
   </div>
   <div class="wrapper bg-light">
-    <!-- Sidebar  -->
     <nav
       v-if="this.store.IS_LOGGED_IN"
       id="sidebar"
@@ -116,7 +115,6 @@
       </ul>
     </nav>
 
-    <!-- Page Content  -->
     <div id="content">
       <div>
         <div class="p-2">
@@ -125,7 +123,6 @@
       </div>
     </div>
   </div>
-
   <div
     class="offcanvas offcanvas-end"
     tabindex="-1"
@@ -144,7 +141,51 @@
     <div class="offcanvas-body">
       <div>Nothing to show</div>
     </div>
-  </div>
+  </div> -->
+
+  <v-card>
+    <v-layout>
+      <v-app-bar color="primary" elevation="0" density="compact">
+        <v-app-bar-title>Title</v-app-bar-title>
+
+        <v-spacer></v-spacer>
+
+        <v-btn icon>
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+
+        <v-btn icon>
+          <v-icon>mdi-heart</v-icon>
+        </v-btn>
+
+        <v-btn icon>
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </v-app-bar>
+
+      <v-navigation-drawer theme="light" rail permanent>
+        <v-list-item
+          prepend-avatar="https://randomuser.me/api/portraits/women/75.jpg"
+        ></v-list-item>
+
+        <v-divider></v-divider>
+
+        <v-list density="compact" nav>
+          <v-list-item
+            v-for="(item, index) in sideBarMenu"
+            :key="index"
+            prepend-icon="mdi-view-dashboard"
+            :value="dashboard"
+            :title="item.title"
+            :to="item.url"
+          >
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-main><router-view></router-view></v-main>
+    </v-layout>
+  </v-card>
 </template>
 
 <script>

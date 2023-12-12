@@ -1,5 +1,10 @@
 <template>
   <div>
+    <v-card>
+      <template v-slot:text
+        ><v-breadcrumbs :items="['Foo', 'Bar', 'Fizz']"></v-breadcrumbs
+      ></template>
+    </v-card>
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         Showing Surveys <i>for project id BMRC-9877</i>
