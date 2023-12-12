@@ -66,15 +66,15 @@
 
 <script>
 // import axiosConn from "@/axioscon";
-import DropdownOption from "./charts/DropdownOption.vue";
+// import DropdownOption from "./charts/DropdownOption.vue";
 
-import TagOption from "./charts/TagOption.vue";
+// import TagOption from "./charts/TagOption.vue";
 export default {
   name: "DashboardScreen",
-  components: {
-    DropdownOption,
-    TagOption,
-  },
+  // components: {
+  //   DropdownOption,
+  //   TagOption,
+  // },
   data() {
     return {
       finalList: ["dawD", "FCSACFV", "JNUTYRGFHNJ", "CEWSAE", "VBDR"],
