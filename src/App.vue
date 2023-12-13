@@ -35,11 +35,11 @@ export default {};
   left: 25%;
   height: 100%;
   width: 50%;
-  background-color: #000;
+  background-color: #fff;
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
-  transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.5s;
   transform: scale(5, 5);
 }
 
