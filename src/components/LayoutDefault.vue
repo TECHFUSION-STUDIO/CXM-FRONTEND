@@ -96,7 +96,7 @@
             v-if="item.title != 'hr'"
             :class="
               selectedTab == index
-                ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1'
+                ? 'hovered-active list-group-item d-flex justify-content-between align-items-start hovered mt-1 shadow'
                 : 'list-group-item d-flex justify-content-between align-items-start  hovered mt-1 '
             "
             @click="
