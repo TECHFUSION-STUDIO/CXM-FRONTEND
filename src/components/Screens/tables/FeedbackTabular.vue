@@ -219,8 +219,8 @@
           <table class="table table-hover table-bordered w-100">
             <thead>
               <tr class="bg-light">
-                <td style="width: 40%">Response</td>
-                <td style="width: 40%">
+                <th style="width: 40%">Response</th>
+                <th style="width: 40%">
                   Feature
                   <router-link
                     to="/createfeature/"
@@ -234,9 +234,9 @@
                       Create Feature
                     </a>
                   </router-link>
-                </td>
-                <td>Sub. Id</td>
-                <td>Logger Id</td>
+                </th>
+                <th>Sub. Id</th>
+                <th>Logger Id</th>
               </tr>
             </thead>
             <tbody>

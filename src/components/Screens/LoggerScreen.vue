@@ -28,10 +28,10 @@
         <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
-              <td style="width: 40%">Logger Name</td>
-              <td>Email</td>
-              <td>Contact</td>
-              <td>Logged at</td>
+              <th style="width: 40%">Logger Name</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>Logged at</th>
             </tr>
           </thead>
           <tbody>

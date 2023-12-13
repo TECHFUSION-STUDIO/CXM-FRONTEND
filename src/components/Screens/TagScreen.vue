@@ -9,9 +9,6 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <!-- <button class="btn btn-primary mt-2" @click="this.$router.push('/createtags')">
-            Create a Tag
-          </button> -->
           <button
             class="btn btn-primary mt-2"
             type="button"
@@ -43,10 +40,9 @@
         <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
-              <td style="width: 40%">Tag Name</td>
-              <td class="text-center">Status</td>
-              <!-- <td>Tot Usage</td> -->
-              <td>Created on</td>
+              <th style="width: 40%">Tag Name</th>
+              <th class="text-center">Status</th>
+              <th>Created on</th>
             </tr>
           </thead>
           <tbody>

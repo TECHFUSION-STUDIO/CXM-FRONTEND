@@ -4,11 +4,11 @@
       <table class="table table-bordered table-hover mt-4 w-100">
         <thead>
           <tr class="bg-light">
-            <td>Submission Id</td>
-            <td>Logger Id</td>
-            <td>Time Spent</td>
-            <td>Form Open Time</td>
-            <td>Submission Time</td>
+            <th>Submission Id</th>
+            <th>Logger Id</th>
+            <th>Time Spent</th>
+            <th>Form Open Time</th>
+            <th>Submission Time</th>
           </tr>
         </thead>
         <tbody>

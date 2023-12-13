@@ -199,9 +199,9 @@
       <table class="table table-bordered mt-3">
         <thead>
           <tr>
-            <td class="text-center">Id</td>
-            <td class="text-center">Feature Name</td>
-            <td class="text-center">Status</td>
+            <th class="text-center">Id</th>
+            <th class="text-center">Feature Name</th>
+            <th class="text-center">Status</th>
           </tr>
         </thead>
         <tbody>

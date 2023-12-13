@@ -19,10 +19,10 @@
       <table class="table table-bordered table-hover mt-4 w-100">
         <thead>
           <tr class="bg-light">
-            <td style="width: 40%">Question</td>
-            <td>Type</td>
-            <td>Status</td>
-            <td>Created Time</td>
+            <th style="width: 40%">Question</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Created Time</th>
             <!-- <td class="text-center">Detail</td> -->
           </tr>
         </thead>

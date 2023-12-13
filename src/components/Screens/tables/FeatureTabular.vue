@@ -244,14 +244,13 @@
       <table class="table table-hover table-bordered mt-4 w-100">
         <thead>
           <tr class="bg-light">
-            <td style="width: 40%">Feature</td>
-            <td class="text-center">Status</td>
-            <td class="text-center">Category</td>
-
-            <td class="text-center">Impact</td>
-            <td class="text-center">Effort</td>
-            <td class="text-center">Priority</td>
-            <td class="text-center">Strength</td>
+            <th style="width: 40%">Feature</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Category</th>
+            <th class="text-center">Impact</th>
+            <th class="text-center">Effort</th>
+            <th class="text-center">Priority</th>
+            <th class="text-center">Strength</th>
           </tr>
         </thead>
         <tbody>

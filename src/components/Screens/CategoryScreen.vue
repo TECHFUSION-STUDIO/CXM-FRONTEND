@@ -46,10 +46,9 @@
         <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
-              <td style="width: 40%">Category Name</td>
-              <td class="text-center">Status</td>
-              <!-- <td class="text-center">Tot usage</td> -->
-              <td class="text-center">Added on</td>
+              <th style="width: 40%">Category Name</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Added on</th>
             </tr>
           </thead>
           <tbody>

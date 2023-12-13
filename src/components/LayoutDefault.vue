@@ -158,7 +158,7 @@ export default {
         {
           title: "Dashboard",
           url: "/dashboard",
-          icon: "fa-solid fa-houes ",
+          icon: "fa-solid fa-house ",
         },
         {
           title: "Survey",

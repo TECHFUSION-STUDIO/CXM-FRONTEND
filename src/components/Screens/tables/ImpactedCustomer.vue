@@ -29,10 +29,10 @@
       <table class="table table-hover table-bordered mt-4 w-100">
         <thead>
           <tr class="bg-light">
-            <td>Impacted Ph</td>
-            <td class="text-center">Impacted Email</td>
-            <td class="text-center">Impacted Name</td>
-            <td class="text-center">Customer Type</td>
+            <th>Impacted Ph</th>
+            <th class="text-center">Impacted Email</th>
+            <th class="text-center">Impacted Name</th>
+            <th class="text-center">Customer Type</th>
           </tr>
         </thead>
         <tbody>
