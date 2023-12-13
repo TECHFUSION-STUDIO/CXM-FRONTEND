@@ -11,20 +11,22 @@ export default {};
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 
 <style lang="css">
-/* #feedbackTitle:hover {
-  color: dodgerblue;
-  text-decoration: underline;
-  cursor: pointer;
-} */
-
-.btn {
-  border-radius: 2px;
-}
 .btn {
   display: inline-block;
+  border-radius: 2px;
   position: relative;
   overflow: hidden;
   transition: all ease-in-out 0.5s;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+th {
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  border-radius: 2px;
+  margin-top: 0px;
 }
 
 .btn::after {

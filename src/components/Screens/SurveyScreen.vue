@@ -10,7 +10,7 @@
       <div class="row w-100">
         <div class="col-md-3">
           <button
-            class="btn btn-primary mt-2"
+            class="btn btn-primary mt-2 shadow"
             @click="this.$router.push('/createsurveys')"
           >
             Create Survey
@@ -35,12 +35,11 @@
         <table class="table table-hover table-bordered mt-4 w-100">
           <thead>
             <tr class="bg-light">
-              <td style="width: 40%">Survey Name</td>
-
-              <td class="text-center">Status</td>
-              <td>Last Response</td>
-              <td>Tot Response</td>
-              <td>Added DateTime</td>
+              <th style="width: 40%">Survey Name</th>
+              <th class="text-center">Status</th>
+              <th>Last Response</th>
+              <th>Tot Response</th>
+              <th>Added DateTime</th>
             </tr>
           </thead>
           <tbody>

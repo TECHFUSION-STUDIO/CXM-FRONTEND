@@ -97,7 +97,7 @@
 
     <div>
       <div class="bg-white shadow shadow-sm mt-3 p-3">
-        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+        <div class="nav nav-underline nav-fill" id="nav-tab" role="tablist">
           <button
             class="nav-link active"
             id="nav-Analytics-tab"
@@ -109,7 +109,7 @@
             aria-selected="true"
             @click="this.$router.push('/surveys/' + id)"
           >
-            Analytics
+            ANALYTICS
           </button>
           <button
             class="nav-link"
@@ -122,7 +122,7 @@
             aria-selected="false"
             @click="this.$router.push('/surveys/' + id + '/question')"
           >
-            Question
+            QUESTION
           </button>
           <button
             class="nav-link"
@@ -135,7 +135,7 @@
             aria-selected="false"
             @click="this.$router.push('/surveys/' + id + '/responses')"
           >
-            Responses
+            RESPONSES
           </button>
           <button
             class="nav-link"
@@ -148,7 +148,7 @@
             aria-selected="false"
             @click="this.$router.push('/surveys/' + id + '/submission')"
           >
-            Submission
+            SUBMISSION
           </button>
 
           <button
@@ -162,7 +162,7 @@
             aria-selected="false"
             @click="this.$router.push('/surveys/' + id + '/loggers')"
           >
-            Loggers
+            REPORTER
           </button>
 
           <button
@@ -176,7 +176,7 @@
             aria-selected="false"
             @click="this.$router.push('/surveys/' + id + '/settings')"
           >
-            Settings
+            SETTTING
           </button>
         </div>
       </div>
@@ -237,4 +237,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped></style>

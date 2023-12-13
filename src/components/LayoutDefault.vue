@@ -1,16 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
-      <!-- <button
-        v-if="this.store.IS_LOGGED_IN && !screenShort"
-        type="button"
-        id="sidebarCollapse"
-        class="btn btn-primary"
-        @click="openDrawer ? (openDrawer = false) : (openDrawer = true)"
-      >
-        <i class="fas fa-align-left"></i>
-      </button> -->
-
       <h5 class="navbar-nav me-auto ms-2">
         <i class="fa-solid fa-florin-sign me-2"></i> FeedArc
       </h5>
@@ -41,6 +31,7 @@
                   >{{ i.projectName }}
                 </a>
               </li>
+
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <a class="dropdown-item text-muted"><i>Member</i></a>
@@ -48,7 +39,7 @@
               <li><hr class="dropdown-divider" /></li>
 
               <li class="text-center">
-                <a class="dropdown-item btn text-truncate"
+                <a class="dropdown-item text-truncate"
                   ><i class="fa-solid fa-folder-plus me-1"></i>Create Workspace</a
                 >
               </li>
@@ -167,7 +158,7 @@ export default {
         {
           title: "Dashboard",
           url: "/dashboard",
-          icon: "fa-solid fa-house ",
+          icon: "fa-solid fa-houes ",
         },
         {
           title: "Survey",
@@ -205,8 +196,8 @@ export default {
         .then((res) => {
           console.log(res);
           this.options = res.data;
-          if (this.options != null && this.options.length > 0)
-            this.item = this.options[0];
+          // if (this.options != null && this.options.length > 0)
+          this.item = this.options[0];
         })
         .catch((err) => {
           console.log(err);
