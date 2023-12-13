@@ -91,7 +91,7 @@
       :items="tagList"
       density="compact"
       item-key="id"
-    ></v-data-table>
+    />
 
     <div
       class="offcanvas offcanvas-end"
