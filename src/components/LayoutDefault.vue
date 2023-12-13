@@ -138,7 +138,7 @@
   <v-card>
     <v-layout>
       <v-app-bar color="primary" elevation="0" density="compact">
-        <v-app-bar-title>Title</v-app-bar-title>
+        <v-app-bar-title>FeedArc CX</v-app-bar-title>
 
         <v-spacer></v-spacer>
 

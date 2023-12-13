@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3">
+  <div class="pa-3">
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         Showing Tags <i>for project id BMRC-9877</i>
@@ -85,13 +85,19 @@
         ></v-text-field></v-col
     ></v-row>
 
-    <v-data-table
-      class="mt-5"
+    <v-data-table-server
+      v-model:items-per-page="itemsPerPage"
+      :items-length="totalItems"
       :headers="headers"
       :items="tagList"
-      density="compact"
-      item-key="id"
-    />
+      :loading="false"
+      :search="search"
+      item-value="name"
+      @update:options="loadItems"
+      class="mt-5"
+      hover
+      no-data-text
+    ></v-data-table-server>
 
     <div
       class="offcanvas offcanvas-end"
@@ -189,7 +195,7 @@ export default {
       itemsPerPage: 5,
       headers: [
         {
-          title: "TagName",
+          title: "Tag Name",
           align: "start",
           sortable: false,
           key: "tagName",
