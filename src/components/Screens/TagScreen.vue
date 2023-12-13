@@ -1,17 +1,14 @@
 <template>
-  <div>
+  <div class="p-3">
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         Showing Tags <i>for project id BMRC-9877</i>
       </nav>
     </div>
-
+    <!-- 
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <!-- <button class="btn btn-primary mt-2" @click="this.$router.push('/createtags')">
-            Create a Tag
-          </button> -->
           <button
             class="btn btn-primary mt-2"
             type="button"
@@ -45,7 +42,6 @@
             <tr class="bg-light">
               <td style="width: 40%">Tag Name</td>
               <td class="text-center">Status</td>
-              <!-- <td>Tot Usage</td> -->
               <td>Created on</td>
             </tr>
           </thead>
@@ -63,10 +59,8 @@
               </td>
 
               <td class="text-center">
-                <!-- <span class="text-success fw-bold">{{ item.tagStatus }}</span> -->
                 <span class="text-success fw-bold">{{ item.tagStatus }}</span>
               </td>
-              <!-- <td>215</td> -->
               <td>{{ item.addedDateTime }}</td>
             </tr>
             <tr v-if="tagList.length == 0">
@@ -75,7 +69,29 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
+
+    <v-row class="mt-3">
+      <v-col cols="6"> <v-btn color="primary">Create Tag</v-btn></v-col>
+      <v-col cols="6">
+        <v-text-field
+          density="compact"
+          variant="outlined"
+          label="Search templates"
+          append-inner-icon="mdi-magnify"
+          single-line
+          hide-details
+          @click:append-inner="onClick"
+        ></v-text-field></v-col
+    ></v-row>
+
+    <v-data-table
+      class="mt-5"
+      :headers="headers"
+      :items="tagList"
+      density="compact"
+      item-key="id"
+    ></v-data-table>
 
     <div
       class="offcanvas offcanvas-end"
@@ -169,6 +185,21 @@ export default {
       showCreateTagMenu: false,
       tagDetail: {},
       axiosConn,
+
+      itemsPerPage: 5,
+      headers: [
+        {
+          title: "TagName",
+          align: "start",
+          sortable: false,
+          key: "tagName",
+        },
+        { title: "Status", key: "tagStatus", align: "end" },
+        { title: "Created On", key: "addedDateTime", align: "end" },
+      ],
+      serverItems: [],
+      loading: true,
+      totalItems: 0,
     };
   },
   mounted() {
