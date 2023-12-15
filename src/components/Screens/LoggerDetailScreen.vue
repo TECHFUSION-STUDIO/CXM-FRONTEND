@@ -33,7 +33,9 @@
       <div class="row mt-3">
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Logger Email</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Logger Email</span
+            >
             <input
               type="text"
               class="form-control"
@@ -44,7 +46,9 @@
         </div>
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Logger Contact</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Logger Contact</span
+            >
             <input
               type="text"
               class="form-control"
@@ -55,7 +59,7 @@
         </div>
         <!-- <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Logger Type</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">Logger Type</span>
             <input
               type="text"
               class="form-control"
@@ -66,7 +70,7 @@
         </div> -->
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">Created on</span>
             <input
               type="datetime-local"
               class="form-control"

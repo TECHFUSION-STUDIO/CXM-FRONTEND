@@ -38,6 +38,47 @@
         @selectedText="updateSelect"
         :selectedOptions="['dawD', 'FCSACFV']"
       />
+
+      <label for="exampleDataList" class="form-label">Datalist example</label>
+      <input
+        class="form-control"
+        list="datalistOptions"
+        id="exampleDataList"
+        placeholder="Type to search..."
+        autocomplete="off"
+      />
+      <datalist id="datalistOptions">
+        <option value="San Francisco" />
+        <option value="New York" />
+        <option value="Seattle" />
+        <option value="Los Angeles" />
+        <option value="Chicago" />
+        <option value="San Francisco" />
+        <option value="New York" />
+        <option value="Seattle" />
+        <option value="Los Angeles" />
+        <option value="Chicago" />
+        <option value="San Francisco" />
+        <option value="New York" />
+        <option value="Seattle" />
+        <option value="Los Angeles" />
+        <option value="Chicago" />
+        <option value="San Francisco" />
+        <option value="New York" />
+        <option value="Seattle" />
+        <option value="Los Angeles" />
+        <option value="Chicago" />
+        <option value="San Francisco" />
+        <option value="New York" />
+        <option value="Seattle" />
+        <option value="Los Angeles" />
+        <option value="Chicago" />
+        <option value="San Francisco" />
+        <option value="New York" />
+        <option value="Seattle" />
+        <option value="Los Angeles" />
+        <option value="Chicago" />
+      </datalist>
     </div>
   </div>
 </template>
@@ -55,7 +96,14 @@ export default {
   },
   data() {
     return {
-      finalList: ["dawD", "FCSACFV", "JNUTYRGFHNJ", "CEWSAE", "VBDR"],
+      finalList: [
+        "dawD",
+        "FCSACFV",
+        "JNUTYRGFHNJ",
+        "CEWSAE",
+        "VBDR",
+        "JNUTYRGFHNJ v svscvscv sv savvv adcsv  svasvasvs vfcacfaacfs savaesvv da eabab aevbeab ",
+      ],
     };
   },
 

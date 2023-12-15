@@ -11,6 +11,14 @@ export default {};
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 
 <style lang="css">
+.form-control,
+.form-select {
+  border-radius: 2px;
+}
+
+.input-group-text {
+  border-radius: 0px;
+}
 .btn {
   display: inline-block;
   border-radius: 2px;

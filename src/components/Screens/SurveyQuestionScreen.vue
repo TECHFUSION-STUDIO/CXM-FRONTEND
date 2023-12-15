@@ -16,7 +16,7 @@
     </div>
 
     <div class="table-responsive-md mt-2">
-      <table class="table table-bordered table-hover mt-4 w-100">
+      <table class="table table-bordered table-hover mt-4 w-100 shadow-sm">
         <thead>
           <tr class="bg-light">
             <th style="width: 40%">Question</th>

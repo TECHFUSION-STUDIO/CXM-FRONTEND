@@ -38,7 +38,9 @@
       <div class="row">
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Status</span>
+            <span class="input-group-text fw-semibold rounded-0" id="basic-addon1"
+              >Status</span
+            >
             <input
               type="text"
               class="form-control"
@@ -50,7 +52,9 @@
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Survey Type</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Survey Type</span
+            >
             <input
               type="text"
               class="form-control"
@@ -61,7 +65,7 @@
         </div>
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Created on</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">Created on</span>
             <input
               type="datetime-local"
               class="form-control"
@@ -72,7 +76,7 @@
         </div>
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Start at</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">Start at</span>
             <input
               type="datetime-local"
               class="form-control"
@@ -83,7 +87,7 @@
         </div>
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">End on</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">End on</span>
             <input
               type="datetime-local"
               class="form-control"

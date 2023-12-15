@@ -73,107 +73,119 @@
           style="max-height: 400px; overflow: auto"
         >
           <div class="">
-            <label class="form-label" for="subid">Feature</label>
+            <div class="">
+              <label class="form-label" for="subid">Feature</label>
 
-            <multiselect
-              tag-placeholder="Add this feature"
-              placeholder=""
-              label="featureName"
-              track-by="id"
-              :multiple="true"
-              :taggable="true"
-              @select="addTag"
-              @remove="removeTag"
-              :options="featureList"
-              @open="openedDrop(item)"
-            ></multiselect>
-          </div>
-          <div class="mt-2">
-            <label class="form-label" for="subid">Submission Id</label>
-            <input class="form-control form-control-sm" id="subid" type="number" />
-          </div>
-          <div class="mt-2">
-            <label class="form-label" for="subid">Reporter</label>
-            <select
-              class="form-select form-select-sm"
-              aria-label="Small select example"
-              id="subid"
-            >
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="mt-2">
-            <label class="form-label" for="subid">Creator</label>
-            <select
-              class="form-select form-select-sm"
-              aria-label="Small select example"
-              id="subid"
-            >
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="mt-2">
-            <label class="form-label" for="subid">Question</label>
-            <select
-              class="form-select form-select-sm"
-              aria-label="Small select example"
-              id="subid"
-            >
-              <option
-                v-for="item in questionList"
-                :key="item.id"
-                :value="item.surveyQuestion"
+              <multiselect
+                tag-placeholder="Add this feature"
+                placeholder=""
+                label="featureName"
+                track-by="id"
+                :multiple="true"
+                :taggable="true"
+                @select="addTag"
+                @remove="removeTag"
+                :options="featureList"
+                @open="openedDrop(item)"
+              ></multiselect>
+            </div>
+            <div class="mt-2">
+              <label class="form-label" for="subid">Submission Id</label>
+              <input class="form-control form-control-sm" id="subid" type="number" />
+            </div>
+            <div class="mt-2">
+              <label class="form-label" for="subid">Reporter</label>
+              <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                id="subid"
               >
-                {{ item.surveyQuestion }}
-              </option>
-            </select>
-          </div>
-          <div class="mt-2">
-            <label class="form-label" for="subid">Status</label>
-            <select
-              class="form-select form-select-sm"
-              aria-label="Small select example"
-              id="subid"
-            >
-              <option v-for="item in constants.FEEDBACK_STATUS" :key="item" :value="item">
-                {{ item }}
-              </option>
-            </select>
-          </div>
-          <div class="mt-2">
-            <label class="form-label" for="subid">Added Date</label>
-            <div class="row">
-              <div class="col-md-6">
-                <label class="text-muted fst-italic" style="font-size: small" for="subid"
-                  >Start Date</label
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="mt-2">
+              <label class="form-label" for="subid">Creator</label>
+              <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                id="subid"
+              >
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="mt-2">
+              <label class="form-label" for="subid">Question</label>
+              <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                id="subid"
+              >
+                <option
+                  v-for="item in questionList"
+                  :key="item.id"
+                  :value="item.surveyQuestion"
                 >
-                <input
-                  class="form-control form-control-sm"
-                  id="subid"
-                  type="datetime-local"
-                />
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted fst-italic" style="font-size: small" for="subid"
-                  >End Date</label
+                  {{ item.surveyQuestion }}
+                </option>
+              </select>
+            </div>
+            <div class="mt-2">
+              <label class="form-label" for="subid">Status</label>
+              <select
+                class="form-select form-select-sm"
+                aria-label="Small select example"
+                id="subid"
+              >
+                <option
+                  v-for="item in constants.FEEDBACK_STATUS"
+                  :key="item"
+                  :value="item"
                 >
-                <input
-                  class="form-control form-control-sm"
-                  id="subid"
-                  type="datetime-local"
-                />
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+            <div class="mt-2">
+              <label class="form-label" for="subid">Added Date</label>
+              <div class="row">
+                <div class="col-md-6">
+                  <label
+                    class="text-muted fst-italic"
+                    style="font-size: small"
+                    for="subid"
+                    >Start Date</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="subid"
+                    type="datetime-local"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label
+                    class="text-muted fst-italic"
+                    style="font-size: small"
+                    for="subid"
+                    >End Date</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="subid"
+                    type="datetime-local"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="mt-3">
-            <button type="submit" class="btn btn-sm me-1 btn-primary">Reset</button>
-            <button type="submit" class="btn btn-sm me-1 btn-primary">Apply</button>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-sm me-1 btn-primary">Reset</button>
+              <button type="submit" class="btn btn-sm me-1 btn-primary">Apply</button>
+            </div>
           </div>
         </form>
       </div>
@@ -216,7 +228,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive-md mt-4">
-          <table class="table table-hover table-bordered w-100">
+          <table class="table table-hover table-bordered w-100 shadow-sm">
             <thead>
               <tr class="bg-light">
                 <th style="width: 40%">Response</th>
@@ -267,16 +279,15 @@
                     :finalList="[
                       'dawD',
                       'FCSACFV',
-                      'JNUTYRGFHNJ',
-                      'CEWSAE',
-                      'VBDR',
+                      'JNUTYRGFHNJ v svscvscv sv savvv savaesvv da eabab aevbeab cvscv sv savvv adcsv  svasvasvs vfcacfaacfs savaesvv da eabab aevbeab ',
+                      'jhgvfcx v svscvscv sv savvv savaesvv da eabab aevbeab cvscv sv savvv adcsv  svasvasvs vfcacfaacfs savaesvv da eabab aevbeab ',
+                      'fghkuygjhgtfdsz v svscvscv sv savvv savaesvv da eabab aevbeab cvscv sv savvv adcsv  svasvasvs vfcacfaacfs savaesvv da eabab aevbeab ',
                       'rrf',
                       'ffffffffffffff',
                     ]"
                     :selectedOptions="['dawD', 'FCSACFV']"
                     @searchText="updateSearch"
                     @selectedText="updateSelect"
-                    style="width: 100%"
                   />
                 </td>
                 <td>
@@ -534,8 +545,13 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.delfilter {
+  color: #d6d6d6;
+  cursor: pointer;
+}
 .delfilter:hover {
   transform: scale(1.1);
   cursor: pointer;
+  color: #000000;
 }
 </style>

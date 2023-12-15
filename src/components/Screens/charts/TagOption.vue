@@ -2,27 +2,29 @@
   <div>
     <div class="dropdown w-100">
       <div class="text-start" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="badge text-bg-danger ms-1" v-for="item in selectedText" :key="item"
+        <span
+          class="badge text-bg-danger ms-1 rounded-1"
+          v-for="item in selectedText"
+          :key="item"
           >{{ item
           }}<span class="ps-2"
             ><i
               class="fa-regular fa-circle-xmark delfilter"
               @click="removeSelected(item)"
-              style="cursor: pointer"
             ></i></span
         ></span>
         {{ selectedText.length != 0 ? "" : "Select Tag" }}
       </div>
 
-      <div class="dropdown-menu shadow-lg">
+      <div class="dropdown-menu shadow-lg p-1" style="max-width: 90%">
         <input
           id="myInput"
           type="text"
           v-model="searchText"
-          class="m-2"
+          class="form-control form-control-sm shadow-none"
           placeholder="Search.."
         />
-        <div style="max-height: 200px; overflow-y: auto">
+        <div class="mt-1" style="max-height: 200px; overflow-y: auto">
           <li>
             <a
               class="dropdown-item"
@@ -72,14 +74,21 @@ export default {
     },
     removeSelected(a) {
       this.selectedText = this.selectedText.filter((x) => x != a);
+      this.$emit("removedText", a);
     },
   },
 };
 </script>
 
 <style lang="css" scoped>
+.delfilter {
+  color: #d6d6d6;
+  cursor: pointer;
+}
+
 .delfilter:hover {
   transform: scale(1.1);
-  cursor: pointer;
+
+  color: #ffffff;
 }
 </style>

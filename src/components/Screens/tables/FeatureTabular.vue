@@ -241,7 +241,7 @@
       </div>
     </div>
     <div class="table-responsive-md mt-3">
-      <table class="table table-hover table-bordered mt-4 w-100">
+      <table class="table table-hover table-bordered mt-4 w-100 shadow-sm">
         <thead>
           <tr class="bg-light">
             <th style="width: 40%">Feature</th>

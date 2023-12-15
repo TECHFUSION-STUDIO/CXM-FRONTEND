@@ -30,7 +30,9 @@
       <div class="row mt-3">
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Logger Id</span>
+            <span class="input-group-text fw-semibold fw-semibold" id="basic-addon1"
+              >Logger Id</span
+            >
             <input
               type="text"
               class="form-control"
@@ -47,7 +49,9 @@
         </div>
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Form Opened at</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Form Opened at</span
+            >
             <input
               type="text"
               class="form-control"
@@ -59,7 +63,9 @@
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Form Submitted at</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Form Submitted at</span
+            >
             <input
               type="datetime-local"
               class="form-control"
@@ -71,63 +77,75 @@
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Time spent</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">Time spent</span>
             <input type="text" class="form-control" disabled :value="'20 seconds'" />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Device ip Address</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Device ip Address</span
+            >
             <input type="text" class="form-control" disabled />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Device Geo</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">Device Geo</span>
             <input type="text" class="form-control" disabled />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Device OS</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1">Device OS</span>
             <input type="text" class="form-control" disabled />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Device Browser</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Device Browser</span
+            >
             <input type="text" class="form-control" disabled :value="'20 seconds'" />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Devivce Type</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Devivce Type</span
+            >
             <input type="text" class="form-control" disabled :value="'20 seconds'" />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Device Model</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Device Model</span
+            >
             <input type="text" class="form-control" disabled :value="'20 seconds'" />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Device AppModel</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Device AppModel</span
+            >
             <input type="text" class="form-control" disabled :value="'20 seconds'" />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text" id="basic-addon1">Device Timezone</span>
+            <span class="input-group-text fw-semibold" id="basic-addon1"
+              >Device Timezone</span
+            >
             <input type="text" class="form-control" disabled :value="'20 seconds'" />
           </div>
         </div>
