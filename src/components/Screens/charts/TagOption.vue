@@ -44,7 +44,7 @@
 <script>
 export default {
   name: "DropdownOption",
-  props: ["finalList", "selectedOptions"],
+  props: ["finalList", "selectedOptions", "label", "id"],
   data() {
     return {
       selectedText: this.selectedOptions,

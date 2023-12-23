@@ -48,24 +48,30 @@
           >
         </p>
         <p class="text-muted">
-          <i>
-            <span v-if="loggerDetail.id != null && loggerDetail.id != ''">
-              Logged by
-              <a
-                :href="'/loggerdetail/' + loggerDetail.id"
-                target="blank"
-                class="text-decoration-none"
-                >{{ loggerDetail.id }}</a
-              >
-            </span>
-            <span v-if="loggerDetail.postedById != null && loggerDetail.postedById != ''">
-              Posted By {{ feedbackDetail.postedById }}
-            </span>
-            Page Name at {{ feedbackDetail.addedDateTime }}</i
-          >
+          <span v-if="loggerDetail.id != null && loggerDetail.id != ''">
+            Logged by
+            <a
+              :href="'/loggerdetail/' + loggerDetail.id"
+              target="blank"
+              class="text-decoration-none"
+              >{{ loggerDetail.loggerName }} {{ loggerDetail.loggerEmail }}
+              {{ loggerDetail.loggerContact1 }} {{ loggerDetail.loggerContact2 }}</a
+            >
+          </span>
+          <span v-if="loggerDetail.postedById != null && loggerDetail.postedById != ''">
+            Posted By {{ feedbackDetail.postedById }}
+          </span>
+          via Submission Id
+          <a
+            :href="'/loggerdetail/' + loggerDetail.id"
+            target="blank"
+            class="text-decoration-none"
+            >{{
+          }}</a>
+          at {{ feedbackDetail.addedDateTime }}
         </p>
       </div>
-      <div class="bg-white shadow shadow-sm mt-3 p-2">
+      <div class="bg-white shadow shadow-sm mt-3 p-3">
         <h6>Linked Feature</h6>
         <multiselect
           class="mt-2"
@@ -109,6 +115,7 @@ export default {
       feedbackFeatureList: [],
       feedbackDetail: {},
       questionDetail: {},
+      submissionDetail: {},
       loggerDetail: {},
     };
   },
@@ -129,6 +136,7 @@ export default {
           this.feedbackDetail = res.data;
           this.questionDetail = res.data.questionId;
           this.loggerDetail = res.data.loggerId;
+          this.submissionDetail = this.formSubmissionId;
         })
         .catch((err) => {
           console.log(err);

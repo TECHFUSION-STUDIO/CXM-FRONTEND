@@ -37,9 +37,16 @@
           <tbody>
             <tr v-for="item in loggerList" :key="item.id">
               <td style="width: 40%">
+                <!--                   @click="this.$router.push('/loggerdetail/' + item.id)"
+                                  @click.prevent="showLoggerDetail(item)"
+
+ -->
                 <a
                   id="feedbackTitle"
                   @click="this.$router.push('/loggerdetail/' + item.id)"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#staticBackdropCategoryDetail"
+                  aria-controls="staticBackdropCategoryDetail"
                 >
                   {{ item.loggerName }}</a
                 >
@@ -55,6 +62,33 @@
         </table>
       </div>
     </div>
+
+    <div
+      class="offcanvas offcanvas-end"
+      :class="showLoggerDetailMenu ? 'show' : ''"
+      tabindex="-1"
+      :style="{ visibility: showLoggerDetailMenu ? 'visible' : 'hidden' }"
+      data-bs-backdrop="static"
+      id="staticBackdropCategoryDetail"
+      aria-labelledby="staticBackdropCategoryDetailLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropCategoryDetailLabel">
+          Logger Detail
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          @click.prevent="
+            showLoggerDetailMenu = false;
+            loggerDetail = {};
+          "
+        ></button>
+      </div>
+      <div class="offcanvas-body"></div>
+    </div>
   </div>
 </template>
 
@@ -66,6 +100,8 @@ export default {
     return {
       axiosConn,
       loggerList: [],
+      showLoggerDetailMenu: false,
+      loggerDetail: {},
     };
   },
   mounted() {
@@ -82,6 +118,10 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    showLoggerDetail(item) {
+      this.showLoggerDetailMenu = true;
+      this.loggerDetail = item;
     },
   },
 };
