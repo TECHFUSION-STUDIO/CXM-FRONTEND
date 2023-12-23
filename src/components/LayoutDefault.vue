@@ -23,9 +23,9 @@
               class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end dropdown-menu-sm-end dropdown-menu-md-end shadow mt-0"
               style="max-width: 100%"
             >
-              <li>
+              <!-- <li>
                 <a class="dropdown-item text-muted"><i>Owner</i></a>
-              </li>
+              </li> -->
               <li v-for="i in options" :key="i.id" @click="item = i">
                 <a class="dropdown-item text-truncate" :title="i.projectName" href="#"
                   >{{ i.projectName }}
@@ -33,12 +33,12 @@
               </li>
 
               <li><hr class="dropdown-divider" /></li>
-              <li>
+              <!-- <li>
                 <a class="dropdown-item text-muted"><i>Member</i></a>
               </li>
-              <li><hr class="dropdown-divider" /></li>
+              <li><hr class="dropdown-divider" /></li> -->
 
-              <li class="text-center">
+              <li class="text-center" @click="this.$router.push('/createproject')">
                 <a class="dropdown-item text-truncate"
                   ><i class="fa-solid fa-folder-plus me-1"></i>Create Workspace</a
                 >

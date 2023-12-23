@@ -71,7 +71,7 @@
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Question Type</label>
             <select
@@ -139,17 +139,58 @@
             </div>
           </div>
         </template>
-
-        <div class="col-md-12">
-          <div class="text-center mt-3 mb-3">
-            <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <button
-              class="btn btn-outline-success m-2 w-25"
-              @click="createSurveyQuestion()"
-            >
-              Create
-            </button>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"
+                >Marking Scheme required?</span
+              >
+              <select
+                id="categoryStatus"
+                class="form-select"
+                v-model="inpSurveyQuestionRequired"
+              >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
           </div>
+        </div>
+        <div class="col-md-3">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Positive Marks</span>
+            <input
+              type="number"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Negative Mark</span>
+            <input
+              type="number"
+              class="form-control"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+        <div class="text-center mt-3 mb-3">
+          <button class="btn btn-outline-danger m-2 w-25">Reset</button>
+          <button
+            class="btn btn-outline-success m-2 w-25"
+            @click="createSurveyQuestion()"
+          >
+            Create
+          </button>
         </div>
       </div>
     </div>

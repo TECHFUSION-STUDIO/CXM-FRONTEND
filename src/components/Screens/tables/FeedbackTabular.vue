@@ -311,7 +311,7 @@
                   <div class="d-flex">
                     <div class="me-auto"></div>
 
-                    <div>
+                    <div class="me-3">
                       Showing
                       <select class="border border-0">
                         <option value="1">10</option>
@@ -320,26 +320,25 @@
                       </select>
                       of 21
                     </div>
+
+                    <div>
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-sm btn-outline-primary">
+                          &lt;&lt;
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary pt-1">
+                          3
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-primary">
+                          &gt;&gt;
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
-
-          <div class="text-center">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                  <a class="page-link">Prev</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
         </div>
       </div>
     </div>

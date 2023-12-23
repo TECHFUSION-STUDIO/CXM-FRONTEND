@@ -18,6 +18,18 @@
 
     <div class="bg-white shadow shadow-sm mt-3 p-2">
       <div class="row">
+        <div class="col-md-6">
+          <button class="btn-sm btn btn-warning w-100 my-1">Previous</button>
+        </div>
+
+        <div class="col-md-6">
+          <button class="btn-sm btn btn-warning w-100 my-1">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white shadow shadow-sm mt-3 p-2">
+      <div class="row">
         <div class="col-md-12">
           <div class="d-flex mb-3">
             <div class="text-muted">Feature Id : {{ featureDetail.id }}</div>

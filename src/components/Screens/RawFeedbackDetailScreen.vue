@@ -7,25 +7,46 @@
             ><i class="fa-solid fa-arrow-left me-2"></i>
           </a>
           <li class="breadcrumb-item active" aria-current="page">
-            Showing Feedback Detail
+            Showing Response Detail
           </li>
         </ol>
       </nav>
     </div>
 
+    <div class="bg-white shadow shadow-sm mt-3 p-2">
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn-sm btn btn-warning w-100 my-1">Previous</button>
+        </div>
+
+        <div class="col-md-6">
+          <button class="btn-sm btn btn-warning w-100 my-1">Next</button>
+        </div>
+      </div>
+    </div>
+
     <div class="mt-3">
       <div class="bg-white shadow shadow-sm p-3">
-        <p class="text-muted mb-0">Id : {{ feedbackDetail.id }}</p>
+        <p class="text-muted mb-0">Response Id : {{ feedbackDetail.id }}</p>
 
-        <h5 class="mt-1">{{ feedbackDetail.feedbackDescription }}</h5>
-        <p>
-          <span class="badge text-bg-primary">
+        <h5 class="mt-3">{{ feedbackDetail.feedbackDescription }}</h5>
+
+        <p class="text-muted mb-0 mt-2">
+          Q : {{ questionDetail.surveyQuestion }} Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Rem, facilis rerum? Ducimus dicta quisquam enim perspiciatis
+          est cumque magni unde vitae suscipit! Laudantium animi minima praesentium
+          eligendi aut officiis culpa?
+        </p>
+        <p class="mt-1">
+          <span class="badge text-bg-primary rounded-0 m-1">
             <span class="fst-italic"> Question Type </span> :
             {{ questionDetail.surveyQuestionType }}</span
           >
+          <span class="badge text-bg-primary rounded-0 m-1">
+            <span class="fst-italic"> Question Category </span> :
+            {{ questionDetail.surveyQuestionCategory }}</span
+          >
         </p>
-
-        <p class="text-muted">Question : {{ questionDetail.surveyQuestion }}</p>
         <p class="text-muted">
           <i>
             <span v-if="loggerDetail.id != null && loggerDetail.id != ''">
