@@ -150,7 +150,7 @@
               <select
                 id="categoryStatus"
                 class="form-select"
-                v-model="inpSurveyQuestionRequired"
+                v-model="inpSurveyQuestionMarkingReq"
               >
                 <option value="true">Yes</option>
                 <option value="false">No</option>
@@ -158,28 +158,85 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Positive Marks</span>
-            <input
-              type="number"
-              class="form-control"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
+        <template v-if="inpSurveyQuestionMarkingReq == 'true'">
+          <div class="col-md-3">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Positive Marks</span>
+              <input
+                type="number"
+                class="form-control"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Negative Mark</span>
+              <input
+                type="number"
+                class="form-control"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </div></div
+        ></template>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Timeout Required?</span>
+              <select
+                id="categoryStatus"
+                class="form-select"
+                v-model="inpSurveyQuestionTimeoutReq"
+              >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Negative Mark</span>
-            <input
-              type="number"
-              class="form-control"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
+        <template v-if="inpSurveyQuestionTimeoutReq == 'true'">
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Timeout Period</span>
+              <input
+                type="number"
+                class="form-control"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                v-model="inpSurveyQuestionTimeout"
+              /><select
+                id="categoryStatus"
+                class="form-select"
+                v-model="inpSurveyQuestionTimeoutUnitReq"
+              >
+                <option value="hr">Hour</option>
+                <option value="min">Min</option>
+
+                <option value="sec">Sec</option>
+              </select>
+            </div>
           </div>
-        </div>
+          <div class="col-md-4">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">After Timeout</span>
+              <select
+                id="categoryStatus"
+                class="form-select"
+                v-model="inpSurveyQuestionAfterTimeout"
+              >
+                <option value="hr">Show Timeout Alert</option>
+                <option value="min">Move to Next Question</option>
+
+                <option value="sec">Sec</option>
+              </select>
+            </div>
+          </div></template
+        >
       </div>
 
       <div class="">
@@ -210,9 +267,11 @@ export default {
       inpSurveyQuestionDesc: "",
       inpSurveyQuestionType: "",
       inpSurveyQuestionRequired: "",
-
-      //
-
+      inpSurveyQuestionMarkingReq: "",
+      inpSurveyQuestionTimeoutReq: "",
+      inpSurveyQuestionTimeoutUnitReq: "",
+      inpSurveyQuestionTimeout: "",
+      inpSurveyQuestionAfterTimeout: "",
       inpSurveyQuestionAnswerTotOptions: 0,
       inpSurveyQuestionAnswerOptionsArray: [],
 
