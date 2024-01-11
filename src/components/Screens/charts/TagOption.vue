@@ -6,8 +6,13 @@
           class="badge text-bg-danger ms-1 rounded-1"
           v-for="item in selectedText"
           :key="item"
-          >{{ item
-          }}<span class="ps-2"
+        >
+          <span
+            class="d-inline-block text-truncate"
+            style="max-width: 260px"
+            :title="item"
+            >{{ item }}</span
+          ><span class="ps-2"
             ><i
               class="fa-regular fa-circle-xmark delfilter"
               @click="removeSelected(item)"

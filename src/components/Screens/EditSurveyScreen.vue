@@ -39,7 +39,7 @@
             ></textarea>
           </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryName" class="form-label">Survey Start Date</label>
             <input
@@ -86,7 +86,7 @@
               <option value="QUIZ" disabled>Quiz (coming soon)</option>
             </select>
           </div>
-        </div>
+        </div> -->
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>

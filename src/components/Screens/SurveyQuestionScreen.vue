@@ -1,18 +1,12 @@
 <template>
   <div>
-    <div class="d-flex mb-2">
-      <div class="me-auto">
-        <h6>Survey Questions</h6>
-      </div>
-      <!-- <div class="p-2">Flex item</div> -->
-      <div>
-        <button
-          class="btn btn-sm btn-primary"
-          @click="this.$router.push('/surveys/' + id + '/createquestion')"
-        >
-          Add Question
-        </button>
-      </div>
+    <div class="text-end">
+      <button
+        class="btn btn-sm btn-primary"
+        @click="this.$router.push('/surveys/' + id + '/createquestion')"
+      >
+        Add Question
+      </button>
     </div>
 
     <div class="table-responsive-md mt-2">

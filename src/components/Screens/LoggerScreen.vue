@@ -28,7 +28,7 @@
         <table class="table table-hover table-bordered mt-4 w-100 shadow-sm">
           <thead>
             <tr class="bg-light">
-              <th style="width: 40%">Logger Name</th>
+              <th style="width: 40%">Reporter Name</th>
               <th>Email</th>
               <th>Contact</th>
               <th>Logged at</th>

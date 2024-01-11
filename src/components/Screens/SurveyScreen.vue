@@ -11,7 +11,10 @@
         <div class="col-md-3">
           <button
             class="btn btn-primary mt-2 shadow"
-            @click="this.$router.push('/createsurveys')"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#staticBackdrop"
+            aria-controls="staticBackdrop"
+            @click.prevent="showCreateFormMenu = true"
           >
             Create Survey
           </button>
@@ -81,16 +84,44 @@
       </div>
     </div>
   </div>
+
+  <div
+    class="offcanvas offcanvas-end"
+    data-bs-backdrop="static"
+    :class="showCreateFormMenu ? 'show' : ''"
+    tabindex="-1"
+    :style="{ visibility: showCreateFormMenu ? 'visible' : 'hidden' }"
+    id="staticBackdrop"
+    aria-labelledby="staticBackdropLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="staticBackdropLabel">Create Form</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+        @click="showCreateFormMenu = false"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <CreateSurveyScreen type="offcanvas" @success="showCreateFormMenu = false" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import axiosConn from "@/axioscon";
-
+import CreateSurveyScreen from "./CreateSurveyScreen.vue";
 export default {
   name: "SurveyScreen",
+  components: { CreateSurveyScreen },
   data() {
     return {
       surveyFormList: [],
+      showCreateFormMenu: false,
       axiosConn,
     };
   },
