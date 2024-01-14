@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="text-end">
+      <button class="btn btn-sm btn-primary m-1">Create Decision Flow</button>
       <button
-        class="btn btn-sm btn-primary"
+        class="btn btn-sm btn-primary m-1"
         @click="this.$router.push('/surveys/' + id + '/createquestion')"
       >
         Add Question
@@ -50,15 +51,20 @@
 
     <hr class="mt-5 mb-5" />
 
-    <h6>Showing Questions Details</h6>
-    <RatingQuestionDetail />
+    <div>
+      <h6>Showing Questions Flow</h6>
+    </div>
 
-    <NPSQuestionDetail />
+    <div v-if="false">
+      <h6>Showing Questions Details</h6>
+      <RatingQuestionDetail />
 
-    <InputTextQuestionDetail />
+      <NPSQuestionDetail />
 
-    <SingleChoiceQuestionDetail />
+      <InputTextQuestionDetail />
 
+      <SingleChoiceQuestionDetail />
+    </div>
     <div
       class="offcanvas offcanvas-end"
       :class="showQuestionDetailMenu ? 'show' : ''"
