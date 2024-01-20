@@ -169,7 +169,7 @@
             REPORTER
           </button>
 
-          <button
+          <!-- <button
             class="nav-link"
             id="nav-Loggers-tab"
             data-bs-toggle="tab"
@@ -181,7 +181,7 @@
             @click="this.$router.push('/surveys/' + id + '/loggers')"
           >
             FEATURES
-          </button>
+          </button> -->
 
           <button
             class="nav-link"

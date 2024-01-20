@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="text-end">
-      <button class="btn btn-sm btn-primary m-1">Create Decision Flow</button>
+      <button class="btn btn-sm btn-primary m-1 disabled">
+        Create Decision Flow (new)
+      </button>
       <button
         class="btn btn-sm btn-primary m-1"
         @click="this.$router.push('/surveys/' + id + '/createquestion')"
@@ -52,8 +54,19 @@
     <hr class="mt-5 mb-5" />
 
     <div>
-      <h6>Showing Questions Flow</h6>
+      <h6>Showing preview</h6>
+      <iframe
+        class="mt-3"
+        src="https://www.w3schools.com"
+        title="W3Schools Free Online Web Tutorials"
+        style="width: 100%"
+        height="400px"
+      ></iframe>
     </div>
+
+    <!-- <div>
+      <h6>Showing Questions Flow</h6>
+    </div> -->
 
     <div v-if="false">
       <h6>Showing Questions Details</h6>
