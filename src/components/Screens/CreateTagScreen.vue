@@ -30,7 +30,6 @@
               <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
                 {{ item }}
               </option>
-              <option value="Inactive">Inactive</option>
             </select>
           </div>
         </div>
@@ -81,13 +80,6 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
-          // Swal({
-          //   title: "Success!",
-          //   text: "Tag added successfully!",
-          //   icon: "success",
-          //   buttons: false,
-          //   timer: 3000,
-          // });
           Swal.fire({
             toast: true,
             animation: false,
