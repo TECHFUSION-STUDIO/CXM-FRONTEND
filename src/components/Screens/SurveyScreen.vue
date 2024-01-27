@@ -48,9 +48,11 @@
           <tbody>
             <tr v-for="item in surveyFormList" :key="item.id">
               <td style="width: 40%">
-                <a id="feedbackTitle" @click="this.$router.push('/surveys/' + item.id)">{{
-                  item.surveyFormName
-                }}</a>
+                <a
+                  id="feedbackTitle"
+                  @click="this.$router.push('/surveys/' + item.id + '/question')"
+                  >{{ item.surveyFormName }}</a
+                >
               </td>
               <td class="text-center">
                 <!-- {{ item.surveyFormStatus }} -->

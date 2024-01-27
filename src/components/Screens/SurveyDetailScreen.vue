@@ -102,7 +102,7 @@
     <div>
       <div class="bg-white shadow shadow-sm mt-3 p-3">
         <div class="nav nav-underline nav-fill" id="nav-tab" role="tablist">
-          <button
+          <!-- <button
             class="nav-link active"
             id="nav-Analytics-tab"
             data-bs-toggle="tab"
@@ -114,7 +114,7 @@
             @click="this.$router.push('/surveys/' + id)"
           >
             ANALYTICS
-          </button>
+          </button> -->
           <button
             class="nav-link"
             id="nav-Question-tab"
