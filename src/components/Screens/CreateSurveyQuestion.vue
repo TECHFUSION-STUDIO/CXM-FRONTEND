@@ -140,7 +140,7 @@
           </div>
         </template>
       </div>
-      <div class="row mt-4">
+      <!-- <div class="row mt-4">
         <div class="col-md-6">
           <div class="mb-3">
             <div class="input-group mb-3">
@@ -237,7 +237,7 @@
             </div>
           </div></template
         >
-      </div>
+      </div> -->
 
       <div class="">
         <div class="text-center mt-3 mb-3">
@@ -266,7 +266,7 @@ export default {
       inpSurveyQuestionStatus: "",
       inpSurveyQuestionDesc: "",
       inpSurveyQuestionType: "",
-      inpSurveyQuestionRequired: "",
+      inpSurveyQuestionRequired: false,
       inpSurveyQuestionMarkingReq: "",
       inpSurveyQuestionTimeoutReq: "",
       inpSurveyQuestionTimeoutUnitReq: "",
@@ -290,19 +290,16 @@ export default {
     },
     createSurveyQuestion() {
       axiosConn
-        .post("/createSurveyQuestion", {
+        .post("/createQuestion", {
           businessId: 1,
-          projectId: 1,
-          surveyFormId: this.id,
-          surveyQuestion: this.inpSurveyQuestionName,
-          surveyQuestionStatus: this.inpSurveyQuestionStatus,
-          surveyQuestionDesc: this.inpSurveyQuestionDesc,
-          surveyQuestionType: this.inpSurveyQuestionType,
-          optionList: this.inpSurveyQuestionAnswerOptionsArray,
-          surveyQuestionTotalOption: this.inpSurveyQuestionAnswerTotOptions,
-          lastModifiedDateTime: "2023-06-24T10:57:19.485Z",
-          addedDateTime: "2023-06-24T10:57:19.485Z",
-          surveyQuestionRequired: this.inpSurveyQuestionRequired,
+          workspaceId: 1,
+          formId: this.id,
+          question: this.inpSurveyQuestionName,
+          status: this.inpSurveyQuestionStatus,
+          description: this.inpSurveyQuestionDesc,
+          type: this.inpSurveyQuestionType,
+          options: this.inpSurveyQuestionAnswerOptionsArray,
+          isMandatory: this.inpSurveyQuestionRequired,
         })
         .then((res) => {
           console.log(res.data);

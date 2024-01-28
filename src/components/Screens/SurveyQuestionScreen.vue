@@ -32,14 +32,14 @@
                 data-bs-toggle="offcanvas"
                 data-bs-target="#staticBackdropQuestionDetail"
                 aria-controls="staticBackdropQuestionDetail"
-                >{{ item.surveyQuestion }}</a
+                >{{ item.question }}</a
               >
             </td>
-            <td>{{ item.surveyQuestionType }}</td>
+            <td>{{ item.type }}</td>
             <td>
-              <span class="text-success fw-bold">{{ item.surveyQuestionStatus }}</span>
+              <span class="text-success fw-bold">{{ item.status }}</span>
             </td>
-            <td>{{ item.addedDateTime }}</td>
+            <td>{{ item.createdAt }}</td>
             <!-- <td class="text-center">
               <i class="fa-solid fa-circle-info" style="cursor: pointer"></i>
             </td> -->
@@ -193,10 +193,10 @@ export default {
   methods: {
     fetchSurveyQuestion() {
       axiosConn
-        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/findQuestion?businessId=1&workspaceId=1&formId=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.surveyFormQuestionDetail = res.data;
+          this.surveyFormQuestionDetail = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -207,7 +207,7 @@ export default {
       this.showQuestionDetailMenu = true;
       this.questionDetail = item;
       axiosConn
-        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyQuestionId=" + item.id)
+        .get("/findQuestion?businessId=1&workspaceId=1&id=" + item.id)
         .then((res) => {
           console.log(res.data);
           this.questionDetail = res.data;

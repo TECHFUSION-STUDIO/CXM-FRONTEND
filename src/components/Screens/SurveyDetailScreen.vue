@@ -10,7 +10,7 @@
             <a @click="this.$router.push('/surveys/')">Survey </a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
-            Showing Survey Detail <i> for {{ surveyDetail.surveyFormName }} </i>
+            Showing Survey Detail <i> for {{ surveyDetail.name }} </i>
           </li>
         </ol>
       </nav>
@@ -29,10 +29,10 @@
         </div>
       </div>
 
-      <h5>{{ surveyDetail.surveyFormName }}</h5>
+      <h5>{{ surveyDetail.name }}</h5>
 
       <p>
-        {{ surveyDetail.surveyFormDescription }}
+        {{ surveyDetail.description }}
       </p>
 
       <div class="row">
@@ -45,32 +45,19 @@
               type="text"
               class="form-control"
               disabled
-              :value="surveyDetail.surveyFormStatus"
+              :value="surveyDetail.status"
             />
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text fw-semibold" id="basic-addon1"
-              >Survey Type</span
-            >
+            <span class="input-group-text fw-semibold" id="basic-addon1">Created on</span>
             <input
               type="text"
               class="form-control"
               disabled
-              :value="surveyDetail.surveyType"
-            />
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text fw-semibold" id="basic-addon1">Created on</span>
-            <input
-              type="datetime-local"
-              class="form-control"
-              disabled
-              :value="surveyDetail.addedDateTime"
+              :value="surveyDetail.createdAt"
             />
           </div>
         </div>
@@ -231,10 +218,10 @@ export default {
   methods: {
     fetchSurveyDetail() {
       axiosConn
-        .get("/getSurveyForm?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/findForm?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.surveyDetail = res.data;
+          this.surveyDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);
@@ -242,10 +229,10 @@ export default {
     },
     fetchSurveyQuestionDetail() {
       axiosConn
-        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/findQuestion?businessId=1&workspaceId=1&formId=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.surveyFormQuestionDetail = res.data;
+          this.surveyFormQuestionDetail = res.data.data;
         })
         .catch((err) => {
           console.log(err);

@@ -24,7 +24,7 @@
               type="test"
               class="form-control"
               id="exampleFormControlInput1"
-              v-model="featureName"
+              v-model="name"
             />
           </div>
         </div>
@@ -37,7 +37,7 @@
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
-              v-model="featureDescription"
+              v-model="description"
             ></textarea>
           </div>
         </div>
@@ -47,7 +47,7 @@
             <select
               class="form-select"
               aria-label="Default select example"
-              v-model="featureStatus"
+              v-model="status"
             >
               <option selected></option>
               <option value="1">One</option>
@@ -62,7 +62,7 @@
             <select
               class="form-select"
               aria-label="Default select example"
-              v-model="featureCategory"
+              v-model="category"
             >
               <option selected></option>
               <option value="1">One</option>
@@ -77,7 +77,7 @@
             <select
               class="form-select"
               aria-label="Default select example"
-              v-model="featureImpact"
+              v-model="impact"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -100,7 +100,7 @@
             <select
               class="form-select"
               aria-label="Default select example"
-              v-model="featureEffort"
+              v-model="effort"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -122,7 +122,7 @@
             <select
               class="form-select"
               aria-label="Default select example"
-              v-model="featurePriority"
+              v-model="priority"
             >
               <option value="0">0</option>
               <option value="1">1</option>
@@ -138,59 +138,6 @@
             </select>
           </div>
         </div>
-        <div class="col-md-12" v-if="caller != 'survey'">
-          <div class="mb-3">
-            <label class="form-label" for="ajax">Survey Id</label>
-            <multiselect
-              v-model="surveyList.value"
-              id="ajax"
-              label="surveyFormName"
-              track-by="id"
-              placeholder="Type to search"
-              open-direction="bottom"
-              :options="surveyList.option"
-              :searchable="true"
-              :loading="surveyList.isLoading"
-              :internal-search="false"
-              :clear-on-select="true"
-              :close-on-select="true"
-              :options-limit="300"
-              :limit="3"
-              :max-height="600"
-              :show-no-results="false"
-              :hide-selected="false"
-              @search-change="asyncFindSurvey"
-            >
-            </multiselect>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="mb-3">
-            <label class="form-label" for="ajax">Select Parent</label>
-            <multiselect
-              v-model="featureList.value"
-              id="ajax"
-              label="featureName"
-              track-by="id"
-              placeholder="Type to search"
-              open-direction="bottom"
-              :options="featureList.option"
-              :searchable="true"
-              :loading="featureList.isLoading"
-              :internal-search="false"
-              :clear-on-select="true"
-              :close-on-select="true"
-              :options-limit="300"
-              :limit="3"
-              :max-height="600"
-              :show-no-results="false"
-              :hide-selected="false"
-              @search-change="asyncFind"
-            >
-            </multiselect>
-          </div>
-        </div>
-
         <div class="col-md-12">
           <div class="text-end mt-3 mb-3">
             <button
@@ -212,14 +159,10 @@
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 import axiosConn from "@/axioscon";
-import Multiselect from "vue-multiselect";
 
 export default {
   name: "CreateFeatureScreen",
   props: ["type", "caller"],
-  components: {
-    Multiselect,
-  },
   data() {
     return {
       featureName: "",
@@ -262,9 +205,9 @@ export default {
       console.log(query);
       this.surveyList.isLoading = true;
       axiosConn
-        .get("/getSurveyForm?businessId=1&projectId=1")
+        .get("/findForm?businessId=1&workspaceId=1")
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data.data);
           this.surveyList.option = res.data;
           this.surveyList.isLoading = false;
         })
@@ -277,20 +220,14 @@ export default {
       axiosConn
         .post("/createFeature", {
           businessId: 1,
-          projectId: 1,
-
-          featureName: this.featureName,
-          featureDescription: this.featureDescription,
-          featureStatus: this.featureCategory,
-          featureCategory: this.featureCategory,
-          featurePriority: this.featurePriority,
-          featureImpact: this.featureImpact,
-          featureEffort: this.featureEffort,
-          parentId: this.featureList.value.id,
-          surveyFormId:
-            this.caller == "survey"
-              ? this.$route.params.surveyId
-              : this.surveyList.value.id,
+          workspaceId: 1,
+          name: this.featureName,
+          description: this.featureDescription,
+          status: this.featureCategory,
+          category: this.featureCategory,
+          priority: this.featurePriority,
+          impact: this.featureImpact,
+          effort: this.featureEffort,
         })
         .then((res) => {
           console.log(res.data);
