@@ -27,7 +27,7 @@
               type="text"
               id="tagName"
               class="form-control"
-              v-model="tagDetail.tagName"
+              v-model="tagDetail.name"
               disabled
             />
           </div>
@@ -35,7 +35,7 @@
         <div class="col-md-12">
           <div class="mb-2">
             <label class="form-label" for="tagStatus">Tag Status</label>
-            <select id="tagStatus" class="form-select" v-model="tagDetail.tagStatus">
+            <select id="tagStatus" class="form-select" v-model="tagDetail.status">
               <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
                 {{ item }}
               </option>
@@ -75,10 +75,10 @@ export default {
   methods: {
     fetchTagDetail() {
       axiosConn
-        .get("/getTag?businessId=1&projectId=1&tagId=" + this.id)
+        .get("/findTag?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.tagDetail = res.data;
+          this.tagDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);
@@ -86,7 +86,7 @@ export default {
     },
     updateTagDetail() {
       axiosConn
-        .post("/updateTags", this.tagDetail)
+        .post("/createTag", this.tagDetail)
         .then((res) => {
           console.log(res.data);
         })

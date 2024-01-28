@@ -54,16 +54,16 @@
                   data-bs-toggle="offcanvas"
                   data-bs-target="#staticBackdropTagDetail"
                   aria-controls="staticBackdropTagDetail"
-                  >{{ item.tagName }}</a
+                  >{{ item.name }}</a
                 >
               </td>
 
               <td class="text-center">
                 <!-- <span class="text-success fw-bold">{{ item.tagStatus }}</span> -->
-                <span class="text-success fw-bold">{{ item.tagStatus }}</span>
+                <span class="text-success fw-bold">{{ item.status }}</span>
               </td>
               <!-- <td>215</td> -->
-              <td>{{ item.addedDateTime }}</td>
+              <td>{{ item.createdAt }}</td>
             </tr>
             <tr v-if="tagList.length == 0">
               <td class="text-center" colspan="3"><i>No Data Found</i></td>
@@ -126,13 +126,13 @@
           <p class="text-muted">
             <i>Tag Id : {{ tagDetail.id }}</i>
           </p>
-          <h5>{{ tagDetail.tagName }}</h5>
+          <h5>{{ tagDetail.name }}</h5>
           <div class="mt-3">
             <span class="fw-medium">Status : </span>
-            <span class="text-success fw-bold">{{ tagDetail.tagStatus }}</span>
+            <span class="text-success fw-bold">{{ tagDetail.status }}</span>
           </div>
           <div class="mt-2">
-            <p><span class="fw-medium">Added on : </span>{{ tagDetail.addedDateTime }}</p>
+            <p><span class="fw-medium">Added on : </span>{{ tagDetail.createdAt }}</p>
           </div>
 
           <div class="text-end">
@@ -181,10 +181,10 @@ export default {
   methods: {
     fetchAllTags() {
       axiosConn
-        .get("/getTag?businessId=1&projectId=1")
+        .get("/findTag?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.tagList = res.data;
+          this.tagList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

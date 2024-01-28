@@ -14,9 +14,7 @@
               aria-expanded="false"
             >
               <span class="text-truncate d-inline p-0 m-0" style="width: 200px">
-                {{
-                  item == null || item == {} ? "Select Workspace" : item.projectName
-                }}</span
+                {{ item == null || item == {} ? "Select Workspace" : item.name }}</span
               >
             </button>
             <ul
@@ -27,8 +25,8 @@
                 <a class="dropdown-item text-muted"><i>Owner</i></a>
               </li> -->
               <li v-for="i in options" :key="i.id" @click="item = i">
-                <a class="dropdown-item text-truncate" :title="i.projectName" href="#"
-                  >{{ i.projectName }}
+                <a class="dropdown-item text-truncate" :title="i.name" href="#"
+                  >{{ i.name }}
                 </a>
               </li>
 
@@ -192,10 +190,10 @@ export default {
   methods: {
     fetchProjects() {
       axioscon
-        .get("/getProjects?businessId=" + 1)
+        .get("/findWorkspace?businessId=" + 1)
         .then((res) => {
           console.log(res);
-          this.options = res.data;
+          this.options = res.data.data;
           // if (this.options != null && this.options.length > 0)
           this.item = this.options[0];
         })

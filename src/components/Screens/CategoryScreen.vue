@@ -54,27 +54,21 @@
           <tbody>
             <tr v-for="item in categoryList" :key="item.id">
               <td style="width: 40%">
-                <!-- <a
-                  id="feedbackTitle"
-                  @click="this.$router.push('/categorydetail/' + item.id)"
-                  >{{ item.categoryName }}</a
-                > -->
-
                 <a
                   id="feedbackTitle"
                   @click.prevent="showCategoryDetail(item)"
                   data-bs-toggle="offcanvas"
                   data-bs-target="#staticBackdropCategoryDetail"
                   aria-controls="staticBackdropCategoryDetail"
-                  >{{ item.categoryName }}</a
+                  >{{ item.name }}</a
                 >
               </td>
               <td class="text-center">
-                <span class="text-success fw-bold">{{ item.categoryStatus }}</span>
+                <span class="text-success fw-bold">{{ item.status }}</span>
               </td>
 
               <!-- <td class="text-center">123</td> -->
-              <td class="text-center">{{ item.addedDateTime }}</td>
+              <td class="text-center">{{ item.createdAt }}</td>
             </tr>
 
             <tr v-if="categoryList.length == 0">
@@ -138,15 +132,15 @@
           <p class="text-muted">
             <i>Category Id : {{ categoryDetail.id }}</i>
           </p>
-          <h5>{{ categoryDetail.categoryName }}</h5>
-          <p>{{ categoryDetail.categoryDesc }}</p>
+          <h5>{{ categoryDetail.name }}</h5>
+          <p>{{ categoryDetail.description }}</p>
           <div class="mt-3">
             <span class="fw-medium">Status : </span>
-            <span class="text-success fw-bold">{{ categoryDetail.categoryStatus }}</span>
+            <span class="text-success fw-bold">{{ categoryDetail.status }}</span>
           </div>
           <div class="mt-2">
             <p>
-              <span class="fw-medium">Added on : </span>{{ categoryDetail.addedDateTime }}
+              <span class="fw-medium">Added on : </span>{{ categoryDetail.createdAt }}
             </p>
           </div>
 
@@ -189,10 +183,10 @@ export default {
   methods: {
     fetchAllCategory() {
       axiosConn
-        .get("/getCategory?businessId=1&projectId=1")
+        .get("/findCategory?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.categoryList = res.data;
+          this.categoryList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

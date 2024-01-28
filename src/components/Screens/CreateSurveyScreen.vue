@@ -41,46 +41,6 @@
             ></textarea>
           </div>
         </div>
-        <!-- <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryName" class="form-label">Survey Start Date</label>
-            <input
-              type="datetime-local"
-              class="form-control"
-              id="categoryName"
-              v-model="inpSurveyStartTime"
-            />
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryName" class="form-label">Survey End Date</label>
-            <input
-              type="datetime-local"
-              class="form-control"
-              id="categoryName"
-              v-model="inpSurveyEndTime"
-            />
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Survey Status</label>
-            <select id="categoryStatus" class="form-select" v-model="inpSurveyStatus">
-              <option value="ACTIVE">Active</option>
-              <option value="INACTIVE">Inactive</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="categoryStatus" class="form-label">Survey Type</label>
-            <select id="categoryStatus" class="form-select" v-model="inpSurveyType">
-              <option value="SURVEY">Survey</option>
-              <option value="QUIZ" disabled>Quiz (coming soon)</option>
-            </select>
-          </div>
-        </div> -->
 
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
@@ -111,7 +71,7 @@ export default {
   data() {
     return {
       inpSurveyName: "",
-      inpSurveyStatus: "INACTIVE",
+      inpSurveyStatus: "ACTIVE",
       inpSurveyStartTime: "",
       inpSurveyEndTime: "",
       inpSurveyDesc: "",
@@ -148,16 +108,12 @@ export default {
     createSurvey() {
       if (this.validate()) {
         axiosConn
-          .post("/createSurveyForm", {
+          .post("/createForm", {
             businessId: 1,
-            projectId: 1,
-            surveyFormName: this.inpSurveyName,
-            surveyFormDescription: this.inpSurveyDesc,
-            surveyFormStatus: this.inpSurveyStatus,
-            startDateTime: this.inpSurveyStartTime,
-            surveyType: this.inpSurveyType,
-            endDateTime: this.inpSurveyEndTime,
-            addedDateTime: "2023-06-24T10:16:01.682Z",
+            workspaceId: 1,
+            name: this.inpSurveyName,
+            description: this.inpSurveyDesc,
+            status: this.inpSurveyStatus,
           })
           .then((res) => {
             console.log(res.data);

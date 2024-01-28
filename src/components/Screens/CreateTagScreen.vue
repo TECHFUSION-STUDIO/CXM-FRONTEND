@@ -73,10 +73,9 @@ export default {
       axiosConn
         .post("/createTag", {
           businessId: 1,
-          projectId: 1,
-          tagName: this.inpTagName,
-          tagStatus: this.inpTagStatus,
-          addedDateTime: "2023-06-24T08:08:57.766Z",
+          workspaceId: 1,
+          name: this.inpTagName,
+          status: this.inpTagStatus,
         })
         .then((res) => {
           console.log(res.data);

@@ -77,13 +77,10 @@ export default {
   methods: {
     createProject() {
       axioscon
-        .post("/createProjects", {
-          addedDateTime: "",
-          lastModifiedDatetime: "2023-06-26T17:03:10.147Z",
+        .post("/createWorkspace", {
           businessId: 1,
-          projectDescription: this.projectDescription,
-          projectName: this.projectName,
-          visibility: this.projectVisibility,
+          description: this.projectDescription,
+          name: this.projectName,
           status: this.projectStatus,
         })
         .then((res) => {

@@ -51,38 +51,23 @@
                 <a
                   id="feedbackTitle"
                   @click="this.$router.push('/surveys/' + item.id + '/question')"
-                  >{{ item.surveyFormName }}</a
+                  >{{ item.name }}</a
                 >
               </td>
               <td class="text-center">
                 <!-- {{ item.surveyFormStatus }} -->
-                <span class="text-success fw-bold">{{ item.surveyFormStatus }}</span>
+                <span class="text-success fw-bold">{{ item.status }}</span>
               </td>
               <td>vs</td>
 
               <td></td>
-              <td>{{ item.addedDateTime }}</td>
+              <td>{{ item.createdAt }}</td>
             </tr>
             <tr v-if="surveyFormList.length == 0">
               <td class="text-center" colspan="5"><i>No Data Found</i></td>
             </tr>
           </tbody>
         </table>
-
-        <!-- <div class="text-center">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link">Prev</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div> -->
       </div>
     </div>
   </div>
@@ -133,10 +118,10 @@ export default {
   methods: {
     fetchAllSurveyForm() {
       axiosConn
-        .get("/getSurveyForm?businessId=1&projectId=1")
+        .get("/findForm?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.surveyFormList = res.data;
+          this.surveyFormList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

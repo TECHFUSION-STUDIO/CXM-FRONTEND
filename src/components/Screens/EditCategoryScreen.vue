@@ -28,7 +28,7 @@
               class="form-control"
               id="categoryName"
               disabled
-              v-model="categoryDetail.categoryName"
+              v-model="categoryDetail.name"
             />
           </div>
         </div>
@@ -39,7 +39,7 @@
               class="form-control"
               id="categoryDesc"
               rows="3"
-              v-model="categoryDetail.categoryDesc"
+              v-model="categoryDetail.description"
             ></textarea>
           </div>
         </div>
@@ -49,7 +49,7 @@
             <select
               id="categoryStatus"
               class="form-select"
-              v-model="categoryDetail.categoryStatus"
+              v-model="categoryDetail.status"
             >
               <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
                 {{ item }}
@@ -95,10 +95,10 @@ export default {
   methods: {
     fetchCategoryDetail() {
       axiosConn
-        .get("/getCategory?businessId=1&projectId=1&categoryId=" + this.id)
+        .get("/findCategory?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.categoryDetail = res.data;
+          this.categoryDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);
@@ -106,7 +106,7 @@ export default {
     },
     updateCategoryDetail() {
       axiosConn
-        .post("/updateCategory", this.categoryDetail)
+        .post("/createCategory", this.categoryDetail)
         .then((res) => {
           console.log(res.data);
         })
