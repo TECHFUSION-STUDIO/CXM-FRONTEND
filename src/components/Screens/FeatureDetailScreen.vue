@@ -10,7 +10,7 @@
             <a @click="this.$router.push('/feature')">Feature </a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
-            Showing Feature Detail for <i>{{ featureDetail.featureName }}</i>
+            Showing Feature Detail for <i>{{ featureDetail.name }}</i>
           </li>
         </ol>
       </nav>
@@ -42,13 +42,13 @@
               </button>
             </div>
           </div>
-          <h5>{{ featureDetail.featureName }}</h5>
+          <h5>{{ featureDetail.name }}</h5>
           <p>
-            {{ featureDetail.featureDescription }}
+            {{ featureDetail.description }}
           </p>
 
           <p class="text-muted">
-            <i>Created on {{ featureDetail.addedDateTime }}</i>
+            <i>Created on {{ featureDetail.createdAt }}</i>
           </p>
         </div>
       </div>
@@ -63,7 +63,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
-              v-model="featureDetail.featureStatus"
+              v-model="featureDetail.status"
               @change="updateFeature()"
             >
               <option v-for="item in constants.FEATURE_STATUS" :key="item" :value="item">
@@ -74,18 +74,17 @@
 
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
-            <multiselect
-              class="form-control p-0 border border-0"
-              :options="categoryList.options"
-              v-model="categoryList.value"
-              placeholder="Select one"
-              label="categoryName"
-              track-by="id"
-              selectLabel=""
-              deselectLabel=""
-              @select="updateCatgeory('add')"
-              @remove="updateCatgeory('remove')"
-            ></multiselect>
+            <select
+              class="form-select"
+              id="inputGroupSelect03"
+              aria-label="Example select with button addon"
+              v-model="featureDetail.status"
+              @change="updateFeature()"
+            >
+              <option v-for="item in categoryList.options" :key="item" :value="item">
+                {{ item }}
+              </option>
+            </select>
           </div>
         </div>
 
@@ -96,7 +95,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
-              v-model="featureDetail.featureImpact"
+              v-model="featureDetail.impact"
               @change="updateFeature()"
             >
               <option value="0">0</option>
@@ -119,7 +118,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
-              v-model="featureDetail.featureEffort"
+              v-model="featureDetail.effort"
               @change="updateFeature()"
             >
               <option value="0">0</option>
@@ -142,7 +141,7 @@
               class="form-select"
               id="inputGroupSelect03"
               aria-label="Example select with button addon"
-              v-model="featureDetail.featurePriority"
+              v-model="featureDetail.priority"
               @change="updateFeature()"
             >
               <option value="0">0</option>
@@ -161,19 +160,6 @@
         </div>
 
         <div class="col-md-4">
-          <!-- <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Assignee</label>
-            <multiselect
-              class="form-control p-0 border border-0"
-              :options="assigneeDropDown.options"
-              v-model="assigneeDropDown.value"
-              placeholder="Select one"
-              label="memberName"
-              track-by="id"
-              hideSelected="true"
-            ></multiselect>
-          </div> -->
-
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Reporter</label>
             <input
@@ -253,7 +239,6 @@ import ImpactedCustomer from "./tables/ImpactedCustomer.vue";
 import { constants } from "./constants";
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
-import Multiselect from "vue-multiselect";
 
 export default {
   name: "FeatureDetailScreen",
@@ -262,7 +247,6 @@ export default {
     FeatureComments,
     FeatureTag,
     ImpactedCustomer,
-    Multiselect,
   },
   data() {
     return {
@@ -300,7 +284,6 @@ export default {
   mounted() {
     this.fetchFeatureDetail();
     this.fetchAllCategory();
-    this.fetchAllBoard();
   },
   updated() {
     console.log(this.featureDetail);
@@ -370,21 +353,10 @@ export default {
     },
     fetchAllCategory() {
       axiosConn
-        .get("/getCategory?businessId=1&projectId=1")
+        .get("/findCategory?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.categoryList.options = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    fetchAllBoard() {
-      axiosConn
-        .get("/getBoard?businessId=1&projectId=1")
-        .then((res) => {
-          console.log(res.data);
-          this.boardList.options = res.data;
+          this.categoryList.options = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -392,11 +364,10 @@ export default {
     },
     fetchFeatureDetail() {
       axiosConn
-        .get("/getFeature?featureId=" + this.id)
+        .get("/findFeature?workspaceId=1&businessId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.featureDetail = res.data;
-          this.boardList.value = res.data.boardId;
+          this.featureDetail = res.data.data[0];
           this.categoryList.value = res.data.featureCategory;
         })
         .catch((err) => {

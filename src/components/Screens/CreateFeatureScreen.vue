@@ -165,69 +165,29 @@ export default {
   props: ["type", "caller"],
   data() {
     return {
-      featureName: "",
-      featureDescription: "",
-      featureStatus: "",
-      featureCategory: "",
-      featureTags: "",
-      featureImpact: "",
-      featureEffort: "",
-      featurePriority: "",
-      featureList: {
-        value: [],
-        option: [],
-        isLoading: false,
-      },
-      surveyList: {
-        value: [],
-        option: [],
-        isLoading: false,
-      },
+      Name: "",
+      Description: "",
+      Status: "",
+      Category: "",
+      Tags: "",
+      Impact: "",
+      Effort: "",
+      Priority: "",
     };
   },
   methods: {
-    asyncFind(query) {
-      console.log(query);
-      this.featureList.isLoading = true;
-      axiosConn
-        .get("/getFeature?businessId=1&projectId=1")
-        .then((res) => {
-          console.log(res.data);
-          this.featureList.option = res.data;
-          this.featureList.isLoading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
-    asyncFindSurvey(query) {
-      console.log(query);
-      this.surveyList.isLoading = true;
-      axiosConn
-        .get("/findForm?businessId=1&workspaceId=1")
-        .then((res) => {
-          console.log(res.data.data);
-          this.surveyList.option = res.data;
-          this.surveyList.isLoading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
     createFeature() {
       axiosConn
         .post("/createFeature", {
           businessId: 1,
           workspaceId: 1,
-          name: this.featureName,
-          description: this.featureDescription,
-          status: this.featureCategory,
-          category: this.featureCategory,
-          priority: this.featurePriority,
-          impact: this.featureImpact,
-          effort: this.featureEffort,
+          name: this.name,
+          description: this.description,
+          status: this.status,
+          category: this.category,
+          priority: this.priority,
+          impact: this.impact,
+          effort: this.effort,
         })
         .then((res) => {
           console.log(res.data);

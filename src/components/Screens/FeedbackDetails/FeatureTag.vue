@@ -47,19 +47,6 @@ export default {
     this.fetchAllTags();
     this.fetchFeedbackTags();
   },
-
-  // beforeRouteUpdate(to, from, next) {
-  //   console.log("Before Route Update" + to.params.fid);
-
-  //   this.id = to.params.fid;
-
-  //   console.log(this.id);
-  //   this.fetchAllTags();
-  //   // this.fetchFeedbackTags();
-
-  //   next();
-  // },
-
   methods: {
     onSelect(selectedOption, id) {
       console.log(selectedOption + id);
@@ -67,7 +54,7 @@ export default {
     },
     fetchAllTags() {
       axioscon
-        .get("/getTag?businessId=1&projectId=1")
+        .get("/findTag?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res);
           this.options = res.data;

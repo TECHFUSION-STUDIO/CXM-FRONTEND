@@ -257,25 +257,23 @@
           <tr v-for="item in featureList" :key="item.id">
             <td style="width: 40%">
               <a id="feedbackTitle" @click="this.$router.push('/feature/' + item.id)">{{
-                item.featureName
+                item.name
               }}</a>
             </td>
             <td class="text-center">
-              <span class="text-success fw-bold">{{ item.featureStatus }}</span>
+              <span class="text-success fw-bold">{{ item.status }}</span>
             </td>
             <td class="text-center">
-              {{
-                item.featureCategory != null ? item.featureCategory.categoryName : null
-              }}
+              {{ item.category != null ? item.category.categoryName : null }}
             </td>
             <td class="text-center">
-              {{ item.featureImpact }}
+              {{ item.impact }}
             </td>
             <td class="text-center">
-              {{ item.featureEffort }}
+              {{ item.effort }}
             </td>
             <td class="text-center">
-              {{ item.featurePriority }}
+              {{ item.priority }}
             </td>
             <td class="text-center">56</td>
           </tr>
@@ -334,27 +332,27 @@ export default {
       sortListItems: [
         {
           name: "Impact",
-          value: "featureImpact",
+          value: "impact",
         },
         {
           name: "Effort",
 
-          value: "featureEffort",
+          value: "effort",
         },
         {
           name: "Priority",
 
-          value: "featurePriority",
+          value: "priority",
         },
         {
           name: "Added Date",
 
-          value: "addedDateTime",
+          value: "createdAt",
         },
         {
           name: "Updated Date",
 
-          value: "lastModified",
+          value: "updatedAt",
         },
       ],
       sortSelected: "",
@@ -363,23 +361,18 @@ export default {
   },
 
   mounted() {
-    if (this.calledFrom != "" && this.calledFrom != null) {
-      if (this.calledFrom == "featureId") {
-        // this.id = this.$route.params.featureId;
-        this.endpoint = "businessId=1&projectId=1";
-      } else if (this.calledFrom == "boardId") {
-        this.endpoint = "businessId=1&projectId=1&boardId=" + this.$route.params.boardId;
-      }
-      this.fetchAllFeature();
-    }
+    this.endpoint = "businessId=1&workspaceId=1";
+
+    this.fetchAllFeature();
   },
+
   methods: {
     fetchAllFeature() {
       axiosConn
-        .get("/getFeature?" + this.endpoint)
+        .get("/findFeature?" + this.endpoint)
         .then((res) => {
           console.log(res.data);
-          this.featureList = res.data;
+          this.featureList = res.data.data;
         })
         .catch((err) => {
           console.log(err);
