@@ -147,19 +147,6 @@
         />
       </div>
     </div>
-    <div class="ms-2 me-2 mb-3 row">
-      <div class="col-md-6">
-        <label class="me-2"
-          >Move Survey status to Inactive when Survey End Date is passed :</label
-        >
-      </div>
-      <div class="col-md-6">
-        <select class="form-select form-select-sm">
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-      </div>
-    </div>
 
     <div class="ms-2 me-2 mb-3">
       <button class="btn btn-primary btn-sm ms-0 m-1">Reset</button>
