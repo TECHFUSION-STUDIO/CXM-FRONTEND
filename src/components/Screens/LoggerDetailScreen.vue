@@ -26,12 +26,7 @@
             <span class="input-group-text fw-semibold" id="basic-addon1"
               >Logger Name</span
             >
-            <input
-              type="text"
-              class="form-control"
-              disabled
-              :value="loggerDetail.loggerName"
-            />
+            <input type="text" class="form-control" disabled :value="loggerDetail.name" />
           </div>
         </div>
         <div class="col-md-6">
@@ -43,51 +38,38 @@
               type="text"
               class="form-control"
               disabled
-              :value="loggerDetail.loggerEmail"
+              :value="loggerDetail.email"
             />
           </div>
         </div>
         <div class="col-md-4">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text fw-semibold" id="basic-addon1"
-              >Logger Contact 1</span
+              >Logger Contact</span
             >
             <input
               type="text"
               class="form-control"
               disabled
-              :value="loggerDetail.loggerContact1"
-            />
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="input-group input-group-sm mb-3">
-            <span class="input-group-text fw-semibold" id="basic-addon1"
-              >Logger Contact 2</span
-            >
-            <input
-              type="text"
-              class="form-control"
-              disabled
-              :value="loggerDetail.loggerContact2"
+              :value="loggerDetail.contact"
             />
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text fw-semibold" id="basic-addon1">Created on</span>
             <input
-              type="datetime-local"
+              type="text"
               class="form-control"
               disabled
-              :value="loggerDetail.addedDateTime"
+              :value="loggerDetail.createdAt"
             />
           </div>
         </div>
       </div>
       <p>
-        {{ loggerDetail.loggerAdditionalDetail }}
+        {{ loggerDetail.additionalDetail }}
       </p>
     </div>
 
@@ -115,10 +97,10 @@
                     >{{ item.id }}</a
                   >
                 </td>
-                <td>{{ item.loggerId }}</td>
+                <td>{{ item.id }}</td>
                 <td>2 min</td>
-                <td>{{ item.addedDateTime }}</td>
-                <td>{{ item.addedDateTime }}</td>
+                <td>{{ item.createdAt }}</td>
+                <td>{{ item.createdAt }}</td>
               </tr>
               <tr v-if="submissionList.length == 0">
                 <td class="text-center" colspan="5"><i>No Data Found</i></td>
@@ -152,10 +134,10 @@ export default {
   methods: {
     fetchLoggerDetail() {
       axiosConn
-        .get("/getLoggers?businessId=1&workspaceId=1&loggerId=" + this.id)
+        .get("/findReporter?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.loggerDetail = res.data;
+          this.loggerDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);
@@ -163,7 +145,7 @@ export default {
     },
     fetchAllSubmission() {
       axiosConn
-        .get("/getSubmission?businessId=1&workspaceId=1&surveyId=" + this.id)
+        .get("/findFormSubmission?businessId=1&workspaceId=1&reporterId=" + this.id)
         .then((res) => {
           console.log(res);
           this.submissionList = res.data;

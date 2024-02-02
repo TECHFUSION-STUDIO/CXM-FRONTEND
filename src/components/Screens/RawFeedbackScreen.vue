@@ -1,8 +1,8 @@
 <template>
   <div>
     <FeedbackTabular
-      :criteria="{ key: 'surveyFormId', value: id, operation: 'EQUAL' }"
-      :calledFrom="'surveyFormId'"
+      :criteria="{ key: 'formId', value: id, operation: 'EQUAL' }"
+      :calledFrom="'formId'"
     />
   </div>
 </template>

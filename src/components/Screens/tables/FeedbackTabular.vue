@@ -258,7 +258,7 @@
                     :to="'/feedbackdetail/' + item.id"
                     style="text-decoration: none"
                   >
-                    {{ item.feedbackDescription }}
+                    {{ item.description }}
                   </router-link>
                 </td>
                 <td style="width: 40%" @mouseover="openedDrop(item)">
@@ -305,8 +305,8 @@
                   >
                 </td>
                 <td>
-                  <router-link :to="'/loggerdetail/' + item.loggerId">
-                    {{ item.loggerId }}</router-link
+                  <router-link :to="'/loggerdetail/' + item.reporterId">
+                    {{ item.reporterId }}</router-link
                   >
                 </td>
               </tr>
@@ -427,14 +427,7 @@ export default {
   mounted() {
     this.fetchAllFeature();
     if (this.calledFrom != "" && this.calledFrom != null) {
-      if (this.calledFrom == "loggerId") {
-        this.id = this.$route.params.loggerId;
-        this.endpoint =
-          "businessId=1&workspaceId=1&" +
-          this.calledFrom +
-          "=" +
-          this.$route.params.loggerId;
-      } else if (this.calledFrom == "surveyFormId") {
+      if (this.calledFrom == "formId") {
         this.id = this.$route.params.surveyId;
 
         this.endpoint =
@@ -524,10 +517,10 @@ export default {
     fetchFeedback() {
       var feedbackEndpoint = this.endpoint;
       axiosConn
-        .get("/getFeedback?" + feedbackEndpoint)
+        .get("/findResponse?" + feedbackEndpoint)
         .then((res) => {
           console.log(res.data);
-          this.rawFeedbackList = res.data;
+          this.rawFeedbackList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

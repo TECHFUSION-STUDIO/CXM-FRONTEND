@@ -55,14 +55,14 @@ export default {
     fetchAllComments() {
       axiosConn
         .get(
-          "/getFeedbackComments?businessId=1&workspaceId=" +
+          "/findResponseComment?businessId=1&workspaceId=" +
             localStorage.getItem("selectedProject") +
-            "&feedbackId=" +
+            "&responseId=" +
             this.id
         )
         .then((res) => {
           console.log(res);
-          this.commentList = res.data;
+          this.commentList = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -70,18 +70,16 @@ export default {
     },
     addComment() {
       axiosConn
-        .post("/addFeedbackComments", {
+        .post("/createResponseComment", {
           addedBy: 0,
-          addedDateTime: "",
           businessId: 1,
           comment: this.commentDesc,
-          feedbackId: this.id,
+          responseId: this.id,
           workspaceId: localStorage.getItem("selectedProject"),
         })
         .then((res) => {
           console.log(res.data);
           this.commentDesc = "";
-
           this.fetchAllComments();
         })
         .catch((err) => {

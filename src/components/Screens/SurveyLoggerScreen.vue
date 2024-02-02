@@ -66,10 +66,10 @@ export default {
   methods: {
     fetchAllLoggerList() {
       axiosConn
-        .get("/getLoggers?businessId=1&workspaceId=1&surveyId=" + this.id)
+        .get("/findReporter?businessId=1&workspaceId=1&formId=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.loggerList = res.data;
+          this.loggerList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

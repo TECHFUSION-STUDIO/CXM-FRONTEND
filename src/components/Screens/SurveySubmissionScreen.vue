@@ -19,10 +19,10 @@
                 >{{ item.id }}</a
               >
             </td>
-            <td>{{ item.loggerId }}</td>
+            <td>{{ item.reporterId }}</td>
             <td>2 min</td>
-            <td>{{ item.addedDateTime }}</td>
-            <td>{{ item.addedDateTime }}</td>
+            <td>{{ item.createdAt }}</td>
+            <td>{{ item.createdAt }}</td>
           </tr>
           <tr v-if="submissionList.length == 0">
             <td class="text-center" colspan="5"><i>No Data Found</i></td>
@@ -49,10 +49,10 @@ export default {
   methods: {
     fetchAllSubmission() {
       axiosConn
-        .get("/getSubmission?businessId=1&workspaceId=1&surveyId=" + this.id)
+        .get("/findFormSubmission?businessId=1&workspaceId=1&formId=" + this.id)
         .then((res) => {
           console.log(res);
-          this.submissionList = res.data;
+          this.submissionList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

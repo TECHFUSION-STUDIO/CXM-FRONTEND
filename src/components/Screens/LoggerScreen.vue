@@ -48,12 +48,12 @@
                   data-bs-target="#staticBackdropCategoryDetail"
                   aria-controls="staticBackdropCategoryDetail"
                 >
-                  {{ item.loggerName }}</a
+                  {{ item.name }}</a
                 >
               </td>
-              <td>{{ item.loggerEmail }}</td>
-              <td>{{ item.loggerContact }}</td>
-              <td>{{ item.addedDateTime }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.contact }}</td>
+              <td>{{ item.createdAt }}</td>
             </tr>
             <tr v-if="loggerList.length == 0">
               <td class="text-center" colspan="4"><i>No Data Found</i></td>
@@ -110,10 +110,10 @@ export default {
   methods: {
     fetchAllLoggerList() {
       axiosConn
-        .get("/getLoggers?businessId=1&workspaceId=1")
+        .get("/findReporter?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.loggerList = res.data;
+          this.loggerList = res.data.data;
         })
         .catch((err) => {
           console.log(err);
