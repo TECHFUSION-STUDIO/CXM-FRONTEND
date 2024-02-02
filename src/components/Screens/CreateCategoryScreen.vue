@@ -90,11 +90,10 @@ export default {
       axiosConn
         .post("/createCategory", {
           businessId: 1,
-          projectId: 1,
-          categoryName: this.inpCategoryName,
-          categoryDesc: this.inpCategoryDesc,
-          categoryStatus: this.inpCategoryStatus,
-          addedDateTime: "2023-06-24T09:08:57.763Z",
+          workspaceId: 1,
+          name: this.inpCategoryName,
+          desc: this.inpCategoryDesc,
+          status: this.inpCategoryStatus,
         })
         .then((res) => {
           console.log(res.data);

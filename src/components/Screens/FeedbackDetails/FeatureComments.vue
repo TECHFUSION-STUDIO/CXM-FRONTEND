@@ -54,7 +54,7 @@ export default {
     fetchAllComments() {
       axiosConn
         .get(
-          "/getFeatureComments?businessId=1&projectId=" +
+          "/getFeatureComments?businessId=1&workspaceId=" +
             localStorage.getItem("selectedProject") +
             "&featureId=" +
             this.id
@@ -71,7 +71,7 @@ export default {
       axiosConn
         .post("/addFeatureComments", {
           businessId: 1,
-          projectId: localStorage.getItem("selectedProject"),
+          workspaceId: localStorage.getItem("selectedProject"),
           featureId: this.id,
           comment: this.commentDesc,
           addedBy: 0,

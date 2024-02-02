@@ -76,7 +76,7 @@ export default {
     fetchImpactedCustomer() {
       axiosConn
         .get(
-          "/getLoggers?businessId=1&projectId=1&" +
+          "/getLoggers?businessId=1&workspaceId=1&" +
             (this.type == "feature" ? "featureId=" + this.id : "boardId=" + this.id)
         )
         .then((res) => {

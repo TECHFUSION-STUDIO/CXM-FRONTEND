@@ -173,7 +173,7 @@ export default {
             lastModifiedDateTime: "2023-06-27T04:09:32.227Z",
             addedDateTime: "2023-06-27T04:09:32.227Z",
           },
-          projectIdList: {},
+          workspaceIdList: {},
         })
         .then((res) => {
           console.log(res.data);

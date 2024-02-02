@@ -67,7 +67,7 @@ export default {
     fetchFeedbackTags() {
       console.log(this.id);
       axioscon
-        .get("/getTag?businessId=" + 1 + "&projectId=" + 1 + "&featureId=" + this.id)
+        .get("/getTag?businessId=" + 1 + "&workspaceId=" + 1 + "&featureId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.value = res.data;
@@ -85,7 +85,7 @@ export default {
           tagIdList: selectedTagList,
           featureId: this.id,
           businessId: "1",
-          projectId: "1",
+          workspaceId: "1",
         })
         .then((res) => {
           console.log(res);

@@ -430,7 +430,7 @@ export default {
       if (this.calledFrom == "loggerId") {
         this.id = this.$route.params.loggerId;
         this.endpoint =
-          "businessId=1&projectId=1&" +
+          "businessId=1&workspaceId=1&" +
           this.calledFrom +
           "=" +
           this.$route.params.loggerId;
@@ -438,7 +438,7 @@ export default {
         this.id = this.$route.params.surveyId;
 
         this.endpoint =
-          "businessId=1&projectId=1&" +
+          "businessId=1&workspaceId=1&" +
           this.calledFrom +
           "=" +
           this.$route.params.surveyId;
@@ -446,7 +446,7 @@ export default {
         this.id = this.$route.params.featureId;
 
         this.endpoint =
-          "businessId=1&projectId=1&" +
+          "businessId=1&workspaceId=1&" +
           this.calledFrom +
           "=" +
           this.$route.params.featureId;
@@ -512,7 +512,7 @@ export default {
 
     fetchAllFeature() {
       axiosConn
-        .get("/getFeature?businessId=1&projectId=1")
+        .get("/getFeature?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
           this.featureList = res.data;
@@ -536,7 +536,7 @@ export default {
 
     fetchSurveyQuestionDetail() {
       axiosConn
-        .get("/getSurveyQuestion?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/getSurveyQuestion?businessId=1&workspaceId=1&surveyFormId=" + this.id)
         .then((res) => {
           console.log(res.data);
 

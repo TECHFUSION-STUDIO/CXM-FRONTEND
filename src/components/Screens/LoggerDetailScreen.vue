@@ -152,7 +152,7 @@ export default {
   methods: {
     fetchLoggerDetail() {
       axiosConn
-        .get("/getLoggers?businessId=1&projectId=1&loggerId=" + this.id)
+        .get("/getLoggers?businessId=1&workspaceId=1&loggerId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.loggerDetail = res.data;
@@ -163,7 +163,7 @@ export default {
     },
     fetchAllSubmission() {
       axiosConn
-        .get("/getSubmission?businessId=1&projectId=1&surveyId=" + this.id)
+        .get("/getSubmission?businessId=1&workspaceId=1&surveyId=" + this.id)
         .then((res) => {
           console.log(res);
           this.submissionList = res.data;

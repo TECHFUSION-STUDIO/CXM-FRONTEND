@@ -311,7 +311,7 @@ export default {
         .post("/updateFeature", {
           id: this.featureDetail.id,
           businessId: this.featureDetail.businessId,
-          projectId: this.featureDetail.projectId,
+          workspaceId: this.featureDetail.workspaceId,
           boardId:
             this.featureDetail.boardId != null && this.featureDetail.boardId != ""
               ? this.featureDetail.boardId.id

@@ -130,7 +130,7 @@ export default {
   methods: {
     fetchFeedback() {
       axiosConn
-        .get("/getFeedback?businessId=1&projectId=1&feedbackId=" + this.id)
+        .get("/getFeedback?businessId=1&workspaceId=1&feedbackId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.feedbackDetail = res.data;
@@ -199,7 +199,7 @@ export default {
       axiosConn
         .post("/getFeature", {
           businessId: 1,
-          projectId: 1,
+          workspaceId: 1,
           orderBy: "addedDateTime",
           orderByAsc: false,
         })

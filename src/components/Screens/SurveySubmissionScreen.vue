@@ -49,7 +49,7 @@ export default {
   methods: {
     fetchAllSubmission() {
       axiosConn
-        .get("/getSubmission?businessId=1&projectId=1&surveyId=" + this.id)
+        .get("/getSubmission?businessId=1&workspaceId=1&surveyId=" + this.id)
         .then((res) => {
           console.log(res);
           this.submissionList = res.data;

@@ -231,7 +231,7 @@ export default {
     },
     fetchAllSurvey() {
       axiosConn
-        .get("/getSurveyForm?businessId=1&projectId=1")
+        .get("/getSurveyForm?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
           this.surveySelect.options = res.data;
@@ -242,7 +242,7 @@ export default {
     },
     fetchAllBoard() {
       axiosConn
-        .get("/getBoard?businessId=1&projectId=1")
+        .get("/getBoard?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
           this.boardSelect.options = res.data;
