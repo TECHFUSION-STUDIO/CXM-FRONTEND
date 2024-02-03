@@ -29,37 +29,42 @@
       <div class="bg-white shadow shadow-sm p-3">
         <p class="text-muted mb-0">Response Id : {{ feedbackDetail.id }}</p>
 
-        <h5 class="mt-3">{{ feedbackDetail.feedbackDescription }}</h5>
+        <h5 class="mt-3">{{ feedbackDetail.description }}</h5>
 
         <p class="text-muted mb-0 mt-2">
-          Q : {{ questionDetail.surveyQuestion }} Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Rem, facilis rerum? Ducimus dicta quisquam enim perspiciatis
-          est cumque magni unde vitae suscipit! Laudantium animi minima praesentium
-          eligendi aut officiis culpa?
-        </p>
-        <p class="mt-1">
+          Q : {{ questionDetail.question }}
           <span class="badge text-bg-primary rounded-0 m-1">
             <span class="fst-italic"> Question Type </span> :
-            {{ questionDetail.surveyQuestionType }}</span
+            {{ questionDetail.type }}</span
           >
           <span class="badge text-bg-primary rounded-0 m-1">
-            <span class="fst-italic"> Question Category </span> :
-            {{ questionDetail.surveyQuestionCategory }}</span
+            <span class="fst-italic"> Question Manadatory </span> :
+            {{ questionDetail.isMandatory }}</span
           >
         </p>
-        <p class="text-muted">
+        <!-- <p class="mt-1">
+          <span class="badge text-bg-primary rounded-0 m-1">
+            <span class="fst-italic"> Question Type </span> :
+            {{ questionDetail.type }}</span
+          >
+          <span class="badge text-bg-primary rounded-0 m-1">
+            <span class="fst-italic"> Question Manadatory </span> :
+            {{ questionDetail.isMandatory }}</span
+          >
+        </p> -->
+        <p class="text-muted mt-2">
           <span v-if="loggerDetail.id != null && loggerDetail.id != ''">
             Logged by
             <a
               :href="'/loggerdetail/' + loggerDetail.id"
               target="blank"
               class="text-decoration-none"
-              >{{ loggerDetail.loggerName }} {{ loggerDetail.loggerEmail }}
-              {{ loggerDetail.loggerContact1 }} {{ loggerDetail.loggerContact2 }}</a
-            >
+              >{{ loggerDetail.name }} {{ loggerDetail.email }}
+              {{ loggerDetail.contact1 }}
+            </a>
           </span>
           <span v-if="loggerDetail.postedById != null && loggerDetail.postedById != ''">
-            Posted By {{ feedbackDetail.postedById }}
+            Posted By {{ feedbackDetail.creatorId }}
           </span>
           via Submission Id
           <a
@@ -68,7 +73,7 @@
             class="text-decoration-none"
             >{{
           }}</a>
-          at {{ feedbackDetail.addedDateTime }}
+          at {{ feedbackDetail.createdAt }}
         </p>
       </div>
       <div class="bg-white shadow shadow-sm mt-3 p-3">
@@ -130,13 +135,13 @@ export default {
   methods: {
     fetchFeedback() {
       axiosConn
-        .get("/getFeedback?businessId=1&workspaceId=1&feedbackId=" + this.id)
+        .get("/findResponse?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.feedbackDetail = res.data;
-          this.questionDetail = res.data.questionId;
-          this.loggerDetail = res.data.loggerId;
-          this.submissionDetail = this.formSubmissionId;
+          this.feedbackDetail = res.data.data.responseDetail;
+          this.questionDetail = res.data.data.questionDetail;
+          this.loggerDetail = res.data.data.reporterDetail;
+          this.submissionDetail = res.data.data.formSubmissionDetail;
         })
         .catch((err) => {
           console.log(err);
@@ -197,15 +202,10 @@ export default {
 
     fetchAllFeature() {
       axiosConn
-        .post("/getFeature", {
-          businessId: 1,
-          workspaceId: 1,
-          orderBy: "addedDateTime",
-          orderByAsc: false,
-        })
+        .get("/findFeature?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.featureList = res.data;
+          this.featureList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

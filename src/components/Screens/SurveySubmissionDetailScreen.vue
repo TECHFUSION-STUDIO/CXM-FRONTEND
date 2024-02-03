@@ -37,11 +37,11 @@
               type="text"
               class="form-control"
               disabled
-              :value="submissionDetail.loggerId"
+              :value="submissionDetail.id"
             />
             <button
               class="btn btn-sm btn-outline-secondary"
-              @click="this.$router.push('/loggerdetail/' + submissionDetail.loggerId)"
+              @click="this.$router.push('/loggerdetail/' + submissionDetail.id)"
             >
               <i class="fa-solid fa-up-right-from-square"></i>
             </button>
@@ -56,7 +56,7 @@
               type="text"
               class="form-control"
               disabled
-              :value="submissionDetail.addedDateTime"
+              :value="submissionDetail.createdAt"
             />
           </div>
         </div>
@@ -70,7 +70,7 @@
               type="datetime-local"
               class="form-control"
               disabled
-              :value="submissionDetail.addedDateTime"
+              :value="submissionDetail.createdAt"
             />
           </div>
         </div>
@@ -157,13 +157,13 @@
       <div class="mt-3">
         <div class="mb-3" v-for="(item, index) in feedbackList" :key="item.id">
           <label for="exampleFormControlInput1" class="form-label">{{
-            index + 1 + ". " + item.questionId.surveyQuestion
+            index + 1 + ". " + item.questionId.question
           }}</label>
           <input
             type="email"
             class="form-control"
             id="exampleFormControlInput1"
-            :value="item.feedbackDescription"
+            :value="item.description"
             disabled
           />
         </div>
@@ -197,10 +197,10 @@ export default {
   methods: {
     getSubmissionDetail() {
       axiosConn
-        .get("/getSubmission?submissionId=" + this.id)
+        .get("/findFormSubmission?id=" + this.id)
         .then((res) => {
           console.log(res);
-          this.submissionDetail = res.data;
+          this.submissionDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);
@@ -208,10 +208,10 @@ export default {
     },
     getAllFeedback() {
       axiosConn
-        .get("/getFeedback?businessId=1&workspaceId=1&submissionId=" + this.id)
+        .get("/findResponse?businessId=1&workspaceId=1&formSubmissionId=" + this.id)
         .then((res) => {
           console.log(res);
-          this.feedbackList = res.data;
+          this.feedbackList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

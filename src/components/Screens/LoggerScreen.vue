@@ -37,17 +37,16 @@
           </thead>
           <tbody>
             <tr v-for="item in loggerList" :key="item.id">
-              <td>{{ item.id }}</td>
               <td>
                 <a
                   id="feedbackTitle"
                   @click="this.$router.push('/loggerdetail/' + item.id)"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#staticBackdropCategoryDetail"
-                  aria-controls="staticBackdropCategoryDetail"
                 >
-                  {{ item.name }}</a
+                  {{ item.id }}</a
                 >
+              </td>
+              <td>
+                {{ item.name }}
               </td>
               <td>{{ item.email }}</td>
               <td>{{ item.contact }}</td>
