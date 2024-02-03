@@ -9,12 +9,6 @@
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
-          <!-- <button
-            class="btn btn-primary mt-2"
-            @click="this.$router.push('/createcategory')"
-          >
-            Create Category
-          </button> -->
           <button
             class="btn btn-primary mt-2"
             type="button"

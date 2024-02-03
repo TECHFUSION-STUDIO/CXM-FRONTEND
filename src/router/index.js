@@ -77,11 +77,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyDetailScreen.vue'),
         children: [
           {
-            path: '/surveys/:surveyId/',
-            name: 'surveydetails',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SuveyAnalyticsScreen.vue'),
-          },
-          {
             path: '/surveys/:surveyId/question',
             name: 'surveyquestion',
             component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyQuestionScreen.vue'),
@@ -172,11 +167,7 @@ const routes = [
         name: 'editcategory',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditCategoryScreen.vue'),
       },
-      {
-        path: '/categorydetail/:categoryId',
-        name: 'categorydetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CategoryDetailScreen.vue'),
-      },
+
       {
         path: '/tags',
         name: 'tags',
@@ -203,23 +194,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberScreen.vue'),
       },
 
-      {
-        path: '/createmember',
-        name: 'createmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateMemberScreen.vue'),
-      },
-
-      {
-        path: '/editmember/:memberId',
-        name: 'editmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditMemberScreen.vue'),
-      },
-
-      {
-        path: '/member/:memberId',
-        name: 'memberdetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberDetailScreen.vue'),
-      },
     ]
   },
   {

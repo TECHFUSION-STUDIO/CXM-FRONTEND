@@ -64,10 +64,6 @@
         <div class="mt-5" v-if="activePage == 'workspace'">
           <WorkspaceSetup @target="setActivePage" />
         </div>
-
-        <div class="mt-5" v-if="activePage == 'plan'">
-          <PlanSetup @target="setActivePage" />
-        </div>
       </div>
     </div>
   </div>
@@ -75,14 +71,12 @@
 
 <script>
 import axioscon from "../axioscon";
-import PlanSetup from "./SetupScreens/PlanSetup.vue";
 import ProfileSetup from "./SetupScreens/ProfileSetup.vue";
 import WorkspaceSetup from "./SetupScreens/WorkspaceSetup.vue";
 
 export default {
   name: "SetupScreen",
   components: {
-    PlanSetup,
     ProfileSetup,
     WorkspaceSetup,
   },
