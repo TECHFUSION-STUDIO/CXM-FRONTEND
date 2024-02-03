@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
       <h5 class="navbar-nav me-auto ms-2">
         <i class="fa-solid fa-florin-sign me-2"></i> FeedArc
@@ -21,9 +21,7 @@
               class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end dropdown-menu-sm-end dropdown-menu-md-end shadow mt-0"
               style="max-width: 100%"
             >
-              <!-- <li>
-                <a class="dropdown-item text-muted"><i>Owner</i></a>
-              </li> -->
+             
               <li v-for="i in options" :key="i.id" @click="item = i">
                 <a class="dropdown-item text-truncate" :title="i.name" href="#"
                   >{{ i.name }}
@@ -31,10 +29,7 @@
               </li>
 
               <li><hr class="dropdown-divider" /></li>
-              <!-- <li>
-                <a class="dropdown-item text-muted"><i>Member</i></a>
-              </li>
-              <li><hr class="dropdown-divider" /></li> -->
+            
 
               <li class="text-center" @click="this.$router.push('/createproject')">
                 <a class="dropdown-item text-truncate"
@@ -46,7 +41,8 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  <HeaderComponent />
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
     <div class="ms-auto text-white p-1" style="font-size: 14px">
       <span
@@ -139,9 +135,11 @@
 <script>
 import { store } from "@/store";
 import axioscon from "../axioscon.js";
+import HeaderComponent from "./HeaderComponent.vue";
 
 export default {
   name: "DashboardApp",
+  components: { HeaderComponent },
   data() {
     return {
       openDrawer: false,
