@@ -148,7 +148,7 @@ export default {
         .get("/findFormSubmission?businessId=1&workspaceId=1&reporterId=" + this.id)
         .then((res) => {
           console.log(res);
-          this.submissionList = res.data;
+          this.submissionList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

@@ -19,7 +19,8 @@
       <table class="table table-hover table-bordered mt-4 w-100 shadow-sm">
         <thead>
           <tr class="bg-light">
-            <th style="width: 40%">Reporter Name</th>
+            <th>Id</th>
+            <th>Reporter Name</th>
             <th>Email</th>
             <th>Contact</th>
             <th>Logged at</th>
@@ -27,7 +28,8 @@
         </thead>
         <tbody>
           <tr v-for="item in loggerList" :key="item.id">
-            <td style="width: 40%">
+            <td>{{ item.id }}</td>
+            <td>
               <a
                 id="feedbackTitle"
                 @click="this.$router.push('/loggerdetail/' + item.id)"
