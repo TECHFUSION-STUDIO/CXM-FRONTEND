@@ -8,7 +8,7 @@
           v-model="value"
           tag-placeholder="Add this as new tag"
           placeholder="Search or add a tag"
-          label="tagName"
+          label="name"
           track-by="id"
           :options="options"
           :multiple="true"

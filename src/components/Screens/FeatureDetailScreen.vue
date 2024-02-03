@@ -167,6 +167,7 @@
               class="form-control"
               aria-describedby="basic-addon1"
               disabled
+              :value="featureDetail.reporterId"
             />
           </div>
 
@@ -176,6 +177,7 @@
               type="text"
               class="form-control"
               aria-describedby="basic-addon1"
+              :value="featureDetail.createdBy"
               disabled
             />
           </div>

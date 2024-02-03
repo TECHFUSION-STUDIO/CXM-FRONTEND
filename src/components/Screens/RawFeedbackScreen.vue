@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// import axiosConn from "@/axioscon";
 import FeedbackTabular from "./tables/FeedbackTabular.vue";
 
 export default {

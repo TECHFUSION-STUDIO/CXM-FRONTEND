@@ -11,7 +11,7 @@
             class="d-inline-block text-truncate"
             style="max-width: 260px"
             :title="item"
-            >{{ item }}</span
+            >{{ item.name }}</span
           ><span class="ps-2"
             ><i
               class="fa-regular fa-circle-xmark delfilter"
@@ -37,7 +37,7 @@
               href="#"
               v-for="item in dropList"
               :key="item"
-              >{{ item }}</a
+              >{{ item.name }}</a
             >
           </li>
         </div>
@@ -57,12 +57,17 @@ export default {
       dropList: this.finalList,
     };
   },
+  mounted() {
+    console.log("fin list" + this.finalList);
+  },
   watch: {
     searchText(val) {
       this.$emit("searchText", this.searchText);
       console.log(val);
       console.log(
-        this.finalList.filter((a) => a.toLowerCase().includes(val.toLowerCase()))
+        this.finalList.filter((a) =>
+          a.name.toLowerCase().includes(val.name.toLowerCase())
+        )
       );
       this.dropList = this.finalList.filter((a) =>
         a.toLowerCase().includes(val.toLowerCase())
@@ -75,6 +80,7 @@ export default {
         this.selectedText.push(a);
         this.searchText = "";
         this.$emit("selectedText", this.selectedText);
+        this.$emit("select", a);
       }
     },
     removeSelected(a) {

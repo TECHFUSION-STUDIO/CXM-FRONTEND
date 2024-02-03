@@ -248,7 +248,7 @@
                   </router-link>
                 </th>
                 <th>Sub. Id</th>
-                <th>Logger Id</th>
+                <th>Reporter Id</th>
               </tr>
             </thead>
             <tbody>
@@ -262,19 +262,6 @@
                   </router-link>
                 </td>
                 <td style="width: 40%" @mouseover="openedDrop(item)">
-                  <!-- <multiselect
-                    tag-placeholder="Add this feature"
-                    placeholder="Search feature"
-                    label="featureName"
-                    track-by="id"
-                    :multiple="true"
-                    :taggable="true"
-                    @select="addTag"
-                    @remove="removeTag"
-                    :options="featureList"
-                    v-model="item.featureList"
-                    @open="openedDrop(item)"
-                  ></multiselect> -->
                   <TagOption
                     :finalList="[
                       'dawD',
