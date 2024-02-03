@@ -1,50 +1,7 @@
 <template>
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
-      <h5 class="navbar-nav me-auto ms-2">
-        <i class="fa-solid fa-florin-sign me-2"></i> FeedArc
-      </h5>
-      <div class="d-flex" role="search">
-        <div class="w-100">
-          <div class="dropdown-center">
-            <button
-              class="btn btn-outline-secondary btn-sm dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span class="text-truncate d-inline p-0 m-0" style="width: 200px">
-                {{ item == null || item == {} ? "Select Workspace" : item.name }}</span
-              >
-            </button>
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end dropdown-menu-sm-end dropdown-menu-md-end shadow mt-0"
-              style="max-width: 100%"
-            >
-             
-              <li v-for="i in options" :key="i.id" @click="item = i">
-                <a class="dropdown-item text-truncate" :title="i.name" href="#"
-                  >{{ i.name }}
-                </a>
-              </li>
-
-              <li><hr class="dropdown-divider" /></li>
-            
-
-              <li class="text-center" @click="this.$router.push('/createproject')">
-                <a class="dropdown-item text-truncate"
-                  ><i class="fa-solid fa-folder-plus me-1"></i>Create Workspace</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav> -->
   <HeaderComponent />
   <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
-    <div class="ms-auto text-white p-1" style="font-size: 14px">
+    <div class="ms-auto text-white p-1" style="font-size: 12px">
       <span
         class="me-2 ms-2"
         style="cursor: pointer"
@@ -68,7 +25,6 @@
     </div>
   </div>
   <div class="wrapper bg-light">
-    <!-- Sidebar  -->
     <nav
       v-if="this.store.IS_LOGGED_IN"
       id="sidebar"
@@ -101,7 +57,6 @@
       </ul>
     </nav>
 
-    <!-- Page Content  -->
     <div id="content">
       <div>
         <div class="p-2">
