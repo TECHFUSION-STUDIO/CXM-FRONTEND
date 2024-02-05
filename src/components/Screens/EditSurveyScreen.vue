@@ -24,7 +24,7 @@
               type="text"
               class="form-control"
               id="categoryName"
-              v-model="surveyFormDetail.surveyFormName"
+              v-model="surveyFormDetail.name"
             />
           </div>
         </div>
@@ -35,7 +35,7 @@
               class="form-control"
               id="categoryDesc"
               rows="3"
-              v-model="surveyFormDetail.surveyFormDescription"
+              v-model="surveyFormDetail.description"
             ></textarea>
           </div>
         </div>
@@ -122,10 +122,10 @@ export default {
   methods: {
     fetchSurveyFormDetail() {
       axiosConn
-        .get("/getSurveyForm?businessId=1&workspaceId=1&surveyFormId=" + this.id)
+        .get("findForm?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.surveyFormDetail = res.data;
+          this.surveyFormDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);

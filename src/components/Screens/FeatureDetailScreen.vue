@@ -16,7 +16,7 @@
       </nav>
     </div>
 
-    <div class="bg-white shadow shadow-sm mt-3 p-2">
+    <div class="bg-white shadow shadow-sm mt-3 p-2" v-if="false">
       <div class="row">
         <div class="col-md-6">
           <button class="btn-sm btn btn-warning w-100 my-1">Previous</button>
@@ -326,7 +326,7 @@ export default {
         .get("/findFeature?workspaceId=1&businessId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.featureDetail = res.data.data[0];
+          this.featureDetail = res.data.data;
           this.categoryList.value = res.data.featureCategory;
           this.fetchCategoryById(this.featureDetail.category);
         })

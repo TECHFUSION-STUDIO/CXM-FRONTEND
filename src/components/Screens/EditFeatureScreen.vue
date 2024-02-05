@@ -30,7 +30,7 @@
               type="test"
               class="form-control"
               id="exampleFormControlInput1"
-              v-model="featureDetail.featureName"
+              v-model="featureDetail.name"
             />
           </div>
         </div>
@@ -43,7 +43,7 @@
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
-              v-model="featureDetail.featureDescription"
+              v-model="featureDetail.description"
             ></textarea>
           </div>
         </div>
@@ -74,15 +74,16 @@ export default {
     };
   },
   mounted() {
+    this.id = this.$route.params.featureId;
     this.fetchFeatureDetail();
   },
   methods: {
     fetchFeatureDetail() {
       axiosConn
-        .get("/findFeature?businessId=1&workspaceId=1&featureId=" + this.id)
+        .get("/findFeature?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.featureDetail = res.data;
+          this.featureDetail = res.data.data;
         })
         .catch((err) => {
           console.log(err);

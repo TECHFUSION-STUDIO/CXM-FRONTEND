@@ -49,17 +49,16 @@
               aria-label="Default select example"
               v-model="status"
             >
-              <option selected></option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option v-for="item in constants.FEATURE_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
         <div class="col-md-6">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Category</label>
-            <select
+            <!-- <select
               class="form-select"
               aria-label="Default select example"
               v-model="category"
@@ -68,7 +67,18 @@
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
-            </select>
+            </select> -->
+
+            <multiselect
+              class="form-control p-0 border border-0"
+              v-model="categoryList.value"
+              :options="categoryList.options"
+              placeholder=""
+              label="name"
+              track-by="id"
+              @select="updateCategory('add')"
+              @remove="updateCategory('remove')"
+            ></multiselect>
           </div>
         </div>
         <div class="col-md-4">
@@ -159,23 +169,46 @@
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 import axiosConn from "@/axioscon";
-
+import { constants } from "./constants";
+import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
+import Multiselect from "vue-multiselect";
 export default {
   name: "CreateFeatureScreen",
-  props: ["type", "caller"],
+  props: ["type"],
+  components: {
+    Multiselect,
+  },
   data() {
     return {
-      Name: "",
-      Description: "",
-      Status: "",
-      Category: "",
-      Tags: "",
-      Impact: "",
-      Effort: "",
-      Priority: "",
+      name: "",
+      description: "",
+      status: "",
+      category: "",
+      impact: "",
+      effort: "",
+      priority: "",
+      categoryList: {
+        options: [],
+        value: {},
+      },
+      constants,
     };
   },
+  mounted() {
+    this.fetchCategory();
+  },
   methods: {
+    fetchCategory() {
+      axiosConn
+        .get("/findCategory?businessId=1&workspaceId=1")
+        .then((res) => {
+          console.log(res.data);
+          this.categoryList.options = res.data.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     createFeature() {
       axiosConn
         .post("/createFeature", {
