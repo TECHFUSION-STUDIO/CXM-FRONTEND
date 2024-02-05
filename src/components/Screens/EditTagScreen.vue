@@ -3,10 +3,14 @@
     <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
-          <li class="breadcrumb-item"><a href="#">Tags </a></li>
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
+          <li class="breadcrumb-item">
+            <a @click="this.$router.push('/tags')">Tags </a>
+          </li>
 
-          <li class="breadcrumb-item"><a href="#">Tag Detail </a></li>
-          <li class="breadcrumb-item active" aria-current="page">Edit Tags</li>
+          <li class="breadcrumb-item active" aria-current="page">Edit Tag</li>
         </ol>
       </nav>
     </div>
@@ -23,7 +27,7 @@
               type="text"
               id="tagName"
               class="form-control"
-              v-model="tagDetail.tagName"
+              v-model="tagDetail.name"
               disabled
             />
           </div>
@@ -31,9 +35,10 @@
         <div class="col-md-12">
           <div class="mb-2">
             <label class="form-label" for="tagStatus">Tag Status</label>
-            <select id="tagStatus" class="form-select" v-model="tagDetail.tagStatus">
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+            <select id="tagStatus" class="form-select" v-model="tagDetail.status">
+              <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
@@ -51,6 +56,7 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import { constants } from "./constants";
 
 export default {
   name: "EditTagScreen",
@@ -59,6 +65,7 @@ export default {
       id: "",
       tagDetail: {},
       axiosConn,
+      constants,
     };
   },
   mounted() {
@@ -68,10 +75,10 @@ export default {
   methods: {
     fetchTagDetail() {
       axiosConn
-        .get("/gettagsbyid?businessId=1&projectId=1&tagId=" + this.id)
+        .get("/findTag?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.tagDetail = res.data;
+          this.tagDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);
@@ -79,7 +86,7 @@ export default {
     },
     updateTagDetail() {
       axiosConn
-        .post("/updatetags", this.tagDetail)
+        .post("/createTag", this.tagDetail)
         .then((res) => {
           console.log(res.data);
         })

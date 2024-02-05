@@ -1,13 +1,22 @@
 <template>
   <div>
+    <div class="bg-white shadow shadow-sm mt-1 p-2">
+      <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
+        Showing Surveys <i>for project id BMRC-9877</i>
+      </nav>
+    </div>
+
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row w-100">
         <div class="col-md-3">
           <button
-            class="btn btn-primary mt-2"
-            @click="this.$router.push('/createsurveys')"
+            class="btn btn-primary mt-2 shadow"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#staticBackdrop"
+            aria-controls="staticBackdrop"
+            @click.prevent="showCreateFormMenu = true"
           >
-            Create a Survey
+            Create Survey
           </button>
         </div>
         <div class="col-md-6">
@@ -18,7 +27,7 @@
               placeholder="Search Services"
               aria-label="Search"
             />
-            <button class="btn btn-success">
+            <button class="btn btn-primary">
               <i class="fa-brands fa-searchengin"></i>
             </button>
           </div>
@@ -26,52 +35,65 @@
         <div class="col-md-3"></div>
       </div>
       <div class="table-responsive-md mt-3">
-        <table class="table table-hover table-bordered mt-4 w-100">
+        <table class="table table-hover table-bordered mt-4 w-100 shadow-sm">
           <thead>
             <tr class="bg-light">
-              <td style="width: 40%">Survey Name</td>
-
-              <td>Status</td>
-              <td>Last Response</td>
-              <td>Tot Response</td>
-              <td>Added DateTime</td>
+              <th style="width: 40%">Survey Name</th>
+              <th class="text-center">Status</th>
+              <th>Last Response</th>
+              <th>Tot Response</th>
+              <th>Added DateTime</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in surveyFormList" :key="item.id">
               <td style="width: 40%">
-                <span
+                <a
                   id="feedbackTitle"
-                  @click="this.$router.push('/surveys/' + item.id)"
-                  >{{ item.surveyFormName }}</span
+                  @click="this.$router.push('/surveys/' + item.id + '/question')"
+                  >{{ item.name }}</a
                 >
               </td>
-              <td>
+              <td class="text-center">
                 <!-- {{ item.surveyFormStatus }} -->
-                <span class="badge text-bg-success">{{ item.surveyFormStatus }}</span>
+                <span class="text-success fw-bold">{{ item.status }}</span>
               </td>
               <td>vs</td>
 
               <td></td>
-              <td>{{ item.addedDateTime }}</td>
+              <td>{{ item.createdAt }}</td>
+            </tr>
+            <tr v-if="surveyFormList.length == 0">
+              <td class="text-center" colspan="5"><i>No Data Found</i></td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
 
-        <!-- <div class="text-center">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link">Prev</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div> -->
+  <div
+    class="offcanvas offcanvas-end"
+    data-bs-backdrop="static"
+    :class="showCreateFormMenu ? 'show' : ''"
+    tabindex="-1"
+    :style="{ visibility: showCreateFormMenu ? 'visible' : 'hidden' }"
+    id="staticBackdrop"
+    aria-labelledby="staticBackdropLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="staticBackdropLabel">Create Form</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+        @click="showCreateFormMenu = false"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <CreateSurveyScreen type="offcanvas" @success="showCreateFormMenu = false" />
       </div>
     </div>
   </div>
@@ -79,12 +101,14 @@
 
 <script>
 import axiosConn from "@/axioscon";
-
+import CreateSurveyScreen from "./CreateSurveyScreen.vue";
 export default {
   name: "SurveyScreen",
+  components: { CreateSurveyScreen },
   data() {
     return {
       surveyFormList: [],
+      showCreateFormMenu: false,
       axiosConn,
     };
   },
@@ -94,10 +118,10 @@ export default {
   methods: {
     fetchAllSurveyForm() {
       axiosConn
-        .get("/getallsurveyform?businessId=1&projectId=1")
+        .get("/findForm?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.surveyFormList = res.data;
+          this.surveyFormList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

@@ -1,11 +1,20 @@
 <template>
   <div>
-    <div class="bg-white shadow shadow-sm p-3">
-      <div class="d-flex mb-2">
-        <div class="me-auto">
-          <h6>Survey General Info</h6>
-        </div>
-      </div>
+    <div class="bg-white shadow shadow-sm mt-1 p-2">
+      <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
+        <ol class="breadcrumb p-0 m-0">
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
+          <li class="breadcrumb-item">
+            <a @click="this.$router.push('/surveys/')">Survey </a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Edit Survey</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="bg-white shadow shadow-sm mt-3 p-3">
       <p class="text-muted">Survey Id : {{ id }}</p>
       <div class="row">
         <div class="col-md-12">
@@ -30,7 +39,7 @@
             ></textarea>
           </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryName" class="form-label">Survey Start Date</label>
             <input
@@ -52,7 +61,7 @@
             />
           </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
           <div class="mb-3">
             <label for="categoryStatus" class="form-label">Survey Status</label>
             <select
@@ -65,10 +74,22 @@
             </select>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="categoryStatus" class="form-label">Survey Type</label>
+            <select
+              id="categoryStatus"
+              class="form-select"
+              v-model="surveyFormDetail.surveyType"
+            >
+              <option value="SURVEY">Survey</option>
+              <option value="QUIZ" disabled>Quiz (coming soon)</option>
+            </select>
+          </div>
+        </div> -->
         <div class="col-md-12">
           <div class="text-center mt-3 mb-3">
             <button class="btn btn-outline-danger m-2 w-25">Reset</button>
-            <!-- <button class="btn btn-outline-primary m-2 w-25">Edit</button> -->
             <button
               class="btn btn-outline-success m-2 w-25"
               @click="updateSurveyFormDetail()"
@@ -101,7 +122,7 @@ export default {
   methods: {
     fetchSurveyFormDetail() {
       axiosConn
-        .get("/getsurveyformbyid?businessId=1&projectId=1&surveyFormId=" + this.id)
+        .get("/getSurveyForm?businessId=1&workspaceId=1&surveyFormId=" + this.id)
         .then((res) => {
           console.log(res.data);
           this.surveyFormDetail = res.data;
@@ -112,7 +133,7 @@ export default {
     },
     updateSurveyFormDetail() {
       axiosConn
-        .post("/updatesurveyform", this.surveyFormDetail)
+        .post("/updateSurveyForm", this.surveyFormDetail)
         .then((res) => {
           console.log(res.data);
         })

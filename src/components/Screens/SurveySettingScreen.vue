@@ -1,39 +1,158 @@
 <template>
-  <div>
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a
-          :class="activeItem == 1 ? 'nav-link active' : 'nav-link'"
-          @click="
-            this.$router.push('/surveys/' + id + '/surveysettings/general');
-            activeItem = 1;
-          "
-          >General</a
+  <div class="my-4">
+    <div class="ms-2 me-2 mb-3 row">
+      <div class="col-md-6">
+        <label class="me-2">All new Epics created for this Form should be :</label>
+      </div>
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="Public"
+            v-model="featureAccessModifier"
+          />
+          <label class="form-check-label" for="inlineRadio1">Public</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="Private"
+            v-model="featureAccessModifier"
+          />
+          <label class="form-check-label" for="inlineRadio2">Private</label>
+        </div>
+      </div>
+    </div>
+    <div class="ms-2 me-2 mb-3 row">
+      <div class="col-md-6">
+        <label class="me-2"
+          >Sentiment Analysis Engine
+          <span class="text-muted fst-italic">(Only on Single/Multi Line Text)</span>
+          :</label
         >
-      </li>
-      <li class="nav-item">
-        <a
-          :class="activeItem == 3 ? 'nav-link active' : 'nav-link'"
-          @click="
-            this.$router.push('/surveys/' + id + '/surveysettings/question');
-            activeItem = 3;
-          "
-          >Questions</a
-        >
-      </li>
-      <li class="nav-">
-        <a
-          :class="activeItem == 2 ? 'nav-link active' : 'nav-link'"
-          @click="
-            this.$router.push('/surveys/' + id + '/surveysettings/integration');
-            activeItem = 2;
-          "
-          >Integration</a
-        >
-      </li>
-    </ul>
+      </div>
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="Public"
+            v-model="featureAccessModifier"
+          />
+          <label class="form-check-label" for="inlineRadio1">On</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="Private"
+            v-model="featureAccessModifier"
+          />
+          <label class="form-check-label" for="inlineRadio2">Off</label>
+        </div>
+      </div>
+    </div>
 
-    <router-view />
+    <div class="ms-2 me-2 mb-3 row">
+      <div class="col-md-6">
+        <label class="me-2"
+          >Feature Analysis Engine
+          <span class="text-muted fst-italic">(Only on Single/Multi Line Text)</span>
+          :</label
+        >
+      </div>
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="Public"
+            v-model="featureAccessModifier"
+          />
+          <label class="form-check-label" for="inlineRadio1">On</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="Private"
+            v-model="featureAccessModifier"
+          />
+          <label class="form-check-label" for="inlineRadio2">Off</label>
+        </div>
+      </div>
+    </div>
+    <div class="ms-2 me-2 mb-3 row">
+      <div class="col-md-6"><label class="me-2">Survey Status :</label></div>
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="surveyStatus"
+            id="surveyStatusActive"
+            value="Active"
+          />
+          <label class="form-check-label" for="surveyStatusActive">Active</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="surveyStatus"
+            id="surveyStatusInactive"
+            value="Inactive"
+          />
+          <label class="form-check-label" for="surveyStatusInactive">Inactive</label>
+        </div>
+      </div>
+    </div>
+    <div class="ms-2 me-2 mb-3 row">
+      <div class="col-md-6">
+        <label class="me-2">Survey Start Date :</label>
+      </div>
+      <div class="col-md-6">
+        <input
+          type="datetime-local"
+          class="form-control form-control-sm"
+          id="exampleFormControlInput1"
+          placeholder="name@example.com"
+        />
+      </div>
+    </div>
+    <div class="ms-2 me-2 mb-3 row">
+      <div class="col-md-6">
+        <label class="me-2">Survey End Date :</label>
+      </div>
+      <div class="col-md-6">
+        <input
+          type="datetime-local"
+          class="form-control form-control-sm"
+          id="exampleFormControlInput1"
+          placeholder="name@example.com"
+        />
+      </div>
+    </div>
+
+    <div class="ms-2 me-2 mb-3">
+      <button class="btn btn-primary btn-sm ms-0 m-1">Reset</button>
+
+      <button class="btn btn-primary btn-sm m-1">Update</button>
+    </div>
   </div>
 </template>
 
@@ -43,19 +162,11 @@ export default {
   data() {
     return {
       id: "",
-      activeItem: 1,
+      featureAccessModifier: "Public",
     };
   },
   mounted() {
     this.id = this.$route.params.surveyId;
-    if (window.location.href.includes("/general")) {
-      this.activeItem = 1;
-    } else if (window.location.href.includes("/integration")) {
-      this.activeItem = 2;
-    } else if (window.location.href.includes("/question")) {
-      this.activeItem = 3;
-    }
-    console.log(this.activeItem);
   },
 };
 </script>

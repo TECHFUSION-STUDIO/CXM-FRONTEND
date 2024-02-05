@@ -1,5 +1,20 @@
 <template>
   <div>
+    <div class="bg-white shadow shadow-sm mt-1 p-2">
+      <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
+        <ol class="breadcrumb p-0 m-0">
+          <a @click="this.$router.go(-1)" title="Go to Previous Page"
+            ><i class="fa-solid fa-arrow-left me-2"></i>
+          </a>
+          <li class="breadcrumb-item">
+            <a @click="this.$router.push('/category')">Category </a>
+          </li>
+
+          <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
+        </ol>
+      </nav>
+    </div>
+
     <div class="bg-white shadow shadow-sm mt-3 p-3">
       <div class="row">
         <div class="col-md-12">
@@ -13,7 +28,7 @@
               class="form-control"
               id="categoryName"
               disabled
-              v-model="categoryDetail.categoryName"
+              v-model="categoryDetail.name"
             />
           </div>
         </div>
@@ -24,7 +39,7 @@
               class="form-control"
               id="categoryDesc"
               rows="3"
-              v-model="categoryDetail.categoryDesc"
+              v-model="categoryDetail.description"
             ></textarea>
           </div>
         </div>
@@ -34,10 +49,11 @@
             <select
               id="categoryStatus"
               class="form-select"
-              v-model="categoryDetail.categoryStatus"
+              v-model="categoryDetail.status"
             >
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option v-for="item in constants.GENERIC_STATUS" :key="item" :value="item">
+                {{ item }}
+              </option>
             </select>
           </div>
         </div>
@@ -59,6 +75,7 @@
 
 <script>
 import axiosConn from "@/axioscon";
+import { constants } from "./constants";
 
 export default {
   name: "EditCategoryScreen",
@@ -68,6 +85,7 @@ export default {
       id: "",
       categoryDetail: {},
       axiosConn,
+      constants,
     };
   },
   mounted() {
@@ -77,10 +95,10 @@ export default {
   methods: {
     fetchCategoryDetail() {
       axiosConn
-        .get("/getcategorybyid?businessId=1&projectId=1&categoryId=" + this.id)
+        .get("/findCategory?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.categoryDetail = res.data;
+          this.categoryDetail = res.data.data[0];
         })
         .catch((err) => {
           console.log(err);
@@ -88,7 +106,7 @@ export default {
     },
     updateCategoryDetail() {
       axiosConn
-        .post("/updatecategory", this.categoryDetail)
+        .post("/createCategory", this.categoryDetail)
         .then((res) => {
           console.log(res.data);
         })

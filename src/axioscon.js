@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosConn = axios.create({
-  baseURL: 'http://localhost:8081'
+  baseURL: 'http://localhost:3000'
 });
 
 export default axiosConn;
@@ -16,6 +16,7 @@ axiosConn.interceptors.request.use(function (config) {
     // if(sessionStorage.getItem('jwt_token')) {
     //   config.headers.Authorization = `Bearer ${sessionStorage.getItem('jwt_token')}`;
     // }
+    // config.headers.Authorization = 'eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImF2aUBnbWFpbC5jb20iLCJpc3MiOiJURlMiLCJpYXQiOjE3MDU3MjUxOTMsImV4cCI6MTcwNzc5ODc5M30.XFwLEZ6HoHD-SB_fiGXPZgJEgr3biqr0lpJIpUbL8BW18y1Ilk8KeeTq7kP4mCrdESCVNQkwSn6gw9KaCKiVAQ'
     return config;
   }, function (error) {
     // Request error

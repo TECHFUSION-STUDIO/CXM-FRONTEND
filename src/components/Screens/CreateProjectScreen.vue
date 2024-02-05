@@ -1,4 +1,7 @@
 <template>
+  <div class="bg-white shadow shadow-sm mt-1 p-2">
+    <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">Create Workspace</nav>
+  </div>
   <div class="bg-white shadow shadow-sm mt-3 p-3">
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label">Enter Project Name</label>
@@ -74,13 +77,10 @@ export default {
   methods: {
     createProject() {
       axioscon
-        .post("/createprojects", {
-          addedDateTime: "",
-          lastModifiedDatetime: "2023-06-26T17:03:10.147Z",
+        .post("/createWorkspace", {
           businessId: 1,
-          projectDescription: this.projectDescription,
-          projectName: this.projectName,
-          visibility: this.projectVisibility,
+          description: this.projectDescription,
+          name: this.projectName,
           status: this.projectStatus,
         })
         .then((res) => {

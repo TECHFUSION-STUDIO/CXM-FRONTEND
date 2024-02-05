@@ -2,10 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-        path: '/setup',
-        name: 'setup',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SetupScreen.vue'),
-      },
+    path: '/setup',
+    name: 'setup',
+    component: () => import(/* webpackChunkName: "about" */ '../components/SetupScreen.vue'),
+  },
+
+
   {
     path: '/',
     name: 'home',
@@ -17,10 +19,40 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/DashboardScreen.vue'),
       },
 
+  
+      {
+        path: '/account',
+        name: 'account',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MyAccount.vue'),
+      },
+
       {
         path: '/createproject',
         name: 'createproject',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateProjectScreen.vue'),
+      },
+      {
+        path: '/feature',
+        name: 'feature',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FeatureScreen.vue'),
+      },
+
+      {
+        path: '/createfeature',
+        name: 'createfeature',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateFeatureScreen.vue'),
+      },
+
+      {
+        path: '/editfeature/:featureId',
+        name: 'editfeature',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditFeatureScreen.vue'),
+      },
+
+      {
+        path: '/feature/:featureId',
+        name: 'featureDetail',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/FeatureDetailScreen.vue'),
       },
       {
         path: '/surveys',
@@ -32,47 +64,69 @@ const routes = [
         name: 'createsurveys',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyScreen.vue'),
       },
-    
+
+      {
+        path: '/editsurvey/:surveyId',
+        name: 'editsurvey',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
+      },
+
       {
         path: '/surveys/:surveyId',
         name: 'surveysdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyDetailScreen.vue'),
+        children: [
+          {
+            path: '/surveys/:surveyId/question',
+            name: 'surveyquestion',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyQuestionScreen.vue'),
+          },
+          {
+            path: '/surveys/:surveyId/responses',
+            name: 'surveyresponses',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
+          },
+
+          {
+            path: '/surveys/:surveyId/submission',
+            name: 'surveysubmission',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySubmissionScreen.vue'),
+          },
+
+          {
+            path: '/surveys/:surveyId/loggers',
+            name: 'surveyloggers',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyLoggerScreen.vue'),
+          },
+
+          {
+            path: '/surveys/:surveyId/settings',
+            name: 'surveysettings',
+            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySettingScreen.vue'),
+          },
+     
+        ]
       },
 
       {
-        path: '/surveys/:surveyId/raw',
-        name: 'rawfeedbackscreen',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
+        path: '/surveys/:surveyId/submission/:submissionId',
+        name: 'surveysubmissiondetail',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySubmissionDetailScreen.vue'),
       },
+
+      // {
+      //   path: '/surveys/:surveyId/raw',
+      //   name: 'rawfeedbackscreen',
+      //   component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackScreen.vue'),
+      // },
       {
         path: '/surveys/:surveyId/createquestion',
         name: 'createquestion',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateSurveyQuestion.vue'),
       },
-     
-      {
-        path: '/surveys/:surveyId/surveysettings/',
-        name: 'surveysettings',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveySettingScreen.vue'),
-        children:[
-          {
-            path: '/surveys/:surveyId/surveysettings/question',
-            name: 'surveysettingsquestion',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyQuestionScreen.vue'),
-          },
-          {
-            path: '/surveys/:surveyId/surveysettings/integration',
-            name: 'surveysettingsintegration',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/SurveyIntegrationScreen.vue'),
-          },
-          {
-            path: '/surveys/:surveyId/surveysettings/general',
-            name: 'surveysettingsgeneral',
-            component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditSurveyScreen.vue'),
-          },
-        ]
-      },
-    
+
+
+
       {
         path: '/surveys/:surveyId/editquestion/:surveyQuestionId',
         name: 'editquestion',
@@ -84,38 +138,20 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/RawFeedbackDetailScreen.vue'),
       },
 
-  
+
       {
         path: '/logger',
         name: 'logger',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/LoggerScreen.vue'),
       },
+      
       {
         path: '/loggerdetail/:loggerId',
         name: 'loggerdetail',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/LoggerDetailScreen.vue'),
       },
 
-      {
-        path: '/board',
-        name: 'board',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BoardScreen.vue'),
-      },
-      {
-        path: '/createboard',
-        name: 'createboard',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateBoardScreen.vue'),
-      },
-      {
-        path: '/editboard/:boardId',
-        name: 'editboard',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditBoardScreen.vue'),
-      },
-      {
-        path: '/boarddetail/:boardId',
-        name: 'boarddetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/BoardDetailScreen.vue'),
-      },
+     
       {
         path: '/category',
         name: 'category',
@@ -131,11 +167,7 @@ const routes = [
         name: 'editcategory',
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditCategoryScreen.vue'),
       },
-      {
-        path: '/categorydetail/:categoryId',
-        name: 'categorydetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CategoryDetailScreen.vue'),
-      },
+
       {
         path: '/tags',
         name: 'tags',
@@ -157,43 +189,32 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/Screens/TagDetailScreen.vue'),
       },
       {
-        path: '/projectmember',
-        name: 'projectmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberScreen.vue'),
-      },
-      {
-        path: '/generalmember',
-        name: 'generalmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/GeneralMemberScreen.vue'),
-      },
-      {
-        path: '/createmember',
-        name: 'createmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/CreateMemberScreen.vue'),
+        path: '/member',
+        name: 'member',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/MemberScreen.vue'),
       },
 
-      {
-        path: '/editmember/:memberId',
-        name: 'editmember',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/EditMemberScreen.vue'),
-      },
-      {
-        path: '/memberdetail/:memberId',
-        name: 'memberdetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/GeneralMemberDetailScreen.vue'),
-      },
-      {
-        path: '/projectmemberdetail/:memberId',
-        name: 'projectmemberdetail',
-        component: () => import(/* webpackChunkName: "about" */ '../components/Screens/ProjectMemberDetailScreen.vue'),
-      },
-    ] 
+    ]
   },
   {
     path: '/login',
     name: 'login',
-
-    component: () => import(/* webpackChunkName: "about" */ '../components/LoginLogup.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../components/LoginScreen.vue')
+  },
+  {
+    path: '/forgotPassword',
+    name: 'forgotPassword',
+    component: () => import(/* webpackChunkName: "about" */ '../components/ForgotPasswordScreen.vue')
+  },
+  {
+    path: '/resetPassword',
+    name: 'resetPassword',
+    component: () => import(/* webpackChunkName: "about" */ '../components/ResetPasswordScreen.vue')
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import(/* webpackChunkName: "about" */ '../components/SignupScreen.vue')
   },
 ]
 
