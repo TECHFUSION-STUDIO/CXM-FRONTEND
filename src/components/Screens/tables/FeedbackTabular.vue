@@ -1,195 +1,6 @@
 <template>
   <div>
     <div class="ms-0 me-0 row d-flex justify-content-center">
-      <div class="col-md-7">
-        <button
-          type="button"
-          class="btn btn-primary btn-sm me-2 dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          data-bs-auto-close="outside"
-        >
-          Sort
-        </button>
-        <form
-          class="dropdown-menu p-3 shadow-lg"
-          style="max-height: 400px; overflow: auto"
-        >
-          <div class="form-check" v-for="(item, index) in sortListItems" :key="index">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="sortSelect"
-              :id="item.value"
-              :value="item.value"
-              v-model="sortSelected"
-            />
-            <label class="form-check-label" :for="item.value">
-              {{ item.name }}
-            </label>
-          </div>
-
-          <hr />
-
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="sortOrderSelect"
-              id="sortOrder1"
-              value="asc"
-              v-model="sortOrder"
-            />
-            <label class="form-check-label" for="sortOrder1"> Low to High </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="sortOrderSelect"
-              id="sortOrder2"
-              value="desc"
-              v-model="sortSelected"
-            />
-            <label class="form-check-label" for="sortOrder2"> High to Low </label>
-          </div>
-          <div class="mt-3">
-            <button type="submit" class="btn btn-sm me-1 btn-primary">Reset</button>
-            <button type="submit" class="btn btn-sm me-1 btn-primary">Apply</button>
-          </div>
-        </form>
-
-        <button
-          type="button"
-          class="btn btn-primary btn-sm me-1 dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          data-bs-auto-close="outside"
-        >
-          Filter
-        </button>
-        <form
-          class="dropdown-menu p-4 shadow-lg"
-          style="max-height: 400px; overflow: auto"
-        >
-          <div class="">
-            <div class="">
-              <label class="form-label" for="subid">Feature</label>
-
-              <multiselect
-                tag-placeholder="Add this feature"
-                placeholder=""
-                label="featureName"
-                track-by="id"
-                :multiple="true"
-                :taggable="true"
-                @select="addTag"
-                @remove="removeTag"
-                :options="featureList"
-                @open="openedDrop(item)"
-              ></multiselect>
-            </div>
-            <div class="mt-2">
-              <label class="form-label" for="subid">Submission Id</label>
-              <input class="form-control form-control-sm" id="subid" type="number" />
-            </div>
-            <div class="mt-2">
-              <label class="form-label" for="subid">Reporter</label>
-              <select
-                class="form-select form-select-sm"
-                aria-label="Small select example"
-                id="subid"
-              >
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div class="mt-2">
-              <label class="form-label" for="subid">Creator</label>
-              <select
-                class="form-select form-select-sm"
-                aria-label="Small select example"
-                id="subid"
-              >
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div class="mt-2">
-              <label class="form-label" for="subid">Question</label>
-              <select
-                class="form-select form-select-sm"
-                aria-label="Small select example"
-                id="subid"
-              >
-                <option
-                  v-for="item in questionList"
-                  :key="item.id"
-                  :value="item.surveyQuestion"
-                >
-                  {{ item.surveyQuestion }}
-                </option>
-              </select>
-            </div>
-            <div class="mt-2">
-              <label class="form-label" for="subid">Status</label>
-              <select
-                class="form-select form-select-sm"
-                aria-label="Small select example"
-                id="subid"
-              >
-                <option
-                  v-for="item in constants.FEEDBACK_STATUS"
-                  :key="item"
-                  :value="item"
-                >
-                  {{ item }}
-                </option>
-              </select>
-            </div>
-            <div class="mt-2">
-              <label class="form-label" for="subid">Added Date</label>
-              <div class="row">
-                <div class="col-md-6">
-                  <label
-                    class="text-muted fst-italic"
-                    style="font-size: small"
-                    for="subid"
-                    >Start Date</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="subid"
-                    type="datetime-local"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label
-                    class="text-muted fst-italic"
-                    style="font-size: small"
-                    for="subid"
-                    >End Date</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="subid"
-                    type="datetime-local"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="mt-3">
-              <button type="submit" class="btn btn-sm me-1 btn-primary">Reset</button>
-              <button type="submit" class="btn btn-sm me-1 btn-primary">Apply</button>
-            </div>
-          </div>
-        </form>
-      </div>
-
       <div class="col-md-5">
         <div class="input-group">
           <input
@@ -262,27 +73,20 @@
                   </router-link>
                 </td>
                 <td style="width: 40%" @mouseover="openedDrop(item)">
-                  <TagOption
-                    :finalList="[
-                      'dawD',
-                      'FCSACFV',
-                      'fs',
-                      'gsgsg',
-                      'gsvg',
-                      'vdxfv ',
-                      'grfsgv',
-                      'fedwsf',
-                      'bdxc',
-                      'JNUTYRGFHNJ v svscvscv sv savvv savaesvv da eabab aevbeab cvscv sv savvv adcsv  svasvasvs vfcacfaacfs savaesvv da eabab aevbeab ',
-                      'jhgvfcx v svscvscv sv savvv savaesvv da eabab aevbeab cvscv sv savvv adcsv  svasvasvs vfcacfaacfs savaesvv da eabab aevbeab ',
-                      'fghkuygjhgtfdsz v svscvscv sv savvv savaesvv da eabab aevbeab cvscv sv savvv adcsv  svasvasvs vfcacfaacfs savaesvv da eabab aevbeab ',
-                      'rrf',
-                      'ffffffffffffff',
-                    ]"
-                    :selectedOptions="['dawD', 'FCSACFV']"
-                    @searchText="updateSearch"
-                    @selectedText="updateSelect"
-                  />
+                  <multiselect
+                    tag-placeholder="Add this feature"
+                    placeholder=""
+                    label="name"
+                    track-by="id"
+                    :multiple="true"
+                    :taggable="true"
+                    @select="addTag"
+                    @remove="removeTag"
+                    @open="openedDrop(item)"
+                    :options="featureList"
+                    v-model="featureValue"
+                    :block-keys="['Tab', 'Enter']"
+                  ></multiselect>
                 </td>
                 <td>
                   <router-link
@@ -365,51 +169,27 @@ import axiosConn from "@/axioscon";
 import { constants } from "../constants";
 import Multiselect from "vue-multiselect";
 import CreateFeatureScreenVue from "../CreateFeatureScreen";
-import TagOption from "../charts/TagOption.vue";
 
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
 export default {
   name: "FeedbackTabular",
   props: ["criteria", "calledFrom"],
   components: {
     Multiselect,
     CreateFeatureScreenVue,
-    TagOption,
   },
   data() {
     return {
       surveyId: this.$route.params.surveyId,
-      questionList: [],
       featureList: [],
-      featureFeedbackIdOpened: "",
       featureValue: [],
+      featureFeedbackIdOpened: "",
       rawFeedbackList: [],
-      showMenu: false,
       id: "",
       endpoint: "",
-      filterType: "filter",
       constants,
-      sortListItems: [
-        {
-          name: "Added Date",
-          value: "addedDateTime",
-        },
-        {
-          name: "Modified Date",
-
-          value: "lastModifiedDateTime",
-        },
-        {
-          name: "Submission Id",
-
-          value: "formSubmissionId",
-        },
-      ],
-      sortSelected: "",
-      sortOrder: "asc",
     };
-  },
-  updated() {
-    console.log(this.questionDropDown);
   },
   mounted() {
     this.fetchAllFeature();
@@ -431,7 +211,6 @@ export default {
           "=" +
           this.$route.params.featureId;
       }
-      this.fetchSurveyQuestionDetail();
     }
     this.fetchFeedback();
   },
@@ -448,54 +227,58 @@ export default {
       this.featureFeedbackIdOpened = item;
     },
     addTag(selectedOption, id) {
-      console.log(selectedOption);
-      console.log(id);
-      console.log(this.featureFeedbackIdOpened.id);
+      console.log(selectedOption + id);
+
+      this.createFeatureResponse();
+    },
+    removeTag(selectedOption, id) {
+      console.log(selectedOption + id);
+
+      this.createFeatureResponse();
+    },
+    createFeatureResponse() {
+      let selectedFeatureList = this.featureValue.map((a) => a.id);
       axiosConn
-        .post("/createFeatureFeedback", {
-          addedDateTime: "",
-          featureFeedbackId: {
-            featureId: selectedOption.id,
-            feedbackId: this.featureFeedbackIdOpened.id,
-          },
+        .post("/createFeatureResponse", {
+          workspaceId: 1,
+          businessId: 1,
+          featureId: selectedFeatureList,
+          responseId: this.featureFeedbackIdOpened.id,
+          addedBy: "",
         })
         .then((res) => {
           console.log(res.data);
+          Swal.fire({
+            toast: true,
+            text: "Tags updated successfully",
+            icon: "success",
+            position: "top",
+            width: 300,
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
         })
         .catch((err) => {
           console.log(err);
-          this.featureFeedbackIdOpened.feature = this.featureFeedbackIdOpened.feature.filter(
-            (a) => a.id != selectedOption.id
-          );
+          Swal.fire({
+            toast: true,
+            text: "Error Occured while updating tags",
+            icon: "error",
+            position: "top",
+            width: 300,
+            showConfirmButton: false,
+            timer: 3000,
+            background: "white",
+          });
         });
     },
-
-    removeTag(removedOption, id) {
-      console.log(removedOption);
-      console.log(id);
-      console.log(this.featureFeedbackIdOpened.feature);
-      axiosConn
-        .get(
-          "/deleteFeatureFeedback?featureId=" +
-            removedOption.id +
-            "&feedbackId=" +
-            this.featureFeedbackIdOpened.id
-        )
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-          this.featureFeedbackIdOpened.feature.push(removedOption);
-        });
-    },
-
     fetchAllFeature() {
       axiosConn
-        .get("/getFeature?businessId=1&workspaceId=1")
+        .get("/findFeature?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
-          this.featureList = res.data;
+          this.featureList = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -508,19 +291,6 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.rawFeedbackList = res.data.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
-    fetchSurveyQuestionDetail() {
-      axiosConn
-        .get("/getSurveyQuestion?businessId=1&workspaceId=1&surveyFormId=" + this.id)
-        .then((res) => {
-          console.log(res.data);
-
-          this.questionList = res.data;
         })
         .catch((err) => {
           console.log(err);

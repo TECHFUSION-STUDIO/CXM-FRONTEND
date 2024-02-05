@@ -6,14 +6,14 @@
       <div class="mt-3" id="collapseAddTag">
         <multiselect
           v-model="value"
-          tag-placeholder="Add this as new tag"
           placeholder="Search or add a tag"
           label="name"
           track-by="id"
           :options="options"
           :multiple="true"
           :taggable="true"
-          @select="onSelect"
+          @remove="removeTag"
+          @select="addTag"
         ></multiselect>
       </div>
     </div>
@@ -42,13 +42,16 @@ export default {
   mounted() {
     this.id = this.$route.params.featureId;
     console.log(this.id);
-    // this.fetchAllTags();
-    // this.fetchFeedbackTags();
     this.fetchAllTags();
     this.fetchFeedbackTags();
   },
   methods: {
-    onSelect(selectedOption, id) {
+    removeTag(newTag) {
+      console.log("addTag called");
+      console.log(newTag);
+      this.submitAddTag();
+    },
+    addTag(selectedOption, id) {
       console.log(selectedOption + id);
       this.submitAddTag();
     },
@@ -57,7 +60,7 @@ export default {
         .get("/findTag?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res);
-          this.options = res.data;
+          this.options = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -67,10 +70,17 @@ export default {
     fetchFeedbackTags() {
       console.log(this.id);
       axioscon
-        .get("/getTag?businessId=" + 1 + "&workspaceId=" + 1 + "&featureId=" + this.id)
+        .get(
+          "/findFeatureTag?businessId=" +
+            1 +
+            "&workspaceId=" +
+            1 +
+            "&featureId=" +
+            this.id
+        )
         .then((res) => {
           console.log(res.data);
-          this.value = res.data;
+          this.value = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -81,18 +91,18 @@ export default {
       let selectedTagList = this.value.map((a) => a.id);
       console.log(selectedTagList);
       axioscon
-        .post("/addFeatureTags", {
-          tagIdList: selectedTagList,
+        .post("/createFeatureTag", {
+          tagId: selectedTagList,
           featureId: this.id,
           businessId: "1",
           workspaceId: "1",
+          addedBy: "",
         })
         .then((res) => {
           console.log(res);
           this.fetchFeedbackTags();
           Swal.fire({
             toast: true,
-            animation: false,
             text: "Tags updated successfully",
             icon: "success",
             position: "top",
@@ -107,7 +117,6 @@ export default {
           this.fetchFeedbackTags();
           Swal.fire({
             toast: true,
-            animation: false,
             text: "Error Occured while updating tags",
             icon: "error",
             position: "top",

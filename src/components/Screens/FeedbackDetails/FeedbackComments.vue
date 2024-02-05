@@ -18,7 +18,7 @@
         <div class="card-body">
           <div>{{ item.comment }}</div>
           <span style="font-size: 12px; color: grey"
-            >Added By: hkhkh | Added on : bjbk</span
+            >Posted by {{ item.addedBy }} on {{ item.createdAt }}</span
           >
         </div>
       </div>

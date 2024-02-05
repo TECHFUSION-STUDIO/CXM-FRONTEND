@@ -59,14 +59,10 @@
 import axiosConn from "@/axioscon";
 export default {
   name: "ImpactedCustomer",
-  props: ["type"],
   data() {
     return {
       impactList: [],
-      id:
-        this.type == "feature"
-          ? this.$route.params.featureId
-          : this.$route.params.boardId,
+      id: this.$route.params.featureId,
     };
   },
   mounted() {
@@ -75,13 +71,10 @@ export default {
   methods: {
     fetchImpactedCustomer() {
       axiosConn
-        .get(
-          "/getLoggers?businessId=1&workspaceId=1&" +
-            (this.type == "feature" ? "featureId=" + this.id : "boardId=" + this.id)
-        )
+        .get("/findReporter?businessId=1&workspaceId=1&" + "featureId=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.impactList = res.data;
+          this.impactList = res.data.data;
         })
         .catch((err) => {
           console.log(err);

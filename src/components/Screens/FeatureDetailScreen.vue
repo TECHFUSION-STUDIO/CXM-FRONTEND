@@ -74,17 +74,16 @@
 
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Category</label>
-            <select
-              class="form-select"
-              id="inputGroupSelect03"
-              aria-label="Example select with button addon"
-              v-model="featureDetail.status"
-              @change="updateFeature()"
-            >
-              <option v-for="item in categoryList.options" :key="item" :value="item">
-                {{ item }}
-              </option>
-            </select>
+            <multiselect
+              class="form-control p-0 border border-0"
+              v-model="categoryList.value"
+              :options="categoryList.options"
+              placeholder=""
+              label="name"
+              track-by="id"
+              @select="updateCategory('add')"
+              @remove="updateCategory('remove')"
+            ></multiselect>
           </div>
         </div>
 
@@ -241,6 +240,7 @@ import ImpactedCustomer from "./tables/ImpactedCustomer.vue";
 import { constants } from "./constants";
 import Swal from "sweetalert2";
 import "@sweetalert2/theme-bootstrap-4/bootstrap-4.css";
+import Multiselect from "vue-multiselect";
 
 export default {
   name: "FeatureDetailScreen",
@@ -249,35 +249,14 @@ export default {
     FeatureComments,
     FeatureTag,
     ImpactedCustomer,
+    Multiselect,
   },
   data() {
     return {
-      assigneeDropDown: {
-        options: [
-          {
-            id: -1,
-            memberName: "Unassigned",
-            memberEmail: "string",
-          },
-        ],
-        value: {
-          id: -1,
-          memberName: "Unassigned",
-          memberEmail: "",
-        },
-        isLoading: false,
-      },
-
       categoryList: {
         options: [],
         value: {},
       },
-
-      boardList: {
-        options: [],
-        value: {},
-      },
-
       featureDetail: {},
       id: this.$route.params.featureId,
       constants,
@@ -285,56 +264,23 @@ export default {
   },
   mounted() {
     this.fetchFeatureDetail();
-    this.fetchAllCategory();
+    this.fetchCategory();
   },
-  updated() {
-    console.log(this.featureDetail);
-  },
+
   methods: {
-    updateCatgeory(type) {
-      console.log("id");
+    updateCategory(type) {
+      console.log(this.categoryList);
       if (type == "add") {
-        this.featureDetail.featureCategory = this.categoryList.value;
+        this.featureDetail.category = this.categoryList.value.id;
       } else if (type == "remove") {
-        this.featureDetail.featureCategory = null;
+        this.featureDetail.category = null;
       }
       this.updateFeature();
     },
-    updateBoard(type) {
-      if (type == "add") {
-        this.featureDetail.boardId = this.boardList.value;
-      } else if (type == "remove") {
-        this.featureDetail.boardId = null;
-      }
-      this.updateFeature();
-    },
+
     updateFeature() {
       axiosConn
-        .post("/updateFeature", {
-          id: this.featureDetail.id,
-          businessId: this.featureDetail.businessId,
-          workspaceId: this.featureDetail.workspaceId,
-          boardId:
-            this.featureDetail.boardId != null && this.featureDetail.boardId != ""
-              ? this.featureDetail.boardId.id
-              : null,
-          assigneeId: this.featureDetail.assigneeId,
-          reporterId: this.featureDetail.reporterId,
-          createdBy: this.featureDetail.createdBy,
-          featureName: this.featureDetail.featureName,
-          featureDescription: this.featureDetail.featureDescription,
-          featureStatus: this.featureDetail.featureStatus,
-          featureCategory:
-            this.featureDetail.featureCategory != null &&
-            this.featureDetail.featureCategory != ""
-              ? this.featureDetail.featureCategory.id
-              : null,
-          featurePriority: this.featureDetail.featurePriority,
-          featureImpact: this.featureDetail.featureImpact,
-          featureEffort: this.featureDetail.featureEffort,
-          lastModified: this.featureDetail.lastModified,
-          addedDateTime: this.featureDetail.addedDateTime,
-        })
+        .post("/updateFeature", this.featureDetail)
         .then((res) => {
           console.log(res.data);
           Swal.fire({
@@ -353,12 +299,23 @@ export default {
           console.log(err);
         });
     },
-    fetchAllCategory() {
+    fetchCategory() {
       axiosConn
         .get("/findCategory?businessId=1&workspaceId=1")
         .then((res) => {
           console.log(res.data);
           this.categoryList.options = res.data.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    fetchCategoryById(id) {
+      axiosConn
+        .get("/findCategory?businessId=1&workspaceId=1&id=" + id)
+        .then((res) => {
+          console.log(res.data);
+          this.categoryList.value = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -371,6 +328,7 @@ export default {
           console.log(res.data);
           this.featureDetail = res.data.data[0];
           this.categoryList.value = res.data.featureCategory;
+          this.fetchCategoryById(this.featureDetail.category);
         })
         .catch((err) => {
           console.log(err);

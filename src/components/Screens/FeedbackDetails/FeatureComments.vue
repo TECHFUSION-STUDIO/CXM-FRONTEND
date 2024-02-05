@@ -18,7 +18,7 @@
         <div class="card-body">
           <div>{{ item.comment }}</div>
           <span style="font-size: 12px; color: grey"
-            >Added By: hkhkh | Added on : bjbk</span
+            >Posted by {{ item.addedBy }} on {{ item.createdAt }}</span
           >
         </div>
       </div>
@@ -40,28 +40,18 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.featureId;
+    console.log("feature id :" + this.id);
     this.fetchAllComments();
   },
-
-  // beforeRouteUpdate(to, from, next) {
-  //   console.log("Before Route Update" + to.params.featureId);
-  //   this.id = to.params.featureId;
-  //   console.log(this.id);
-  //   this.fetchAllComments();
-  //   next();
-  // },
   methods: {
     fetchAllComments() {
       axiosConn
         .get(
-          "/getFeatureComments?businessId=1&workspaceId=" +
-            localStorage.getItem("selectedProject") +
-            "&featureId=" +
-            this.id
+          "/findFeatureComment?businessId=1&workspaceId=" + 1 + "&featureId=" + this.id
         )
         .then((res) => {
           console.log(res);
-          this.commentList = res.data;
+          this.commentList = res.data.data;
         })
         .catch((err) => {
           console.log(err);
@@ -69,9 +59,9 @@ export default {
     },
     addComment() {
       axiosConn
-        .post("/addFeatureComments", {
+        .post("/createFeatureComment", {
           businessId: 1,
-          workspaceId: localStorage.getItem("selectedProject"),
+          workspaceId: 1,
           featureId: this.id,
           comment: this.commentDesc,
           addedBy: 0,
@@ -79,7 +69,6 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.commentDesc = "";
-
           this.fetchAllComments();
         })
         .catch((err) => {
