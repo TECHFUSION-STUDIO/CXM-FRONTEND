@@ -42,16 +42,6 @@
             {{ questionDetail.isMandatory }}</span
           >
         </p>
-        <!-- <p class="mt-1">
-          <span class="badge text-bg-primary rounded-0 m-1">
-            <span class="fst-italic"> Question Type </span> :
-            {{ questionDetail.type }}</span
-          >
-          <span class="badge text-bg-primary rounded-0 m-1">
-            <span class="fst-italic"> Question Manadatory </span> :
-            {{ questionDetail.isMandatory }}</span
-          >
-        </p> -->
         <p class="text-muted mt-2">
           <span v-if="loggerDetail.id != null && loggerDetail.id != ''">
             Logged by
@@ -76,22 +66,7 @@
           at {{ feedbackDetail.createdAt }}
         </p>
       </div>
-      <div class="bg-white shadow shadow-sm mt-3 p-3">
-        <h6>Linked Feature</h6>
-        <multiselect
-          class="mt-2"
-          tag-placeholder="Add this as new tag"
-          placeholder="Search or add a tag"
-          label="featureName"
-          track-by="id"
-          :multiple="true"
-          :taggable="true"
-          @select="addTag"
-          @remove="removeTag"
-          :options="featureList"
-          v-model="feedbackFeatureList"
-        ></multiselect>
-      </div>
+      <ResponseFeature />
       <FeedbackComments />
     </div>
 
@@ -103,21 +78,18 @@
 
 <script>
 import FeedbackComments from "./FeedbackDetails/FeedbackComments.vue";
-import Multiselect from "vue-multiselect";
-
+import ResponseFeature from "./FeedbackDetails/ResponseFeature.vue";
 import axiosConn from "@/axioscon";
 
 export default {
   name: "RawFeedbackDetailScreen",
   components: {
     FeedbackComments,
-    Multiselect,
+    ResponseFeature,
   },
   data() {
     return {
       id: this.$route.params.fid,
-      featureList: [],
-      feedbackFeatureList: [],
       feedbackDetail: {},
       questionDetail: {},
       submissionDetail: {},
@@ -127,8 +99,6 @@ export default {
   mounted() {
     this.id = this.$route.params.fid;
     console.log(this.id);
-    this.fetchAllFeature();
-    this.fetchFeedbackFeature();
     this.fetchFeedback();
   },
 
@@ -142,70 +112,6 @@ export default {
           this.questionDetail = res.data.data.questionDetail;
           this.loggerDetail = res.data.data.reporterDetail;
           this.submissionDetail = res.data.data.formSubmissionDetail;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    addTag(selectedOption, id) {
-      console.log(selectedOption);
-      console.log(id);
-      axiosConn
-        .post("/createFeatureFeedback", {
-          addedDateTime: 0,
-          featureFeedbackId: {
-            featureId: selectedOption.id,
-            feedbackId: this.id,
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-          this.feedbackFeatureList = this.feedbackFeatureList.filter(
-            (a) => a.id != selectedOption.id
-          );
-        });
-    },
-
-    removeTag(removedOption, id) {
-      console.log(removedOption);
-      console.log(id);
-      axiosConn
-        .get(
-          "/deleteFeatureFeedback?featureId=" +
-            removedOption.id +
-            "&feedbackId=" +
-            this.id
-        )
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-          this.feedbackFeatureList.push(removedOption);
-        });
-    },
-
-    fetchFeedbackFeature() {
-      axiosConn
-        .get("/getFeature?feedbackId=" + this.id)
-        .then((res) => {
-          console.log(res.data);
-          this.feedbackFeatureList = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-
-    fetchAllFeature() {
-      axiosConn
-        .get("/findFeature?businessId=1&workspaceId=1")
-        .then((res) => {
-          console.log(res.data);
-          this.featureList = res.data.data;
         })
         .catch((err) => {
           console.log(err);
