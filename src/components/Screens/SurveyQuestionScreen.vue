@@ -84,7 +84,7 @@
           <p class="text-muted">
             <i>Question Id : {{ questionDetail.id }}</i>
           </p>
-          <h6>{{ questionDetail.surveyQuestion }}</h6>
+          <h6>{{ questionDetail.question }}</h6>
           <ol class="list-group list-group-numbered">
             <li
               v-for="item in questionDetail.surveyQuestionOptions"
@@ -96,30 +96,23 @@
           </ol>
           <div class="mt-3">
             <span class="fw-medium">Status : </span>
-            <span class="text-success fw-bold">{{
-              questionDetail.surveyQuestionStatus
-            }}</span>
+            <span class="text-success fw-bold">{{ questionDetail.status }}</span>
           </div>
           <div class="mt-2">
-            <span class="fw-medium">Type : </span>{{ questionDetail.surveyQuestionType }}
-          </div>
-
-          <div class="mt-2">
-            <span class="fw-medium">Category : </span
-            >{{ questionDetail.surveyQuestionCategory }}
+            <span class="fw-medium">Type : </span>{{ questionDetail.type }}
           </div>
 
           <div class="mt-2">
             <span class="fw-medium">Is Required? : </span>
-            {{ questionDetail.surveyQuestionRequired ? "Yes" : "No" }}
+            {{ questionDetail.isMandatory ? "Yes" : "No" }}
           </div>
           <div class="mt-2">
             <span class="fw-medium">Last Updated on : </span>
-            {{ questionDetail.lastModifiedDateTime }}
+            {{ questionDetail.updatedAt }}
           </div>
 
           <div class="mt-2">
-            <span class="fw-medium">Added on : </span>{{ questionDetail.addedDateTime }}
+            <span class="fw-medium">Added on : </span>{{ questionDetail.createdAt }}
           </div>
 
           <div class="text-end mt-3">
@@ -186,8 +179,8 @@ export default {
       axiosConn
         .get("/findQuestion?businessId=1&workspaceId=1&id=" + item.id)
         .then((res) => {
-          console.log(res.data);
-          this.questionDetail = res.data;
+          console.log(res.data.data);
+          this.questionDetail = res.data.data;
         })
         .catch((err) => {
           console.log(err);

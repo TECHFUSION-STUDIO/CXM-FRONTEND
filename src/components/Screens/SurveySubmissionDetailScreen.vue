@@ -157,7 +157,7 @@
       <div class="mt-3">
         <div class="mb-3" v-for="(item, index) in feedbackList" :key="item.id">
           <label for="exampleFormControlInput1" class="form-label">{{
-            index + 1 + ". " + item.questionId.question
+            index + 1 + ". " + item.formQuestion.question
           }}</label>
           <input
             type="email"
