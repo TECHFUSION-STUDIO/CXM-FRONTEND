@@ -29,6 +29,7 @@
       <table class="table table-hover table-bordered mt-4 w-100">
         <thead>
           <tr class="bg-light">
+            <th>Id</th>
             <th>Impacted Ph</th>
             <th class="text-center">Impacted Email</th>
             <th class="text-center">Impacted Name</th>
@@ -37,9 +38,10 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in impactList" :key="index">
-            <td>{{ item.loggerContact }}</td>
-            <td class="text-center">{{ item.loggerEmail }}</td>
-            <td class="text-center">{{ item.loggerName }}</td>
+            <td>{{ item.id }}</td>
+            <td>{{ item.contact }}</td>
+            <td class="text-center">{{ item.email }}</td>
+            <td class="text-center">{{ item.name }}</td>
             <td class="text-center">
               <router-link :to="'/loggerdetail/' + item.id" style="text-decoration: none"
                 >Logger</router-link
