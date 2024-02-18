@@ -98,7 +98,7 @@ export default {
         .get("/findCategory?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.categoryDetail = res.data.data[0];
+          this.categoryDetail = res.data.data;
         })
         .catch((err) => {
           console.log(err);

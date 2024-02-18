@@ -27,7 +27,7 @@
               type="text"
               class="form-control"
               id="categoryName"
-              v-model="surveyQuestionDetail.surveyQuestion"
+              v-model="surveyQuestionDetail.question"
             />
           </div>
         </div>
@@ -38,7 +38,7 @@
               class="form-control"
               id="categoryDesc"
               rows="3"
-              v-model="surveyQuestionDetail.surveyQuestionDesc"
+              v-model="surveyQuestionDetail.description"
             ></textarea>
           </div>
         </div>
@@ -49,7 +49,7 @@
             <select
               id="categoryStatus"
               class="form-select"
-              v-model="surveyQuestionDetail.surveyQuestionRequired"
+              v-model="surveyQuestionDetail.isMandatory"
             >
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -62,7 +62,7 @@
             <select
               id="categoryStatus"
               class="form-select"
-              v-model="surveyQuestionDetail.surveyQuestionStatus"
+              v-model="surveyQuestionDetail.status"
             >
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
@@ -76,7 +76,7 @@
             <select
               id="categoryStatus"
               class="form-select"
-              v-model="surveyQuestionDetail.surveyQuestionType"
+              v-model="surveyQuestionDetail.type"
             >
               <option value="NPS">NPS</option>
               <option value="Rating">Rating</option>
@@ -93,10 +93,10 @@
         <div
           class="col-md-6"
           v-if="
-            surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
-            surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
-            surveyQuestionDetail.surveyQuestionType == 'Dropdown' ||
-            surveyQuestionDetail.surveyQuestionType == 'Voting'
+            surveyQuestionDetail.type == 'Multiple Choice' ||
+            surveyQuestionDetail.type == 'Single Choice' ||
+            surveyQuestionDetail.type == 'Dropdown' ||
+            surveyQuestionDetail.type == 'Voting'
           "
         >
           <div class="mb-3">
@@ -107,28 +107,28 @@
               class="form-control"
               id="categoryName"
               type="number"
-              v-model="surveyQuestionDetail.surveyQuestionTotalOption"
+              v-model="inpSurveyQuestionAnswerTotOptions"
             />
           </div>
         </div>
 
         <template
           v-if="
-            (surveyQuestionDetail.surveyQuestionType == 'Multiple Choice' ||
-              surveyQuestionDetail.surveyQuestionType == 'Single Choice' ||
-              surveyQuestionDetail.surveyQuestionType == 'Dropdown' ||
-              surveyQuestionDetail.surveyQuestionType == 'Voting') &&
-            surveyQuestionDetail.surveyQuestionTotalOption > 0
+            (surveyQuestionDetail.type == 'Multiple Choice' ||
+              surveyQuestionDetail.type == 'Single Choice' ||
+              surveyQuestionDetail.type == 'Dropdown' ||
+              surveyQuestionDetail.type == 'Voting') &&
+            surveyQuestionDetail.options.length > 0
           "
         >
           <label for="categoryName" class="form-label">Enter the Options below </label>
           <div
             class="col-md-12"
-            v-for="item in surveyQuestionDetail.surveyQuestionTotalOption"
+            v-for="(item, index) in surveyQuestionDetail.options"
             :key="item"
           >
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">{{ item }}</span>
+              <span class="input-group-text" id="basic-addon1">{{ index + 1 }}</span>
               <input
                 type="text"
                 class="form-control"
@@ -168,6 +168,7 @@ export default {
       surveyId: "",
       surveyQuestionDetail: {},
       inpSurveyQuestionAnswerOptionsArray: [],
+      inpSurveyQuestionAnswerTotOptions: "",
       axiosConn,
     };
   },
@@ -186,13 +187,12 @@ export default {
     },
     fetchSurveyQuestionDetail() {
       axiosConn
-        .get("/getSurveyQuestion?businessId=1&workspaceId=1&surveyQuestionId=" + this.id)
+        .get("/findQuestion?businessId=1&workspaceId=1&id=" + this.id)
         .then((res) => {
           console.log(res.data);
-          this.surveyQuestionDetail = res.data;
-          this.inpSurveyQuestionAnswerOptionsArray = res.data.surveyQuestionOptions.map(
-            (a) => a.option
-          );
+          this.surveyQuestionDetail = res.data.data;
+          this.inpSurveyQuestionAnswerTotOptions = this.surveyQuestionDetail.options.length;
+          this.inpSurveyQuestionAnswerOptionsArray = this.surveyQuestionDetail.options;
         })
         .catch((err) => {
           console.log(err);

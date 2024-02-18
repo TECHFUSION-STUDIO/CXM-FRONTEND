@@ -298,7 +298,7 @@ export default {
           status: this.inpSurveyQuestionStatus,
           description: this.inpSurveyQuestionDesc,
           type: this.inpSurveyQuestionType,
-          // options: this.inpSurveyQuestionAnswerOptionsArray,
+          options: this.inpSurveyQuestionAnswerOptionsArray,
           isMandatory: this.inpSurveyQuestionRequired,
         })
         .then((res) => {

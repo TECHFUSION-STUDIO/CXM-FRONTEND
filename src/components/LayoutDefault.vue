@@ -121,7 +121,7 @@ export default {
 
         { title: "Category", url: "/category", icon: "fa-solid fa-code-branch" },
         { title: "Tags", url: "/tags", icon: "fa-sharp fa-solid fa-tags" },
-        { title: "Member", url: "/member", icon: "fa-solid fa-people-group" },
+        // { title: "Member", url: "/member", icon: "fa-solid fa-people-group" },
         { title: "hr", url: " ", icon: " " },
         { title: "My Account", url: "/account", icon: "fa-solid fa-user" },
         { title: "Log out", url: "/login", icon: "fa-solid fa-arrow-right-from-bracket" },
