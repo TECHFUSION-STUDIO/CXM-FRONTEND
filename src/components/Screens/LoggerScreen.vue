@@ -14,7 +14,7 @@
             <input
               class="form-control"
               type="search"
-              placeholder="Search Category"
+              placeholder="Search Reporter"
               aria-label="Search"
             />
             <button class="btn btn-primary">
