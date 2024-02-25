@@ -65,7 +65,7 @@
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text fw-semibold" id="basic-addon1">Start at</span>
             <input
-              type="datetime-local"
+              type="text"
               class="form-control"
               disabled
               :value="surveyDetail.startDateTime"
@@ -76,7 +76,7 @@
           <div class="input-group input-group-sm mb-3">
             <span class="input-group-text fw-semibold" id="basic-addon1">End on</span>
             <input
-              type="datetime-local"
+              type="text"
               class="form-control"
               disabled
               :value="surveyDetail.endDateTime"
