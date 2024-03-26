@@ -1,6 +1,6 @@
 <template>
   <HeaderComponent />
-  <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
+  <!-- <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
     <div class="ms-auto text-white p-1" style="font-size: 12px">
       <span
         class="me-2 ms-2"
@@ -23,7 +23,7 @@
         ><i class="fa-solid fa-question"></i
       ></span>
     </div>
-  </div>
+  </div> -->
   <div class="wrapper bg-light">
     <nav
       v-if="this.store.IS_LOGGED_IN"
