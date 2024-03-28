@@ -1,29 +1,7 @@
 <template>
-  <HeaderComponent />
-  <!-- <div class="d-flex" style="background-color: #0262b9; min-height: 4px">
-    <div class="ms-auto text-white p-1" style="font-size: 12px">
-      <span
-        class="me-2 ms-2"
-        style="cursor: pointer"
-        title="Notifications"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#notification"
-        aria-controls="notification"
-        ><i class="fa-regular fa-bell"></i></span
-      >|
-      <span
-        class="me-2 ms-2"
-        style="cursor: pointer"
-        title="My Account"
-        @click="this.$router.push('/account')"
-        ><i class="fa-solid fa-address-card"></i
-      ></span>
-      |
-      <span class="me-2 ms-2" style="cursor: pointer" title="Help & Support"
-        ><i class="fa-solid fa-question"></i
-      ></span>
-    </div>
-  </div> -->
+  <div>
+    <HeaderComponent />
+  </div>
   <div class="wrapper bg-light">
     <nav
       v-if="this.store.IS_LOGGED_IN"
@@ -47,7 +25,7 @@
             style="cursor: default"
           >
             <div class="ms-1 me-auto">
-              <div class="fw-medium">
+              <div class="fw-medium fs-5">
                 <i :class="item.icon + ' me-2'"></i>
               </div>
             </div>
@@ -57,8 +35,8 @@
       </ul>
     </nav>
 
-    <div id="content">
-      <div>
+    <div style="width: 100%;">
+      <div  id="content">
         <div class="p-2">
           <router-view></router-view>
         </div>
@@ -66,25 +44,7 @@
     </div>
   </div>
 
-  <div
-    class="offcanvas offcanvas-end"
-    tabindex="-1"
-    id="notification"
-    aria-labelledby="notificationLabel"
-  >
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="notificationLabel">Notification</h5>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="offcanvas-body">
-      <div>Nothing to show</div>
-    </div>
-  </div>
+  
 </template>
 
 <script>
@@ -106,6 +66,7 @@ export default {
       searchText: "",
       store,
       sideBarMenu: [
+        
         {
           title: "Dashboard",
           url: "/dashboard",
@@ -239,6 +200,7 @@ body {
   padding-right: 5px; */
   padding-bottom: 5px;
   padding-top: 0px;
+
 }
 
 #sidebar.active {
@@ -266,13 +228,13 @@ body {
 
 .hovered:hover {
   /* background-color: #e0f3ff; */
-  color: #0262b9;
+  color: #401e80;
 }
 
 .hovered-active {
-  background-color: #e0f3ff;
-  color: #0262b9;
-  border-left-color: #0262b9;
+  background-color: #401e8025;
+  color: #401e80;
+  border-left-color: #401e80;
   border-left-width: 4px;
   z-index: 3;
 }

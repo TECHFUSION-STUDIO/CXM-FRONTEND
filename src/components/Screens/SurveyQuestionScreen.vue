@@ -3,7 +3,9 @@
     <div class="text-end">
       <button
         class="btn btn-sm btn-primary m-1"
-        @click="this.$router.push('/surveys/' + id + '/createquestion')"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasAddQuestion"
+        aria-controls="offcanvasAddQuestion"
       >
         Add Question
       </button>
@@ -131,10 +133,31 @@
       </div>
     </div>
   </div>
+
+  <div
+        class="offcanvas offcanvas-bottom h-100"
+        tabindex="-1"
+        id="offcanvasAddQuestion"
+        aria-labelledby="offcanvasAddQuestionLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasAddQuestionLabel">Create Question</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body large">
+<CreateSurveyQuestion/>
+        </div>
+      </div>
 </template>
 
 <script>
 import axiosConn from "@/axioscon";
+import CreateSurveyQuestion from './CreateSurveyQuestion'
 import NPSQuestionDetail from "./questionAnalysisDetail/NPSQuestionDetail.vue";
 import InputTextQuestionDetail from "./questionAnalysisDetail/InputTextQuestionDetail.vue";
 import SingleChoiceQuestionDetail from "./questionAnalysisDetail/SingleChoiceQuestionDetail.vue";
@@ -145,7 +168,7 @@ export default {
     NPSQuestionDetail,
     InputTextQuestionDetail,
     SingleChoiceQuestionDetail,
-    RatingQuestionDetail,
+    RatingQuestionDetail,CreateSurveyQuestion
   },
   data() {
     return {

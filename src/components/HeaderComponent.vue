@@ -1,20 +1,20 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #401e80">
     <div class="container-fluid">
-      <h5 class="navbar-nav me-auto ms-2">
+      <h5 class="navbar-nav me-auto ms-3 text-white">
         <i class="fa-solid fa-florin-sign me-2"></i> FeedArc
       </h5>
       <div class="d-flex" role="search">
         <div class="w-100">
           <div class="dropdown-center">
             <button
-              class="btn btn-outline-secondary btn-sm dropdown-toggle shadow-none"
+              class="btn btn-outline-light btn-sm dropdown-toggle shadow-none  rounded-circle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <span class="text-truncate d-inline p-0 m-0" style="width: 200px">
-                {{ item == null || item == {} ? "Select Workspace" : item.name }}</span
+              <span class="text-truncate d-inline p-0 m-0">
+                {{ item == null || item == {} ? "Select Workspace" : "SA" }}</span
               >
             </button>
             <ul
@@ -35,11 +35,47 @@
                 >
               </li>
             </ul>
+            <button
+              class="btn btn-outline-light btn-sm shadow-none ms-2  rounded-circle"
+              type="button"
+              title="Notifications"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#notification"
+              aria-controls="notification"
+            >
+              <i class="fa-solid fa-bell"></i>
+            </button>
+            <button
+              class="btn btn-outline-light btn-sm shadow-none ms-2 rounded-circle"
+              type="button"
+            >
+              <i class="fa-solid fa-user"></i>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </nav>
+
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="notification"
+    aria-labelledby="notificationLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="notificationLabel">Notification</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>Nothing to show</div>
+    </div>
+  </div>
 </template>
 
 <script>

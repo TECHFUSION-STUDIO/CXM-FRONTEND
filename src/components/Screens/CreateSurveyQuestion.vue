@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-white shadow shadow-sm mt-1 p-2">
+    <!-- <div class="bg-white shadow shadow-sm mt-1 p-2">
       <nav class="m-0 p-0 bg-white" aria-label="breadcrumb">
         <ol class="breadcrumb p-0 m-0">
           <a @click="this.$router.go(-1)" title="Go to Previous Page"
@@ -17,9 +17,9 @@
           </li>
         </ol>
       </nav>
-    </div>
+    </div> -->
 
-    <div class="bg-white shadow shadow-sm mt-3 p-3">
+    <div class="bg-white mt-0 p-3">
       <div class="row">
         <div class="col-md-12">
           <div class="mb-3">

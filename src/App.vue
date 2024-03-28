@@ -62,7 +62,10 @@ th {
 }
 
 .btn-primary {
-  background-color: #0262b9;
+  background-color: #401e80;
+}
+.btn-primary:hover {
+  background-color: #7131b1;
 }
 
 .btn-danger {
