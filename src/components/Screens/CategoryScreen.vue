@@ -141,7 +141,9 @@
           <div class="text-end">
             <button
               class="btn btn-primary btn-sm m-1"
-              @click="this.$router.push('/editcategory/' + categoryDetail.id)"
+              data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasEditCategory"
+        aria-controls="offcanvasEditCategory"
             >
               Edit Category
             </button>
@@ -151,6 +153,26 @@
         </div>
       </div>
     </div>
+
+    <div
+    class="offcanvas offcanvas-bottom h-100"
+    tabindex="-1"
+    id="offcanvasEditCategory"
+    aria-labelledby="offcanvasEditCategoryLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasEditCategoryLabel">Edit Category</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body large">
+      <EditCategoryScreen />
+    </div>
+  </div>
   </div>
 </template>
 
@@ -158,10 +180,10 @@
 import axiosConn from "@/axioscon";
 
 import CreateCategoryScreen from "./CreateCategoryScreen.vue";
-
+import EditCategoryScreen from "./EditCategoryScreen.vue";
 export default {
   name: "CategoryScreen",
-  components: { CreateCategoryScreen },
+  components: { CreateCategoryScreen , EditCategoryScreen},
   data() {
     return {
       categoryList: [],

@@ -17,7 +17,7 @@
     </div>
 
     <div class="bg-white shadow shadow-sm mt-3 p-2">
-      <div class="d-flex mb-3">
+      <!-- <div class="d-flex mb-3">
         <div class="text-muted">Survey Id : {{ surveyDetail.id }}</div>
         <div class="ms-auto">
           <button
@@ -27,7 +27,7 @@
             Edit
           </button>
         </div>
-      </div>
+      </div> -->
 
       <h5>{{ surveyDetail.name }}</h5>
 
@@ -195,6 +195,7 @@
       <button class="btn btn-outline-danger m-2 btn-sm">Delete Survey</button>
     </div>
   </div>
+
 </template>
 
 <script>
